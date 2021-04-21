@@ -1,0 +1,12 @@
+$(document).ready(() => {
+    $('.countdown-exaggerate').countdown100({
+        /*Set Endtime here*/
+        endtimeYear: 2021,
+        endtimeMonth: 05,
+        endtimeDate: 21,
+        endtimeHours: 0,
+        endtimeMinutes: 00,
+        endtimeSeconds: 00,
+        timeZone: "America/New_York" 
+    });
+});

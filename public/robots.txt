@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /aboutme
+Allow: /soon
+Disallow: /cdn-cgi
+Sitemap: https://tylerlevs.com/sitemap.xml

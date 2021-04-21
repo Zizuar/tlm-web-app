@@ -1,0 +1,79 @@
+<%- include('partials/header'); %> 
+<%- include('partials/navbar'); %>
+
+<!-- Content -->
+<div
+  class="row align-items-center justify-content-center mr-0 ml-0 mt-1"
+>
+  <div class="container" id="content-container">
+    <div class="d-flex flex-column">
+      <section id="cover" class="mb-4">
+        <div class="d-flex justify-content-center mb-3">
+          <h1 class="text-uppercase font-weight-bold text-center">
+            Song releases in 2021
+          </h1>
+        </div>
+        <div class="d-flex justify-content-center mb-2">
+          <picture class="d-flex justify-content-center">
+            <source srcset="assets/img/tl_2021.webp" type="image/webp" />
+            <source srcset="assets/img/tl_2021.png" type="image/png" />
+            <img
+              id="cover-img"
+              src="assets/img/tl_2021.jpg"
+              alt="2021 Cover Art"
+              class="img-fluid rounded"
+            />
+          </picture>
+        </div>
+        <div class="d-flex justify-content-center align-items-center row mt-5">
+          <h2 class="text-center">
+            Songs coming soon to streaming platforms
+          </h2>
+        </div>
+      </section>
+
+      <section id="songs">
+        <div class="row">
+          <div class="col-12">
+            <div class="card mb-3 shadow">
+              <div class="card-body">
+                <div class="card-title text-center">
+                  <h3>Exaggerate</h3>
+                </div>
+                <div class="d-flex justify-content-center align-items-center row countdown-exaggerate">
+                  <div class="col-6 col-md-3 d-flex flex-column mb-3 mb-md-0">
+                      <span class="cd-number text-center days"></span>
+                      <span class="text-center">Days</span>
+                  </div>
+                  <div class="col-6 col-md-3 d-flex flex-column mb-3 mb-md-0">
+                      <span class="cd-number text-center hours"></span>
+                      <span class="text-center">Hours</span>
+                  </div>
+                  <div class="col-6 col-md-3 d-flex flex-column">
+                      <span class="cd-number text-center minutes"></span>
+                      <span class="text-center">Minutes</span>
+                  </div>
+                  <div class="col-6 col-md-3 d-flex flex-column">
+                      <span class="cd-number text-center seconds"></span>
+                      <span class="text-center">Seconds</span>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <h5 class="display-5 text-center"><a href="https://distrokid.com/hyperfollow/tylerlevs/exaggerate" target="_blank">Presave song on Spotify, Amazon or Apple Music</a></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- Countdown timer JS-->
+<script src="js/countdowntime/moment.min.js" defer></script>
+<script src="js/countdowntime/moment-timezone.min.js" defer></script>
+<script src="js/countdowntime/moment-timezone-with-data.min.js" defer></script>
+<script src="js/countdowntime/countdowntime.js" defer></script>
+
+<%- include('partials/footer'); %>

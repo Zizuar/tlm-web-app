@@ -1,0 +1,504 @@
+<%- include('partials/header'); %>
+<%- include('partials/navbar'); %>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <!-- Masthead -->
+    <div class="row d-block align-items-center justify-content-center mr-0
+        ml-0 mb-5" id="page-top">
+
+    <div id="content-container">
+        <section class="page-section mt-0 mt-sm-5 pb-0" id="order-masthead-section">
+            <div class="container">
+                <div class="d-flex flex-column">
+                    <section id="cover">
+                        <div class="d-flex justify-content-center mb-3">
+                            <h1 class="text-uppercase
+                                font-weight-bold text-center">Order your physical copy</h1>
+                        </div>
+                        <div class="d-flex justify-content-center mb-2">
+                            <picture id="order-cover-img">
+                                <source srcset="assets/img/sfba-cover.webp"
+                                    type="image/webp">
+                                <source srcset="assets/img/sfba-cover.png"
+                                    type="image/png">
+                                <img  src="assets/img/sfba-cover.png"
+                                    alt="Songs For Being Alone Cover Art"
+                                    class="img-fluid rounded">
+                            </picture>
+                        </div>
+                        <div class="mt-5">
+                            <p class="text-center">Please fill in the form below to submit an order</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        
+    
+
+        <!-- Order form -->
+        <section class="page-section mt-2 mt-sm-5 pb-0" id="order-section">
+            <div class="container">
+                <form id="order-form" class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" 
+                            id="email" name="email" 
+                            aria-describedby="emailHelp" 
+                            placeholder="john@doe.com"
+                            required />
+                        <small id="emailHelp" class="form-text text-muted">I'll send the PayPal invoice here manually - and for contact if there's anything to confirm. You will receive the invoice later, probably in a couple days.</small>
+                        <div class="invalid-feedback">
+                            Please provide a valid email address.
+                        </div>
+                    </div>
+                    <div class="form-group"> <!-- Full Name -->
+                        <label for="mail_name" class="control-label">Name to put on the invoice and package</label>
+                        <input type="text" class="form-control" 
+                            id="mail_name" name="mailName" 
+                            placeholder="John Doe"
+                            required />
+                        <small id="nameHelp" class="form-text text-muted">I'll put this name and the address you enter below both on the invoice and the package.</small>
+                        <div class="invalid-feedback">
+                            Please provide a name.
+                        </div>
+                    </div>	
+                
+                    <div class="form-group"> <!-- Street 1 -->
+                        <label for="street1_id" class="control-label">Street Address 1</label>
+                        <input type="text" class="form-control" 
+                            id="street1_id" name="street1" 
+                            placeholder="Street address, P.O. box, company name, c/o"
+                            required />
+                        <div class="invalid-feedback">
+                            Please provide a street address.
+                        </div>
+                    </div>					
+                                            
+                    <div class="form-group"> <!-- Street 2 -->
+                        <label for="street2_id" class="control-label">Street Address 2 (optional)</label>
+                        <input type="text" class="form-control" 
+                        id="street2_id" name="street2" 
+                        placeholder="Apartment, suite, unit, building, floor, etc.">
+                    </div>	
+                    <div class="form-row">
+                        <div class="form-group col-lg-3 col-sm-6"> <!-- City-->
+                            <label for="city_id" class="control-label">City</label>
+                            <input type="text" class="form-control" 
+                            id="city_id" name="city" 
+                            placeholder="City, province, county, etc."
+                            required />
+                        <div class="invalid-feedback">
+                            Please provide a city.
+                        </div>
+                        </div>	
+                        <div class="form-group col-lg-3 col-sm-6"> <!-- State Dropdown -->
+                            <label for="state_id" class="control-label">State</label>
+                            <select class="form-control" id="state_id" name="state" disabled="true"> 
+                                <option value="" selected="selected" disabled>Select State</option> 
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a state.
+                            </div>					
+                        </div>
+                        <div class="form-group col-lg-3 col-sm-6"> <!-- Zip Code-->
+                            <label for="zip_id" class="control-label">Zip/Postal Code</label>
+                            <input type="text" class="form-control" 
+                            id="zip_id" name="zip" 
+                            placeholder="#####"
+                            required />
+                            <div class="invalid-feedback">
+                                Please provide a zip/postal code.
+                            </div>
+                        </div>		
+                        <div class="form-group col-lg-3 col-sm-6"> <!-- State Dropdown -->
+                            <label for="country_id" class="control-label">Country</label>
+                            <select class="form-control" id="country_id" name="country" required>
+                                <option value="" selected="selected" disabled>Select Country</option> 
+                                <option value="United States" data-category="DOM">United States</option> 
+                                <option value="United Kingdom" data-category="5">United Kingdom</option> 
+                                <option value="Afghanistan" data-category="6">Afghanistan</option> 
+                                <option value="Albania" data-category="4">Albania</option> 
+                                <option value="Algeria" data-category="8">Algeria</option> 
+                                <option value="(Dom) American Samoa" data-category="DOM">American Samoa</option> 
+                                <option value="Andorra" data-category="5">Andorra</option> 
+                                <option value="Anguilla" data-category="9">Anguilla</option> 
+                                <option value="Antigua and Barbuda" data-category="9">Antigua and Barbuda</option> 
+                                <option value="Argentina" data-category="9">Argentina</option> 
+                                <option value="Armenia" data-category="4">Armenia</option> 
+                                <option value="Aruba" data-category="9">Aruba</option> 
+                                <option value="Australia" data-category="3">Australia</option> 
+                                <option value="Austria" data-category="5">Austria</option> 
+                                <option value="Azerbaijan" data-category="4">Azerbaijan</option> 
+                                <option value="Bahamas" data-category="9">Bahamas</option> 
+                                <option value="Bahrain" data-category="8">Bahrain</option> 
+                                <option value="Bangladesh" data-category="6">Bangladesh</option> 
+                                <option value="Barbados" data-category="9">Barbados</option> 
+                                <option value="Belarus" data-category="4">Belarus</option> 
+                                <option value="Belgium" data-category="5">Belgium</option> 
+                                <option value="Belize" data-category="9">Belize</option> 
+                                <option value="Benin" data-category="7">Benin</option> 
+                                <option value="Bermuda" data-category="9">Bermuda</option> 
+                                <option value="Bhutan" data-category="6">Bhutan</option> 
+                                <option value="Bolivia" data-category="9">Bolivia</option> 
+                                <option value="Bosnia and Herzegovina" data-category="4">Bosnia and Herzegovina</option> 
+                                <option value="Brazil" data-category="9">Brazil</option> 
+                                <option value="Bulgaria" data-category="4">Bulgaria</option> 
+                                <option value="Burkina Faso" data-category="7">Burkina Faso</option> 
+                                <option value="Burundi" data-category="7">Burundi</option> 
+                                <option value="Cambodia" data-category="6">Cambodia</option> 
+                                <option value="Cameroon" data-category="7">Cameroon</option> 
+                                <option value="Canada" data-category="1">Canada</option> 
+                                <option value="Cape Verde" data-category="7">Cape Verde</option> 
+                                <option value="Cayman Islands" data-category="9">Cayman Islands</option> 
+                                <option value="Central African Republic" data-category="7">Central African Republic</option> 
+                                <option value="Chile" data-category="9">Chile</option> 
+                                <option value="China" data-category="3">China</option> 
+                                <option value="Colombia" data-category="9">Colombia</option> 
+                                <option value="Comoros" data-category="7">Comoros</option> 
+                                <option value="Congo, Republic of the" data-category="7">Congo, Republic of the</option> 
+                                <option value="Congo, The Democratic Republic of The" data-category="7">Congo, The Democratic Republic of The</option> 
+                                <option value="Costa Rica" data-category="9">Costa Rica</option> 
+                                <option value="Cote D'ivoire" data-category="7">Cote D'ivoire</option> 
+                                <option value="Croatia" data-category="4">Croatia</option> 
+                                <option value="Cyprus" data-category="4">Cyprus</option> 
+                                <option value="Czech Republic" data-category="4">Czech Republic</option> 
+                                <option value="Denmark" data-category="5">Denmark</option> 
+                                <option value="Djibouti" data-category="7">Djibouti</option> 
+                                <option value="Dominica" data-category="9">Dominica</option> 
+                                <option value="Dominican Republic" data-category="9">Dominican Republic</option> 
+                                <option value="Ecuador" data-category="9">Ecuador</option> 
+                                <option value="Egypt" data-category="8">Egypt</option> 
+                                <option value="El Salvador" data-category="9">El Salvador</option> 
+                                <option value="Equatorial Guinea" data-category="7">Equatorial Guinea</option> 
+                                <option value="Estonia" data-category="4">Estonia</option> 
+                                <option value="Ethiopia" data-category="8">Ethiopia</option> 
+                                <option value="Falkland Islands (Malvinas)" data-category="9">Falkland Islands (Malvinas)</option> 
+                                <option value="Faroe Islands" data-category="5">Faroe Islands</option> 
+                                <option value="Fiji" data-category="6">Fiji</option> 
+                                <option value="Finland" data-category="5">Finland</option> 
+                                <option value="France" data-category="5">France</option> 
+                                <option value="French Polynesia" data-category="6">French Polynesia</option> 
+                                <option value="Gabon" data-category="7">Gabon</option> 
+                                <option value="Gambia" data-category="7">Gambia</option> 
+                                <option value="Georgia, Republic of" data-category="4">Georgia, Republic of</option> 
+                                <option value="Germany" data-category="5">Germany</option> 
+                                <option value="Ghana" data-category="7">Ghana</option> 
+                                <option value="Gibraltar" data-category="5">Gibraltar</option> 
+                                <option value="Greece" data-category="5">Greece</option> 
+                                <option value="Greenland" data-category="5">Greenland</option> 
+                                <option value="Grenada" data-category="9">Grenada</option> 
+                                <option value="(Dom) Guam" data-category="DOM">Guam</option> 
+                                <option value="Guatemala" data-category="9">Guatemala</option> 
+                                <option value="Guinea" data-category="7">Guinea</option> 
+                                <option value="Guinea-Bissau" data-category="7">Guinea-Bissau</option> 
+                                <option value="Guyana" data-category="9">Guyana</option> 
+                                <option value="Haiti" data-category="9">Haiti</option> 
+                                <option value="Holy See (Vatican City State)" data-category="5">Holy See (Vatican City State)</option> 
+                                <option value="Honduras" data-category="9">Honduras</option> 
+                                <option value="Hong Kong" data-category="3">Hong Kong</option> 
+                                <option value="Hungary" data-category="4">Hungary</option> 
+                                <option value="Iceland" data-category="5">Iceland</option> 
+                                <option value="India" data-category="6">India</option> 
+                                <option value="Indonesia" data-category="6">Indonesia</option> 
+                                <option value="Iran, Islamic Republic of" data-category="8">Iran, Islamic Republic of</option> 
+                                <option value="Iraq" data-category="8">Iraq</option> 
+                                <option value="Ireland" data-category="5">Ireland</option> 
+                                <option value="Israel" data-category="5">Israel</option> 
+                                <option value="Italy" data-category="5">Italy</option> 
+                                <option value="Jamaica" data-category="9">Jamaica</option> 
+                                <option value="Japan" data-category="3">Japan</option> 
+                                <option value="Jordan" data-category="8">Jordan</option> 
+                                <option value="Kazakhstan" data-category="6">Kazakhstan</option> 
+                                <option value="Kenya" data-category="7">Kenya</option> 
+                                <option value="Kiribati" data-category="6">Kiribati</option> 
+                                <option value="Korea, Republic of" data-category="3">Korea, Republic of</option> 
+                                <option value="Kosovo, Republic of" data-category="5">Kosovo, Republic of</option> 
+                                <option value="Kuwait" data-category="8">Kuwait</option> 
+                                <option value="Kyrgyzstan" data-category="6">Kyrgyzstan</option> 
+                                <option value="Latvia" data-category="4">Latvia</option> 
+                                <option value="Lebanon" data-category="8">Lebanon</option> 
+                                <option value="Liberia" data-category="7">Liberia</option> 
+                                <option value="Libyan Arab Jamahiriya" data-category="8">Libyan Arab Jamahiriya</option> 
+                                <option value="Liechtenstein" data-category="5">Liechtenstein</option> 
+                                <option value="Lithuania" data-category="4">Lithuania</option> 
+                                <option value="Luxembourg" data-category="5">Luxembourg</option> 
+                                <option value="Macao" data-category="6">Macao</option> 
+                                <option value="North Macedonia" data-category="4">North Macedonia</option> 
+                                <option value="Madagascar" data-category="7">Madagascar</option> 
+                                <option value="Malawi" data-category="7">Malawi</option> 
+                                <option value="Malaysia" data-category="6">Malaysia</option> 
+                                <option value="Maldives" data-category="6">Maldives</option> 
+                                <option value="Mali" data-category="7">Mali</option> 
+                                <option value="Malta" data-category="5">Malta</option> 
+                                <option value="(Dom) Marshall Islands" data-category="DOM">Marshall Islands</option> 
+                                <option value="Mauritania" data-category="7">Mauritania</option> 
+                                <option value="Mexico" data-category="2">Mexico</option> 
+                                <option value="(Dom) Micronesia, Federated States of" data-category="DOM">Micronesia, Federated States of</option> 
+                                <option value="Moldova, Republic of" data-category="4">Moldova, Republic of</option> 
+                                <option value="Mongolia" data-category="6">Mongolia</option> 
+                                <option value="Montenegro" data-category="5">Montenegro</option> 
+                                <option value="Montserrat" data-category="9">Montserrat</option> 
+                                <option value="Morocco" data-category="8">Morocco</option> 
+                                <option value="Mozambique" data-category="7">Mozambique</option> 
+                                <option value="Myanmar (Burma)" data-category="6">Myanmar (Burma)</option> 
+                                <option value="Namibia" data-category="7">Namibia</option> 
+                                <option value="Nauru" data-category="6">Nauru</option> 
+                                <option value="Nepal" data-category="6">Nepal</option> 
+                                <option value="Netherlands" data-category="5">Netherlands</option> 
+                                <option value="Netherlands Antilles" data-category="5">Netherlands Antilles</option> 
+                                <option value="New Caledonia" data-category="6">New Caledonia</option> 
+                                <option value="New Zealand" data-category="6">New Zealand</option> 
+                                <option value="Nicaragua" data-category="9">Nicaragua</option> 
+                                <option value="Niger" data-category="7">Niger</option> 
+                                <option value="Nigeria" data-category="7">Nigeria</option> 
+                                <option value="(Dom) Northern Mariana Islands" data-category="DOM">Northern Mariana Islands</option> 
+                                <option value="Norway" data-category="5">Norway</option> 
+                                <option value="Oman" data-category="8">Oman</option> 
+                                <option value="Pakistan" data-category="6">Pakistan</option> 
+                                <option value="(Dom) Palau" data-category="DOM">Palau</option> 
+                                <option value="Panama" data-category="9">Panama</option> 
+                                <option value="Papua New Guinea" data-category="6">Papua New Guinea</option> 
+                                <option value="Paraguay" data-category="9">Paraguay</option> 
+                                <option value="Peru" data-category="9">Peru</option> 
+                                <option value="Philippines" data-category="6">Philippines</option> 
+                                <option value="Pitcairn" data-category="6">Pitcairn</option> 
+                                <option value="Poland" data-category="4">Poland</option> 
+                                <option value="Portugal" data-category="5">Portugal</option> 
+                                <option value="(Dom) Puerto Rico" data-category="DOM">Puerto Rico</option> 
+                                <option value="Qatar" data-category="8">Qatar</option> 
+                                <option value="Romania" data-category="4">Romania</option> 
+                                <option value="Russian Federation" data-category="4">Russian Federation</option> 
+                                <option value="Rwanda" data-category="7">Rwanda</option> 
+                                <option value="Saint Helena" data-category="7">Saint Helena</option> 
+                                <option value="Saint Kitts and Nevis" data-category="9">Saint Kitts and Nevis</option> 
+                                <option value="Saint Lucia" data-category="9">Saint Lucia</option> 
+                                <option value="Saint Vincent and The Grenadines" data-category="9">Saint Vincent and The Grenadines</option> 
+                                <option value="Samoa" data-category="6">Samoa</option> 
+                                <option value="San Marino" data-category="5">San Marino</option> 
+                                <option value="Sao Tome and Principe" data-category="7">Sao Tome and Principe</option> 
+                                <option value="Saudi Arabia" data-category="8">Saudi Arabia</option> 
+                                <option value="Senegal" data-category="7">Senegal</option> 
+                                <option value="Serbia" data-category="5">Serbia</option> 
+                                <option value="Sierra Leone" data-category="7">Sierra Leone</option> 
+                                <option value="Singapore" data-category="6">Singapore</option> 
+                                <option value="Slovakia" data-category="5">Slovakia</option> 
+                                <option value="Slovenia" data-category="5">Slovenia</option> 
+                                <option value="Solomon Islands" data-category="6">Solomon Islands</option> 
+                                <option value="South Africa" data-category="7">South Africa</option> 
+                                <option value="Spain" data-category="5">Spain</option> 
+                                <option value="Sri Lanka" data-category="6">Sri Lanka</option> 
+                                <option value="Sudan" data-category="7">Sudan</option> 
+                                <option value="Suriname" data-category="9">Suriname</option> 
+                                <option value="Sweden" data-category="5">Sweden</option> 
+                                <option value="Switzerland" data-category="5">Switzerland</option> 
+                                <option value="Syrian Arab Republic" data-category="8">Syrian Arab Republic</option> 
+                                <option value="Taiwan, Province of China" data-category="6">Taiwan, Province of China</option> 
+                                <option value="Tanzania, United Republic of" data-category="7">Tanzania, United Republic of</option> 
+                                <option value="Thailand" data-category="6">Thailand</option> 
+                                <option value="Togo" data-category="7">Togo</option> 
+                                <option value="Tonga" data-category="6">Tonga</option> 
+                                <option value="Trinidad and Tobago" data-category="9">Trinidad and Tobago</option> 
+                                <option value="Tunisia" data-category="8">Tunisia</option> 
+                                <option value="Turkey" data-category="4">Turkey</option> 
+                                <option value="Turks and Caicos Islands" data-category="9">Turks and Caicos Islands</option> 
+                                <option value="Tuvalu" data-category="6">Tuvalu</option> 
+                                <option value="Uganda" data-category="7">Uganda</option> 
+                                <option value="Ukraine" data-category="4">Ukraine</option> 
+                                <option value="United Arab Emirates" data-category="8">United Arab Emirates</option> 
+                                <option value="United Kingdom" data-category="5">United Kingdom</option> 
+                                <option value="United States" data-category="DOM">United States</option> 
+                                <option value="(Dom) United States Minor Outlying Islands" data-category="DOM">United States Minor Outlying Islands</option> 
+                                <option value="Uruguay" data-category="9">Uruguay</option> 
+                                <option value="Uzbekistan" data-category="6">Uzbekistan</option> 
+                                <option value="Vanuatu" data-category="6">Vanuatu</option> 
+                                <option value="Venezuela" data-category="9">Venezuela</option> 
+                                <option value="Vietnam" data-category="6">Vietnam</option> 
+                                <option value="Virgin Islands, British" data-category="9">Virgin Islands, British</option> 
+                                <option value="(Dom) Virgin Islands, U.S." data-category="DOM">Virgin Islands, U.S.</option> 
+                                <option value="Wallis and Futuna" data-category="6">Wallis and Futuna</option> 
+                                <option value="Zambia" data-category="7">Zambia</option> 
+                                <option value="Zimbabwe" data-category="7">Zimbabwe</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a country
+                            </div>					
+                        </div>
+                    </div>
+                    <div class="form-group mb-5 mt-4"> <!-- Order details -->
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="ep_option" name="epOption">
+                                <label class="form-check-label" for="ep_option">
+                                (+ $5) Send me a 
+                                    <a href="https://open.spotify.com/album/5ZbA2ZzZMP1gVZlOw7KRbW" target="_blank">Tyler Levs EP 2019 (CD) too</a>!
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="signed" name="signed">
+                                <label class="form-check-label" for="signed">
+                                Do you want it signed?
+                                </label>
+                            </div>
+                            <div class="form-group" id="sig-name-div">
+                                <label for="sign_name_id" class="control-label">To whom?</label>
+                                <input type="text" class="form-control" id="sign_name_id" name="signName" placeholder="John">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="other_id" class="control-label">Any other special requests?</label>
+                                <input type="text" class="form-control" id="other_id" name="other" placeholder="Optional">
+                                <small id="otherHelp" class="form-text text-muted"></small>
+                            </div>
+                    </div>	
+                    <div class="form-group">
+                        <input type="hidden" id="order_total" value="20">
+                        <div class="form-group">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-3 col-sm-2 text-left">
+                                    <p class="mt-0 mb-0">Products:</p>
+                                </div>
+                                <div class="col-3 col-sm-2 text-right">
+                                    <p class="mt-0 mb-0">$<span id="cd-price-display"></span></p>
+                                </div>
+                            </div>
+                            <div class="row d-flex justify-content-center mb-3">
+                                <div class="col-3 col-sm-2 text-left">
+                                    <p class="mt-0 mb-0">Shipping:</p>
+                                </div>
+                                <div class="col-3 col-sm-2 text-right">
+                                    <p class="mt-0 mb-0"><span id="shipping-price-display"></span></p>
+                                </div>
+                            </div>
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-3 col-sm-2 text-left">
+                                    <p class="mt-0 mb-0"><span class="d-none d-md-block">Total price:</span><span class="d-block d-md-none">Total:</span></p>
+                                </div>
+                                <div class="col-3 col-sm-2 text-right">
+                                    <p class="mt-0 mb-0">$<span id="order-price-display"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-5">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="termsCheck" required>
+                            <label class="form-check-label" for="termsCheck">
+                                I accept the following conditions:
+                                <br />The CDs will be sent via USPS regular (First Class) mail. The shipping price includes the packaging and regular mail. If you'd like to use a premium shipping service, it can be arranged, but the shipping will be much more expensive. For international orders, the delivery might take up to 30-45 days. You may also be required to pay for customs duties and fees. As the items will be personalized (signed), returns are not possible. Payment only via PayPal, you will receive an invoice to the email address you provided in a couple days.
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                        <div class="form-check mt-3">
+                            <input class="form-check-input" type="checkbox" value="" id="privacyCheck" required>
+                            <label class="form-check-label" for="privacyCheck">
+                                I understand that my email address, name and mailing address will be stored only for the purpose and duration of the order fulfillment. The personal data will not be stored and used for any other purposes.
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6Ley8FwaAAAAAKrEXqlKLPkKivxIkfVN6VnnoHP7"></div>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group mt-4"> <!-- Submit Button -->
+                        <button type="submit" class="btn btn-block btn-primary">
+                            <div id="button-loading-text" class="d-none">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <span class="loading-button-text">Loading...</span>
+                            </div>
+                            <span id="button-default-text">Submit order</span>
+                        </button>
+                    </div>  
+                </form>
+            </div>
+        </section>
+
+        <section class="page-section mt-5 pb-5 d-none" id="success-section">
+            <div class="container">
+                <h2 class="text-center">Order successfully submitted</h2>
+                <p class="text-center">Thank you, we'll be in touch! It might take a while, as your order will be processed manually.</p>
+                <p class="text-center">You don't have to pay right now, you'll receive an invoice in email soon.</p>
+                <p class="text-center">In the meantime, you can <a href="/sfba">listen to the album online</a>. Also look at the merch in the <a href="/shop">shop</a>!</p>
+                <p class="text-center"><a class="btn btn-primary" href="/sfba">More album info here</a></p>
+            </div>
+        </section>
+    </div>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="error-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm ml-auto mr-auto">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <div class="icon-box">
+                        <i class="fas fa-exclamation fa-3x"></i>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>Ooops!</h4>	
+                    <p><span id="error-message"></span></p>
+                    <button class="btn btn-success" data-dismiss="modal">Try Again</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+<%- include('partials/footer'); %>
