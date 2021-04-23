@@ -73,20 +73,20 @@ body {
 
 
 #cover-img {
-    width: 45%;
+    width: 65%;
     height: auto;
 }
 
 /* sm */
 @media (min-width: 768px) {
     #cover-img {
-        width: 40%;
+        width: 50%;
     }
 }
 /* md */
 @media (min-width: 992px) {
     #cover-img {
-        width: 35%;
+        width: 40%;
     }
 }
 /* lg */

@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Allow: /aboutme
-Allow: /soon
+Allow: /2021
+Allow: /sfba
+Allow: /order
 Disallow: /cdn-cgi
 Sitemap: https://tylerlevs.com/sitemap.xml
