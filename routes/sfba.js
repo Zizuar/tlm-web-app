@@ -16,15 +16,10 @@ router.get('/sfba', (req, res) => {
             }]
         })
     });
-    res.set('Link', '<https://tylerlevs.com/sfba>; rel="canonical"');
     res.render('sfba', { id: 'sub', title: 'Tyler Levs Music - Songs For Being Alone', scriptIds: ['main', 'sfba'] });
 });
   
 // Alternative links
-
-router.get('/soon', (req, res) => {
-    res.redirect('/soonsfba')
-});
 
 router.get('/soonsfba', (req, res) => {
     res.redirect('/sfba')
