@@ -10090,15 +10090,30 @@ hr.light {
   }
 }
 
-header.masthead {
+.webp header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%, rgba(57, 82, 58, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
+  background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%, 
+              rgba(57, 82, 58, 0.8) 100%), 
+              url("../assets/img/bg-masthead.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
+
+.no-webp header.masthead {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%, 
+              rgba(57, 82, 58, 0.8) 100%), 
+              url("../assets/img/bg-masthead.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
 header.masthead h1 {
   font-size: 2.25rem;
 }
