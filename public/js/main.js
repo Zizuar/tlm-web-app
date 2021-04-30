@@ -47,7 +47,7 @@
   $.getJSON("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(reqURL)+channelID, function(data) {
     let link = data.items[0].link;
     let id = link.substr(link.indexOf("=")+1);
-    $("#youtube_video").attr("src","https://youtube-nocookie.com/embed/"+id + "?showinfo=0&rel=0");
+    $("#youtube_video").attr("src","https://www.youtube-nocookie.com/embed/"+id + "?showinfo=0&rel=0");
   });
   
 })(jQuery); // End of use strict
