@@ -73,13 +73,6 @@ body {
 
 
 #cover-img {
-    width: 65%;
+    width: 80%;
     height: auto;
-}
-
-/* sm */
-@media (min-width: 768px) {
-    #cover-img {
-        width: 50%;
-    }
 }
