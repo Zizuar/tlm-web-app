@@ -20,4 +20,15 @@ $(document).ready(() => {
         endtimeSeconds: 00,
         timeZone: "America/New_York" 
     });
+
+    $('.countdown-dancesong').countdown100({
+        /*Set Endtime here*/
+        endtimeYear: 2021,
+        endtimeMonth: 06,
+        endtimeDate: 04,
+        endtimeHours: 0,
+        endtimeMinutes: 00,
+        endtimeSeconds: 00,
+        timeZone: "America/New_York" 
+    });
 });
