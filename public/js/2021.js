@@ -21,7 +21,7 @@ $(document).ready(() => {
         timeZone: "America/New_York" 
     });
 
-    $('.countdown-dancesong').countdown100({
+    $('.countdown-throwmefeelings').countdown100({
         /*Set Endtime here*/
         endtimeYear: 2021,
         endtimeMonth: 06,
@@ -31,4 +31,18 @@ $(document).ready(() => {
         endtimeSeconds: 00,
         timeZone: "America/New_York" 
     });
+
+    // ICONS CLICK HANDLERS
+    $("#icon-spotify").on("mouseup", function() {
+        $("#spotify-link")[0].click();
+    });
+
+    $("#icon-amazon").on("mouseup", function() {
+        $("#amazon-link")[0].click();
+    });
+
+    $("#icon-apple").on("mouseup", function() {
+        $("#apple-link")[0].click();
+    });
+
 });
