@@ -1,25 +1,4 @@
 $(document).ready(() => {
-    $('.countdown-exaggerate').countdown100({
-        /*Set Endtime here*/
-        endtimeYear: 2021,
-        endtimeMonth: 05,
-        endtimeDate: 21,
-        endtimeHours: 0,
-        endtimeMinutes: 00,
-        endtimeSeconds: 00,
-        timeZone: "America/New_York" 
-    });
-
-    $('.countdown-emergency').countdown100({
-        /*Set Endtime here*/
-        endtimeYear: 2021,
-        endtimeMonth: 05,
-        endtimeDate: 28,
-        endtimeHours: 0,
-        endtimeMinutes: 00,
-        endtimeSeconds: 00,
-        timeZone: "America/New_York" 
-    });
 
     $('.countdown-throwmefeelings').countdown100({
         /*Set Endtime here*/
@@ -32,17 +11,43 @@ $(document).ready(() => {
         timeZone: "America/New_York" 
     });
 
+    $('.countdown-hitmelikeadream').countdown100({
+        /*Set Endtime here*/
+        endtimeYear: 2021,
+        endtimeMonth: 06,
+        endtimeDate: 25,
+        endtimeHours: 0,
+        endtimeMinutes: 00,
+        endtimeSeconds: 00,
+        timeZone: "America/New_York" 
+    });
+
     // ICONS CLICK HANDLERS
-    $("#icon-spotify").on("mouseup", function() {
-        $("#spotify-link")[0].click();
+
+    //Exaggerate
+    $("#icon-spotify-exaggerate").on("mouseup", function() {
+        $("#spotify-link-exaggerate")[0].click();
     });
 
-    $("#icon-amazon").on("mouseup", function() {
-        $("#amazon-link")[0].click();
+    $("#icon-amazon-exaggerate").on("mouseup", function() {
+        $("#amazon-link-exaggerate")[0].click();
     });
 
-    $("#icon-apple").on("mouseup", function() {
-        $("#apple-link")[0].click();
+    $("#icon-apple-exaggerate").on("mouseup", function() {
+        $("#apple-link-exaggerate")[0].click();
+    });
+
+    //Emergency
+    $("#icon-spotify-emergency").on("mouseup", function() {
+        $("#spotify-link-emergency")[0].click();
+    });
+
+    $("#icon-amazon-emergency").on("mouseup", function() {
+        $("#amazon-link-emergency")[0].click();
+    });
+
+    $("#icon-apple-emergency").on("mouseup", function() {
+        $("#apple-link-emergency")[0].click();
     });
 
 });
