@@ -1,16 +1,5 @@
 $(document).ready(() => {
 
-    $('.countdown-throwmefeelings').countdown100({
-        /*Set Endtime here*/
-        endtimeYear: 2021,
-        endtimeMonth: 06,
-        endtimeDate: 04,
-        endtimeHours: 0,
-        endtimeMinutes: 00,
-        endtimeSeconds: 00,
-        timeZone: "America/New_York" 
-    });
-
     $('.countdown-hitmelikeadream').countdown100({
         /*Set Endtime here*/
         endtimeYear: 2021,
@@ -48,6 +37,19 @@ $(document).ready(() => {
 
     $("#icon-apple-emergency").on("mouseup", function() {
         $("#apple-link-emergency")[0].click();
+    });
+
+    //Throw Me Feelings
+    $("#icon-spotify-tmf").on("mouseup", function() {
+        $("#spotify-link-tmf")[0].click();
+    });
+
+    $("#icon-amazon-tmf").on("mouseup", function() {
+        $("#amazon-link-tmf")[0].click();
+    });
+
+    $("#icon-apple-tmf").on("mouseup", function() {
+        $("#apple-link-tmf")[0].click();
     });
 
 });
