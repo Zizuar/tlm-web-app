@@ -28,7 +28,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
-const DB_URI = process.env.TLM_DB_URI || 'localhost:27017';
+const DB_URI = process.env.TLM_DB_URI || 'mongodb://localhost:27017/tlm-dev?readPreference=primary&ssl=false';
 
 mongoose.connect(DB_URI).
 catch(error => function(err) {
