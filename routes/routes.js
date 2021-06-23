@@ -54,7 +54,7 @@ router.get('/press', (req, res) => {
             }]
         })
     });
-    res.render('press', { id: 'press', title: 'Tyler Levs Music - Press Release', scriptIds: ['main', 'press'] });
+    res.render('press', { id: 'press', title: 'Tyler Levs Music - Press Kit', scriptIds: ['main', 'press'] });
 });
 
 
