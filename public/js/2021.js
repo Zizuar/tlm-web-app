@@ -52,4 +52,17 @@ $(document).ready(() => {
         $("#apple-link-tmf")[0].click();
     });
 
+    //Hit Me Like A Dream
+    $("#icon-spotify-hmlad").on("mouseup", function() {
+        $("#spotify-link-hmlad")[0].click();
+    });
+
+    $("#icon-amazon-hmlad").on("mouseup", function() {
+        $("#amazon-link-hmlad")[0].click();
+    });
+
+    $("#icon-apple-hmlad").on("mouseup", function() {
+        $("#apple-link-hmlad")[0].click();
+    });
+
 });
