@@ -1,10 +1,10 @@
 $(document).ready(() => {
 
-    $('.countdown-hitmelikeadream').countdown100({
+    $('.countdown-parallel').countdown100({
         /*Set Endtime here*/
         endtimeYear: 2021,
-        endtimeMonth: 06,
-        endtimeDate: 25,
+        endtimeMonth: 08,
+        endtimeDate: 20,
         endtimeHours: 0,
         endtimeMinutes: 00,
         endtimeSeconds: 00,
