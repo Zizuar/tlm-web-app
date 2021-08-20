@@ -65,4 +65,17 @@ $(document).ready(() => {
         $("#apple-link-hmlad")[0].click();
     });
 
+    //Parallel Universe
+    $("#icon-spotify-parallel").on("mouseup", function() {
+        $("#spotify-link-parallel")[0].click();
+    });
+
+    $("#icon-amazon-parallel").on("mouseup", function() {
+        $("#amazon-link-parallel")[0].click();
+    });
+
+    $("#icon-apple-parallel").on("mouseup", function() {
+        $("#apple-link-parallel")[0].click();
+    });
+
 });
