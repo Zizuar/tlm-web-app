@@ -57,6 +57,25 @@ router.get('/press', (req, res) => {
     res.render('press', { id: 'press', title: 'Tyler Levs Music - Press Kit', scriptIds: ['main', 'press'] });
 });
 
+// THROUGH THE VALLEY PROMO ROUTES
+
+router.get('/through-the-valley', (req, res) => {
+    fetch('https://www.google-analytics.com/mp/collect?measurement_id='+process.env.TLM_G_MEASUREMENT_ID+'&api_secret='+process.env.TLM_G_API_SECRET, {
+            method: "POST",
+            body: JSON.stringify({
+            "client_id": "252990832",
+            "events": [{
+                "name": "open_hmlad"
+            }]
+        })
+    });
+    res.render('valley', { id: 'sub', title: 'Tyler Levs Music - Through The Valley (a Shawn James cover)', scriptIds: ['main', 'valley'] });
+});
+
+router.get('/throughthevalley', (req, res) => {
+    res.redirect('/hit-me-like-a-dream');
+});
+
 
 // IMPORTING ROUTERS
 

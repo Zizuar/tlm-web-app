@@ -50,6 +50,17 @@ router.get('/presave/:title', (req, res) => {
             })
         });
         res.redirect('https://distrokid.com/hyperfollow/tylerlevs/parallel-universe');
+    } else if (req.params.title == 'through-the-valley') {
+        fetch('https://www.google-analytics.com/mp/collect?measurement_id='+process.env.TLM_G_MEASUREMENT_ID+'&api_secret='+process.env.TLM_G_API_SECRET, {
+            method: "POST",
+            body: JSON.stringify({
+                "client_id": "252990832",
+                "events": [{
+                    "name": "presave_through_the_valley"
+                }]
+            })
+        });
+        res.redirect('https://distrokid.com/hyperfollow/tylerlevs/through-the-valley');
     } else {
         res.redirect('/2021')
     }

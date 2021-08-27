@@ -102,11 +102,11 @@ color: rgba(21, 125, 23, 0.5);
 
 /* XS BACKGROUNDS */
 .webp div.countdown-background {
-  background-image: url(../assets/img/hitmelikeadream.webp);
+  background-image: url(../assets/img/through_the_valley.webp);
 }
 
 .no-webp div.countdown-background {
-  background-image: url(../assets/img/hitmelikeadream.jpg);
+  background-image: url(../assets/img/through_the_valley.webp);
 }
 
 /* sm */
