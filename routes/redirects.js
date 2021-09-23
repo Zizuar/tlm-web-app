@@ -66,6 +66,16 @@ router.get('/presave/:title', (req, res) => {
     }
 });
 
+// THROUGH THE VALLEY PROMO REDIRECTS
+
+router.get('/through-the-valley', (req, res) => {
+    res.redirect('/song/through-the-valley')
+});
+
+router.get('/throughthevalley', (req, res) => {
+    res.redirect('/song/through-the-valley');
+});
+
 // About page
 
 router.get('/about', (req, res) => {

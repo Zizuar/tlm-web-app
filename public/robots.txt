@@ -5,6 +5,6 @@ Allow: /2021
 Allow: /sfba
 Allow: /order
 Allow: /hit-me-like-a-dream
-Allow: /through-the-valley
+Allow: /song/through-the-valley
 Disallow: /cdn-cgi
 Sitemap: https://tylerlevs.com/sitemap.xml
