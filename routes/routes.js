@@ -44,6 +44,21 @@ router.get('/hmlad', (req, res) => {
     res.redirect('/hit-me-like-a-dream');
 });
 
+// LET'S BEGIN PROMO ROUTE
+
+router.get('/lets-begin', (req, res) => {
+    fetch('https://www.google-analytics.com/mp/collect?measurement_id='+process.env.TLM_G_MEASUREMENT_ID+'&api_secret='+process.env.TLM_G_API_SECRET, {
+        method: "POST",
+        body: JSON.stringify({
+        "client_id": "252990832",
+        "events": [{
+            "name": "open_lets_begin"
+        }]
+    })
+});
+res.render('letsbegin', { id: 'sub', title: 'Tyler Levs Music - TLM & Joliet4 - Let\'s Begin', scriptIds: ['main', 'letsbegin'] });
+});
+
 // PRESS RELEASES
 router.get('/press', (req, res) => {
     fetch('https://www.google-analytics.com/mp/collect?measurement_id='+process.env.TLM_G_MEASUREMENT_ID+'&api_secret='+process.env.TLM_G_API_SECRET, {

@@ -1,6 +1,13 @@
 {
   "through-the-valley": {
     "title": "Through The Valley (Shawn James cover)",
+    "subtitle": "Ellie's song from The Last of Us Part 2",
+    "released": true,
+    "releaseDate": {
+      "year": 2021,
+      "month": 9,
+      "day": 24
+    },
     "imgName": "through_the_valley",
     "spotifyLink": "https://open.spotify.com/track/5MJRJHX5Acjyj7IpvqJa3I",
     "amazonMusicLink": "https://music.amazon.com/albums/B09DPHJ7LP",

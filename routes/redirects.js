@@ -61,6 +61,17 @@ router.get('/presave/:title', (req, res) => {
             })
         });
         res.redirect('https://distrokid.com/hyperfollow/tylerlevs/through-the-valley');
+    } else if (req.params.title == 'lets-begin') {
+        fetch('https://www.google-analytics.com/mp/collect?measurement_id='+process.env.TLM_G_MEASUREMENT_ID+'&api_secret='+process.env.TLM_G_API_SECRET, {
+            method: "POST",
+            body: JSON.stringify({
+                "client_id": "252990832",
+                "events": [{
+                    "name": "presave_lets_begin"
+                }]
+            })
+        });
+        res.redirect('https://distrokid.com/hyperfollow/tylerlevsandjoliet4/lets-begin');
     } else {
         res.redirect('/2021')
     }

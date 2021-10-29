@@ -1,5 +1,3 @@
-
-
 const express     = require('express'),
       router      = express.Router(),
       songJson    = require('../data/songs.json');

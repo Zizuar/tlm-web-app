@@ -1,6 +1,5 @@
 $(document).ready(() => {
-
-    //Hit Me Like A Dream
+    // Links
     $("#icon-spotify").on("mouseup", function() {
         $("#spotify-link")[0].click();
     });
