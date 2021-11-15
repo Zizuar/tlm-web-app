@@ -87,6 +87,12 @@ router.get('/throughthevalley', (req, res) => {
     res.redirect('/song/through-the-valley');
 });
 
+// LET'S BEGIN PROMO ROUTE
+
+router.get('/lets-begin', (req, res) => {
+    res.redirect('/song/lets-begin')
+});
+
 // About page
 
 router.get('/about', (req, res) => {
