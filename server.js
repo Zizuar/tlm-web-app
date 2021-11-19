@@ -23,11 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // DATABASE CONNECTION
 
-mongoose.set('useUnifiedTopology', true);
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
-
 const DB_URI = process.env.TLM_DB_URI || 'mongodb://localhost:27017/tlm-dev?readPreference=primary&ssl=false';
 
 mongoose.connect(DB_URI).
