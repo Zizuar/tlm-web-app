@@ -1,10 +1,11 @@
 User-agent: *
 Allow: /
 Allow: /aboutme
-Allow: /2021
-Allow: /sfba
+Allow: /events
+Allow: /collections/2021
+Allow: /album/songs-for-being-alone
 Allow: /order
-Allow: /hit-me-like-a-dream
+Allow: /song/hit-me-like-a-dream
 Allow: /song/lets-begin
 Allow: /song/through-the-valley
 Disallow: /cdn-cgi
