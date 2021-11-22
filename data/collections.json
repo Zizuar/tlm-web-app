@@ -1,0 +1,53 @@
+{
+    "2021": {
+        "title": "Single releases in 2021",
+        "imgName": "tl_2021",
+        "linksArray": [
+            {
+                "title": "Exaggerate",
+                "id": "exaggerate",
+                "links": {
+                    "spotify": "https://open.spotify.com/track/2goKhHXBFl70temks9PqLi",
+                    "amazon": "https://music.amazon.com/albums/B092S5KCTV",
+                    "apple": "https://music.apple.com/us/album/exaggerate-single/1563533680"
+                }
+            },
+            {
+                "title": "Emergency",
+                "id": "emergency",
+                "links": {
+                    "spotify": "https://open.spotify.com/track/3CQ41l1HJdKRN8TKfaRYcj",
+                    "amazon": "https://music.amazon.com/albums/B092S5Y63X",
+                    "apple": "https://music.apple.com/us/album/emergency-single/1563533859"
+                }
+            },
+            {
+                "title": "Throw Me Feelings",
+                "id": "throw-me-feelings",
+                "links": {
+                    "spotify": "https://open.spotify.com/track/29337LP1L5Gslx6UjuuF6L",
+                    "amazon": "https://music.amazon.com/albums/B094ZFGTT2",
+                    "apple": "https://music.apple.com/us/album/throw-me-feelings-single/1567719335"
+                }
+            },
+            {
+                "title": "Hit Me Like A Dream",
+                "id": "hit-me-like-a-dream",
+                "links": {
+                    "spotify": "https://open.spotify.com/track/6uPMD5TO3AusrsyFyfNnJZ",
+                    "amazon": "https://music.amazon.com/albums/B0961KTCCQ",
+                    "apple": "https://music.apple.com/us/album/hit-me-like-a-dream/1569700075"
+                }
+            },
+            {
+                "title": "Parallel Universe",
+                "id": "parallel-universe",
+                "links": {
+                    "spotify": "https://open.spotify.com/track/7ihJfLV3c0BRITh0Jfe965",
+                    "amazon": "https://music.amazon.com/albums/B09C47GX8F",
+                    "apple": "https://music.apple.com/us/album/parallel-universe/1580264605"
+                }
+            }
+        ]
+    }
+}

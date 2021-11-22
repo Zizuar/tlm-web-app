@@ -1,0 +1,130 @@
+[
+    {
+        "title": "Hit Me Like A Dream",
+        "category": "song",
+        "id": "hit-me-like-a-dream",
+        "imageName": "hitmelikeadream",
+        "released": true,
+        "text": {
+            "header": "Hit Me Like A Dream",
+            "subheader": "A revamped, fully produced re-release of the hit song Hit Me Like A Dream",
+            "text": "On streaming services now!"
+        },
+        "links": {
+            "spotify": "https://open.spotify.com/track/6uPMD5TO3AusrsyFyfNnJZ",
+            "amazon": "https://music.amazon.com/albums/B0961KTCCQ",
+            "apple": "https://music.apple.com/us/album/hit-me-like-a-dream/1569700075"
+        }
+    },
+    {
+        "title": "Let's begin",
+        "category": "song",
+        "id": "lets-begin",
+        "imageName": "lets_begin",
+        "released": true,
+        "text": {
+            "header": "Let's Begin feat. Joliet4",
+            "subheader": "Another collaboration with the extremely talented <a href=\"https://twitch.tv/joliet4\" target=\"_blank\">Joliet4</a>!",
+            "text": "Available now on all major streaming platforms!"
+        },
+        "links": {
+            "spotify": "https://open.spotify.com/track/7GoJRM7kqh78IFBa5o6XWK?si=b1a8c0f5e6dd4e3c",
+            "amazon": "https://music.amazon.com/albums/B09KJ4LGVB",
+            "apple": "https://music.apple.com/us/album/lets-begin-single/1592343531"
+        }
+    },
+    {
+        "title": "Through the Valley",
+        "category": "song",
+        "id": "through-the-valley",
+        "imageName": "through_the_valley",
+        "released": true,
+        "text": {
+            "header": "Through the Valley",
+            "subheader": "A Shawn James cover. Also known as Ellie's song from The Last of Us Part II.",
+            "text": "Available now on all major streaming platforms!"
+        },
+        "links": {
+            "spotify": "https://open.spotify.com/track/5MJRJHX5Acjyj7IpvqJa3I",
+            "amazon": "https://music.amazon.com/albums/B09DPHJ7LP",
+            "apple": "https://music.apple.com/us/album/through-the-valley-single/1582961138"
+        }
+    },
+    {
+        "title": "2021",
+        "category": "collections",
+        "id": "2021",
+        "imageName": "tl_2021",
+        "released": true,
+        "text": {
+            "header": "Single releases in 2021"
+        },
+        "linksArray": [
+            {
+                "title": "Exaggerate",
+                "spotify": "https://open.spotify.com/track/2goKhHXBFl70temks9PqLi",
+                "amazon": "https://music.amazon.com/albums/B092S5KCT",
+                "apple": "https://music.apple.com/us/album/exaggerate-single/1563533680"
+            },
+            {
+                "title": "Emergency",
+                "spotify": "https://open.spotify.com/track/3CQ41l1HJdKRN8TKfaRYcj",
+                "amazon": "https://music.amazon.com/albums/B092S5Y63X",
+                "apple": "https://music.apple.com/us/album/emergency-single/1563533859"
+            },
+            {
+                "title": "Throw Me Feelings",
+                "spotify": "https://open.spotify.com/track/29337LP1L5Gslx6UjuuF6L",
+                "amazon": "https://music.amazon.com/albums/B094ZFGTT2",
+                "apple": "https://music.apple.com/us/album/throw-me-feelings-single/1567719335"
+            },
+            {
+                "title": "Hit Me Like A Dream",
+                "spotify": "https://open.spotify.com/track/6uPMD5TO3AusrsyFyfNnJZ",
+                "amazon": "https://music.amazon.com/albums/B0961KTCCQ",
+                "apple": "https://music.apple.com/us/album/hit-me-like-a-dream/1569700075"
+            },
+            {
+                "title": "Parallel Universe",
+                "spotify": "https://open.spotify.com/track/7ihJfLV3c0BRITh0Jfe965",
+                "amazon": "https://music.amazon.com/albums/B09C47GX8F",
+                "apple": "https://music.apple.com/us/album/parallel-universe/1580264605"
+            }
+        ]
+    },    
+    {
+        "title": "Songs for Being Alone",
+        "category": "albums",
+        "id": "songs-for-being-alone",
+        "imageName": "sfba",
+        "released": true,
+        "orderEnabled": true,
+        "text": {
+            "header": "Songs for Being Alone",
+            "subheader": "Full length album featuring 11 self-produced songs.",
+            "text": "Available now on all major streaming platforms!"
+        },
+        "links": {
+            "spotify": "https://open.spotify.com/album/30qnxAB3tBNDhOZCzQHkl5",
+            "amazon": "https://music.amazon.com/albums/B08T5PMFWZ",
+            "apple": "https://music.apple.com/us/album/songs-for-being-alone/1548693543"
+        }
+    },
+    {
+        "title": "Caught Up (Let Me In) feat. Joliet4",
+        "category": "song",
+        "id": "caughtup",
+        "imageName": "caughtup",
+        "released": true,
+        "text": {
+            "header": "Caught Up (Let Me In) feat. Joliet4",
+            "subheader": "In collaboration with my friend, the incredibly talented Twitch streamer <a href=\"https://twitch.tv/joliet4\" target=\"_blank\">Joliet4</a>",
+            "text": "<a href=\"https://www.youtube.com/watch?v=vsy0NwhPoBU\" target=\"_blank\">Lyric Video on Youtube</a>"
+        },
+        "links": {
+            "spotify": "https://open.spotify.com/album/3vmNRbZ7I3qzxizuy8fDdq",
+            "amazon": "https://music.amazon.com/albums/B08HPKJFXR",
+            "apple": "https://music.apple.com/us/album/caught-up-let-me-in-tlm-mix-single/1530814200"
+        }
+    }
+]

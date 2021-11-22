@@ -1,0 +1,106 @@
+<section class="page-section" id="latest">
+    <div class="container">
+        <h2 class="text-center mt-0">Latest Releases</h2>
+        <% releases.forEach((release, index) => { %>
+            <hr class="divider my-4" />
+            <div class="card text-center mb-3 shadow">
+                <% if (release.released) { %>
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <picture class="card-img">
+                            <source srcset="assets/img/<%=release.imageName%>-cover.webp" type="image/webp" />
+                            <source srcset="assets/img/<%=release.imageName%>-cover.png" type="image/png" />
+                            <img
+                            id="cover-img"
+                            src="assets/img/<%=release.imageName%>-cover.jpg"
+                            alt="<%=release.title%> Cover Art"
+                            class="img-fluid rounded"
+                            />
+                        </picture>
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="/<%=release.category%>/<%=release.id%>"><%=release.text.header%></a>
+                            </h5>
+                            <% if (release.text.subheader) { %>
+                                <p class="card-text">
+                                    <%-release.text.subheader%>
+                                </p>
+                            <% } %>
+                            <% if (release.text.text) { %>
+                                <p class="card-text">
+                                    <%-release.text.text%>
+                                </p>
+                            <% } %>
+                            <% if (release.category === "song" || release.category === "albums") { %>
+                            <div class="d-flex flex-column flex-lg-row justify-content-around align-items-center flex-wrap">
+                                <a class="streaming-link-btn btn btn-sm btn-primary" href="<%=release.links.spotify%>" target="_blank" rel="noopener noreferrer">Spotify</a><br class="d-lg-none" />
+                                <a class="streaming-link-btn btn btn-sm btn-primary" href="<%=release.links.amazon%>" target="_blank" rel="noopener noreferrer">Amazon Music</a><br class="d-lg-none" />
+                                <a class="streaming-link-btn btn btn-sm btn-primary" href="<%=release.links.apple%>" target="_blank" rel="noopener noreferrer">Apple Music</a>
+                            </div>
+                            <% } else if (release.category === "collections") { %>
+                                
+                                <% release.linksArray.forEach(link => { %>
+                                    <hr class="divider my-4" />
+                                    <p class="card-text"><strong><%= link.title %></strong></p>
+                                    <div class="d-flex flex-column flex-lg-row justify-content-around align-items-center flex-wrap">
+                                        <a class="streaming-link-btn btn btn-sm btn-primary" href="<%=link.spotify%>" target="_blank" rel="noopener noreferrer">Spotify</a><br class="d-lg-none" />
+                                        <a class="streaming-link-btn btn btn-sm btn-primary" href="<%=link.amazon%>" target="_blank" rel="noopener noreferrer">Amazon Music</a><br class="d-lg-none" />
+                                        <a class="streaming-link-btn btn btn-sm btn-primary" href="<%=link.apple%>" target="_blank" rel="noopener noreferrer">Apple Music</a>
+                                    </div>
+                                <% }) %>
+                            <% } %>
+                            <% if (release.orderEnabled) { %>
+                                <p class="card-text mt-5"><a href="/order">Get your signed Tyler Levs CDs here!</a></p>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                <% } else { %>
+                <div class="card text-center mb-3 shadow">
+                    <div class="row no-gutters">
+                      <div class="col-md-4 d-flex align-items-center">
+                        <picture class="card-img">
+                            <source srcset="assets/img/<%=release.imageName%>-cover.webp" type="image/webp" />
+                            <source srcset="assets/img/<%=release.imageName%>-cover.jpg" type="image/png" />
+                            <img
+                              id="cover-img"
+                              src="assets/img/<%=release.imageName%>-cover.png"
+                              alt="<%=release.title%> Cover Art"
+                              class="img-fluid rounded"
+                            />
+                          </picture>
+                      </div>
+                      <div class="col-md-8 d-flex align-items-center">
+                        <div class="card-body">
+                          <h5 class="card-title"><a href="/countdowns/<%=release.songId%>"><%=release.text.header%></a></h5>
+                          <p class="card-text"><%=release.text.subheader%></p>
+                          <p class="card-text">
+                              Coming soon to all streaming platforms!
+                          </p>
+                            <p class="card-text">
+                                <a href="<%=release.presaveLink%>" target="_blank" rel="noopener noreferrer">
+                                  <strong>Presave now</strong>
+                                </a>
+                            </p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+            <% if (index === 2 && releases.length > 3) { %>
+            <div class="collapse" id="collapseReleases">
+            <% } %>
+        <% }) %>
+        <% if (releases.length > 3) { %>
+        </div>
+        <hr class="divider my-4" />
+        <div class="d-flex justify-content-center align-items-center mt-3">
+            <button class="collapse-btn btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseReleases" aria-expanded="false" aria-controls="collapseReleases">
+            </button>
+        </div>
+        <% } %>
+    </div>
+</section>

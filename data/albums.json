@@ -1,0 +1,59 @@
+{
+    "songs-for-being-alone": {
+        "title": "Songs for Being Alone",
+        "imgName": "sfba",
+        "links": {
+            "spotify": "https://open.spotify.com/album/30qnxAB3tBNDhOZCzQHkl5",
+            "amazon": "https://music.amazon.com/albums/B08T5PMFWZ",
+            "apple": "https://music.apple.com/us/album/songs-for-being-alone/1548693543"
+        },
+        "orderEnabled": true,
+        "merchEnabled": false,
+        "tracklist": [
+            {
+                "title": "Time It's Taken",
+                "youtubeLink": "https://www.youtube.com/watch?v=8W1jnaJvEQA"
+            },
+            {
+                "title": "What Does It Mean",
+                "youtubeLink": "https://www.youtube.com/watch?v=atPgnPXLSkM"
+            },
+            {
+                "title": "n(o)ne",
+                "youtubeLink": "https://www.youtube.com/watch?v=7DyS-doIG8Q"
+            },
+            {
+                "title": "Like I'm Supposed To",
+                "youtubeLink": "https://www.youtube.com/watch?v=I2opUXRjhPo"
+            },
+            {
+                "title": "Lost Soul",
+                "youtubeLink": "https://www.youtube.com/watch?v=jz8PApCmP-k"
+            },
+            {
+                "title": "Get What You Get",
+                "youtubeLink": "https://www.youtube.com/watch?v=CrFbKSgfqOE"
+            },
+            {
+                "title": "My Life as an Emote = Giant Middle Finger",
+                "youtubeLink": "https://www.youtube.com/watch?v=HXsWKArq4zM"
+            },
+            {
+                "title": "Check Behind the Couch",
+                "youtubeLink": "https://www.youtube.com/watch?v=suti0ylIhkI"
+            },
+            {
+                "title": "Box",
+                "youtubeLink": "https://www.youtube.com/watch?v=1Bsnk9pSOJM"
+            },
+            {
+                "title": "All of the Will in the World",
+                "youtubeLink": "https://www.youtube.com/watch?v=i_KXbNYg8HM"
+            },
+            {
+                "title": "Last One (Take a Picture)",
+                "youtubeLink": "https://www.youtube.com/watch?v=0DaeeDuULOY"
+            }
+        ]
+    }
+}

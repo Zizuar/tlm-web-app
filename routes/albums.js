@@ -1,24 +1,24 @@
 const express     = require('express'),
       router      = express.Router(),
-      songJson    = require('../data/songs.json');
+      albumJson    = require('../data/albums.json');
 
-router.get('/song/:title', (req, res) => {
-  const song = songJson[req.params.title];
-  if (!song) { return res.redirect('/'); }
+router.get('/albums/:title', (req, res) => {
+  const album = albumJson[req.params.title];
+  if (!album) { return res.redirect('/'); }
   fetch('https://www.google-analytics.com/mp/collect?measurement_id='+process.env.TLM_G_MEASUREMENT_ID+'&api_secret='+process.env.TLM_G_API_SECRET, {
             method: "POST",
             body: JSON.stringify({
             "client_id": "252990832",
             "events": [{
-                "name": `open_song_info_${req.params.title}`
+                "name": `open_album_info_${req.params.title}`
             }]
         })
     });
-  res.render('song-info', {
+  res.render('album-info', {
     id: 'sub',
-    title: 'Tyler Levs Music - ' + song.title,
+    title: 'Tyler Levs Music - ' + album.title,
     scriptIds: ['main', 'song'],
-    song
+    album
   })
 });
 

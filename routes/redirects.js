@@ -77,6 +77,20 @@ router.get('/presave/:title', (req, res) => {
     }
 });
 
+// HIT ME LIKE A DREAM PROMO ROUTES
+
+router.get('/hit-me-like-a-dream', (req, res) => {
+    res.redirect('/song/hit-me-like-a-dream');
+});
+
+router.get('/hitmelikeadream', (req, res) => {
+    res.redirect('/song/hit-me-like-a-dream');
+});
+
+router.get('/hmlad', (req, res) => {
+    res.redirect('/song/hit-me-like-a-dream');
+});
+
 // THROUGH THE VALLEY PROMO REDIRECTS
 
 router.get('/through-the-valley', (req, res) => {
@@ -91,6 +105,12 @@ router.get('/throughthevalley', (req, res) => {
 
 router.get('/lets-begin', (req, res) => {
     res.redirect('/song/lets-begin')
+});
+
+// SFBA PROMO ROUTER
+
+router.get('/sfba', (req, res) => {
+    res.redirect('/albums/sfba')
 });
 
 // About page
@@ -183,6 +203,10 @@ router.get('/schedule', (req, res) => {
 
 router.get('/contact', (req, res) => {
     res.redirect('/#contact');
+});
+
+router.get('/events', (req, res) => {
+    res.redirect('/#events');
 });
 
 // Spotify redirect

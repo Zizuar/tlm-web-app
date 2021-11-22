@@ -1,0 +1,39 @@
+<%- include('partials/header'); %> 
+<%- include('partials/navbar'); %>
+
+<!-- Content -->
+<div
+  class="row align-items-center justify-content-center mr-0 ml-0 mt-3"
+>
+  <div class="container" id="content-container">
+    <div class="d-flex flex-column">
+      <%- include('partials/music-details/cover', {music: collection}) %>
+      <% if (collection.orderEnabled) { %>
+      <section id="order">
+        <div>
+          <h2 class="text-center">
+            <a href="/order">Get your signed SFBA CD here!</a>
+          </h2>
+        </div>
+      </section>
+      <% } %>
+      <% if (collection.merchEnabled) { %>
+        <%- include('partials/music-details/merch') %>
+      <% } %>
+      <% if (collection.linksArray) { %>
+        <section id="links">     
+            <div class="col-12 mt-5">
+            <% collection.linksArray.forEach((track) => { %>
+                <div class="card mb-3 shadow">
+                    <div class="card-body">
+                        <div class="card-title text-center">
+                            <h3><%=track.title%></h3>
+                        </div>
+                    </div>
+                    <%- include('partials/music-details/streaming-icons', {links: track.links, id: track.id}) %>
+                </div>
+            <% }) %>
+            </div>
+        </section>
+      <% } %>
+<%- include('partials/footer'); %>

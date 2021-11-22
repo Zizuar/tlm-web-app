@@ -3,28 +3,44 @@
     "title": "Through The Valley (Shawn James cover)",
     "subtitle": "Ellie's song from The Last of Us Part 2",
     "released": true,
-    "releaseDate": {
-      "year": 2021,
-      "month": 9,
-      "day": 24
-    },
     "imgName": "through_the_valley",
-    "spotifyLink": "https://open.spotify.com/track/5MJRJHX5Acjyj7IpvqJa3I",
-    "amazonMusicLink": "https://music.amazon.com/albums/B09DPHJ7LP",
-    "appleMusicLink": "https://music.apple.com/us/album/through-the-valley-single/1582961138"
+    "links": {
+      "spotify": "https://open.spotify.com/track/5MJRJHX5Acjyj7IpvqJa3I",
+      "amazon": "https://music.amazon.com/albums/B09DPHJ7LP",
+      "apple": "https://music.apple.com/us/album/through-the-valley-single/1582961138"
+    }
   },
   "lets-begin": {
     "title": "Let's Begin feat. Joliet4",
     "subtitle": "In collaboration with the incredibly talented Joliet4",
     "released": true,
-    "releaseDate": {
-      "year": 2021,
-      "month": 11,
-      "day": 15
-    },
     "imgName": "lets_begin",
-    "spotifyLink": "https://open.spotify.com/track/7GoJRM7kqh78IFBa5o6XWK?si=b1a8c0f5e6dd4e3c",
-    "amazonMusicLink": "https://music.amazon.com/albums/B09KJ4LGVB",
-    "appleMusicLink": "https://music.apple.com/us/album/lets-begin-single/1592343531"
+    "links": {
+      "spotify": "https://open.spotify.com/track/7GoJRM7kqh78IFBa5o6XWK?si=b1a8c0f5e6dd4e3c",
+      "amazon": "https://music.amazon.com/albums/B09KJ4LGVB",
+      "apple": "https://music.apple.com/us/album/lets-begin-single/1592343531"
+    }
+  },
+  "hit-me-like-a-dream": {
+    "title": "Hit Me Like A Dream",
+    "subtitle": "A revamped, fully produced re-release of the hit song",
+    "released": true,
+    "imgName": "hitmelikeadream",
+    "links": {
+      "spotify": "https://open.spotify.com/track/6uPMD5TO3AusrsyFyfNnJZ",
+      "amazon": "https://music.amazon.com/albums/B0961KTCCQ",
+      "apple": "https://music.apple.com/us/album/hit-me-like-a-dream/1569700075"
+    }
+  },
+  "caughtup": {
+    "title": "Caught Up (Let Me In) feat. Joliet4",
+    "subtitle": "In collaboration with my friend, the incredibly talented Twitch streamer Joliet4",
+    "released": true,
+    "imgName": "caughtup",
+    "links": {
+      "spotify": "https://open.spotify.com/album/3vmNRbZ7I3qzxizuy8fDdq",
+      "amazon": "https://open.spotify.com/album/3vmNRbZ7I3qzxizuy8fDdq",
+      "apple": "https://open.spotify.com/album/3vmNRbZ7I3qzxizuy8fDdq"
+    }
   }
 }

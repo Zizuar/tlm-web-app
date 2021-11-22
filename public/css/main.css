@@ -2467,12 +2467,12 @@ fieldset:disabled a.btn {
 .btn-primary:hover {
   color: #fff;
   background-color: #12b315;
-  border-color: #ee3e0d;
+  border-color: #7aee0d;
 }
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
   background-color: #12b315;
-  border-color: #ee3e0d;
+  border-color: #7aee0d;
   box-shadow: 0 0 0 0.2rem rgba(246, 122, 88, 0.5);
 }
 .btn-primary.disabled, .btn-primary:disabled {
@@ -10147,4 +10147,16 @@ header.masthead h1 {
 
 #guitar_logo {
   height: 120px;
+}
+
+.streaming-link-btn {
+  width: 150px;
+}
+
+button.collapse-btn.collapsed:before {
+    content:'See more' ;
+}
+
+button.collapse-btn:before {
+    content:'See less' ;
 }

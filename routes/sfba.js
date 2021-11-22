@@ -6,25 +6,6 @@ const express    = require('express'),
       Order      = require('../models/order'),
       router     = express.Router();
 
-router.get('/sfba', (req, res) => {
-    fetch('https://www.google-analytics.com/mp/collect?measurement_id='+process.env.TLM_G_MEASUREMENT_ID+'&api_secret='+process.env.TLM_G_API_SECRET, {
-            method: "POST",
-            body: JSON.stringify({
-            "client_id": "252990832",
-            "events": [{
-                "name": "open_sfba"
-            }]
-        })
-    });
-    res.render('sfba', { id: 'sub', title: 'Tyler Levs Music - Songs For Being Alone', scriptIds: ['main', 'sfba'] });
-});
-  
-// Alternative links
-
-router.get('/soonsfba', (req, res) => {
-    res.redirect('/sfba')
-});
-
 // CD order routes
 
 router.get('/order', (req, res) => {

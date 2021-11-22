@@ -1,9 +1,12 @@
 {
   "name": "tylerlevsmusic",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "TylerLevsMusic web app",
   "author": "Gabor Meszaros <reklam11@gmail.com>",
-  "repository" : {"type": "git", "url": "git://github.com/MikeSierra88/tlm-web-app.git"},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MikeSierra88/tlm-web-app.git"
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -14,6 +17,7 @@
     "express-validator": "^6.13.0",
     "http-errors": "^1.8.0",
     "isomorphic-fetch": "^3.0.0",
+    "moment": "^2.29.1",
     "mongoose": "^6.0.13",
     "morgan": "^1.10.0",
     "path": "^0.12.7"
