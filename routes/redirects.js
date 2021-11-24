@@ -110,7 +110,7 @@ router.get('/lets-begin', (req, res) => {
 // SFBA PROMO ROUTER
 
 router.get('/sfba', (req, res) => {
-    res.redirect('/albums/sfba')
+    res.redirect('/albums/songs-for-being-alone')
 });
 
 // About page
