@@ -1,9 +1,9 @@
 'use strict';
 
-const createError = require('http-errors'),
-      express     = require('express'),
-      logger      = require('morgan'),
-      path        = require('path');
+const createError = require('http-errors');
+const express = require('express');
+const logger = require('morgan');
+const path = require('path');
 
 // Constants
 const PORT = process.env.TLM_PORT || 3000;
@@ -13,13 +13,11 @@ const app = express();
 
 app.use(logger(':method :url :status :res[content-length] - :response-time ms --- :date[web]'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '/dist/tlm-web-app/')));
 
-
-app.get("/api/status", function (req, res) {
-  res.status(200).json({ status: "UP" });
-});
+const apiRouter = require('./api/v1/api');
+app.use('/api/v1', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -34,8 +32,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  var error = err;
-  res.send(error);
+  res.send(err);
 });
 
 // Start server
