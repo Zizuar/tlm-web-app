@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { StatusService } from './services/status.service';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +7,4 @@ import { StatusService } from './services/status.service';
 })
 export class AppComponent {
   title = 'tlm-web-app';
-  status = 'DOWN';
-
-  constructor(private statusService: StatusService) { }
-
-  ngOnInit() {
-    this.statusService
-      .getStatus()
-      .then((result: any) => {
-        this.status = result.status;
-      });
-  }
 }
