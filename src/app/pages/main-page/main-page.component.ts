@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent {
+  pageType = 'main';
 
   constructor() { }
 
