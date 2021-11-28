@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@charset "UTF-8";
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+hr {
+  border: 0;
+  margin: 1.35em auto;
+  max-width: 100%;
+  background-position: 50%;
+  box-sizing: border-box;
+}
+
+hr.divider {
+  margin-left: auto;
+  margin-right: auto;
+  height:0;
+  $color: #157d17;
+  color: $color;
+  border: 2px solid currentColor;
+  max-width: 3.25rem;
+  opacity: 1;
+}
+

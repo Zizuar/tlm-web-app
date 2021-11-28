@@ -1,1 +1,64 @@
-<p>header works!</p>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-1">
+  <div class="container d-none d-lg-flex justify-content-center">
+    <ul class="navbar-nav d-flex justify-content-center">
+      <li ngbDropdown class="nav-item">
+        <a class="nav-link" id="musicDropdown" ngbDropdownToggle>Music</a>
+        <div ngbDropdownMenu aria-labelledby="musicDropdown">
+          <a ngbDropdownItem>Latest releases</a>
+          <a ngbDropdownItem>Hit Me Like A Dream (single)</a>
+          <a ngbDropdownItem>Let's Begin (feat. Joliet4)</a>
+          <a ngbDropdownItem>Through the Valley (Shawn James cover)</a>
+          <a ngbDropdownItem>2021 singles</a>
+          <a ngbDropdownItem>Songs For Being Alone (album)</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger">Twitch</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger">Youtube</a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="navbar-brand">
+          <img class="guitar-logo" src="assets/svg/guitar-logo.svg" alt="Tyler Levs Music logo">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger">Bio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger">Contact</a>
+      </li>
+      <li ngbDropdown class="nav-item">
+        <a class="nav-link" id="merchDropdown" ngbDropdownToggle>Merchandise</a>
+        <div ngbDropdownMenu aria-labelledby="merchDropdown">
+          <a ngbDropdownItem>Order signed CDs</a>
+          <a ngbDropdownItem>Merch store (external)</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="container d-block d-lg-none">
+        <div class="container-fluid d-flex justify-content-between">
+          <a class="navbar-brand">TylerLevsMusic</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto my-2 my-lg-0">
+            <li class="nav-item"><a class="nav-link js-scroll-trigger">Latest Releases</a></li>
+            <li class="nav-item"><a class="nav-link">Hit Me Like A Dream (single)</a></li>
+            <li class="nav-item"><a class="nav-link">Singles in 2021</a></li>
+            <li class="nav-item"><a class="nav-link">Songs For Being Alone</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger">Twitch</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger">Youtube</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger">Bio</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger">Contact</a></li>
+            <li class="nav-item"><a class="nav-link">Order a signed SFBA CD</a></li>
+            <li class="nav-item"><a class="nav-link">Merch Store (external)</a></li>
+          </ul>
+        </div>
+      </div>
+</nav>

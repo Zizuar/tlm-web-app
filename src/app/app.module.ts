@@ -7,6 +7,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainPageModule } from './pages/main-page/main-page.module';
+import { ReleasesModule } from './pages/releases/releases.module';
+import { StoreModule } from './pages/store/store.module';
+import { PressModule } from './pages/press/press.module';
+import { AdminModule } from './pages/admin/admin.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,13 @@ import { MainPageModule } from './pages/main-page/main-page.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    NgbModule,
+    FontAwesomeModule,
     MainPageModule,
+    ReleasesModule,
+    StoreModule,
+    PressModule,
+    AdminModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

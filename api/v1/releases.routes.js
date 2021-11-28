@@ -1,6 +1,15 @@
 const express = require('express');
 const router = new express.Router();
 
+const releases = [
+  {
+    title: 'Hit Me Like A Dream'
+  },
+  {
+    title: 'Let\'s Begin'
+  }
+];
+
 /**
  * @swagger
  * tags:
@@ -14,12 +23,13 @@ const router = new express.Router();
  *  get:
  *    description: Get all Release
  *    tags: [Releases]
+ *    produces: application/json
  *    responses:
  *      200:
  *        description: Success
  */
 router.get('/releases', (req, res) => {
-  res.status(200).send({status: 'UP'});
+  res.status(200).send(releases);
 });
 
 module.exports = router;
