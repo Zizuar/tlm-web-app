@@ -1,1 +1,24 @@
-<p>events works!</p>
+<section class="page-section mt-3" id="events">
+  <div class="container">
+    <h2 class="text-center mt-0">Upcoming events</h2>
+    <hr class="divider my-4">
+    <div class="row justify-content-center">
+      <div *ngFor="let scheduledEvent of futureEvents; let i = index;">
+        <app-event-item *ngIf="i <= 2" [scheduledEvent]="scheduledEvent"></app-event-item>
+        <app-event-item *ngIf="i > 2" [scheduledEvent]="scheduledEvent" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed"></app-event-item>
+        <div *ngIf="i === futureEvents.length - 1">
+          <div class="d-flex justify-content-center align-items-center mt-3">
+            <button class="btn btn-primary" type="button" (click)="collapse && collapse.toggle()"
+                    [attr.aria-expanded]="!isCollapsed" aria-controls="ngbCollapse">
+              {{ isCollapsed ? 'See more' : 'See less' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!futureEvents.length" class="col-9">
+        <h5 class="text-center">No event planned... yet</h5>
+      </div>
+    </div>
+  </div>
+</section>

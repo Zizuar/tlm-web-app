@@ -3,7 +3,7 @@
     <hr class="divider my-4">
     <div class="container d-flex flex-wrap justify-content-center mb-3">
       <a *ngFor="let social of socials | async" class="social-link mx-1"
-        href="{{social.link}}" target="_blank">
+         href="{{social.url}}" target="_blank">
         <fa-icon [icon]="social.icon" size="3x"></fa-icon>
         <span class="sr-only">{{social.name}}</span>
       </a>

@@ -5,6 +5,7 @@ import {FooterComponent} from './footer/footer.component';
 import {ContactsComponent} from './contacts/contacts.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {SafeUrlPipe} from '../pipes/safe-url.pipe';
 
 
 
@@ -13,6 +14,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     FooterComponent,
     ContactsComponent,
+    SafeUrlPipe,
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     FooterComponent,
     ContactsComponent,
+    SafeUrlPipe,
   ]
 })
 export class SharedComponentsModule { }

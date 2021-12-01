@@ -1,0 +1,30 @@
+<div class="col-12">
+  <div class="card my-3">
+    <div class="row no-gutters">
+      <div
+        class="d-md-none col d-flex flex-column align-items-center justify-content-around p-3 text-white bg-primary">
+        <div class="text-center"><h5>{{ moment(scheduledEvent.date).format('MMMM') }}</h5></div>
+        <div class="text-center"><h5>{{ moment(scheduledEvent.date).format('Do') }} </h5></div>
+        <div class="text-center"><h5>{{ moment(scheduledEvent.date).format('YYYY') }}</h5></div>
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h5 class="card-title">{{scheduledEvent.name}}</h5>
+          <h6
+            class="card-subtitle mb-2 text-muted">{{moment(scheduledEvent.date).format('MMMM Do YYYY, h a')}}</h6>
+          <p class="card-text">{{ scheduledEvent.venue }}, {{scheduledEvent.town}}</p>
+          <a *ngIf="scheduledEvent.venueLink" href="{{scheduledEvent.venueLink}}}" class="card-link"
+             target="_blank">
+            Check out {{scheduledEvent.venue}} here
+          </a>
+        </div>
+      </div>
+      <div
+        class="col-md-3 d-none d-md-flex flex-column align-items-center justify-content-around p-3 text-white bg-primary">
+        <div class="text-center"><h5>{{ moment(scheduledEvent.date).format('MMMM') }}</h5></div>
+        <div class="text-center"><h5>{{ moment(scheduledEvent.date).format('Do') }} </h5></div>
+        <div class="text-center"><h5>{{ moment(scheduledEvent.date).format('YYYY') }}</h5></div>
+      </div>
+    </div>
+  </div>
+</div>

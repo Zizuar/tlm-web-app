@@ -6,7 +6,7 @@ import {Observable, of} from 'rxjs';
 export interface Social {
   name: string;
   icon: IconDefinition;
-  link: string;
+  url: string;
 }
 
 @Injectable({
@@ -17,37 +17,37 @@ export class SocialsService {
     {
       name: 'Twitch',
       icon: faTwitch,
-      link: 'https://twitch.tv/tylerlevsmusic',
+      url: 'https://twitch.tv/tylerlevsmusic',
     },
     {
       name: 'Facebook',
       icon: faFacebook,
-      link: 'https://www.facebook.com/tylerlevs',
+      url: 'https://www.facebook.com/tylerlevs',
     },
     {
       name: 'Twitter',
       icon: faTwitter,
-      link: 'https://twitter.com/tyler_levs',
+      url: 'https://twitter.com/tyler_levs',
     },
     {
       name: 'Instagram',
       icon: faInstagram,
-      link: 'https://www.instagram.com/tylerlevs/',
+      url: 'https://www.instagram.com/tylerlevs/',
     },
     {
       name: 'Tiktok',
       icon: faTiktok,
-      link: 'https://www.tiktok.com/@tylerlevsmusic',
+      url: 'https://www.tiktok.com/@tylerlevsmusic',
     },
     {
       name: 'Youtube',
       icon: faYoutube,
-      link: 'https://www.youtube.com/c/TylerLevs',
+      url: 'https://www.youtube.com/c/TylerLevs',
     },
     {
       name: 'Spotify',
       icon: faSpotify,
-      link: 'https://open.spotify.com/artist/5NUqe9c7M8oSBiHns5L6SE',
+      url: 'https://open.spotify.com/artist/5NUqe9c7M8oSBiHns5L6SE',
     },
   ];
 
