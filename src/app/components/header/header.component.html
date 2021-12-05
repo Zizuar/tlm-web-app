@@ -1,7 +1,7 @@
 <!-- Navigation-->
-<nav class="{{pageType}} navbar navbar-expand-lg navbar-light fixed-top py-1">
-  <div class="container d-none d-lg-flex justify-content-center">
-    <ul class="navbar-nav d-flex justify-content-center">
+<nav [ngClass]="{'navbar-scrolled': scrolled}" class="{{pageType}} navbar navbar-expand-lg navbar-light fixed-top py-1" id="mainNav">
+  <div class="container d-none d-lg-flex justify-content-center align-items-center">
+    <ul class="navbar-nav d-flex justify-content-center align-items-center">
       <li ngbDropdown class="nav-item">
         <a class="nav-link" id="musicDropdown" ngbDropdownToggle>Music</a>
         <div ngbDropdownMenu aria-labelledby="musicDropdown">
@@ -20,9 +20,9 @@
         <a class="nav-link js-scroll-trigger">Youtube</a>
       </li>
       <li class="nav-item">
-        <a href="" class="navbar-brand">
-          <img class="guitar-logo" src="assets/svg/guitar-logo.svg" alt="Tyler Levs Music logo">
-        </a>
+        <span class="navbar-brand">
+          <img [ngClass]="{'guitar-logo': scrolled, 'guitar-logo-white': !scrolled}" src="assets/svg/guitar-logo.svg" alt="Tyler Levs Music logo">
+        </span>
       </li>
       <li class="nav-item">
         <a class="nav-link js-scroll-trigger">Bio</a>

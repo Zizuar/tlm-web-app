@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainPageComponent } from './main-page.component';
 import { MainPageRoutingModule } from './main-page.routing';
-import { LatestReleasesComponent } from './latest-releases/latest-releases.component';
 import { EventsComponent } from './events/events.component';
 import { TwitchComponent } from './twitch/twitch.component';
 import { YoutubeComponent } from './youtube/youtube.component';
@@ -13,18 +12,18 @@ import { MastheadComponent } from './masthead/masthead.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EventItemComponent } from './events/event-item/event-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {LatestReleasesModule} from './latest-releases/latest-releases.module';
 
 @NgModule({
   declarations: [
     MainPageComponent,
-    LatestReleasesComponent,
     EventsComponent,
+    EventItemComponent,
     TwitchComponent,
     YoutubeComponent,
     BioComponent,
     CallToActionComponent,
     MastheadComponent,
-    EventItemComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SharedComponentsModule,
     FontAwesomeModule,
     NgbModule,
+    LatestReleasesModule,
   ],
 })
 export class MainPageModule { }

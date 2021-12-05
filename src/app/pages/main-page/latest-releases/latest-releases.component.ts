@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Release, ReleasesService } from '../../../services/releases.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-latest-releases',
@@ -6,7 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./latest-releases.component.scss']
 })
 export class LatestReleasesComponent {
+  releases: Observable<Release[]> = this.releasesService.getAllReleases();
 
-  constructor() { }
+  constructor(
+    private readonly releasesService: ReleasesService,
+  ) { }
 
 }

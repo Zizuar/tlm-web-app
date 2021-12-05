@@ -1,0 +1,12 @@
+<div>
+  <hr *ngIf="links.title" class="divider my-4">
+  <p *ngIf="links.title" class="card-text fw-bolder">{{links.title}}</p>
+</div>
+<div class="d-flex flex-column flex-lg-row justify-content-around align-items-center flex-wrap">
+  <a class="streaming-link-btn btn btn-sm btn-primary mb-3" href="{{links.spotify}}" target="_blank"
+     rel="noopener noreferrer">Spotify</a><br class="d-lg-none">
+  <a class="streaming-link-btn btn btn-sm btn-primary mb-3" href="{{links.amazon}}" target="_blank"
+     rel="noopener noreferrer">Amazon Music</a><br class="d-lg-none">
+  <a class="streaming-link-btn btn btn-sm btn-primary mb-3" href="{{links.apple}}" target="_blank" rel="noopener noreferrer">
+    Apple Music</a>
+</div>

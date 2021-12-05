@@ -3,19 +3,13 @@
     <h2 class="text-center mt-0">Upcoming events</h2>
     <hr class="divider my-4">
     <div class="row justify-content-center">
-      <div *ngFor="let scheduledEvent of futureEvents; let i = index;">
-        <app-event-item *ngIf="i <= 2" [scheduledEvent]="scheduledEvent"></app-event-item>
-        <app-event-item *ngIf="i > 2" [scheduledEvent]="scheduledEvent" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed"></app-event-item>
-        <div *ngIf="i === futureEvents.length - 1">
-          <div class="d-flex justify-content-center align-items-center mt-3">
-            <button class="btn btn-primary" type="button" (click)="collapse && collapse.toggle()"
-                    [attr.aria-expanded]="!isCollapsed" aria-controls="ngbCollapse">
-              {{ isCollapsed ? 'See more' : 'See less' }}
-            </button>
-          </div>
-        </div>
+      <app-event-item  *ngFor="let scheduledEvent of eventsToShow | async" [scheduledEvent]="scheduledEvent"></app-event-item>
+      <div *ngIf="futureEvents.length > numberOfEventsToShow" class="d-flex justify-content-center">
+        <button class="btn btn-primary btn-xl" (click)="showMoreEvents()">Show all events</button>
       </div>
-
+      <div *ngIf="numberOfEventsToShow > DEFAULT_EVENTS_TO_SHOW" class="d-flex justify-content-center">
+        <button class="btn btn-primary btn-xl" (click)="showFewerEvents()">Show fewer events</button>
+      </div>
       <div *ngIf="!futureEvents.length" class="col-9">
         <h5 class="text-center">No event planned... yet</h5>
       </div>

@@ -1,0 +1,56 @@
+:host-context(.webp) .masthead {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%,
+    rgba(57, 82, 58, 0.8) 100%),
+  url("^./assets/img/bg-masthead.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+:host-context(.no-webp) .masthead {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%,
+    rgba(57, 82, 58, 0.8) 100%),
+  url("^./assets/img/bg-masthead.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.masthead h1 {
+  font-size: 2.25rem;
+}
+
+.masthead {
+  height: 100vh;
+}
+
+@media (min-width: 992px) {
+  .masthead {
+    min-height: 40rem;
+    padding-top: 4.5rem;
+    padding-bottom: 0;
+  }
+  .masthead p {
+    font-size: 1.15rem;
+  }
+  .masthead h1 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1200px) {
+  .masthead h1 {
+    font-size: 3.5rem;
+  }
+}
+
+.jumbotron-guitar {
+  max-height: 300px;
+}
+
+

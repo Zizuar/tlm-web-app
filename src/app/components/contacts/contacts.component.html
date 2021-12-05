@@ -8,12 +8,13 @@
           message on Discord</p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-3 ml-auto text-center mb-5 mb-lg-0" *ngFor="let contactMethod of contactMethods | async">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-4 ml-auto text-center mb-4" *ngFor="let contactMethod of contactMethods | async">
         <fa-icon [icon]="contactMethod.icon" size="3x"></fa-icon>
         <span class="sr-only">{{ contactMethod.name }}</span>
-        <div *ngIf="!contactMethod.url">TylerLevsMusic#0949</div>
-        <a *ngIf="contactMethod.url" class="d-block" href="{{ contactMethod.url }}}">{{ contactMethod.username }}</a>
+        <div *ngIf="!contactMethod.url">{{ contactMethod.username }}</div>
+        <a *ngIf="contactMethod.url" class="d-block" href="{{ contactMethod.url }}" target="_blank">
+          {{ contactMethod.username }}</a>
       </div>
     </div>
   </div>

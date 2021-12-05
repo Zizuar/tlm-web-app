@@ -43,20 +43,7 @@ export class EventsService {
       town: "Meredith, NH",
       venueLink: "https://www.facebook.com/twinbarnsbrewing"
     },
-    {
-      date: new Date("2021-12-18T17:00:00"),
-      name: "Live performance",
-      venue: "Twin Barns Brewing Co.",
-      town: "Meredith, NH",
-      venueLink: "https://www.facebook.com/twinbarnsbrewing"
-    },
-    {
-      date: new Date("2021-12-18T17:00:00"),
-      name: "Live performance",
-      venue: "Twin Barns Brewing Co.",
-      town: "Meredith, NH",
-      venueLink: "https://www.facebook.com/twinbarnsbrewing"
-    },
+
   ]
 
   constructor() { }
