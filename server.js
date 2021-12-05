@@ -19,6 +19,11 @@ app.use(express.static(path.join(__dirname, '/dist/tlm-web-app/')));
 const apiRouter = require('./api/v1/api');
 app.use('/api/v1', apiRouter);
 
+// redirects
+app.get('/schedule', (req, res) => {
+  res.redirect('/#twitch');
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

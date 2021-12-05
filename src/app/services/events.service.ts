@@ -1,8 +1,18 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {map, Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 export interface ScheduledEvent {
   date: Date;
+  name: string;
+  venue: string;
+  town: string;
+  venueLink?: string;
+  eventLink?:string;
+}
+
+interface ApiEvent {
+  date: string;
   name: string;
   venue: string;
   town: string;
@@ -14,46 +24,28 @@ export interface ScheduledEvent {
   providedIn: 'root'
 })
 export class EventsService {
-  events: ScheduledEvent[] = [
-    {
-      date: new Date("2021-12-18T17:00:00"),
-      name: "Live performance",
-      venue: "Twin Barns Brewing Co.",
-      town: "Meredith, NH",
-      venueLink: "https://www.facebook.com/twinbarnsbrewing"
-    },
-    {
-      date: new Date("2021-12-18T17:00:00"),
-      name: "Live performance",
-      venue: "Twin Barns Brewing Co.",
-      town: "Meredith, NH",
-      venueLink: "https://www.facebook.com/twinbarnsbrewing"
-    },
-    {
-      date: new Date("2021-12-18T17:00:00"),
-      name: "Live performance",
-      venue: "Twin Barns Brewing Co.",
-      town: "Meredith, NH",
-      venueLink: "https://www.facebook.com/twinbarnsbrewing"
-    },
-    {
-      date: new Date("2021-12-18T17:00:00"),
-      name: "Live performance",
-      venue: "Twin Barns Brewing Co.",
-      town: "Meredith, NH",
-      venueLink: "https://www.facebook.com/twinbarnsbrewing"
-    },
+  eventsApiUrl = '/api/v1/events';
 
-  ]
+  constructor(private readonly http: HttpClient) { }
 
-  constructor() { }
-
-  getEvents() {
-    return of(this.events);
+  getAllEvents() {
+    return this.http.get<ScheduledEvent[]>(this.eventsApiUrl);
   }
 
   getFutureEvents(): Observable<ScheduledEvent[]> {
-    const now = new Date();
-    return of(this.events.filter(event => event.date > now));
+    return this.http.get<ApiEvent[]>(this.eventsApiUrl).pipe(
+      map(apiEventArray => apiEventArray.map<ScheduledEvent>(apiEvent => {
+        return {
+          ...apiEvent,
+          date: new Date(apiEvent.date)
+        }
+      })),
+      map(scheduledEventArray => {
+        const now = new Date();
+        return scheduledEventArray.filter(event => {
+          return event.date > now
+        })
+      })
+    );
   }
 }

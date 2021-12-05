@@ -23,8 +23,8 @@ export class EventsComponent implements OnDestroy{
   constructor(
     private readonly eventsService: EventsService,
   ) {
-    this.eventsService.getFutureEvents().subscribe(eventlist => {
-      this.futureEvents = eventlist;
+    this.eventsService.getFutureEvents().subscribe(eventList => {
+      this.futureEvents = eventList;
       this.numberOfEventsToShow = this.futureEvents.length <= this.DEFAULT_EVENTS_TO_SHOW
         ? this.futureEvents.length : this.DEFAULT_EVENTS_TO_SHOW;
       this.refreshEvents(this.numberOfEventsToShow);

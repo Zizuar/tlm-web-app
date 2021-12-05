@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {map, Observable} from 'rxjs';
 
 export enum ReleaseCategories {
   Song = 'songs',
@@ -21,6 +21,11 @@ export interface ReleaseLinks {
   apple?: string;
 }
 
+export interface AlbumTrack {
+  title: string;
+  youtubeLink?: string;
+}
+
 export interface Release {
   id: string;
   title: string;
@@ -32,6 +37,7 @@ export interface Release {
   linksArray?: ReleaseLinks[];
   orderEnabled?: boolean;
   merchEnabled?: boolean;
+  tracklist?: AlbumTrack[];
 }
 
 @Injectable({
@@ -43,6 +49,35 @@ export class ReleasesService {
   constructor(private readonly http: HttpClient) { }
 
   getAllReleases(): Observable<Release[]> {
-    return this.http.get<Release[]>(this.releasesApiUrl);
+    return this.http.get<Release[]>(this.releasesApiUrl).pipe(
+      map(response => response.map(release => {
+        return {
+          ...release,
+          releaseDate: new Date(release.releaseDate)
+        }
+      }))
+    );
+  }
+
+  getReleasesByCategory(category: ReleaseCategories): Observable<Release[]> {
+    return this.http.get<Release[]>(`${this.releasesApiUrl}/${category}`).pipe(
+      map(response => response.map(release => {
+        return {
+          ...release,
+          releaseDate: new Date(release.releaseDate)
+        }
+      }))
+    );
+  }
+
+  getReleaseById(category: ReleaseCategories, id: string): Observable<Release> {
+    return this.http.get<Release>(`${this.releasesApiUrl}/${category}/${id}`).pipe(
+      map(release => {
+        return {
+          ...release,
+          releaseDate: new Date(release.releaseDate)
+        }
+      })
+    );
   }
 }

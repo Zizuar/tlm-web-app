@@ -1,0 +1,53 @@
+.features-icons-container {
+  height: 5.5rem;
+}
+
+.features-icons-item {
+  min-height: 145px;
+  font-size: 1rem;
+  -webkit-transition: 400ms;
+  -moz-transition-duration: 400ms;
+  -o-transition-duration: 400ms;
+  transition-duration: 400ms;
+}
+
+.features-icons-item:hover {
+  font-size: 1.1rem;
+  -webkit-transition: 400ms;
+  -moz-transition-duration: 400ms;
+  -o-transition-duration: 400ms;
+  transition-duration: 400ms;
+}
+
+.features-icons-item a {
+  color:rgb(0, 0, 0);
+}
+
+.features-icons-item .features-icons-icon {
+  height: 4.5rem;
+  max-height: 4.5rem;
+  cursor: pointer;
+  -webkit-transition: 400ms;
+  -moz-transition-duration: 400ms;
+  -o-transition-duration: 400ms;
+  transition-duration: 400ms;
+}
+
+.features-icons-item:hover .features-icons-icon {
+  height: 5rem;
+  max-height: 5rem;
+  -webkit-transition: 400ms;
+  -moz-transition-duration: 400ms;
+  -o-transition-duration: 400ms;
+  transition-duration: 400ms;
+}
+
+.streaming-icon-link {
+  cursor: pointer;
+  color: #157d17;
+}
+
+.streaming-icon-link:hover {
+  cursor: pointer;
+  color: #157d17;
+}

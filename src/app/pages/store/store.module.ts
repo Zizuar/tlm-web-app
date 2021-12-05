@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreComponent } from './store.component';
+import {SharedComponentsModule} from '../../components/components.shared.module';
 
 
 
@@ -9,7 +10,8 @@ import { StoreComponent } from './store.component';
     StoreComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    SharedComponentsModule,
+  ],
 })
 export class StoreModule { }

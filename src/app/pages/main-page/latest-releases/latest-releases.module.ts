@@ -5,6 +5,7 @@ import {LatestReleasesComponent} from './latest-releases.component';
 import {ReleaseItemComponent} from './release-item/release-item.component';
 import { ReleaseItemLinksComponent } from './release-item/release-item-links/release-item-links.component';
 import { ReleaseItemLinksListComponent } from './release-item/release-item-links-list/release-item-links-list.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ReleaseItemLinksListComponent } from './release-item/release-item-links
   imports: [
     CommonModule,
     SharedComponentsModule,
+    RouterModule,
   ],
   exports: [
     LatestReleasesComponent

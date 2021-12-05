@@ -2,9 +2,11 @@
   <div class="container">
     <h2 class="text-center mt-0">Latest Releases</h2>
     <hr class="divider my-4">
-    <app-release-item *ngFor="let release of releases | async" [release]="release"></app-release-item>
+    <div *ngFor="let release of releases | async; let i = index">
+      <app-release-item *ngIf="i < 3" [release]="release"></app-release-item>
+    </div>
     <div class="d-flex justify-content-center align-items-center">
-      <button class="btn btn-primary btn-xl">See all releases</button>
+      <button class="btn btn-primary btn-xl" routerLink="/releases">See all releases</button>
     </div>
   </div>
 </section>
