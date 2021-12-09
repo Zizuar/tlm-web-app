@@ -73,7 +73,7 @@ router.get('/presave/:title', (req, res) => {
         });
         res.redirect('https://distrokid.com/hyperfollow/tylerlevsandjoliet4/lets-begin');
     } else {
-        res.redirect('/2021')
+        res.redirect('/')
     }
 });
 

@@ -5,5 +5,19 @@
         "venue": "Twin Barns Brewing Co.",
         "town": "Meredith, NH",
         "venueLink": "https://www.facebook.com/twinbarnsbrewing"
+    },
+    {
+        "date": "2021-12-31T18:00:00",
+        "name": "Live performance",
+        "venue": "The Foundry",
+        "town": "Manchester, NH",
+        "venueLink": "https://www.facebook.com/foundrynh"
+    },
+    {
+        "date": "2022-02-26T17:00:00",
+        "name": "Live performance",
+        "venue": "Twin Barns Brewing Co.",
+        "town": "Meredith, NH",
+        "venueLink": "https://www.facebook.com/twinbarnsbrewing"
     }
 ]
