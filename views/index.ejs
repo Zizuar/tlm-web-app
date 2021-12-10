@@ -5,12 +5,15 @@
         <!-- Masthead -->
         <%- include('partials/index/masthead') %>
 
+        <!-- Countdowns -->
+        <%- include('partials/index/countdowns', {countdowns: countdowns}) %>
+
         <!-- Latest release -->
         <%- include('partials/index/releases', {releases: releases}) %>
 
         <!-- Events -->
         <%- include('partials/index/events', {events: events, moment: moment}) %>
-        
+
         <!-- Twitch -->
         <%- include('partials/index/twitch') %>
 
@@ -26,4 +29,9 @@
         <!-- Contact -->
         <%- include('partials/index/contact') %>
 
+<!-- Countdown timer JS-->
+<script src="js/countdowntime/moment.min.js" defer></script>
+<script src="js/countdowntime/moment-timezone.min.js" defer></script>
+<script src="js/countdowntime/moment-timezone-with-data.min.js" defer></script>
+<script src="js/countdowntime/countdowntime.js" defer></script>
 <%- include('partials/footer'); %>

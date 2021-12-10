@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Worry Bout That (In The Morning)",
+    "category": "song",
+    "releaseDate": "2022-01-28",
+    "presaveLink": "https://google.com"
+  },
+  {
+    "title": "Struck",
+    "category": "song",
+    "releaseDate": "2022-02-11"
+  },
+  {
+    "title": "Struck the EP",
+    "category": "collection",
+    "releaseDate": "2022-02-25",
+    "tracklist": [
+      {
+        "title": "Worry Bout That (In The Morning)"
+      },
+      {
+        "title": "Struck"
+      },
+      {
+        "title": "To Their Knees"
+      }
+    ]
+  }
+]

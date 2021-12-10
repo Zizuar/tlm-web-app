@@ -1,0 +1,36 @@
+<section class="page-section mt-4" id="countdowns">
+    <div class="container mt-5">
+        <h2 class="text-center mt-4">Upcoming Releases</h2>
+        <% countdowns.forEach((countdown) => { %>
+        <hr class="divider my-4"/>
+        <div class="col-12">
+            <div class="card my-3">
+                <div class="row no-gutters">
+                    <div class="col-md-9 order-2 order-md-1">
+                        <div class="card-body h-100 d-flex flex-column justify-content-center align-items-center">
+                            <h5 class="card-title text-center"><%= countdown.title %></h5>
+                            <% if (countdown.presaveLink) { %>
+                            <a href="<%= countdown.presaveLink %>" class="card-link mt-3" target="_blank">
+                                Presave on Spotify here!
+                            </a>
+                            <% } %>
+                            <% if (countdown.tracklist) { %>
+                                <div class="text-center">
+                                    <% countdown.tracklist.forEach(track => { %>
+                                    <p><%= track.title %></p>
+                                    <% }) %>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="col-md-3 order-1 order-md-2 d-flex flex-column align-items-center justify-content-around p-3 text-white bg-primary user-select-none">
+                        <div class="text-center"><h5><%= moment(countdown.releaseDate).format('MMMM') %></h5></div>
+                        <div class="text-center"><h5><%= moment(countdown.releaseDate).format('Do') %></h5></div>
+                        <div class="text-center"><h5><%= moment(countdown.releaseDate).format('YYYY') %></h5></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</section>
