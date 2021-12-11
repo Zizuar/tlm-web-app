@@ -6,3 +6,7 @@
 .countdown {
     cursor: pointer;
 }
+
+.countdown-card.card-body {
+    min-height: 290px;
+}

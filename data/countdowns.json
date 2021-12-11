@@ -3,17 +3,19 @@
     "title": "Worry Bout That (In The Morning)",
     "category": "song",
     "releaseDate": "2022-01-28",
-    "presaveLink": "https://google.com"
+    "presaveLink": "/presave/worry-bout-that"
   },
   {
     "title": "Struck",
     "category": "song",
-    "releaseDate": "2022-02-11"
+    "releaseDate": "2022-02-11",
+    "presaveLink": "/presave/struck"
   },
   {
     "title": "Struck the EP",
     "category": "collection",
     "releaseDate": "2022-02-25",
+    "presaveLink": "/presave/struck-ep",
     "tracklist": [
       {
         "title": "Worry Bout That (In The Morning)"

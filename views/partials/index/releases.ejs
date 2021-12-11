@@ -35,19 +35,19 @@
                             <% } %>
                             <% if (release.category === "song" || release.category === "albums") { %>
                             <div class="d-flex flex-column flex-lg-row justify-content-around align-items-center flex-wrap">
-                                <a class="streaming-link-btn btn btn-sm btn-primary" href="<%=release.links.spotify%>" target="_blank" rel="noopener noreferrer">Spotify</a><br class="d-lg-none" />
-                                <a class="streaming-link-btn btn btn-sm btn-primary" href="<%=release.links.amazon%>" target="_blank" rel="noopener noreferrer">Amazon Music</a><br class="d-lg-none" />
-                                <a class="streaming-link-btn btn btn-sm btn-primary" href="<%=release.links.apple%>" target="_blank" rel="noopener noreferrer">Apple Music</a>
+                                <a class="streaming-link-btn btn btn-sm btn-primary my-2" href="<%=release.links.spotify%>" target="_blank" rel="noopener noreferrer">Spotify</a><br class="d-lg-none" />
+                                <a class="streaming-link-btn btn btn-sm btn-primary my-2" href="<%=release.links.amazon%>" target="_blank" rel="noopener noreferrer">Amazon Music</a><br class="d-lg-none" />
+                                <a class="streaming-link-btn btn btn-sm btn-primary my-2" href="<%=release.links.apple%>" target="_blank" rel="noopener noreferrer">Apple Music</a>
                             </div>
                             <% } else if (release.category === "collections") { %>
-                                
+
                                 <% release.linksArray.forEach(link => { %>
                                     <hr class="divider my-4" />
                                     <p class="card-text"><strong><%= link.title %></strong></p>
                                     <div class="d-flex flex-column flex-lg-row justify-content-around align-items-center flex-wrap">
-                                        <a class="streaming-link-btn btn btn-sm btn-primary" href="<%=link.spotify%>" target="_blank" rel="noopener noreferrer">Spotify</a><br class="d-lg-none" />
-                                        <a class="streaming-link-btn btn btn-sm btn-primary" href="<%=link.amazon%>" target="_blank" rel="noopener noreferrer">Amazon Music</a><br class="d-lg-none" />
-                                        <a class="streaming-link-btn btn btn-sm btn-primary" href="<%=link.apple%>" target="_blank" rel="noopener noreferrer">Apple Music</a>
+                                        <a class="streaming-link-btn btn btn-sm btn-primary my-2" href="<%=link.spotify%>" target="_blank" rel="noopener noreferrer">Spotify</a><br class="d-lg-none" />
+                                        <a class="streaming-link-btn btn btn-sm btn-primary my-2" href="<%=link.amazon%>" target="_blank" rel="noopener noreferrer">Amazon Music</a><br class="d-lg-none" />
+                                        <a class="streaming-link-btn btn btn-sm btn-primary my-2" href="<%=link.apple%>" target="_blank" rel="noopener noreferrer">Apple Music</a>
                                     </div>
                                 <% }) %>
                             <% } %>

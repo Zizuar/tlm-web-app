@@ -17,7 +17,7 @@
                                         <div class="text-center"><h5><%= moment(event.date).format('YYYY') %></h5></div>
                                     </div>
                                     <div class="col-md-9">
-                                        <div class="card-body">
+                                        <div class="card-body event">
                                             <h5 class="card-title"><%=event.name%></h5>
                                             <h6 class="card-subtitle mb-2 text-muted"><%= moment(event.date).format('MMMM Do YYYY, h a') %></h6>
                                             <p class="card-text"><%=event.venue%>, <%=event.town%></p>
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                    <% } %> 
+                    <% } %>
                     <% if (eventsDisplayed === 3 && events.length - index > 1) { %>
                         <div class="collapse" id="collapseEvents">
                     <% } %>

@@ -72,6 +72,39 @@ router.get('/presave/:title', (req, res) => {
             })
         });
         res.redirect('https://distrokid.com/hyperfollow/tylerlevsandjoliet4/lets-begin');
+    } else if (req.params.title == 'worry-bout-that') {
+        fetch('https://www.google-analytics.com/mp/collect?measurement_id='+process.env.TLM_G_MEASUREMENT_ID+'&api_secret='+process.env.TLM_G_API_SECRET, {
+            method: "POST",
+            body: JSON.stringify({
+                "client_id": "252990832",
+                "events": [{
+                    "name": "presave_worry_bout_that"
+                }]
+            })
+        });
+        res.redirect('https://distrokid.com/hyperfollow/tylerlevs/worry-bout-that-in-the-morning');
+    } else if (req.params.title == 'struck') {
+        fetch('https://www.google-analytics.com/mp/collect?measurement_id='+process.env.TLM_G_MEASUREMENT_ID+'&api_secret='+process.env.TLM_G_API_SECRET, {
+            method: "POST",
+            body: JSON.stringify({
+                "client_id": "252990832",
+                "events": [{
+                    "name": "presave_struck_single"
+                }]
+            })
+        });
+        res.redirect('https://distrokid.com/hyperfollow/tylerlevs/struck');
+    } else if (req.params.title == 'struck-ep') {
+        fetch('https://www.google-analytics.com/mp/collect?measurement_id='+process.env.TLM_G_MEASUREMENT_ID+'&api_secret='+process.env.TLM_G_API_SECRET, {
+            method: "POST",
+            body: JSON.stringify({
+                "client_id": "252990832",
+                "events": [{
+                    "name": "presave_struck_ep"
+                }]
+            })
+        });
+        res.redirect('https://distrokid.com/hyperfollow/tylerlevs/struck-the-ep');
     } else {
         res.redirect('/')
     }
