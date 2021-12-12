@@ -8,6 +8,20 @@ const events = [
     venue: "Twin Barns Brewing Co.",
     town: "Meredith, NH",
     venueLink: "https://www.facebook.com/twinbarnsbrewing"
+  },
+  {
+    date: new Date('2021-12-31T18:00:00'),
+    name: 'Live performance',
+    venue: 'The Foundry',
+    town: 'Manchester, NH',
+    venueLink: 'https://www.facebook.com/foundrynh'
+  },
+  {
+    date: new Date('2022-02-26T17:00:00'),
+    name: 'Live performance',
+    venue: 'Twin Barns Brewing Co.',
+    town: 'Meredith, NH',
+    venueLink: 'https://www.facebook.com/twinbarnsbrewing'
   }
 ];
 
@@ -30,7 +44,6 @@ const events = [
  *        description: Success
  */
 router.get('/events', (req, res) => {
-  console.log(events);
   res.status(200).send(events);
 });
 

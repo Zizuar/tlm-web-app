@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { Release, ReleasesService } from '../../../services/releases.service';
-import { Observable } from 'rxjs';
+import {Component, Input} from '@angular/core';
+import { Release } from '../../../services/releases.service';
 
 @Component({
   selector: 'app-latest-releases',
@@ -8,10 +7,5 @@ import { Observable } from 'rxjs';
   styleUrls: ['./latest-releases.component.scss']
 })
 export class LatestReleasesComponent {
-  releases: Observable<Release[]> = this.releasesService.getAllReleases();
-
-  constructor(
-    private readonly releasesService: ReleasesService,
-  ) { }
-
+  @Input() releases: Release[] = [];
 }

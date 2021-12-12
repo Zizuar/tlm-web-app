@@ -38,6 +38,7 @@ export interface Release {
   orderEnabled?: boolean;
   merchEnabled?: boolean;
   tracklist?: AlbumTrack[];
+  presaveLink?: string;
 }
 
 @Injectable({

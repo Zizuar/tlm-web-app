@@ -5,6 +5,7 @@
       <li ngbDropdown class="nav-item">
         <a class="nav-link" id="musicDropdown" ngbDropdownToggle>Music</a>
         <div ngbDropdownMenu aria-labelledby="musicDropdown">
+          <a ngbDropdownItem routerLink="/" fragment="upcoming-releases">Upcoming releases</a>
           <a ngbDropdownItem routerLink="/releases">Latest releases</a>
           <a ngbDropdownItem routerLink="/releases/songs/hit-me-like-a-dream">Hit Me Like A Dream (single)</a>
           <a ngbDropdownItem routerLink="/releases/songs/lets-begin">Let's Begin (feat. Joliet4)</a>
@@ -14,21 +15,21 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/#twitch">Twitch</a>
+        <a class="nav-link" routerLink="/" fragment="twitch">Twitch</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/#youtube">Youtube</a>
+        <a class="nav-link" routerLink="/" fragment="youtube">Youtube</a>
       </li>
       <li class="nav-item d-flex justify-content-center">
-        <a class="navbar-brand m-0" routerLink="/">
+        <a class="navbar-brand m-0" routerLink="/" fragment="page-top">
           <img [ngClass]="{'guitar-logo': scrolled, 'guitar-logo-white': !scrolled}" src="assets/svg/guitar-logo.svg" alt="Tyler Levs Music logo">
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/#about">Bio</a>
+        <a class="nav-link" routerLink="/" fragment="about">Bio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/#contact">Contact</a>
+        <a class="nav-link" routerLink="/" fragment="contact">Contact</a>
       </li>
       <li ngbDropdown class="nav-item">
         <a class="nav-link" id="merchDropdown" ngbDropdownToggle>Merch</a>
@@ -41,18 +42,19 @@
   </div>
   <div class="container d-block d-lg-none">
         <div class="container-fluid d-flex justify-content-between">
-          <a class="navbar-brand" routerLink="/">TylerLevsMusic</a>
+          <a class="navbar-brand" routerLink="/" fragment="page-top">TylerLevsMusic</a>
           <button class="navbar-toggler navbar-toggler-right" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
         <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto my-2 my-lg-0">
+            <li class="nav-item"><a class="nav-link" routerLink="/" fragment="upcoming-releases">Upcoming releases</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/releases">Latest Releases</a></li>
-            <li class="nav-item"><a class="nav-link">Twitch</a></li>
-            <li class="nav-item"><a class="nav-link">Youtube</a></li>
-            <li class="nav-item"><a class="nav-link">Bio</a></li>
-            <li class="nav-item"><a class="nav-link">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/" fragment="twitch">Twitch</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/" fragment="youtube">Youtube</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/" fragment="about">Bio</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/" fragment="contact">Contact</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/store">Order a signed SFBA CD</a></li>
             <li class="nav-item"><a class="nav-link" href="https://tylerlevsmusic.creator-spring.com/" target="_blank">Merch Store (external)</a></li>
           </ul>

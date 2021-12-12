@@ -9,6 +9,64 @@ const ReleaseCategories = {
 
 const releases = [
   {
+    id: 'worry-bout-that',
+    title: 'Worry Bout That (In The Morning)',
+    category: ReleaseCategories.Song,
+    releaseDate: new Date("2022-01-28"),
+    presaveLink: '/presave/worry-bout-that',
+    imageName: 'struck-single',
+    text: {
+      header: 'Worry Bout That (In The Morning)',
+    },
+    links: {
+      spotify: '',
+      amazon: '',
+      apple: '',
+    },
+  },
+  {
+    id: 'struck',
+    title: "Struck",
+    category: ReleaseCategories.Song,
+    releaseDate: new Date('2022-02-11'),
+    presaveLink: "/presave/struck",
+    imageName: 'struck-single',
+    text: {
+      header: 'Struck (single)',
+    },
+    links: {
+      spotify: '',
+      amazon: '',
+      apple: '',
+    },
+  },
+  {
+    title: "Struck the EP",
+    category: ReleaseCategories.Collection,
+    releaseDate: new Date('2022-02-25'),
+    presaveLink: '/presave/struck-ep',
+    imageName: 'struck-ep',
+    text: {
+      header: 'Struck (the EP)',
+    },
+    links: {
+      spotify: '',
+      amazon: '',
+      apple: '',
+    },
+    tracklist: [
+      {
+        title: 'Worry Bout That (In The Morning)'
+      },
+      {
+        title: 'Struck'
+      },
+      {
+        title: 'To Their Knees'
+      }
+    ]
+  },
+  {
     id: 'hit-me-like-a-dream',
     title: 'Hit Me Like A Dream',
     category: ReleaseCategories.Song,
@@ -181,7 +239,7 @@ const releases = [
       amazon: 'https://music.amazon.com/albums/B08HPKJFXR',
       apple: 'https://music.apple.com/us/album/caught-up-let-me-in-tlm-mix-single/1530814200',
     },
-  },
+  }
 ];
 
 /**

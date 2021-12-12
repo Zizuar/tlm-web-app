@@ -1,0 +1,9 @@
+.card-container {
+  max-width: 265px;
+}
+
+@media (min-width: 536px) {
+  .countdown-card.card-body {
+    min-height: 290px;
+  }
+}
