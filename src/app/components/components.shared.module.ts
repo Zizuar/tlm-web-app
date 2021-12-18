@@ -8,6 +8,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {SafeUrlPipe} from '../pipes/safe-url.pipe';
 import {UnescapePipe} from '../pipes/unescape.pipe';
 import {RouterModule} from '@angular/router';
+import {BioComponent} from './bio/bio.component';
+import {CallToActionComponent} from './call-to-action/call-to-action.component';
 
 
 
@@ -16,6 +18,8 @@ import {RouterModule} from '@angular/router';
     HeaderComponent,
     FooterComponent,
     ContactsComponent,
+    BioComponent,
+    CallToActionComponent,
     SafeUrlPipe,
     UnescapePipe,
   ],
@@ -29,6 +33,8 @@ import {RouterModule} from '@angular/router';
     HeaderComponent,
     FooterComponent,
     ContactsComponent,
+    BioComponent,
+    CallToActionComponent,
     SafeUrlPipe,
     UnescapePipe,
   ]

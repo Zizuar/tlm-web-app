@@ -1,0 +1,26 @@
+fa-icon {
+  color: #156016;
+}
+
+fa-icon:hover {
+  color: #157d17;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.card-body {
+  height: 230px;
+  overflow-y: auto;
+}
+@media (min-width: 992px) {
+  .card-body {
+    height: 300px;
+  }
+}
+@media (min-width: 1200px) {
+  .card-body {
+    height: 365px;
+  }
+}

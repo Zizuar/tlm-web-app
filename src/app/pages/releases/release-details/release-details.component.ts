@@ -12,7 +12,9 @@ export class ReleaseDetailsComponent implements OnDestroy {
   release: Release = this.activatedRoute.snapshot.data['release'];
   paramsSub: Subscription = new Subscription();
 
-  constructor(private readonly activatedRoute: ActivatedRoute) {
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    ) {
     this.paramsSub = this.activatedRoute.data.subscribe(data => {
       this.release = data['release'];
     });

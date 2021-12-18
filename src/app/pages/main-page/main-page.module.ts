@@ -5,8 +5,6 @@ import { MainPageRoutingModule } from './main-page.routing';
 import { EventsComponent } from './events/events.component';
 import { TwitchComponent } from './twitch/twitch.component';
 import { YoutubeComponent } from './youtube/youtube.component';
-import { BioComponent } from './bio/bio.component';
-import { CallToActionComponent } from './call-to-action/call-to-action.component';
 import { SharedComponentsModule } from '../../components/components.shared.module';
 import { MastheadComponent } from './masthead/masthead.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -23,8 +21,6 @@ import { CountdownComponent } from './masthead/countdown/countdown.component';
     EventItemComponent,
     TwitchComponent,
     YoutubeComponent,
-    BioComponent,
-    CallToActionComponent,
     MastheadComponent,
     UpcomingReleasesComponent,
     CountdownComponent,
@@ -36,6 +32,8 @@ import { CountdownComponent } from './masthead/countdown/countdown.component';
     FontAwesomeModule,
     NgbModule,
     LatestReleasesModule,
+  ],
+  exports: [
   ],
 })
 export class MainPageModule { }

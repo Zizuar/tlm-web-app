@@ -1,7 +1,7 @@
 import {AfterContentInit, Component, OnDestroy} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
 import {Release, ReleasesService} from '../../services/releases.service';
 
@@ -21,10 +21,13 @@ export class MainPageComponent implements AfterContentInit, OnDestroy {
   releases: Release[] = [];
   today: Date = new Date();
 
+  fragmentOnInit: string | null;
+
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly viewportScroller: ViewportScroller,
     private readonly releasesService: ReleasesService,
+    private readonly router: Router,
   ) {
     // get upcoming-releases from observable
     this.sub = this.allReleases$.pipe(
@@ -52,15 +55,17 @@ export class MainPageComponent implements AfterContentInit, OnDestroy {
         this.releases = releaseArray.filter(release => release.releaseDate < this.today);
       }),
     ).subscribe();
+    const navigation = this.router.getCurrentNavigation();
+    const navigationExtrasState = navigation && navigation.extras && navigation.extras.state ? navigation.extras.state : null;
+    this.fragmentOnInit = navigationExtrasState ? navigationExtrasState['scrollToFragment'] : null;
   }
 
   ngAfterContentInit() {
-    this.sub = this.activatedRoute.fragment.subscribe(fragment => {
-      if (fragment) {
-        this.viewportScroller.scrollToAnchor(fragment);
+    setTimeout(() => {
+      if (this.fragmentOnInit) {
+        this.viewportScroller.scrollToAnchor(this.fragmentOnInit);
       }
-    });
-
+    }, 500);
   }
 
   ngOnDestroy() {

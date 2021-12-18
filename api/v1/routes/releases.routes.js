@@ -48,6 +48,7 @@ const releases = [
     imageName: 'struck-ep',
     text: {
       header: 'Struck (the EP)',
+      subheader: 'A fully produced version of the hit song Struck and two additional, previously unreleased tracks'
     },
     links: {
       spotify: '',
@@ -64,7 +65,8 @@ const releases = [
       {
         title: 'To Their Knees'
       }
-    ]
+    ],
+    onPressPage: true,
   },
   {
     id: 'hit-me-like-a-dream',
@@ -74,7 +76,7 @@ const releases = [
     imageName: 'hitmelikeadream',
     text: {
       'header': 'Hit Me Like A Dream',
-      'subheader': 'A revamped, fully produced re-release of the hit song Hit Me Like A Dream',
+      'subheader': 'A revamped, fully produced re-release of the hit song Hit Me Like A Dream - a collaboration with Roger Dean Miller Jr',
       'text': 'On streaming services now!',
     },
     links: {
@@ -82,6 +84,7 @@ const releases = [
       'amazon': 'https://music.amazon.com/albums/B0961KTCCQ',
       'apple': 'https://music.apple.com/us/album/hit-me-like-a-dream/1569700075',
     },
+    onPressPage: true,
   },
   {
     id: 'lets-begin',
@@ -99,6 +102,7 @@ const releases = [
       amazon: 'https://music.amazon.com/albums/B09KJ4LGVB',
       apple: 'https://music.apple.com/us/album/lets-begin-single/1592343531',
     },
+    onPressPage: true,
   },
   {
     id: 'through-the-valley',
@@ -222,6 +226,7 @@ const releases = [
         youtubeLink: 'https://www.youtube.com/watch?v=0DaeeDuULOY',
       },
     ],
+    onPressPage: true,
   },
   {
     title: 'Caught Up (Let Me In) feat. Joliet4',

@@ -1,0 +1,28 @@
+<section class="page-section mt-0" id="press-photos">
+  <div class="container">
+    <h2 class="mt-0 text-center">Press releases</h2>
+    <hr class="divider my-4">
+    <div class="container">
+      <div class="container list-group">
+        <a *ngFor="let pressRelease of pressReleases | async"
+           class="list-group-item list-group-item-action"
+           routerLink="/press/press-releases/{{pressRelease.songId}}"
+           data-toggle="modal"
+           data-target="#hit-me-like-a-dream-press-release">
+          <div class="d-flex flex-column flex-sm-row w-100 justify-content-between mb-2">
+            <h5 class="mb-1">{{pressRelease.text.header}}</h5>
+            <small>Release after: {{ moment(pressRelease.releaseAfter).format('MMMM Do YYYY') }}</small>
+          </div>
+          <small class="mb-1">{{ pressRelease.text.subheader }}</small>
+          <p>
+            <small>
+              {{ pressRelease.dateStamp.place.toLocaleUpperCase() }},
+              {{ pressRelease.dateStamp.date.toLocaleUpperCase() }}
+            </small>
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <hr class="divider my-4">
+</section>

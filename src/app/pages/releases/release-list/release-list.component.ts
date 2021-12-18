@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Release} from '../../../services/releases.service';
 import {ActivatedRoute} from '@angular/router';
 
@@ -10,7 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 export class ReleaseListComponent {
   releases: Release[] = this.activatedRoute.snapshot.data['releases'];
   constructor(
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) { }
 
 }

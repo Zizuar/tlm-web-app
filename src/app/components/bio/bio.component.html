@@ -1,5 +1,5 @@
-<section class="page-section bg-primary" id="about">
-  <div class="container">
+<section class="page-section bg-primary pb-0 mb-4" id="about">
+  <div class="container mb-5">
     <div class="row justify-content-center">
       <div class="col-lg-8 text-center">
         <h2 class="text-white mt-0">Bio</h2>
@@ -17,8 +17,9 @@
         <p class="text-white-75 mb-4">Tyler became a full-time musician in February of 2019 and
           became a Twitch Partner in June of 2020. Tyler continues to push for improvement in
           his musical capabilities as well as his experience as a human being.</p>
-        <a class="btn btn-light btn-xl js-scroll-trigger">Contact Tyler</a>
+        <a class="btn btn-light btn-xl" (click)="scrollToContacts()">Contact Tyler</a>
       </div>
     </div>
   </div>
+  <app-call-to-action></app-call-to-action>
 </section>

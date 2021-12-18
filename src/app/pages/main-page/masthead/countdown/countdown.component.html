@@ -1,5 +1,4 @@
-<div class="col text-white row mt-3 d-flex justify-content-around countdown" routerLink="/"
-     fragment="upcoming-releases">
+<div class="col text-white row mt-3 d-flex justify-content-around countdown" (click)="scrollToFragment('upcoming-releases')">
   <div class="col-6 col-md-3 mb-3">
     <div class="days">{{ daysToReleaseDate }}</div>
     <div class="countdown-label">Days</div>
@@ -16,5 +15,5 @@
     <div class="seconds">{{ secondsToReleaseDate }}</div>
     <div class="countdown-label">Seconds</div>
   </div>
-  <a class="d-none js-scroll-trigger" href="/#countdowns" id="countdown-href"></a>
+  <a class="d-none js-scroll-trigger" (click)="scrollToFragment('upcoming-releases')" id="countdown-href"></a>
 </div>
