@@ -37,8 +37,8 @@ const pressReleases = [
  * @swagger
  * /api/v1/press-releases:
  *  get:
- *    description: Get all Release
- *    tags: [Releases]
+ *    description: Get all Press Releases
+ *    tags: [Press Releases]
  *    produces: application/json
  *    responses:
  *      200:

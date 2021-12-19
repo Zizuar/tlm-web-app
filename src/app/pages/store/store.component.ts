@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {CartItem, MerchStoreService} from '../../services/merch-store.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-store',
@@ -6,7 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent {
+  cart$: Observable<CartItem[]> = this.merchStoreService.getCart();
 
-  constructor() { }
+  constructor(
+    private readonly merchStoreService: MerchStoreService
+  ) { }
 
 }
