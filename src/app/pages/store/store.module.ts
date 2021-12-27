@@ -10,6 +10,12 @@ import { ProductsListItemComponent } from './products-list/products-list-item/pr
 import { CartDisplayComponent } from './cart-display/cart-display.component';
 import { AddToCartModalComponent } from './products-list/add-to-cart-modal/add-to-cart-modal.component';
 import {FormsModule} from '@angular/forms';
+import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
+import { OrderErrorComponent } from './order-error/order-error.component';
+import {NgbPopoverModule} from '@ng-bootstrap/ng-bootstrap';
+import {RouterModule} from '@angular/router';
 
 
 
@@ -21,13 +27,20 @@ import {FormsModule} from '@angular/forms';
     MerchPromoComponent,
     ProductsListItemComponent,
     CartDisplayComponent,
-    AddToCartModalComponent
+    AddToCartModalComponent,
+    OrderConfirmationComponent,
+    OrderSuccessComponent,
+    OrderErrorComponent,
   ],
   imports: [
     CommonModule,
     SharedComponentsModule,
     FontAwesomeModule,
     FormsModule,
-  ]
+    RecaptchaModule,
+    RecaptchaFormsModule,
+    NgbPopoverModule,
+    RouterModule,
+  ],
 })
 export class StoreModule { }

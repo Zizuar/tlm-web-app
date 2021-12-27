@@ -31,7 +31,6 @@ import { AdminModule } from './pages/admin/admin.module';
     AdminModule,
   ],
   providers: [],
-  exports: [],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -11,6 +11,9 @@ const PORT = process.env.TLM_PORT || 3000;
 // App
 const app = express();
 
+// Load DotEnv config
+require('dotenv').config();
+
 app.use(logger(':method :url :status :res[content-length] - :response-time ms --- :date[web]'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));

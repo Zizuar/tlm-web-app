@@ -10,6 +10,8 @@ import {UnescapePipe} from '../pipes/unescape.pipe';
 import {RouterModule} from '@angular/router';
 import {BioComponent} from './bio/bio.component';
 import {CallToActionComponent} from './call-to-action/call-to-action.component';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
+import {CountryCodeToNamePipe} from '../pipes/country-code-to-name.pipe';
 
 
 
@@ -22,6 +24,8 @@ import {CallToActionComponent} from './call-to-action/call-to-action.component';
     CallToActionComponent,
     SafeUrlPipe,
     UnescapePipe,
+    LoadingScreenComponent,
+    CountryCodeToNamePipe,
   ],
   imports: [
     CommonModule,
@@ -37,6 +41,8 @@ import {CallToActionComponent} from './call-to-action/call-to-action.component';
     CallToActionComponent,
     SafeUrlPipe,
     UnescapePipe,
-  ]
+    LoadingScreenComponent,
+    CountryCodeToNamePipe,
+  ],
 })
 export class SharedComponentsModule { }
