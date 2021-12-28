@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <h4 class="modal-title">Customize product</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span class="sr-only">Close</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Would you like to customize your {{product.name}}?</p>
+  <div class="form-check mb-2">
+    <input class="form-check-input" id="signatureRequestedCheck" [(ngModel)]="signatureRequested.requested"
+           type="checkbox">
+    <label class="form-check-label" for="signatureRequestedCheck">Would you like it signed?</label>
+  </div>
+  <div class="form-floating mb-2" *ngIf="signatureRequested.requested">
+    <input class="form-control" id="signatureRequestedName" [(ngModel)]="signatureRequested.toWhom" type="text">
+    <label for="signatureRequestedName">Requested name</label>
+  </div>
+</div>
+<div class="modal-footer d-flex justify-content-between">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Close click')">Cancel</button>
+  <button type="button"
+          class="btn btn-success"
+          (click)="handleAddToCart()">Add to cart
+  </button>
+</div>

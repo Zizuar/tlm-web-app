@@ -1,0 +1,61 @@
+
+
+#merch-img {
+  max-width: 90%;
+}
+
+#sig-name-div {
+  display: none;
+}
+
+#content-container {
+  padding-bottom: 95px;
+}
+
+/* xs */
+.cd-number {
+  font-size: 2.5rem;
+}
+
+#cover-img {
+  width: 45%;
+  height: auto;
+}
+
+#order-cover-img {
+  width: 75%;
+  height: auto;
+}
+
+#order-masthead-section {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* sm */
+@media (min-width: 768px) {
+  #cover-img {
+    width: 40%;
+  }
+  #order-cover-img {
+    width: 45%;
+  }
+}
+/* md */
+@media (min-width: 992px) {
+  #cover-img {
+    width: 35%;
+  }
+  #order-cover-img {
+    width: 35%;
+  }
+}
+/* lg */
+@media (min-width: 1200px) {
+  #cover-img {
+    width: 35%;
+  }
+  #order-cover-img {
+    width: 35%;
+  }
+}

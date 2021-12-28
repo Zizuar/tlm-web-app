@@ -1,0 +1,72 @@
+<!-- Navigation-->
+<nav [ngClass]="{'navbar-scrolled': scrolled}" class="{{pageType}} navbar navbar-expand-lg navbar-light fixed-top py-1" id="mainNav">
+  <div class="container d-none d-lg-flex justify-content-center align-items-center">
+    <ul class="navbar-nav d-flex justify-content-center align-items-center">
+      <li ngbDropdown class="nav-item" *ngIf="pageType !== 'press'">
+        <a class="nav-link" id="musicDropdown" ngbDropdownToggle>Music</a>
+        <div ngbDropdownMenu aria-labelledby="musicDropdown">
+          <a ngbDropdownItem routerLink="/" fragment="upcoming-releases" (click)="handleFragmentLink('upcoming-releases')">Upcoming releases</a>
+          <a ngbDropdownItem routerLink="/releases">Latest releases</a>
+          <a ngbDropdownItem routerLink="/releases/songs/hit-me-like-a-dream">Hit Me Like A Dream (single)</a>
+          <a ngbDropdownItem routerLink="/releases/songs/lets-begin">Let's Begin (feat. Joliet4)</a>
+          <a ngbDropdownItem routerLink="/releases/songs/through-the-valley">Through the Valley (Shawn James cover)</a>
+          <a ngbDropdownItem routerLink="/releases/collections/2021">2021 singles</a>
+          <a ngbDropdownItem routerLink="/releases/albums/songs-for-being-alone">Songs For Being Alone (album)</a>
+        </div>
+      </li>
+      <li class="nav-item" *ngIf="pageType !== 'press'">
+      <a class="nav-link" (click)="handleFragmentLink('twitch')">Twitch</a>
+      </li>
+      <li class="nav-item" *ngIf="pageType !== 'press'">
+      <a class="nav-link" (click)="handleFragmentLink('youtube')">Youtube</a>
+      </li>
+      <li class="nav-item d-none d-sm-block" *ngIf="pageType === 'press'">
+        <a class="nav-link press-header" routerLink="/">Tyler</a>
+      </li>
+      <li class="nav-item d-flex justify-content-center cursor-pointer">
+        <a class="navbar-brand m-0" (click)="handleFragmentLink('page-top')">
+          <img [ngClass]="{'guitar-logo': scrolled, 'guitar-logo-white': !scrolled}" src="assets/svg/guitar-logo.svg" alt="Tyler Levs Music logo">
+        </a>
+      </li>
+      <li class="nav-item d-none d-sm-block" *ngIf="pageType === 'press'">
+        <a class="nav-link press-header" routerLink="/">Levs</a>
+      </li>
+      <li class="nav-item" *ngIf="pageType !== 'press'">
+        <a class="nav-link" (click)="handleFragmentLink('about')">Bio</a>
+      </li>
+      <li class="nav-item" *ngIf="pageType !== 'press'">
+        <a class="nav-link" (click)="handleFragmentLink('contact')">Contact</a>
+      </li>
+      <li ngbDropdown class="nav-item" *ngIf="pageType !== 'press'">
+        <a class="nav-link" id="merchDropdown" ngbDropdownToggle>Merch</a>
+        <div ngbDropdownMenu aria-labelledby="merchDropdown">
+          <a ngbDropdownItem routerLink="/store">Order signed CDs</a>
+          <a ngbDropdownItem href="https://tylerlevsmusic.creator-spring.com/" target="_blank">Merch store (external)</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="container d-block d-lg-none">
+        <div class="container-fluid d-flex justify-content-between">
+          <a class="navbar-brand" routerLink="/" fragment="page-top">TylerLevsMusic</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto my-2 my-lg-0" *ngIf="pageType !== 'press'">
+            <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('upcoming-releases')">Upcoming releases</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/releases">Latest Releases</a></li>
+            <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('twitch')">Twitch</a></li>
+            <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('youtube')">Youtube</a></li>
+            <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('about')">Bio</a></li>
+            <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('contact')">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/store">Order a signed SFBA CD</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://tylerlevsmusic.creator-spring.com/" target="_blank">Merch Store (external)</a></li>
+          </ul>
+          <ul class="navbar-nav ml-auto my-2 my-lg-0" *ngIf="pageType === 'press'">
+            <li class="nav-item"><a class="nav-link" routerLink="/">To main page</a></li>
+          </ul>
+        </div>
+      </div>
+</nav>

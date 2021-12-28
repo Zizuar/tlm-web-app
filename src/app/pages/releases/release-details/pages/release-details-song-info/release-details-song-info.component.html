@@ -1,0 +1,4 @@
+<h2 class="text-center mt-5" *ngIf="release.text.text" [innerHTML]="release.text.text | unescape"></h2>
+<app-release-details-streaming-icons [links]="release.links"></app-release-details-streaming-icons>
+<app-release-details-merch-info *ngIf="release.merchEnabled"></app-release-details-merch-info>
+<app-release-details-order-info *ngIf="release.orderEnabled"></app-release-details-order-info>

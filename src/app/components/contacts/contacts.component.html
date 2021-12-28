@@ -1,0 +1,21 @@
+<section class="page-section" id="contact">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="mt-0">Let's Get In Touch!</h2>
+        <hr class="divider my-4">
+        <p class="text-muted mb-5">For personal and business inquiries, or collaboration ideas send an email or write a
+          message on Discord</p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-4 ml-auto text-center mb-4" *ngFor="let contactMethod of contactMethods | async">
+        <fa-icon [icon]="contactMethod.icon" size="3x"></fa-icon>
+        <span class="sr-only">{{ contactMethod.name }}</span>
+        <div *ngIf="!contactMethod.url">{{ contactMethod.username }}</div>
+        <a *ngIf="contactMethod.url" class="d-block" href="{{ contactMethod.url }}" target="_blank">
+          {{ contactMethod.username }}</a>
+      </div>
+    </div>
+  </div>
+</section>

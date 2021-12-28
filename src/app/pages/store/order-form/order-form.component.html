@@ -1,0 +1,120 @@
+<div class="container">
+  <h5 class="text-center my-4">Enter your shipping details</h5>
+  <form (ngSubmit)="orderForm.form.valid && submitOrder()" #orderForm="ngForm"
+        class="d-flex justify-content-center flex-wrap">
+    <div class="col-12 col-md-9 form-floating mb-3">
+      <input type="email" class="form-control" name="email" id="email" placeholder="john@doe.com"
+             [(ngModel)]="formData.email" #email="ngModel"
+             [ngClass]="{ 'is-invalid': (orderForm.submitted || email.dirty) && email.invalid, 'is-valid': email.dirty && email.valid }"
+             required email>
+      <label for="email">Email address</label>
+      <small id="emailHelp" class="form-text text-muted">I'll send the PayPal invoice here manually - and for contact if
+        there's anything to confirm. You will receive the invoice later, probably in a couple days.</small>
+    </div>
+    <div class="col-12 col-md-9 form-floating mb-3">
+      <input type="text" class="form-control" name="name" id="mail_name" placeholder="John Doe"
+             [(ngModel)]="formData.name" #name="ngModel"
+             [ngClass]="{ 'is-invalid': (orderForm.submitted || name.dirty) && name.invalid, 'is-valid': name.dirty && name.valid }"
+             required>
+      <label for="mail_name">Name to put on the invoice and package</label>
+      <small id="nameHelp" class="form-text text-muted">I'll put this name and the address you enter below both on the
+        invoice and the package.</small>
+    </div>
+    <div class="col-12 col-md-9 form-floating mb-3">
+      <input type="text" class="form-control" name="street1" id="street1"
+             placeholder="Street address, P.O. box, company name, c/o" [(ngModel)]="formData.street1" #street1="ngModel"
+             [ngClass]="{ 'is-invalid': (orderForm.submitted || street1.dirty) && street1.invalid, 'is-valid': street1.dirty && street1.valid }"
+             required>
+      <label for="street1">Street Address 1</label>
+      <small id="street1Help" class="form-text text-muted">Street address, P.O. box, company name, c/o</small>
+    </div>
+    <div class="col-12 col-md-9 form-floating mb-3">
+      <input type="text" class="form-control" name="street2" id="street2"
+             placeholder="Street address, P.O. box, company name, c/o" [(ngModel)]="formData.street2">
+      <label for="street2">Street Address 2 (optional)</label>
+      <small id="street2Help" class="form-text text-muted">Apartment, suite, unit, building, floor, etc.</small>
+    </div>
+    <div class="col-12 col-md-9 row g-1 mb-3">
+      <div class="col-12 col-md-6">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" name="city" id="city" placeholder="City, province, county, etc."
+                 [(ngModel)]="formData.city" #city="ngModel"
+                 [ngClass]="{ 'is-invalid': (orderForm.submitted || city.dirty) && city.invalid, 'is-valid': city.dirty && city.valid }"
+                 required>
+          <label for="city">City</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" name="zip" id="zip" placeholder="#####" [(ngModel)]="formData.zip"
+                 #zip="ngModel"
+                 [ngClass]="{ 'is-invalid': (orderForm.submitted || zip.dirty) && zip.invalid, 'is-valid': zip.dirty && zip.valid }"
+                 required>
+          <label for="zip">Zip/postal code</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-9 row g-1 mb-3">
+      <div class="col-12 col-md-6">
+        <div class="form-floating mb-3">
+          <select id="state" name="state" class="form-select"
+                  [disabled]="!formData.country || formData.country !== 'US'" [(ngModel)]="formData.state"
+                  #state="ngModel"
+                  [ngClass]="{ 'is-invalid': (orderForm.submitted || state.dirty) && state.invalid, 'is-valid': state.dirty && state.valid }"
+                  required>
+            <option value="" disabled selected>Select a State</option>
+            <option *ngFor="let state of states" [value]="state.code">{{state.name}}</option>
+          </select>
+          <label for="state">State</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="form-floating mb-3">
+          <select id="country" name="country" class="form-select" [(ngModel)]="formData.country" #country="ngModel"
+                  [ngClass]="{ 'is-invalid': (orderForm.submitted || country.dirty) && country.invalid, 'is-valid': country.dirty && country.valid }"
+                  required>
+            <option value="" disabled selected>Select a country</option>
+            <option *ngFor="let country of countries" [value]="country.code">{{country.name}}</option>
+          </select>
+          <label for="country">Country</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-9 form-floating mb-3">
+      <input type="textarea" class="form-control" name="other" id="other"
+             placeholder="Street address, P.O. box, company name, c/o" [(ngModel)]="formData.other">
+      <label for="other">Any other special requests? (optional)</label>
+    </div>
+    <div class="col-12 col-md-9 mb-3">
+      <div class="form-check">
+        <input class="form-check-input" name="termsCheck" type="checkbox" id="termsCheck"
+               [(ngModel)]="formData.termsCheck" #termsCheck="ngModel"
+               [ngClass]="{ 'is-invalid': orderForm.submitted && termsCheck.invalid, 'is-valid': termsCheck.dirty && termsCheck.valid }"
+               required>
+        <label class="form-check-label" for="termsCheck">
+          I accept the following conditions:
+          <br>The CDs will be sent via USPS regular (First Class) mail. The shipping price includes the packaging and
+          regular mail. If you'd like to use a premium shipping service, it can be arranged, but the shipping will be
+          much more expensive. For international orders, the delivery might take up to 30-45 days. You may also be
+          required to pay for customs duties and fees. As the items will be personalized (signed), returns are not
+          possible. Payment only via PayPal, you will receive an invoice to the email address you provided in a couple
+          days.
+        </label>
+      </div>
+      <div class="form-check mt-3">
+        <input class="form-check-input" name="privacyCheck" type="checkbox" id="privacyCheck"
+               [(ngModel)]="formData.privacyCheck" #privacyCheck="ngModel"
+               [ngClass]="{ 'is-invalid': orderForm.submitted && privacyCheck.invalid, 'is-valid': privacyCheck.dirty && privacyCheck.valid }"
+               required>
+        <label class="form-check-label" for="privacyCheck">
+          I understand that my email address, name and mailing address will be stored for the purpose and duration
+          of the order fulfillment. The personal data will not be stored and used for any other purposes.
+        </label>
+      </div>
+    </div>
+    <div class="col-12 col-md-9 mb-3 d-flex justify-content-between align-items-center">
+      <button class="btn btn-outline-dark btn" type="button" (click)="goBack()">Go back</button>
+      <button class="btn btn-primary btn-xl" type="submit">Continue</button>
+    </div>
+  </form>
+</div>

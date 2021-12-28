@@ -1,0 +1,18 @@
+<app-header pageType="store"></app-header>
+<section class="page-section mt-4">
+  <h1 class="text-center">Store</h1>
+  <hr class="divider my-4">
+  <app-loading-screen *ngIf="loading"></app-loading-screen>
+  <app-products-list *ngIf="storeState === StoreState.Main"></app-products-list>
+  <app-cart-display *ngIf="storeState === StoreState.Main || storeState === StoreState.Confirm"
+                    [cart]="cart$ | async" [storeState]="storeState" [country]="formData['country']"
+                    (enterDetailsButtonClick)="proceedToForm()"></app-cart-display>
+  <app-order-form *ngIf="storeState === StoreState.Form" [cart]="cart$ | async" [formData]="formData"
+                  (orderFormSubmitted)="proceedToConfirm($event)" (backButtonClick)="backToMain()"></app-order-form>
+  <app-order-confirmation *ngIf="storeState === StoreState.Confirm" [formData]="formData"
+                          (backButtonClicked)="proceedToForm()"
+                          (orderSubmitted)="submitOrder()"></app-order-confirmation>
+  <app-order-success *ngIf="storeState === StoreState.Success"></app-order-success>
+  <app-order-error *ngIf="storeState === StoreState.Error"></app-order-error>
+  <app-merch-promo></app-merch-promo>
+</section>

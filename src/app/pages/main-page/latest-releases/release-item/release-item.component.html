@@ -1,0 +1,29 @@
+<div class="card text-center mb-3 shadow">
+  <div class="row no-gutters">
+    <div class="col-md-4 d-flex align-items-center">
+      <picture class="card-img">
+        <source srcset="assets/img/{{release.imageName}}-cover.webp" type="image/webp">
+        <source srcset="assets/img/{{release.imageName}}-cover.png" type="image/png">
+        <img
+          id="cover-img"
+          src="assets/img/{{release.imageName}}-cover.jpg"
+          alt="{{release.title}} Cover Art"
+          class="img-fluid rounded">
+      </picture>
+    </div>
+    <div *ngIf="isReleased" class="col-md-8 d-flex align-items-center">
+      <div class="card-body">
+        <h5 class="card-title fw-bolder mb-3">
+          <a href="/releases/{{release.category}}/{{release.id}}">{{release.text.header}}</a>
+        </h5>
+        <p *ngIf="release.text.subheader" class="card-text" [innerHTML]="release.text.subheader | unescape"></p>
+        <p *ngIf="release.text.text" class="card-text mb-3" [innerHTML]="release.text.text | unescape"></p>
+        <app-release-item-links *ngIf="release.links"
+                                [links]="release.links"></app-release-item-links>
+        <app-release-item-links-list *ngIf="release.linksArray"
+                                     [linksArray]="release.linksArray"></app-release-item-links-list>
+        <p *ngIf="release.orderEnabled" class="card-text mt-5"><a routerLink="/order">Get your signed Tyler Levs CDs here!</a></p>
+      </div>
+    </div>
+  </div>
+</div>

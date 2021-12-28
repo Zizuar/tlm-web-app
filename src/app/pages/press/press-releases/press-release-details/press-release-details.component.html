@@ -1,0 +1,50 @@
+<app-header pageType="press"></app-header>
+  <section class="page-section" id="content-container">
+    <div class="container">
+      <a routerLink="/press">
+        <fa-icon [icon]="faChevronLeft"></fa-icon>
+        Back to Press page
+      </a>
+    </div>
+    <div class="container">
+      <h3 class="text-center py-5">{{pressRelease.text.header}}</h3>
+      <div class="d-flex justify-content-between pb-5">
+        <small>{{pressRelease.dateStamp.place.toLocaleUpperCase()}}, {{pressRelease.dateStamp.date.toLocaleUpperCase()}}</small>
+        <small>Release after: {{moment(pressRelease.releaseAfter).format('MMMM Do YYYY')}}</small>
+      </div>
+      <p>{{pressRelease.text.subheader}}</p>
+      <div class="row mb-4">
+        <div class="col-12 col-md-6">
+          <picture class="card-img">
+            <source srcset="assets/img/{{pressRelease.imgName}}-cover.webp" type="image/webp">
+            <source srcset="assets/img/{{pressRelease.imgName}}-cover.png" type="image/png">
+            <img
+              id="cover-img"
+              src="assets/img/{{pressRelease.imgName}}-cover.jpg"
+              alt="{{pressRelease.text.header}} Cover Art"
+              class="img-fluid rounded">
+          </picture>
+        </div>
+        <div class="col-12 col-md-6 mt-2 mt-md-0">
+          <picture class="card-img">
+            <source srcset="assets/press/press1.webp" type="image/webp">
+            <source srcset="assets/press/press1.png" type="image/png">
+            <img
+              src="assets/press/press1.png"
+              alt="Press image showing Tyler sitting on pavement"
+              class="img-fluid rounded">
+          </picture>
+        </div>
+        <div *ngIf="pressRelease.links" class="py-5">
+          <p class="card-text text-center pb-2">
+            <a class="btn btn-sm btn-primary me-md-5 mb-3 mb-md-0" href="{{pressRelease.links.spotify}}" target="_blank">Spotify</a><br class="d-md-none">
+            <a class="btn btn-sm btn-primary me-md-5 mb-3 mb-md-0" href="{{pressRelease.links.amazon}}" target="_blank">Amazon Music</a><br class="d-md-none">
+            <a class="btn btn-sm btn-primary" href="{{pressRelease.links.apple}}" target="_blank">Apple Music</a>
+          </p>
+          <p class="text-center">For download links, please contact Tyler by email: <a href="mailto:tylerlevsmusic@gmail.com">tylerlevsmusic@gmail.com</a></p>
+        </div>
+        <p *ngFor="let paragraph of pressRelease.text.paragraphs" [innerHTML]="paragraph | unescape"></p>
+      </div>
+    </div>
+  </section>
+<app-footer></app-footer>

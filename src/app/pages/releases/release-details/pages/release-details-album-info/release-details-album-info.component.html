@@ -1,0 +1,3 @@
+<app-release-details-order-info *ngIf="release.orderEnabled"></app-release-details-order-info>
+<app-release-details-merch-info *ngIf="release.merchEnabled"></app-release-details-merch-info>
+<app-album-tracklist *ngIf="release.tracklist" [tracklist]="release.tracklist"></app-album-tracklist>

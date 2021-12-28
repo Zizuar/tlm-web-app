@@ -1,0 +1,12 @@
+<section id="tracklist">
+  <div class="mt-5 mb-5">
+    <h2 class="font-weight-bold text-center">Tracklist</h2>
+    <div *ngFor="let track of tracklist; let i = index">
+      <h5 class="text-center">
+        {{i + 1}}.
+        <span *ngIf="track.youtubeLink"><a href="{{track.youtubeLink}}" target="_blank" rel="noopener noreferrer">{{track.title}}</a></span>
+        <span *ngIf="!track.youtubeLink">{{track.title}}</span>
+      </h5>
+    </div>
+  </div>
+</section>

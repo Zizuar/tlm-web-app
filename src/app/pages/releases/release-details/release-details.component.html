@@ -1,0 +1,12 @@
+<app-header></app-header>
+<section class="page-section">
+  <div class="container mt-lg-4">
+    <h1 class="text-center">{{ release.text.header }}</h1>
+    <hr class="divider my-4">
+    <h5 class="text-center" *ngIf="release.text.subheader" [innerHTML]="release.text.subheader | unescape"></h5>
+    <app-release-details-cover [release]="release"></app-release-details-cover>
+    <app-release-details-song-info *ngIf="release.category === 'songs'" [release]="release"></app-release-details-song-info>
+    <app-release-details-collections-info *ngIf="release.category === 'collections'" [release]="release"></app-release-details-collections-info>
+    <app-release-details-album-info *ngIf="release.category === 'albums'" [release]="release"></app-release-details-album-info>
+  </div>
+</section>
