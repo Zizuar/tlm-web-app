@@ -52,14 +52,14 @@ middlewareObj.validateOrder = async (req, res, next) => {
 
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    let errorMessage = 'Validation error: ';
+    const errors = [];
     result.errors.forEach((e) => {
-      errorMessage = errorMessage + e.msg;
+      errors.push(e)
     });
     return res.status(422).json({
       success: false,
       type: 'validation',
-      message: errorMessage,
+      errors: [...errors],
     });
   }
   next();

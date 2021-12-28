@@ -30,7 +30,7 @@ const swaggerDocs = swaggerJSDoc(swaggerOptions);
 router.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 router.use(require('./routes/releases.routes'));
-router.use(require('./routes/pressReleases.routes'));
+router.use(require('./routes/press-releases.routes'));
 router.use(require('./routes/events.routes'));
 router.use(require('./routes/orders.routes'));
 

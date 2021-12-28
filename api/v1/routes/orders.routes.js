@@ -1,6 +1,7 @@
 const express = require('express');
 const router = new express.Router();
 const middleware = require('../middleware/orders.middleware');
+const controller = require('../controllers/orders.controller');
 
 /**
  * @swagger
@@ -35,9 +36,10 @@ router.get('/orders', (req, res) => {
  *      400:
  *        description: Invalid request
  */
-router.post('/orders', middleware.captchaPassed, (req, res) => {
-  console.log('Saving new order...', req.body);
-  res.status(201).json({success: true});
-});
+router.post('/orders',
+  middleware.captchaPassed,
+  middleware.validateOrder,
+  controller.order_create_post
+);
 
 module.exports = router;

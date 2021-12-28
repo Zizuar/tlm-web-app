@@ -21,6 +21,7 @@ chrome-profiler-events*.json
 *.launch
 .settings/
 *.sublime-workspace
+.devcontainer
 
 # IDE - VSCode
 .vscode/*
@@ -47,3 +48,4 @@ Thumbs.db
 
 # Environment files
 .env
+/.devcontainer/
