@@ -20,7 +20,7 @@
                   <p *ngFor="let track of countdown.tracklist">{{track.title}}</p>
                 </div>
                 <a *ngIf="countdown.presaveLink" href="{{countdown.presaveLink}}" class="card-link my-2"
-                   target="_blank">
+                   target="_blank" rel="noopener noreferrer">
                   Presave on Spotify here!
                 </a>
               </div>

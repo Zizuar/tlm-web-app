@@ -13,7 +13,8 @@
         <fa-icon [icon]="contactMethod.icon" size="3x"></fa-icon>
         <span class="sr-only">{{ contactMethod.name }}</span>
         <div *ngIf="!contactMethod.url">{{ contactMethod.username }}</div>
-        <a *ngIf="contactMethod.url" class="d-block" href="{{ contactMethod.url }}" target="_blank">
+        <a *ngIf="contactMethod.url" class="d-block" href="{{ contactMethod.url }}" target="_blank"
+           rel="noopener noreferrer">
           {{ contactMethod.username }}</a>
       </div>
     </div>

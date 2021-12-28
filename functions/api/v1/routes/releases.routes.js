@@ -12,7 +12,7 @@ const releases = [
     id: 'worry-bout-that',
     title: 'Worry Bout That (In The Morning)',
     category: ReleaseCategories.Song,
-    releaseDate: new Date("2022-01-28"),
+    releaseDate: new Date('2022-01-28'),
     presaveLink: '/presave/worry-bout-that',
     imageName: 'struck-single',
     text: {
@@ -26,10 +26,10 @@ const releases = [
   },
   {
     id: 'struck',
-    title: "Struck",
+    title: 'Struck',
     category: ReleaseCategories.Song,
     releaseDate: new Date('2022-02-11'),
-    presaveLink: "/presave/struck",
+    presaveLink: '/presave/struck',
     imageName: 'struck-single',
     text: {
       header: 'Struck (single)',
@@ -41,14 +41,14 @@ const releases = [
     },
   },
   {
-    title: "Struck the EP",
+    title: 'Struck the EP',
     category: ReleaseCategories.Collection,
     releaseDate: new Date('2022-02-25'),
     presaveLink: '/presave/struck-ep',
     imageName: 'struck-ep',
     text: {
       header: 'Struck (the EP)',
-      subheader: 'A fully produced version of the hit song Struck and two additional, previously unreleased tracks'
+      subheader: 'A fully produced version of the hit song Struck and two additional, previously unreleased tracks',
     },
     links: {
       spotify: '',
@@ -57,14 +57,14 @@ const releases = [
     },
     tracklist: [
       {
-        title: 'Worry Bout That (In The Morning)'
+        title: 'Worry Bout That (In The Morning)',
       },
       {
-        title: 'Struck'
+        title: 'Struck',
       },
       {
-        title: 'To Their Knees'
-      }
+        title: 'To Their Knees',
+      },
     ],
     onPressPage: true,
   },
@@ -94,7 +94,7 @@ const releases = [
     imageName: 'lets_begin',
     text: {
       header: 'Let\'s Begin feat. Joliet4',
-      subheader: 'Another collaboration with the extremely talented <a href="https://twitch.tv/joliet4" target="_blank">Joliet4</a>!',
+      subheader: 'Another collaboration with the extremely talented <a href="https://twitch.tv/joliet4" target="_blank" rel="noopener noreferrer">Joliet4</a>!',
       text: 'Available now on all major streaming platforms!',
     },
     links: {
@@ -236,15 +236,15 @@ const releases = [
     releaseDate: new Date('2021-01-01'),
     text: {
       header: 'Caught Up (Let Me In) feat. Joliet4',
-      subheader: 'In collaboration with my friend, the incredibly talented Twitch streamer <a href="https://twitch.tv/joliet4" target="_blank">Joliet4</a>',
-      text: '<a href="https://www.youtube.com/watch?v=vsy0NwhPoBU" target="_blank">Lyric Video on Youtube</a>',
+      subheader: 'In collaboration with my friend, the incredibly talented Twitch streamer <a href="https://twitch.tv/joliet4" target="_blank" rel="noopener noreferrer">Joliet4</a>',
+      text: '<a href="https://www.youtube.com/watch?v=vsy0NwhPoBU" target="_blank" rel="noopener noreferrer">Lyric Video on Youtube</a>',
     },
     links: {
       spotify: 'https://open.spotify.com/album/3vmNRbZ7I3qzxizuy8fDdq',
       amazon: 'https://music.amazon.com/albums/B08HPKJFXR',
       apple: 'https://music.apple.com/us/album/caught-up-let-me-in-tlm-mix-single/1530814200',
     },
-  }
+  },
 ];
 
 /**

@@ -21,7 +21,7 @@ const pressReleases = [
       paragraphs: [
         'Tyler Levs is a multi-instrumental singer/songwriter that has been serious about his craft since 2017, practicing up to 40 hours a week on live streams. His hobby turned career has maintained the same goal: to connect with others and to improve his craft.',
         '<em>“I have been waiting for the perfect production opportunity to bring this song to its fullest potential. I’m so glad Dean reached out to me about recording it because the final result is exactly as I originally imagined it years ago.”</em> - <small>TYLER LEVS</small>',
-        'The track has been referred to as an “earworm” by various listeners on the <a href="https://twitch.tv/tylerlevsmusic" target="_blank">TylerLevsMusic Twitch Stream</a>; an online streaming service owned by Amazon.'
+        'The track has been referred to as an “earworm” by various listeners on the <a href="https://twitch.tv/tylerlevsmusic" target="_blank" rel="noopener noreferrer">TylerLevsMusic Twitch Stream</a>; an online streaming service owned by Amazon.'
       ]
     }
   }
