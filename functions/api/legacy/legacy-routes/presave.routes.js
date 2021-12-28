@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Presave redirects
 
-router.get('/presave/:title', (req, res) => {
+router.get('/:title', (req, res) => {
   if (req.params.title === 'hit-me-like-a-dream') {
     fetch('https://www.google-analytics.com/mp/collect?measurement_id='+process.env.TLM_G_MEASUREMENT_ID+'&api_secret='+process.env.TLM_G_API_SECRET, {
       method: "POST",

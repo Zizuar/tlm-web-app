@@ -1,3 +1,5 @@
+const functions = require("firebase-functions");
+
 'use strict';
 
 const createError = require('http-errors');
@@ -7,13 +9,10 @@ const logger = require('morgan');
 const path = require('path');
 
 // Constants
-const PORT = process.env.TLM_PORT || 3000;
+const PORT = 3000;
 
 // App
 const app = express();
-
-// Load DotEnv config
-require('dotenv').config();
 
 // DATABASE CONNECTION
 
@@ -32,22 +31,7 @@ app.use(express.urlencoded({extended: false}));
 
 // API routes
 const apiRouter = require('./api/v1/api');
-app.use('/api/v1', apiRouter);
-
-// legacy routes
-const presaveRouter = require('./api/legacy/legacy-routes/presave.routes');
-app.use(presaveRouter);
-const redirectRouter = require('./api/legacy/legacy-routes/redirect.routes');
-app.use(redirectRouter);
-
-// serve dist folder as static
-app.use(express.static(path.join(__dirname, '/dist/tlm-web-app/')));
-
-// CATCHALL ROUTES
-
-app.get('*', (req, res) => {
-  res.redirect('/');
-});
+app.use('/v1', apiRouter);
 
 app.post('*', function (req, res) {
   res.status(403).end();
@@ -71,4 +55,8 @@ app.use(function(err, req, res, next) {
 
 // Start server
 app.listen(PORT);
-console.log(`TLM Server running on port ${PORT}`);
+
+exports.api = functions.https.onRequest(app);
+
+const presave = require('./presave');
+exports.presave = presave.presave;
