@@ -68,6 +68,3 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
-
-    - name: Run ESLint
-      run: eslint --ignore-path .gitignore .
