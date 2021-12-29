@@ -1,6 +1,9 @@
 'use strict';
-const {check, validationResult} = require('express-validator'),
-  fetch = require('isomorphic-fetch');
+const {check, validationResult} = require('express-validator');
+const fetch = require('isomorphic-fetch');
+const functions = require('firebase-functions');
+
+const TLM_G_RECAPTCHA_SECRET = functions.config().config.recaptcha_secret;
 
 const middlewareObj = {};
 
@@ -16,7 +19,7 @@ middlewareObj.captchaPassed = function(req, res, next) {
     });
   }
   // process.env.TLM_RECAPTCHA_SECRET
-  const verificationURL = 'https://www.google.com/recaptcha/api/siteverify?secret=' + process.env.TLM_G_RECAPTCHA_SECRET + '&response=' + req.body['captcha'];
+  const verificationURL = 'https://www.google.com/recaptcha/api/siteverify?secret=' + TLM_G_RECAPTCHA_SECRET + '&response=' + req.body['captcha'];
   fetch(verificationURL, {method: 'post'})
     .then(response => response.json())
     .then(google_response => {

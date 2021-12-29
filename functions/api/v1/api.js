@@ -34,4 +34,8 @@ router.use(require('./routes/press-releases.routes'));
 router.use(require('./routes/events.routes'));
 router.use(require('./routes/orders.routes'));
 
+router.get('/', (req, res) => {
+  res.status(200).json({message: 'You found the TLM API!'});
+});
+
 module.exports = router;
