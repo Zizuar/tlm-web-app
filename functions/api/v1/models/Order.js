@@ -30,6 +30,8 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
     cart: [{productName: String, signatureName: String}],
+    shippingPrice: Number,
+    productsPrice: Number,
     otherRequests: String
 });
 
