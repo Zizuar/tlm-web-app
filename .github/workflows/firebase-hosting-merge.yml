@@ -6,11 +6,6 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - master
-env:
-  TLM_DB_URL: '${{secrets.TLM_DB_URL}}'
-  TLM_G_API_SECRET: '${{secrets.TLM_G_API_SECRET}}'
-  TLM_G_MEASUREMENT_ID: '${{secrets.TLM_G_MEASUREMENT_ID}}'
-  TLM_G_RECAPTCHA_SECRET: '${{secrets.TLM_G_RECAPTCHA_SECRET}}'
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -28,7 +23,7 @@ jobs:
         working-directory: ./functions
       - uses: w9jds/firebase-action@master
         with:
-          args: functions:config:set config.database_url='${{secrets.TLM_DB_URL}}' config.google_api_secret='${{secrets.TLM_G_API_SECRET}}' config.google_measurement_id='${{secrets.TLM_G_MEASUREMENT_ID}}' config.recaptcha_secret='${{secrets.TLM_G_RECAPTCHA_SECRET}}'
+          args: functions:config:set environment.production=${{secrets.PRODUCTION}} config.database_url_dev='${{secrets.TLM_DB_URL_DEV}}' config.database_url='${{secrets.TLM_DB_URL}}' config.google_api_secret='${{secrets.TLM_G_API_SECRET}}' config.google_measurement_id='${{secrets.TLM_G_MEASUREMENT_ID}}' config.recaptcha_secret='${{secrets.TLM_G_RECAPTCHA_SECRET}}'
         env:
           FIREBASE_TOKEN: '${{ secrets.FIREBASE_TOKEN }}'
       - uses: w9jds/firebase-action@master
