@@ -1,26 +1,93 @@
 import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
+import { InjectConnection, InjectModel } from '@nestjs/mongoose';
+import { Model, Connection } from 'mongoose';
+import { Order, OrderDocument } from './schemas/order.schema';
 
 @Injectable()
 export class OrdersService {
-  create(createOrderDto: CreateOrderDto) {
-    return 'This action adds a new order';
+  constructor(
+    @InjectModel(Order.name) private readonly orderModel: Model<OrderDocument>,
+    @InjectConnection() private readonly connection: Connection,
+  ) {}
+
+  async create(createOrderDto: CreateOrderDto): Promise<Order> {
+    const session = await this.connection.startSession();
+    session.startTransaction();
+    try {
+      const newOrder = new this.orderModel({
+        ...createOrderDto,
+        createdDate: Date.now(),
+        shippingPrice: this.calculateShipping(createOrderDto.country),
+        productsPrice: this.calculateProductsPrice(createOrderDto.cart),
+      });
+      await newOrder.save();
+      await session.commitTransaction();
+      console.log('New order added!');
+      return newOrder;
+    } catch (error) {
+      console.error(error);
+      await session.abortTransaction();
+      await session.endSession();
+      return Promise.reject(error.toString());
+    }
   }
 
-  findAll() {
-    return `This action returns all orders`;
+  async findAll(): Promise<Order[]> {
+    return await this.orderModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} order`;
+  async findOne(id: string): Promise<Order> {
+    return await this.orderModel.findById(id).exec();
   }
 
-  update(id: number, updateOrderDto: UpdateOrderDto) {
-    return `This action updates a #${id} order`;
+  async update(id: string, updateOrderDto: UpdateOrderDto): Promise<Order> {
+    return await this.orderModel
+      .findByIdAndUpdate(id, updateOrderDto, {
+        new: true,
+      })
+      .exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} order`;
+  async remove(id: string): Promise<any> {
+    return await this.orderModel.findByIdAndRemove(id).exec();
+  }
+
+  private calculateShipping(country) {
+    const domesticShippingCountries = [
+      'United States of America',
+      'American Samoa',
+      'Guam',
+      'Marshall Islands',
+      'Micronesia (Federated States of)',
+      'Northern Mariana Islands',
+      'Palau',
+      'Puerto Rico',
+      'United States Minor Outlying Islands',
+      'Virgin Islands (U.S.)',
+    ];
+    return country === 'Canada'
+      ? 10
+      : domesticShippingCountries.includes(country)
+      ? 7
+      : 15;
+  }
+
+  private calculateProductsPrice(cart) {
+    const discount =
+      cart.find(
+        (cartItem) => cartItem.productName === 'Songs for Being Alone CD',
+      ) &&
+      cart.find(
+        (cartItem) => cartItem.productName === 'Tyler Levs EP (2019) CD',
+      )
+        ? 500
+        : 0;
+    let productsPrice = 0;
+    cart.forEach((cartItem) => {
+      productsPrice += cartItem.price ? cartItem.price : 0;
+    });
+    return (productsPrice - discount) / 100;
   }
 }

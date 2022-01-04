@@ -1,19 +1,27 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePressReleaseDto } from './dto/create-press-release.dto';
 import { UpdatePressReleaseDto } from './dto/update-press-release.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { PressRelease } from './schemas/press-release.schema';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class PressReleasesService {
+  constructor(
+    @InjectModel(PressRelease.name)
+    private readonly pressReleaseModel: Model<PressRelease>,
+  ) {}
+
   create(createPressReleaseDto: CreatePressReleaseDto) {
     return 'This action adds a new pressRelease';
   }
 
-  findAll() {
-    return `This action returns all pressReleases`;
+  async findAll(): Promise<PressRelease[]> {
+    return await this.pressReleaseModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} pressRelease`;
+  async findOne(id: string): Promise<PressRelease> {
+    return await this.pressReleaseModel.findById(id).exec();
   }
 
   update(id: number, updatePressReleaseDto: UpdatePressReleaseDto) {

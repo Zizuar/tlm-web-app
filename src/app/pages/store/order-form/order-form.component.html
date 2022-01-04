@@ -13,7 +13,7 @@
     </div>
     <div class="col-12 col-md-9 form-floating mb-3">
       <input type="text" class="form-control" name="name" id="mail_name" placeholder="John Doe"
-             [(ngModel)]="formData.name" #name="ngModel"
+             [(ngModel)]="formData.mailName" #name="ngModel"
              [ngClass]="{ 'is-invalid': (orderForm.submitted || name.dirty) && name.invalid, 'is-valid': name.dirty && name.valid }"
              required>
       <label for="mail_name">Name to put on the invoice and package</label>

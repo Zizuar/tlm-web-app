@@ -37,7 +37,13 @@ export class PressReleaseService {
           ...release,
           releaseAfter: new Date(release.releaseAfter)
         }
-      }))
+      })),
+      // Sort by date
+      map(results => results.sort(this.sortByDate))
     );
+  }
+
+  private sortByDate(a: PressRelease, b: PressRelease): number {
+    return a.releaseAfter < b.releaseAfter ? 1 : a.releaseAfter > b.releaseAfter ? -1 : 0;
   }
 }

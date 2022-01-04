@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  NotImplementedException,
 } from '@nestjs/common';
 import { EventsService } from './events.service';
 import { CreateEventDto } from './dto/create-event.dto';
@@ -17,7 +18,8 @@ export class EventsController {
 
   @Post()
   create(@Body() createEventDto: CreateEventDto) {
-    return this.eventsService.create(createEventDto);
+    throw new NotImplementedException();
+    // return this.eventsService.create(createEventDto);
   }
 
   @Get()
@@ -27,16 +29,19 @@ export class EventsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.eventsService.findOne(+id);
+    throw new NotImplementedException();
+    // return this.eventsService.findOne(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateEventDto: UpdateEventDto) {
-    return this.eventsService.update(+id, updateEventDto);
+    throw new NotImplementedException();
+    // return this.eventsService.update(+id, updateEventDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.eventsService.remove(+id);
+    throw new NotImplementedException();
+    // return this.eventsService.remove(+id);
   }
 }

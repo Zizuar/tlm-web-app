@@ -57,7 +57,9 @@ export class ReleasesService {
           ...release,
           releaseDate: new Date(release.releaseDate)
         }
-      }))
+      })),
+      // Sort by date
+      map(results => results.sort(this.sortByDate))
     );
   }
 
@@ -68,7 +70,9 @@ export class ReleasesService {
           ...release,
           releaseDate: new Date(release.releaseDate)
         }
-      }))
+      })),
+      // Sort by date
+      map(results => results.sort(this.sortByDate))
     );
   }
 
@@ -81,5 +85,9 @@ export class ReleasesService {
         }
       })
     );
+  }
+
+  private sortByDate(a: Release, b: Release): number {
+    return a.releaseDate < b.releaseDate ? 1 : a.releaseDate > b.releaseDate ? -1 : 0;
   }
 }

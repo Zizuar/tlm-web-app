@@ -45,7 +45,11 @@ export class EventsService {
         return scheduledEventArray.filter(event => {
           return event.date > now
         })
-      })
+      }),
+      // Sort by date
+      map(results => results.sort((a, b) => {
+        return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
+      }))
     );
   }
 }

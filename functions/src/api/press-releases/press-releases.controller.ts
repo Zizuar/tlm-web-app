@@ -6,18 +6,20 @@ import {
   Patch,
   Param,
   Delete,
+  NotImplementedException,
 } from '@nestjs/common';
 import { PressReleasesService } from './press-releases.service';
 import { CreatePressReleaseDto } from './dto/create-press-release.dto';
 import { UpdatePressReleaseDto } from './dto/update-press-release.dto';
 
-@Controller('press-releases')
+@Controller({ path: 'press-releases', version: '1' })
 export class PressReleasesController {
   constructor(private readonly pressReleasesService: PressReleasesService) {}
 
   @Post()
   create(@Body() createPressReleaseDto: CreatePressReleaseDto) {
-    return this.pressReleasesService.create(createPressReleaseDto);
+    return new NotImplementedException();
+    // return this.pressReleasesService.create(createPressReleaseDto);
   }
 
   @Get()
@@ -27,7 +29,7 @@ export class PressReleasesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.pressReleasesService.findOne(+id);
+    return this.pressReleasesService.findOne(id);
   }
 
   @Patch(':id')
@@ -35,11 +37,13 @@ export class PressReleasesController {
     @Param('id') id: string,
     @Body() updatePressReleaseDto: UpdatePressReleaseDto,
   ) {
-    return this.pressReleasesService.update(+id, updatePressReleaseDto);
+    return new NotImplementedException();
+    // return this.pressReleasesService.update(+id, updatePressReleaseDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.pressReleasesService.remove(+id);
+    return new NotImplementedException();
+    // return this.pressReleasesService.remove(+id);
   }
 }

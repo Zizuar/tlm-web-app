@@ -31,15 +31,12 @@ export class MainPageComponent implements AfterContentInit, OnDestroy {
   ) {
     // get upcoming-releases from observable
     this.sub = this.allReleases$.pipe(
-      map<Release[], Release[]>(releaseArray => releaseArray.map<Release>(release => {
-          return {
-            ...release,
-            date: new Date(release.releaseDate),
-          };
-        }),
-      ),
       map<Release[], void>(releases => {
-        this.countdowns = releases.filter(release => release.releaseDate > this.today);
+        this.countdowns = releases
+          .filter(release => release.releaseDate > this.today)
+          .sort((a, b) => {
+            return a.releaseDate > b.releaseDate ? 1 : a.releaseDate < b.releaseDate ? -1 : 0;
+          })
       }),
     ).subscribe();
     // get releases from observable

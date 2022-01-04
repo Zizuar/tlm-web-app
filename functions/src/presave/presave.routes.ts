@@ -1,11 +1,10 @@
 import * as express from 'express';
-import * as functions from 'firebase-functions';
-import fetch from 'node-fetch';
+import { fetch } from 'node-fetch';
 const presaveRouter = express.Router();
+import { CONFIG } from '../config';
 
-const TLM_G_MEASUREMENT_ID =
-  functions.config().config.google_measurement_id || '';
-const TLM_G_API_SECRET = functions.config().config.google_api_secret || '';
+const TLM_G_MEASUREMENT_ID = CONFIG.google_measurement_id || '';
+const TLM_G_API_SECRET = CONFIG.google_api_secret || '';
 
 // Presave redirects
 

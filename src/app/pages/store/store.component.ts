@@ -1,17 +1,21 @@
-import {Component} from '@angular/core';
-import {CartItem, MerchStoreService, StoreState} from '../../services/merch-store.service';
-import {Observable} from 'rxjs';
+import { Component } from '@angular/core';
+import {
+  MerchStoreService,
+  StoreState,
+} from '../../services/merch-store.service';
+import { Observable } from 'rxjs';
+import { CartItem } from '../../core/models/cart-item.model';
 
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
-  styleUrls: ['./store.component.scss']
+  styleUrls: ['./store.component.scss'],
 })
 export class StoreComponent {
   cart$: Observable<CartItem[]> = this.merchStoreService.getCart();
   formData = {
     email: '',
-    name: '',
+    mailName: '',
     street1: '',
     street2: '',
     city: '',
@@ -22,14 +26,12 @@ export class StoreComponent {
     termsCheck: false,
     privacyCheck: false,
     captcha: '',
-  }
+  };
   storeState: StoreState = StoreState.Main;
   StoreState = StoreState;
   loading = false;
 
-  constructor(
-    private readonly merchStoreService: MerchStoreService
-  ) { }
+  constructor(private readonly merchStoreService: MerchStoreService) {}
 
   backToMain() {
     this.storeState = StoreState.Main;
@@ -43,29 +45,29 @@ export class StoreComponent {
     this.storeState = StoreState.Confirm;
     this.formData = {
       ...this.formData,
-      ...formData
+      ...formData,
     };
   }
 
   submitOrder() {
     this.loading = true;
     this.merchStoreService.postOrder(this.formData).subscribe({
-      next: response => {
-        if (response.success) {
+      next: (response) => {
+        if (response) {
           this.storeState = StoreState.Success;
         } else {
           this.storeState = StoreState.Error;
         }
         this.loading = false;
       },
-      error: err => {
+      error: (err) => {
         this.storeState = StoreState.Error;
         this.loading = false;
-      }
+      },
     });
     this.formData = {
       email: '',
-      name: '',
+      mailName: '',
       street1: '',
       street2: '',
       city: '',
@@ -79,5 +81,4 @@ export class StoreComponent {
     };
     this.merchStoreService.emptyCart();
   }
-
 }
