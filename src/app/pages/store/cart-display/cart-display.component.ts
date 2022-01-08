@@ -1,15 +1,25 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
-import {CartItem, MerchStoreService, StoreState} from '../../../services/merch-store.service';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
-import {NgbPopoverConfig} from '@ng-bootstrap/ng-bootstrap';
+import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
+import { CartItem } from '../../../core/models/cart-item.model';
+import { MerchStoreService, StoreState as StoreStates } from '../../../services/merch-store.service';
+
+class StoreState {}
 
 @Component({
   selector: 'app-cart-display',
   templateUrl: './cart-display.component.html',
-  styleUrls: ['./cart-display.component.scss']
+  styleUrls: ['./cart-display.component.scss'],
 })
-export class CartDisplayComponent implements OnChanges{
+export class CartDisplayComponent implements OnChanges {
   @Input() cart!: CartItem[] | null;
   @Input() storeState!: StoreState;
   @Input() country: string = '';
@@ -17,7 +27,7 @@ export class CartDisplayComponent implements OnChanges{
 
   faQuestion: IconDefinition = faQuestionCircle;
 
-  StoreState = StoreState;
+  public StoreState = StoreStates;
 
   productsPrice = 0;
   discount = 0;
@@ -29,7 +39,7 @@ export class CartDisplayComponent implements OnChanges{
     private readonly merchStoreService: MerchStoreService,
     private readonly config: NgbPopoverConfig
   ) {
-    config.triggers = 'hover click'
+    config.triggers = 'hover click';
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -43,19 +53,23 @@ export class CartDisplayComponent implements OnChanges{
   private calculateProductsPrice(items: CartItem[]) {
     if (items.length > 0) {
       let subtotal = 0;
-      items.forEach(item => {
+      items.forEach((item) => {
         subtotal += item.quantity * item.product.price;
-      })
+      });
       this.productsPrice = subtotal;
     }
   }
 
   private calculateDiscount(items: CartItem[]): void {
     if (items.length > 0) {
-      const sfba = items.find(item => item.product.name === 'Songs for Being Alone CD');
-      const ep = items.find(item => item.product.name === 'Tyler Levs EP (2019) CD');
+      const sfba = items.find(
+        (item) => item.product.name === 'Songs for Being Alone CD'
+      );
+      const ep = items.find(
+        (item) => item.product.name === 'Tyler Levs EP (2019) CD'
+      );
       if (sfba && ep) {
-        this.discount = 500
+        this.discount = 500;
       }
     }
   }
@@ -64,7 +78,7 @@ export class CartDisplayComponent implements OnChanges{
     this.calculateProductsPrice(items);
     this.calculateDiscount(items);
     this.subtotal = this.productsPrice - this.discount;
-    if (this.storeState === StoreState.Confirm && this.country) {
+    if (this.storeState === this.StoreState.Confirm && this.country) {
       this.shipping = this.merchStoreService.calculateShipping(this.country);
       this.total = this.subtotal + this.shipping;
     }

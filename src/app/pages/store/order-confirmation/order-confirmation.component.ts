@@ -10,7 +10,7 @@ import {environment} from '../../../../environments/environment';
 export class OrderConfirmationComponent implements OnInit {
   @Input() formData = {
     email: '',
-    name: '',
+    mailName: '',
     street1: '',
     street2: '',
     city: '',
@@ -35,7 +35,6 @@ export class OrderConfirmationComponent implements OnInit {
   }
 
   goBack() {
-    console.log('back');
     this.backButtonClicked.emit();
   }
 
