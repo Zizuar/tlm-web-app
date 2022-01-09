@@ -1,0 +1,156 @@
+{
+  "functions": {
+    "source": "functions"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "hosting": {
+    "public": "dist/tlm-web-app",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/presave/**",
+        "function": "presave"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/soon",
+        "destination": "/#upcoming-releases",
+        "type": 302
+      },
+      {
+        "source": "/about",
+        "destination": "/#about",
+        "type": 302
+      },
+      {
+        "source": "/schedule",
+        "destination": "/#twitch",
+        "type": 302
+      },
+      {
+        "source": "/contact",
+        "destination": "/#contact",
+        "type": 302
+      },
+      {
+        "source": "/events",
+        "destination": "/#events",
+        "type": 302
+      },
+      {
+        "source": "/lets-begin",
+        "destination": "/releases/songs/lets-begin",
+        "type": 302
+      },
+      {
+        "source": "/sfba",
+        "destination": "/releases/albums/songs-for-being-alone",
+        "type": 302
+      },
+      {
+        "source": "/2021",
+        "destination": "/releases/collections/2021",
+        "type": 302
+      },
+      {
+        "source": "/hmlad",
+        "destination": "/releases/songs/hit-me-like-a-dream",
+        "type": 302
+      },
+      {
+        "source": "/hitmelikeadream",
+        "destination": "/releases/songs/hit-me-like-a-dream",
+        "type": 302
+      },
+      {
+        "source": "/hit-me-like-a-dream",
+        "destination": "/releases/songs/hit-me-like-a-dream",
+        "type": 302
+      },
+      {
+        "source": "/through-the-valley",
+        "destination": "/releases/songs/through-the-valley",
+        "type": 302
+      },
+      {
+        "source": "/throughthevalley",
+        "destination": "/releases/songs/through-the-valley",
+        "type": 302
+      },
+      {
+        "source": "/throughthevalley",
+        "destination": "/releases/songs/through-the-valley",
+        "type": 302
+      },
+      {
+        "source": "/songs/:songId*",
+        "destination": "/releases/songs/:songId*",
+        "type": 302
+      },
+      {
+        "source": "/albums/:songId*",
+        "destination": "/releases/albums/:songId*",
+        "type": 302
+      },
+      {
+        "source": "/collections/:songId*",
+        "destination": "/releases/collections/:songId*",
+        "type": 302
+      },
+      {
+        "source": "/tip",
+        "destination": "https://streamlabs.com/tylerlevsmusic/tip",
+        "type": 302
+      },
+      {
+        "source": "/songlist",
+        "destination": "https://www.streamersonglist.com/t/tylerlevsmusic/songs",
+        "type": 302
+      },
+      {
+        "source": "/queue",
+        "destination": "https://www.streamersonglist.com/t/tylerlevsmusic/queue",
+        "type": 302
+      },
+      {
+        "source": "/spotify",
+        "destination": "https://open.spotify.com/artist/5NUqe9c7M8oSBiHns5L6SE",
+        "type": 302
+      },
+      {
+        "source": "/shop",
+        "destination": "https://teespring.com/stores/tylerlevsmusic",
+        "type": 302
+      },
+      {
+        "source": "/merch",
+        "destination": "https://teespring.com/stores/tylerlevsmusic",
+        "type": 302
+      }
+    ]
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "ui": {
+      "enabled": true,
+      "port": 8081
+    }
+  }
+}
