@@ -12,23 +12,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci && npm run lint && npm run build
+        working-directory: ./frontend/functions
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TLM_WEB_APP }}'
           channelId: live
           projectId: tlm-web-app
+          entryPoint: ./frontend
       - name: functions - npm ci
         run: npm ci
-        working-directory: ./functions
-      - uses: w9jds/firebase-action@master
-        with:
-          args: functions:config:set environment.production='true' config.database_url_dev='${{secrets.TLM_DB_URL_DEV}}' config.database_url='${{secrets.TLM_DB_URL}}' config.google_api_secret='${{secrets.TLM_G_API_SECRET}}' config.google_measurement_id='${{secrets.TLM_G_MEASUREMENT_ID}}' config.recaptcha_secret='${{secrets.TLM_G_RECAPTCHA_SECRET}}'
-        env:
-          FIREBASE_TOKEN: '${{ secrets.FIREBASE_TOKEN }}'
+        working-directory: ./frontend/functions
       - uses: w9jds/firebase-action@master
         with:
           args: deploy --only functions
+          entryPoint: ./frontend
         env:
           FIREBASE_TOKEN: '${{ secrets.FIREBASE_TOKEN }}'
 
