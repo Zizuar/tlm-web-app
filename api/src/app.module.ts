@@ -8,6 +8,7 @@ import { PressReleasesModule } from './press-releases/press-releases.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProductsModule } from './products/products.module';
 import { ConfigModule } from '@nestjs/config';
+import { ScheduleModule } from './schedule/schedule.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ConfigModule } from '@nestjs/config';
     OrdersModule,
     PressReleasesModule,
     ProductsModule,
+    ScheduleModule,
     ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.DATABASE_URL),
   ],
