@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci && npm run lint && npm run build
-        working-directory: ./frontend/functions
+        working-directory: ./frontend
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
@@ -21,12 +21,12 @@ jobs:
           projectId: tlm-web-app
           entryPoint: ./frontend
       - name: functions - npm ci
-        run: npm ci
+        run: npm ci && npm run fb:build
         working-directory: ./frontend/functions
       - uses: w9jds/firebase-action@master
         with:
           args: deploy --only functions
-          entryPoint: ./frontend
         env:
           FIREBASE_TOKEN: '${{ secrets.FIREBASE_TOKEN }}'
+          PROJECT_PATH: ./frontend
 
