@@ -7,7 +7,11 @@ export const environment = {
   recaptcha: {
     sitekey: '6Ley8FwaAAAAAKrEXqlKLPkKivxIkfVN6VnnoHP7',
   },
-  apiBaseUrl: 'http://localhost:3000'
+  apiBaseUrl: 'http://localhost:3000',
+  auth: {
+    clientId: 'QI6OizFa5JpBocC82KG2DXSX9VkSev9Y',
+    domain: 'tlm-auth.us.auth0.com',
+  }
 };
 
 /*

@@ -9,6 +9,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ProductsModule } from './products/products.module';
 import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from './schedule/schedule.module';
+import { AuthzModule } from './authz/authz.module';
 import { ServicesModule } from './services/services.module';
 
 @Module({
@@ -22,9 +23,9 @@ import { ServicesModule } from './services/services.module';
     ScheduleModule,
     ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.DATABASE_URL),
+    AuthzModule,
   ],
   controllers: [AppController],
   providers: [AppService],
-  exports: [],
 })
 export class AppModule {}

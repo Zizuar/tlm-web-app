@@ -1,1 +1,7 @@
-<p>Not yet!</p>
+<ng-container class="container" *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+  <button class="btn btn-lg btn-primary" (click)="auth.logout({returnTo: 'http://localhost:4200/admin'})">Log in</button>
+</ng-container>
+<ng-template class="container" #loggedOut>
+  <button class="btn btn-lg btn-primary" (click)="auth.loginWithRedirect({returnTo: 'http://localhost:4200/admin'})">Log in</button>
+</ng-template>
+

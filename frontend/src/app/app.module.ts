@@ -12,6 +12,8 @@ import { ReleasesModule } from './pages/releases/releases.module';
 import { StoreModule } from './pages/store/store.module';
 import { PressModule } from './pages/press/press.module';
 import { AdminModule } from './pages/admin/admin.module';
+import { AuthModule } from "@auth0/auth0-angular";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -19,6 +21,10 @@ import { AdminModule } from './pages/admin/admin.module';
   ],
   imports: [
     BrowserModule,
+    AuthModule.forRoot({
+      domain: environment.auth.domain,
+      clientId: environment.auth.clientId,
+    }),
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
