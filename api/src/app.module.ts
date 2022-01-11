@@ -9,9 +9,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ProductsModule } from './products/products.module';
 import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from './schedule/schedule.module';
+import { ServicesModule } from './services/services.module';
 
 @Module({
   imports: [
+    ServicesModule,
     EventsModule,
     ReleasesModule,
     OrdersModule,
@@ -23,5 +25,6 @@ import { ScheduleModule } from './schedule/schedule.module';
   ],
   controllers: [AppController],
   providers: [AppService],
+  exports: [],
 })
 export class AppModule {}
