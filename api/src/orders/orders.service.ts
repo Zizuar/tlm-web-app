@@ -2,14 +2,16 @@ import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
-import { Model, Connection } from 'mongoose';
+import { Connection, Model } from 'mongoose';
 import { Order, OrderDocument } from './schemas/order.schema';
+import { EmailService, EmailTemplates } from '../services/email.service';
 
 @Injectable()
 export class OrdersService {
   constructor(
     @InjectModel(Order.name) private readonly orderModel: Model<OrderDocument>,
     @InjectConnection() private readonly connection: Connection,
+    private readonly emailService: EmailService,
   ) {}
 
   async create(createOrderDto: CreateOrderDto): Promise<Order> {
@@ -24,7 +26,17 @@ export class OrdersService {
       });
       await newOrder.save();
       await session.commitTransaction();
-      console.log('New order added!');
+      await console.log('New order added!');
+      await this.emailService.sendEmailTemplate(
+        EmailTemplates.ORDER_ADDED,
+        process.env.TYLER_EMAIL,
+        'Tyler Levs',
+      );
+      await this.emailService.sendEmailTemplate(
+        EmailTemplates.SUCCESSFUL_ORDER,
+        newOrder.email,
+        newOrder.mailName,
+      );
       return newOrder;
     } catch (error) {
       console.error(error);
