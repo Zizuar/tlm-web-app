@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoreComponent } from './store.component';
+import { MerchStoreComponent } from './merch-store.component';
 import {SharedComponentsModule} from '../../components/components.shared.module';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { OrderFormComponent } from './order-form/order-form.component';
@@ -21,7 +21,7 @@ import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
-    StoreComponent,
+    MerchStoreComponent,
     ProductsListComponent,
     OrderFormComponent,
     MerchPromoComponent,
@@ -43,4 +43,4 @@ import {RouterModule} from '@angular/router';
     RouterModule,
   ],
 })
-export class StoreModule { }
+export class MerchStoreModule { }

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StoreComponent } from './store.component';
+import { MerchStoreComponent } from './merch-store.component';
 
 const routes: Routes = [
-  {path: '', component: StoreComponent, pathMatch: 'full'}
+  {path: '', component: MerchStoreComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

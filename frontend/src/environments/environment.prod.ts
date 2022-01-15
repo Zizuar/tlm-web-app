@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  baseUrl: 'https://tylerlevs.com',
   recaptcha: {
     sitekey: '6Ley8FwaAAAAAKrEXqlKLPkKivxIkfVN6VnnoHP7'
   },
