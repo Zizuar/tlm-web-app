@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthenticationService } from '../services/auth.service';
-import { AuthActionTypes, LoginAction } from "./auth.actions";
+import {
+  AuthActionTypes,
+  LoginAction,
+} from './auth.actions';
 import * as authActions from './auth.actions';
 import { combineLatest, of, switchMap, tap } from 'rxjs';
 
@@ -16,11 +19,32 @@ export class AuthEffects {
     () => {
       return this.actions$.pipe(
         ofType<LoginAction>(AuthActionTypes.LOGIN),
-        tap(action => this.authService.login(action.redirectUrl ? action.redirectUrl : ''))
+        tap((action) =>
+          this.authService.login(action.redirectUrl ? action.redirectUrl : '')
+        )
       );
     },
     { dispatch: false }
   );
+
+  loginCompleted$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(AuthActionTypes.LOGIN_COMPLETED),
+      switchMap(() => {
+        return of(authActions.fetchScopes());
+      })
+    );
+  });
+
+  fetchScopes$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(AuthActionTypes.FETCH_SCOPES),
+      switchMap(() => this.authService.getScopes()),
+      switchMap((response) => {
+        return of(authActions.fetchScopesCompleted(response));
+      })
+    );
+  });
 
   checkAuth$ = createEffect(() => {
     return this.actions$.pipe(
@@ -35,7 +59,6 @@ export class AuthEffects {
         if (isLoggedIn) {
           return of(authActions.loginCompleted({ profile, isLoggedIn }));
         }
-
         return of(authActions.logoutCompleted());
       })
     );

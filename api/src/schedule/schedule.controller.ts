@@ -7,10 +7,14 @@ import {
   Param,
   Delete,
   NotImplementedException,
+  UseGuards,
 } from '@nestjs/common';
 import { ScheduleService } from './schedule.service';
 import { CreateScheduleDto } from './dto/create-schedule.dto';
 import { UpdateScheduleDto } from './dto/update-schedule.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { PermissionsGuard } from '../authz/guards/permissions.guard';
+import { Permissions } from '../authz/decorators/permissions.decorator';
 
 @Controller({ path: 'schedule', version: '1' })
 export class ScheduleController {
@@ -33,7 +37,9 @@ export class ScheduleController {
     // return this.scheduleService.findOne(+id);
   }
 
+  @UseGuards(AuthGuard('jwt'), PermissionsGuard)
   @Patch(':id')
+  @Permissions('write:schedule')
   update(
     @Param('id') id: string,
     @Body() updateScheduleDto: UpdateScheduleDto,
@@ -42,7 +48,9 @@ export class ScheduleController {
     // return this.scheduleService.update(+id, updateScheduleDto);
   }
 
+  @UseGuards(AuthGuard('jwt'), PermissionsGuard)
   @Delete(':id')
+  @Permissions('write:schedule')
   remove(@Param('id') id: string) {
     throw new NotImplementedException();
     // return this.scheduleService.remove(+id);

@@ -4,8 +4,9 @@ import { login, logout } from '../../store/auth.actions';
 import { Observable } from 'rxjs';
 import {
   selectCurrentUserProfile,
-  selectIsLoggedIn,
-} from '../../store/auth.selectors';
+  selectIsLoggedIn, selectScopes
+} from "../../store/auth.selectors";
+import { SCOPES } from '../../core/auth/scopes';
 
 @Component({
   selector: 'app-admin',
@@ -13,14 +14,18 @@ import {
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent {
+  SCOPES = SCOPES;
+
   loggedIn$: Observable<boolean>;
   profile$: Observable<any>;
+  scopes$: Observable<string>;
 
   constructor(
     private readonly store: Store,
   ) {
     this.loggedIn$ = this.store.select(selectIsLoggedIn);
     this.profile$ = this.store.select(selectCurrentUserProfile);
+    this.scopes$ = this.store.select(selectScopes);
   }
 
   logout() {

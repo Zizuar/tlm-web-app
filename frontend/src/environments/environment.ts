@@ -4,14 +4,23 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:4200',
+  baseUrl: "http://localhost:4200",
   recaptcha: {
-    sitekey: '6Ley8FwaAAAAAKrEXqlKLPkKivxIkfVN6VnnoHP7',
+    sitekey: "6Ley8FwaAAAAAKrEXqlKLPkKivxIkfVN6VnnoHP7"
   },
-  apiBaseUrl: 'http://localhost:3000',
+  apiBaseUrl: "http://localhost:3000",
   auth: {
-    clientId: 'QI6OizFa5JpBocC82KG2DXSX9VkSev9Y',
-    domain: 'tlm-auth.us.auth0.com',
+    clientId: "QI6OizFa5JpBocC82KG2DXSX9VkSev9Y",
+    domain: "tlm-auth.us.auth0.com",
+    audience: "https://api.tylerlevs.com",
+    httpInterceptor: {
+      allowedList: [
+        {
+          uri: "http://localhost:3000/v1/*",
+          allowAnonymous: true
+        }
+      ]
+    }
   }
 };
 

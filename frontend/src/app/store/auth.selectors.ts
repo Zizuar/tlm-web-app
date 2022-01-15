@@ -15,3 +15,9 @@ export const selectIsLoggedIn = createSelector(
   selectAuthFeatureState,
   (state: AuthState) => state.isLoggedIn
 );
+
+// get the isLoggedIn from the auth state
+export const selectScopes = createSelector(
+  selectAuthFeatureState,
+  (state: AuthState) => state.scopes
+);

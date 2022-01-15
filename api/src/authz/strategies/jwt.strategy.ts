@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { passportJwtSecret } from 'jwks-rsa';
@@ -24,7 +24,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  validate(payload: unknown): unknown {
+  validate(payload: any) {
+    const { aud } = payload;
+    // check if audience in payload is the actual audience
+    if (!aud.some((a) => a === process.env.AUTH0_AUDIENCE)) {
+      throw new UnauthorizedException('Invalid token');
+    }
     return payload;
   }
 }
