@@ -1,0 +1,91 @@
+<div class="modal-header">
+  <h4 class="modal-tite">Edit day in schedule</h4>
+</div>
+<form (ngSubmit)="editForm.form.valid && saveChanges()" #editForm="ngForm">
+  <div class="modal-body">
+    <div class="row g-3">
+      <div class="col">
+        <label for="day" class="form-label">Day</label>
+        <input type="text" class="form-control" name="day" id="day" [(ngModel)]="scheduleDay.day" readonly>
+      </div>
+    </div>
+    <div class="row g-3 mt-3">
+      <div class="col">
+        <div class="form-check form-switch">
+          <input type="checkbox" role="switch" class="form-check-input" name="isOff" id="isOff"
+                 [(ngModel)]="scheduleDay.isOff">
+          <label class="form-check-label" for="isOff">Is this a day off?</label>
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col-4">
+        <label for="startHour" class="form-label">Start hour</label>
+        <input type="number" class="form-control" name="startHour" id="startHour"
+               [(ngModel)]="scheduleDay.startHour"
+               [disabled]="scheduleDay.isOff"
+               min="1" max="12" required
+        >
+      </div>
+      <div class="col-4">
+        <label for="startAMPM" class="form-label">AM/PM</label>
+        <select name="startAMPM" id="startAMPM" class="form-select" [(ngModel)]="scheduleDay.startAMPM"
+                [disabled]="scheduleDay.isOff" required>
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+        </select>
+      </div>
+      <div class="col-4 d-flex align-items-end">
+        <div class="form-check form-switch">
+          <input type="checkbox" role="switch" class="form-check-input" name="startFlexible" id="startFlexible"
+                 [(ngModel)]="scheduleDay.startFlexible">
+          <label class="form-check-label" for="startFlexible">Is start time flexible?</label>
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col-4">
+        <label for="endHour" class="form-label">End hour</label>
+        <input type="number" class="form-control" name="endHour" id="endHour"
+               [(ngModel)]="scheduleDay.endHour"
+               [disabled]="scheduleDay.isOff"
+               min="1" max="12" required
+        >
+      </div>
+      <div class="col-4">
+        <label for="endAMPM" class="form-label">AM/PM</label>
+        <select name="endAMPM" id="endAMPM" class="form-select" [(ngModel)]="scheduleDay.endAMPM"
+                [disabled]="scheduleDay.isOff" required>
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+        </select>
+      </div>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col-8">
+        <label for="contentLong" class="form-label">Content long description</label>
+        <input type="text" class="form-control" name="contentLong" id="contentLong"
+               [(ngModel)]="scheduleDay.contentLong" required>
+      </div>
+      <div class="col-8">
+        <label for="contentShort" class="form-label">Content short description</label>
+        <input type="text" class="form-control" name="contentShort" id="contentShort"
+               [(ngModel)]="scheduleDay.contentShort" maxlength="8" required>
+        <div id="contentShortHelp" class="form-text">Maximum 8 characters.</div>
+      </div>
+    </div>
+    <div class="row g-3 mt-3">
+      <div class="col">
+        <div class="form-check form-switch">
+          <input type="checkbox" role="switch" class="form-check-input" name="contentFlexible" id="contentFlexible"
+                 [(ngModel)]="scheduleDay.contentFlexible">
+          <label class="form-check-label" for="contentFlexible">Is content for this day flexible?</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer d-flex justify-content-between">
+    <button class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Close without saving</button>
+    <button class="btn btn-primary" type="submit">Save</button>
+  </div>
+</form>

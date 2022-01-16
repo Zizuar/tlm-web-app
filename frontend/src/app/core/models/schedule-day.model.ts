@@ -1,4 +1,5 @@
 export interface StreamingScheduleElement {
+  _id: string;
   dayId: number;
   day: string;
   dayShort: string;

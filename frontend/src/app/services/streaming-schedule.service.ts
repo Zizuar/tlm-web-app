@@ -20,4 +20,11 @@ export class StreamingScheduleService {
       }))
     );
   }
+
+  updateSchedule(scheduleDay: StreamingScheduleElement): Observable<StreamingScheduleElement> {
+    return this.http.patch<StreamingScheduleElement>(
+      `${this.scheduleApiUrl}/${scheduleDay._id}`,
+      scheduleDay
+    );
+  }
 }

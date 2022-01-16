@@ -11,8 +11,8 @@ import { combineLatest, of, switchMap, tap } from 'rxjs';
 @Injectable()
 export class AuthEffects {
   constructor(
-    private actions$: Actions,
-    private authService: AuthenticationService
+    private readonly actions$: Actions,
+    private readonly authService: AuthenticationService
   ) {}
 
   login$ = createEffect(

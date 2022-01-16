@@ -2,24 +2,7 @@ import { Injectable } from '@angular/core';
 import {map, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { environment } from "../../environments/environment";
-
-export interface ScheduledEvent {
-  date: Date;
-  name: string;
-  venue: string;
-  town: string;
-  venueLink?: string;
-  eventLink?:string;
-}
-
-interface ApiEvent {
-  date: string;
-  name: string;
-  venue: string;
-  town: string;
-  venueLink?: string;
-  eventLink?:string;
-}
+import { ScheduledEvent, ApiEvent } from "../core/models/scheduled-event.model";
 
 @Injectable({
   providedIn: 'root'

@@ -1,1 +1,47 @@
-<p>{{scopes$ | async}}</p>
+<div class="container d-flex mt-5">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" [destroyOnHide]="true" class="nav-pills" orientation="vertical">
+    <li ngbNavItem="index">
+      <ng-template ngbNavContent>
+        <app-dash-index></app-dash-index>
+      </ng-template>
+    </li>
+    <li ngbNavItem="orders" *ngIf="(scopes$ | async)?.includes(SCOPES.ORDERS_READ)">
+      <a ngbNavLink="orders">Orders</a>
+      <ng-template ngbNavContent>
+        <app-dash-orders></app-dash-orders>
+      </ng-template>
+    </li>
+    <li ngbNavItem="products" [disabled]="true" *ngIf="(scopes$ | async)?.includes(SCOPES.PRODUCTS_WRITE)">
+      <a ngbNavLink="products">Products</a>
+      <ng-template ngbNavContent>
+        <app-dash-products></app-dash-products>
+      </ng-template>
+    </li>
+    <li ngbNavItem="releases" [disabled]="true" *ngIf="(scopes$ | async)?.includes(SCOPES.RELEASES_WRITE)">
+      <a ngbNavLink="releases">Releases</a>
+      <ng-template ngbNavContent>
+        <app-dash-releases></app-dash-releases>
+      </ng-template>
+    </li>
+    <li ngbNavItem="schedule" *ngIf="(scopes$ | async)?.includes(SCOPES.SCHEDULE_WRITE)">
+      <a ngbNavLink="schedule">Schedule</a>
+      <ng-template ngbNavContent>
+        <app-dash-schedule></app-dash-schedule>
+      </ng-template>
+    </li>
+    <li ngbNavItem="events" [disabled]="true" *ngIf="(scopes$ | async)?.includes(SCOPES.EVENTS_WRITE)">
+      <a ngbNavLink="events">Events</a>
+      <ng-template ngbNavContent>
+        <app-dash-events></app-dash-events>
+      </ng-template>
+    </li>
+    <li ngbNavItem="press" [disabled]="true" *ngIf="(scopes$ | async)?.includes(SCOPES.PRESS_WRITE)">
+      <a ngbNavLink="press">Press releases</a>
+      <ng-template ngbNavContent>
+        <app-dash-press></app-dash-press>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="ms-4" id="dash-nav-outlet"></div>
+</div>

@@ -1,7 +1,8 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { EventsService, ScheduledEvent } from '../../../services/events.service';
+import { EventsService } from '../../../services/events.service';
 import {BehaviorSubject, Subscription} from 'rxjs';
 import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
+import { ScheduledEvent } from "../../../core/models/scheduled-event.model";
 
 
 @Component({

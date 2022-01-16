@@ -1,0 +1,9 @@
+.admin-container {
+  min-height: calc(100vh - 255px);
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  flex-grow: 1;
+}
