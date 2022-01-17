@@ -5,6 +5,7 @@ export class CreateOrderDto {
   readonly street2: string;
   readonly state?: string;
   readonly zip: string;
+  readonly city: string;
   readonly country: string;
   readonly cart: [
     { productName: string; signatureName: string; price: number },

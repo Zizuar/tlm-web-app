@@ -24,6 +24,9 @@ export class Order {
   state?: string;
 
   @Prop({ required: true })
+  city: string;
+
+  @Prop({ required: true })
   zip: string;
 
   @Prop({ required: true })
