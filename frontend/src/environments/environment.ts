@@ -10,9 +10,9 @@ export const environment = {
   },
   apiBaseUrl: "http://localhost:3000",
   auth: {
-    clientId: "QI6OizFa5JpBocC82KG2DXSX9VkSev9Y",
-    domain: "tlm-auth.us.auth0.com",
-    audience: "https://api.tylerlevs.com",
+    clientId: "pTkbwjYx6vpV8qzhO7lioKupoSa5IbUP",
+    domain: "tlm-auth-dev.us.auth0.com",
+    audience: "https://api-test",
     httpInterceptor: {
       allowedList: [
         {

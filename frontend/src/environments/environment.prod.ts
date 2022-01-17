@@ -12,7 +12,8 @@ export const environment = {
     httpInterceptor: {
       allowedList: [
         {
-          uri: 'http://localhost:4200/v1/*',
+          uri: 'https://https://tlm-api.herokuapp.com/v1/*',
+          allowAnonymous: true
         }
       ]
     },
