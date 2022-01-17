@@ -5,6 +5,7 @@ import { InjectConnection, InjectModel } from '@nestjs/mongoose';
 import { Connection, Model } from 'mongoose';
 import { Order, OrderDocument } from './schemas/order.schema';
 import { EmailService, EmailTemplates } from '../services/email.service';
+import { OrderStatus } from './interfaces/order-status.interface';
 
 @Injectable()
 export class OrdersService {
@@ -21,6 +22,8 @@ export class OrdersService {
       const newOrder = new this.orderModel({
         ...createOrderDto,
         createdDate: Date.now(),
+        updatedDate: Date.now(),
+        orderStatus: OrderStatus.CREATED,
         shippingPrice: this.calculateShipping(createOrderDto.country),
         productsPrice: this.calculateProductsPrice(createOrderDto.cart),
       });
@@ -55,8 +58,12 @@ export class OrdersService {
   }
 
   async update(id: string, updateOrderDto: UpdateOrderDto): Promise<Order> {
+    const updatedOrder = {
+      ...updateOrderDto,
+      updatedDate: Date.now(),
+    };
     return await this.orderModel
-      .findByIdAndUpdate(id, updateOrderDto, {
+      .findByIdAndUpdate(id, updatedOrder, {
         new: true,
       })
       .exec();

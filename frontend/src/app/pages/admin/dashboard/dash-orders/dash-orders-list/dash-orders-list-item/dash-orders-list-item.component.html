@@ -1,0 +1,46 @@
+<div class="row mb-3">
+  <div class="row">
+    <div class="col-1 d-flex align-items-center justify-content-center">
+      <fa-icon [icon]="isCollapsed ? faPlus : faMinus" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+               aria-controls="orderCollapse"><span class="sr-only">Expand/collapse order</span></fa-icon>
+    </div>
+    <div class="col-9">
+      <div class="row h-100">
+        <div class="col-3 d-flex align-items-center">
+          {{ order.createdDate | date:'mediumDate' }}
+        </div>
+        <div class="col-6 d-flex align-items-center">
+          {{ order.email }}
+        </div>
+        <div class="col-3 d-flex align-items-center">
+          {{ order.cart.length }} {{ order.cart.length === 1 ? 'product' : 'products' }}
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <app-dash-orders-list-action-button [order]="order"></app-dash-orders-list-action-button>
+    </div>
+  </div>
+  <div class="row mt-2" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+    <div class="col-4">
+      <h6 class="text-center">Address</h6>
+      <p class="text-start">{{order.mailName}}</p>
+      <p class="text-start">{{order.street1}}</p>
+      <p class="text-start">{{order.street2}}</p>
+      <p class="text-start">{{order.city}} - {{order.zip}}</p>
+      <p class="text-start"><span *ngIf="order.state">{{order.state}},</span> {{order.country}}</p>
+    </div>
+    <div class="col-5">
+      <h6 class="text-center">Products</h6>
+      <p *ngFor="let product of order.cart">Product: {{product.productName}}<br>Signed to: {{product.signatureName}}</p>
+    </div>
+    <div class="col-3 text-center">
+      <h6>Price</h6>
+      <p>Products: ${{order.productsPrice}}</p>
+      <p>Shipping: ${{order.shippingPrice}}</p>
+      <p>Total: ${{order.productsPrice + order.shippingPrice}}</p>
+      <h6 class="mt-2">Other requests</h6>
+      <p>{{order.other ? order.other : 'No special requests'}}</p>
+    </div>
+  </div>
+</div>

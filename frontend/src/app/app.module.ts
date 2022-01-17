@@ -21,6 +21,8 @@ import { authReducer } from './store/auth.reducer';
 import { AuthEffects } from './store/auth.effects';
 import { scheduleReducer } from "./store/schedule.reducer";
 import { ScheduleEffects } from "./store/schedule.effects";
+import { orderReducer } from "./store/orders.reducer";
+import { OrderEffects } from "./store/orders.effects";
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,8 +39,8 @@ import { ScheduleEffects } from "./store/schedule.effects";
     MerchStoreModule,
     PressModule,
     AdminModule,
-    StoreModule.forRoot({ auth: authReducer, schedule: scheduleReducer }),
-    EffectsModule.forRoot([AuthEffects, ScheduleEffects]),
+    StoreModule.forRoot({ auth: authReducer, schedule: scheduleReducer, order: orderReducer }),
+    EffectsModule.forRoot([AuthEffects, ScheduleEffects, OrderEffects]),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },

@@ -4,8 +4,9 @@ import { OrderFormDataService } from './order-form-data.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Product } from '../core/models/product.model';
 import { CartItem } from '../core/models/cart-item.model';
-import { Order } from '../core/models/order.model';
+import { NewOrder, OrderStatus } from "../core/models/order.model";
 import { environment } from "../../environments/environment";
+import { OrdersService } from "./orders.service";
 
 export enum StoreState {
   Main,
@@ -19,7 +20,6 @@ export enum StoreState {
   providedIn: 'root',
 })
 export class MerchStoreService {
-  private readonly orderApiUrl = `${environment.apiBaseUrl}/v1/orders`;
   private readonly productsApiUrl = `${environment.apiBaseUrl}/v1/products`;
 
   private readonly DOM_SHIPPING = [
@@ -46,7 +46,8 @@ export class MerchStoreService {
 
   constructor(
     private readonly orderFormDataService: OrderFormDataService,
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
+    private readonly ordersService: OrdersService,
   ) {}
 
   getProducts(): Observable<Product[]> {
@@ -67,9 +68,10 @@ export class MerchStoreService {
     return this.SHIPPING_PRICES.International;
   }
 
-  postOrder(orderFormData: any): Observable<Order> {
+  submitOrder(orderFormData: any): Observable<NewOrder> {
     const postData = {
       ...orderFormData,
+      status: OrderStatus.CREATED,
       otherRequests: orderFormData['other'],
       country: this.orderFormDataService.getCountryName(orderFormData.country),
       cart: this._cart.value.map((cartItem) => {
@@ -82,9 +84,7 @@ export class MerchStoreService {
         };
       }),
     };
-    return this.http
-      .post<Order>(this.orderApiUrl, postData)
-      .pipe(catchError(this.handleError));
+    return this.ordersService.postOrder(postData);
   }
 
   async addItemToCart(
@@ -111,16 +111,5 @@ export class MerchStoreService {
     return true;
   }
 
-  private handleError(error: HttpErrorResponse) {
-    console.error('Error encountered:', error);
-    if (error.status === 0) {
-      console.error('An error occurred:', error.error);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, body was: `,
-        error.error
-      );
-    }
-    return throwError(() => 'Something bad happened; please try again later.');
-  }
+
 }

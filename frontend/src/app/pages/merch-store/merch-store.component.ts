@@ -51,7 +51,7 @@ export class MerchStoreComponent {
 
   submitOrder() {
     this.loading = true;
-    this.merchStoreService.postOrder(this.formData).subscribe({
+    this.merchStoreService.submitOrder(this.formData).subscribe({
       next: (response) => {
         if (response) {
           this.storeState = StoreState.Success;
