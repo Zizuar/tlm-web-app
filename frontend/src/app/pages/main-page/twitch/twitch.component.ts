@@ -1,22 +1,33 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IconDefinition } from "@fortawesome/free-regular-svg-icons";
 import { faTwitch } from "@fortawesome/free-brands-svg-icons";
 import { StreamingScheduleService } from "../../../services/streaming-schedule.service";
-import { Observable } from "rxjs";
+import { Observable, take } from "rxjs";
 import { StreamingScheduleElement } from "../../../core/models/schedule-day.model";
+import { Store } from "@ngrx/store";
+import { selectIsScheduleFetched, selectSchedule } from "../../../store/schedule.selectors";
+import { fetchSchedule } from "../../../store/schedule.actions";
 
 @Component({
   selector: "app-twitch",
   templateUrl: "./twitch.component.html",
   styleUrls: ["./twitch.component.scss"]
 })
-export class TwitchComponent {
+export class TwitchComponent implements OnInit {
   twitchIcon: IconDefinition = faTwitch;
-  streamingSchedule: Observable<StreamingScheduleElement[]> = this.streamingScheduleService.getSchedule();
+  streamingSchedule$: Observable<StreamingScheduleElement[]> = this.store.select(selectSchedule);
 
   constructor(
-    private readonly streamingScheduleService: StreamingScheduleService
-  ) {
+    private readonly streamingScheduleService: StreamingScheduleService,
+    private readonly store: Store,
+  ) {}
+
+  ngOnInit() {
+    this.store.select(selectIsScheduleFetched).pipe(take(1)).subscribe(isScheduleFetched => {
+      if (!isScheduleFetched) {
+        this.store.dispatch(fetchSchedule());
+      }
+    })
   }
 
 }

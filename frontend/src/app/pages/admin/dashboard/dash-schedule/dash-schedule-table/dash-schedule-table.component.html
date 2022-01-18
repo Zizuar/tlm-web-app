@@ -1,0 +1,20 @@
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Off?</th>
+      <th scope="col">Start</th>
+      <th scope="col">Start flex?</th>
+      <th scope="col">End</th>
+      <th scope="col">Content long</th>
+      <th scope="col">Content flex?</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr app-dash-schedule-table-row *ngFor="let scheduleDay of schedule$ | async" [scheduleDay]="scheduleDay">
+    </tr>
+    </tbody>
+  </table>
+</div>

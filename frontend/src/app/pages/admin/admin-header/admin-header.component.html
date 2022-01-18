@@ -1,0 +1,10 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container">
+    <div class="navbar-brand">TLMadmin</div>
+    <div class="ms-auto">
+      <span class="me-3" *ngIf="isLoggedIn">Logged in as {{ profile.nickname || (profile.given_name + ' ' + profile.family_name) }}</span>
+      <button *ngIf="!isLoggedIn" class="btn btn-primary" (click)="login()">Login</button>
+      <button *ngIf="isLoggedIn" class="btn btn-primary" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>

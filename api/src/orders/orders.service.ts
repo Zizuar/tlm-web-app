@@ -1,10 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
 import { Connection, Model } from 'mongoose';
 import { Order, OrderDocument } from './schemas/order.schema';
 import { EmailService, EmailTemplates } from '../services/email.service';
+import { OrderStatus } from './interfaces/order-status.interface';
+import { validate } from 'class-validator';
 
 @Injectable()
 export class OrdersService {
@@ -21,9 +23,15 @@ export class OrdersService {
       const newOrder = new this.orderModel({
         ...createOrderDto,
         createdDate: Date.now(),
+        updatedDate: Date.now(),
+        orderStatus: OrderStatus.CREATED,
         shippingPrice: this.calculateShipping(createOrderDto.country),
         productsPrice: this.calculateProductsPrice(createOrderDto.cart),
       });
+      const errors = await validate(newOrder);
+      if (errors.length > 0) {
+        throw new BadRequestException(errors, 'Invalid value(s) in request');
+      }
       await newOrder.save();
       await session.commitTransaction();
       await console.log('New order added!');
@@ -42,7 +50,7 @@ export class OrdersService {
       console.error(error);
       await session.abortTransaction();
       await session.endSession();
-      return Promise.reject(error.toString());
+      throw error;
     }
   }
 
@@ -55,8 +63,17 @@ export class OrdersService {
   }
 
   async update(id: string, updateOrderDto: UpdateOrderDto): Promise<Order> {
+    const updatedOrder = {
+      ...updateOrderDto,
+      updatedDate: Date.now(),
+    };
+
+    const errors = await validate(updatedOrder);
+    if (errors.length > 0) {
+      throw new BadRequestException(errors, 'Invalid value(s) in request');
+    }
     return await this.orderModel
-      .findByIdAndUpdate(id, updateOrderDto, {
+      .findByIdAndUpdate(id, updatedOrder, {
         new: true,
       })
       .exec();

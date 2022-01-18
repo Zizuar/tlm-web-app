@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,16 +10,25 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedComponentsModule } from './components/components.shared.module';
 import { MainPageModule } from './pages/main-page/main-page.module';
 import { ReleasesModule } from './pages/releases/releases.module';
-import { StoreModule } from './pages/store/store.module';
+import { MerchStoreModule } from './pages/merch-store/merch-store.module';
 import { PressModule } from './pages/press/press.module';
 import { AdminModule } from './pages/admin/admin.module';
 
+import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { authReducer } from './store/auth.reducer';
+import { AuthEffects } from './store/auth.effects';
+import { scheduleReducer } from "./store/schedule.reducer";
+import { ScheduleEffects } from "./store/schedule.effects";
+import { orderReducer } from "./store/orders.reducer";
+import { OrderEffects } from "./store/orders.effects";
+
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
+    AuthModule.forRoot(environment.auth),
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
@@ -26,11 +36,15 @@ import { AdminModule } from './pages/admin/admin.module';
     SharedComponentsModule,
     MainPageModule,
     ReleasesModule,
-    StoreModule,
+    MerchStoreModule,
     PressModule,
     AdminModule,
+    StoreModule.forRoot({ auth: authReducer, schedule: scheduleReducer, order: orderReducer }),
+    EffectsModule.forRoot([AuthEffects, ScheduleEffects, OrderEffects]),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

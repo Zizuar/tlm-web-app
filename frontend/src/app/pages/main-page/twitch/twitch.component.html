@@ -27,7 +27,7 @@
 
         </thead>
         <tbody>
-        <tr *ngFor="let streamingScheduleElement of streamingSchedule | async">
+        <tr *ngFor="let streamingScheduleElement of streamingSchedule$ | async">
           <td>
             <span class="d-none d-sm-block">{{streamingScheduleElement.day}}</span>
             <span class="d-sm-none">{{streamingScheduleElement.dayShort}}</span>

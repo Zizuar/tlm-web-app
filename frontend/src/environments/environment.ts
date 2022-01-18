@@ -4,10 +4,24 @@
 
 export const environment = {
   production: false,
+  baseUrl: "http://localhost:4200",
   recaptcha: {
-    sitekey: '6Ley8FwaAAAAAKrEXqlKLPkKivxIkfVN6VnnoHP7',
+    sitekey: "6Ley8FwaAAAAAKrEXqlKLPkKivxIkfVN6VnnoHP7"
   },
-  apiBaseUrl: 'http://localhost:3000'
+  apiBaseUrl: "http://localhost:3000",
+  auth: {
+    clientId: "pTkbwjYx6vpV8qzhO7lioKupoSa5IbUP",
+    domain: "tlm-auth-dev.us.auth0.com",
+    audience: "https://api-test",
+    httpInterceptor: {
+      allowedList: [
+        {
+          uri: "http://localhost:3000/v1/*",
+          allowAnonymous: true
+        }
+      ]
+    }
+  }
 };
 
 /*

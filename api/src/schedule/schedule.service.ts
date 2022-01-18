@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { CreateScheduleDto } from './dto/create-schedule.dto';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { UpdateScheduleDto } from './dto/update-schedule.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { ScheduleDay } from './schemas/schedule-day.schema';
+import { validate } from 'class-validator';
 
 @Injectable()
 export class ScheduleService {
@@ -12,23 +12,18 @@ export class ScheduleService {
     private readonly scheduleDayModel: Model<ScheduleDay>,
   ) {}
 
-  create(createScheduleDto: CreateScheduleDto) {
-    return 'This action adds a new schedule';
-  }
-
   async findAll(): Promise<ScheduleDay[]> {
     return await this.scheduleDayModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} schedule`;
-  }
-
-  update(id: number, updateScheduleDto: UpdateScheduleDto) {
-    return `This action updates a #${id} schedule`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} schedule`;
+  async update(id: string, updateScheduleDto: UpdateScheduleDto) {
+    const updatedSchedule = {
+      ...updateScheduleDto,
+    };
+    const errors = await validate(updatedSchedule);
+    if (errors.length > 0) {
+      throw new BadRequestException(errors, 'Invalid value(s) in request');
+    }
+    return this.scheduleDayModel.findByIdAndUpdate(id, updatedSchedule);
   }
 }

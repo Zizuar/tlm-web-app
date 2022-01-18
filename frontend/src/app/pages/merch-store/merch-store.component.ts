@@ -8,10 +8,10 @@ import { CartItem } from '../../core/models/cart-item.model';
 
 @Component({
   selector: 'app-store',
-  templateUrl: './store.component.html',
-  styleUrls: ['./store.component.scss'],
+  templateUrl: './merch-store.component.html',
+  styleUrls: ['./merch-store.component.scss'],
 })
-export class StoreComponent {
+export class MerchStoreComponent {
   cart$: Observable<CartItem[]> = this.merchStoreService.getCart();
   formData = {
     email: '',
@@ -51,7 +51,7 @@ export class StoreComponent {
 
   submitOrder() {
     this.loading = true;
-    this.merchStoreService.postOrder(this.formData).subscribe({
+    this.merchStoreService.submitOrder(this.formData).subscribe({
       next: (response) => {
         if (response) {
           this.storeState = StoreState.Success;

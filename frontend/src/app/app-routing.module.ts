@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from "@angular/router";
+import { AppComponent } from "./app.component";
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'store',
-    loadChildren: () => import('./pages/store/store.routing').then(m => m.StoreRoutingModule)
+    loadChildren: () => import('./pages/merch-store/merch-store.routing').then(m => m.StoreRoutingModule)
   },
   {
     path: 'press',
@@ -23,6 +24,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin/admin.routing').then(m => m.AdminRoutingModule)
   },
   {
+    path: 'login',
+    component: AppComponent,
+    resolve: {
+      url: 'externalUrlRedirectResolver'
+    },
+    data: {
+      externalUrl: 'https://tlm-auth.us.auth0.com/authorize'
+    }
+  },
+  {
     path: '**',
     redirectTo: ''
   }
@@ -30,6 +41,14 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    {
+      provide: 'externalUrlRedirectResolver',
+      useValue: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+        window.location.href=(route.data as any).externalUrl
+      }
+    }
+  ]
 })
 export class AppRoutingModule { }

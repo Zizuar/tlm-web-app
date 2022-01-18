@@ -4,6 +4,7 @@ import {
   NestExpressApplication,
 } from '@nestjs/platform-express';
 import * as express from 'express';
+import * as mongoSanitize from 'express-mongo-sanitize';
 
 // api function
 import { AppModule } from './app.module';
@@ -23,6 +24,7 @@ export const createApiNestServer = async (expressInstance: express.Express) => {
     type: VersioningType.URI,
   });
   app.enableCors();
+  app.use(mongoSanitize({ replaceWith: '. ' }));
 
   await app.listen(process.env.PORT || 3000);
 };

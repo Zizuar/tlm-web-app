@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import * as moment from 'moment';
-import {ScheduledEvent} from '../../../../services/events.service';
+import { ScheduledEvent } from "../../../../core/models/scheduled-event.model";
 
 
 @Component({

@@ -1,0 +1,9 @@
+<div class="container w-100 card shadow mb-4">
+  <div class="card-body">
+    <h5 class="text-center mb-3">{{title}}</h5>
+    <div class="container-fluid" *ngIf="orders.length === 0">
+      <p class="text-center">Nothing here...</p>
+    </div>
+    <app-dash-orders-list-item *ngFor="let order of orders" [order]="order"></app-dash-orders-list-item>
+  </div>
+</div>
