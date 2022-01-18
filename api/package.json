@@ -32,6 +32,7 @@
     "@sendinblue/client": "^3.1.0",
     "class-validator": "^0.13.2",
     "express": "^4.17.2",
+    "express-mongo-sanitize": "^2.2.0",
     "jwks-rsa": "^2.0.5",
     "passport": "^0.5.2",
     "passport-jwt": "^4.0.0",
