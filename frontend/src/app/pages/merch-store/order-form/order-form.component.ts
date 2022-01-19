@@ -22,7 +22,7 @@ export class OrderFormComponent {
     zip: '',
     state: '',
     country: '',
-    other: '',
+    otherRequests: '',
     termsCheck: false,
     privacyCheck: false,
     captcha: '',

@@ -8,7 +8,7 @@ export interface NewOrder {
   zip: string;
   state?: string;
   country: string;
-  other?: string;
+  otherRequests?: string;
   productsPrice: number;
   shippingPrice: number;
   cart: {
@@ -30,7 +30,7 @@ export interface ExistingOrder {
   zip: string;
   state?: string;
   country: string;
-  other?: string;
+  otherRequests?: string;
   productsPrice: number;
   shippingPrice: number;
   cart: {

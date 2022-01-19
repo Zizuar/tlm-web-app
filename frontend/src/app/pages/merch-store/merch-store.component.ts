@@ -22,7 +22,7 @@ export class MerchStoreComponent {
     zip: '',
     state: '',
     country: '',
-    other: '',
+    otherRequests: '',
     termsCheck: false,
     privacyCheck: false,
     captcha: '',
@@ -60,7 +60,7 @@ export class MerchStoreComponent {
         }
         this.loading = false;
       },
-      error: (err) => {
+      error: () => {
         this.storeState = StoreState.Error;
         this.loading = false;
       },
@@ -74,7 +74,7 @@ export class MerchStoreComponent {
       zip: '',
       state: '',
       country: '',
-      other: '',
+      otherRequests: '',
       termsCheck: false,
       privacyCheck: false,
       captcha: '',

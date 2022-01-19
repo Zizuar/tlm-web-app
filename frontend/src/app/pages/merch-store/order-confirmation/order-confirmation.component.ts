@@ -17,7 +17,7 @@ export class OrderConfirmationComponent implements OnInit {
     zip: '',
     state: '',
     country: '',
-    other: '',
+    otherRequests: '',
     termsCheck: false,
     privacyCheck: false,
     captcha: '',

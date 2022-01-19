@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, lastValueFrom, Observable, throwError } from "rxjs";
+import { BehaviorSubject, lastValueFrom, Observable } from "rxjs";
 import { OrderFormDataService } from './order-form-data.service';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Product } from '../core/models/product.model';
 import { CartItem } from '../core/models/cart-item.model';
 import { NewOrder, OrderStatus } from "../core/models/order.model";
@@ -72,7 +72,6 @@ export class MerchStoreService {
     const postData = {
       ...orderFormData,
       status: OrderStatus.CREATED,
-      otherRequests: orderFormData['other'],
       country: this.orderFormDataService.getCountryName(orderFormData.country),
       cart: this._cart.value.map((cartItem) => {
         return {
