@@ -8,7 +8,7 @@ import * as mongoSanitize from 'express-mongo-sanitize';
 
 // api function
 import { AppModule } from './app.module';
-import { VersioningType } from '@nestjs/common';
+import { ValidationPipe, VersioningType } from '@nestjs/common';
 
 const apiServer: express.Express = express();
 
@@ -25,6 +25,7 @@ export const createApiNestServer = async (expressInstance: express.Express) => {
   });
   app.enableCors();
   app.use(mongoSanitize({ replaceWith: '. ' }));
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(process.env.PORT || 3000);
 };

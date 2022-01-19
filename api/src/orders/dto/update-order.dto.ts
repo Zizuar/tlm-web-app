@@ -1,13 +1,19 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateOrderDto } from './create-order.dto';
 import { OrderStatus } from '../interfaces/order-status.interface';
-import { IsDate, IsInt, Max, Min } from 'class-validator';
+import { IsDate, IsInt, IsMongoId, Max, Min } from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class UpdateOrderDto extends PartialType(CreateOrderDto) {
+  @IsMongoId()
+  _id: string;
+
   @IsDate()
+  @Type(() => Date)
   createdDate: Date;
 
   @IsDate()
+  @Type(() => Date)
   updatedDate: Date;
 
   @IsInt()

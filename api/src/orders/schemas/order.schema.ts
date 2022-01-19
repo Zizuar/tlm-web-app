@@ -8,6 +8,9 @@ export class Order {
   @Prop({ required: true, type: Date })
   createdDate: Date;
 
+  @Prop({ required: true, type: Date })
+  updatedDate: Date;
+
   @Prop({ required: true, type: Number })
   status: number;
 

@@ -2,6 +2,7 @@ import { Document } from 'mongoose';
 
 export interface Order extends Document {
   readonly createdDate: Date;
+  readonly updatedDate: Date;
   readonly email: string;
   readonly mailName: string;
   readonly street1: string;

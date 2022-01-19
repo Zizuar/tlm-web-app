@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef } from "@angular/core";
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import {
   ExistingOrder,
   OrderStatus,
@@ -9,7 +9,9 @@ import {
   removeOrder,
   updateOrder,
 } from '../../../../../../store/orders.actions';
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DashOrdersEditModalComponent } from '../../dash-orders-edit-modal/dash-orders-edit-modal.component';
+import {cloneDeep} from 'lodash';
 
 @Component({
   selector: 'app-dash-orders-list-action-button',
@@ -23,7 +25,10 @@ export class DashOrdersListActionButtonComponent implements OnInit {
 
   OrderStatus = OrderStatus;
 
-  constructor(private readonly store: Store, private readonly modalService: NgbModal) {}
+  constructor(
+    private readonly store: Store,
+    private readonly modalService: NgbModal
+  ) {}
 
   ngOnInit() {
     switch (this.order.status) {
@@ -77,5 +82,13 @@ export class DashOrdersListActionButtonComponent implements OnInit {
 
   removeOrder() {
     this.store.dispatch(removeOrder({ id: this.order._id }));
+  }
+
+  openEditModal() {
+    const modalRef = this.modalService.open(DashOrdersEditModalComponent, {
+      size: 'lg',
+    });
+    // send a copy of the object to the edit form
+    modalRef.componentInstance.order = cloneDeep(this.order);
   }
 }

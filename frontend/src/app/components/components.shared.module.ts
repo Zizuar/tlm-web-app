@@ -12,6 +12,7 @@ import {BioComponent} from './bio/bio.component';
 import {CallToActionComponent} from './call-to-action/call-to-action.component';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import {CountryCodeToNamePipe} from '../pipes/country-code-to-name.pipe';
+import { ClickStopPropagationDirective } from "../directives/click-stop-propagation.directive";
 
 
 
@@ -26,13 +27,9 @@ import {CountryCodeToNamePipe} from '../pipes/country-code-to-name.pipe';
     UnescapePipe,
     LoadingScreenComponent,
     CountryCodeToNamePipe,
+    ClickStopPropagationDirective,
   ],
-  imports: [
-    CommonModule,
-    NgbModule,
-    FontAwesomeModule,
-    RouterModule,
-  ],
+  imports: [CommonModule, NgbModule, FontAwesomeModule, RouterModule],
   exports: [
     HeaderComponent,
     FooterComponent,
@@ -43,6 +40,7 @@ import {CountryCodeToNamePipe} from '../pipes/country-code-to-name.pipe';
     UnescapePipe,
     LoadingScreenComponent,
     CountryCodeToNamePipe,
+    ClickStopPropagationDirective,
   ],
 })
-export class SharedComponentsModule { }
+export class SharedComponentsModule {}

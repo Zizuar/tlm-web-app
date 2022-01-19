@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-tite">Edit day in schedule</h4>
+  <h4 class="modal-title">Edit day in schedule</h4>
 </div>
 <form (ngSubmit)="editForm.form.valid && saveChanges()" #editForm="ngForm">
   <div class="modal-body">
@@ -67,20 +67,18 @@
         <input type="text" class="form-control" name="contentLong" id="contentLong"
                [(ngModel)]="scheduleDay.contentLong" required>
       </div>
-      <div class="col-8">
-        <label for="contentShort" class="form-label">Content short description</label>
-        <input type="text" class="form-control" name="contentShort" id="contentShort"
-               [(ngModel)]="scheduleDay.contentShort" maxlength="8" required>
-        <div id="contentShortHelp" class="form-text">Maximum 8 characters.</div>
-      </div>
-    </div>
-    <div class="row g-3 mt-3">
       <div class="col">
         <div class="form-check form-switch">
           <input type="checkbox" role="switch" class="form-check-input" name="contentFlexible" id="contentFlexible"
                  [(ngModel)]="scheduleDay.contentFlexible">
           <label class="form-check-label" for="contentFlexible">Is content for this day flexible?</label>
         </div>
+      </div>
+      <div class="col-8">
+        <label for="contentShort" class="form-label">Content short description</label>
+        <input type="text" class="form-control" name="contentShort" id="contentShort"
+               [(ngModel)]="scheduleDay.contentShort" maxlength="8" required>
+        <div id="contentShortHelp" class="form-text">Maximum 8 characters.</div>
       </div>
     </div>
   </div>

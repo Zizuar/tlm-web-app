@@ -12,7 +12,7 @@
         Mark abandoned
       </button>
       <div class="dropdown-divider"></div>
-      <button ngbDropdownItem disabled>Edit</button>
+      <button ngbDropdownItem (click)="openEditModal()">Edit</button>
       <button ngbDropdownItem class="text-danger" (click)="deleteWarning(deleteWarningModal)">Remove</button>
     </div>
   </div>
