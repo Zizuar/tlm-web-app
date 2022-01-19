@@ -1,0 +1,81 @@
+<div class="modal-header">
+  <h4 class="modal-title">Edit order</h4>
+</div>
+<form (ngSubmit)="editForm.form.valid && saveChanges()" #editForm="ngForm">
+  <div class="modal-body">
+    <div class="row g-3">
+      <div class="col">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" id="email" #email="ngModel" [ngClass]="{ 'is-invalid': (editForm.submitted || email.dirty) && email.invalid}" [(ngModel)]="order.email" required email>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col">
+        <label for="street1" class="form-label">Street address 1</label>
+        <input type="text" class="form-control" name="street1" id="street1" #street1="ngModel" [ngClass]="{ 'is-invalid': (editForm.submitted || street1.dirty) && street1.invalid}" [(ngModel)]="order.street1" required>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col">
+        <label for="street2" class="form-label">Street address 2</label>
+        <input type="text" class="form-control" name="street2" id="street2" [(ngModel)]="order.street2">
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-7">
+        <label for="city" class="form-label">City</label>
+        <input type="text" class="form-control" name="city" id="city" #city="ngModel" [ngClass]="{ 'is-invalid': (editForm.submitted || city.dirty) && city.invalid}" [(ngModel)]="order.city" required>
+      </div>
+      <div class="col-5">
+        <label for="zip" class="form-label">ZIP/Postal code</label>
+        <input type="text" class="form-control" name="zip" id="zip" #zip="ngModel" [ngClass]="{ 'is-invalid': (editForm.submitted || zip.dirty) && zip.invalid}" [(ngModel)]="order.zip" required>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-6">
+        <label for="state" class="form-label">State</label>
+        <input type="text" class="form-control" name="state" id="state"
+               [disabled]="order.country !== 'United States of America'" #state="ngModel" [ngClass]="{ 'is-invalid': (editForm.submitted || state.dirty) && state.invalid}" [(ngModel)]="order.state" required>
+      </div>
+      <div class="col-6">
+        <label for="country" class="form-label">Country</label>
+        <input type="text" class="form-control" name="country" id="country" #country="ngModel" [ngClass]="{ 'is-invalid': (editForm.submitted || country.dirty) && country.invalid}" [(ngModel)]="order.country" required>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-12 fw-bolder my-3">Products in cart</div>
+      <div class="col-12">
+        <div class="row fw-bolder">
+          <div class="col-5">Product name</div>
+          <div class="col-4">Signature to</div>
+          <div class="col-2">Price</div>
+          <div class="col-1"></div>
+        </div>
+        <div class="row mb-2" *ngFor="let product of order.cart; let idx = index">
+          <div class="col-5">{{product.productName}}</div>
+          <div class="col-4">
+            <input type="text" class="form-control" name="signatureName" [(ngModel)]="product.signatureName">
+          </div>
+          <div class="col-2">${{product.price / 100}}</div>
+          <div class="col-1">
+            <button appClickStopPropagation type="button" class="btn btn-sm btn-danger" (click)="removeCartItem(idx)">
+              <fa-icon [icon]="faTrash"></fa-icon>
+              <span class="sr-only">Remove</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col">
+        <label for="other" class="form-label">Other requests/notes</label>
+        <input type="text" class="form-control" name="other" id="other" [(ngModel)]="order.other">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer d-flex justify-content-between">
+    <button class="btn btn-outline-secondary" type="button" (click)="activeModal.dismiss()">Close without saving
+    </button>
+    <button class="btn btn-primary" type="submit">Save</button>
+  </div>
+</form>

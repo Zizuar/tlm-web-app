@@ -1,13 +1,16 @@
-import { IsEmail, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateOrderDto {
   @IsEmail()
+  @IsNotEmpty()
   readonly email: string;
 
   @IsString()
+  @IsNotEmpty()
   readonly mailName: string;
 
   @IsString()
+  @IsNotEmpty()
   readonly street1: string;
 
   @IsString()
@@ -17,12 +20,15 @@ export class CreateOrderDto {
   readonly state?: string;
 
   @IsString()
+  @IsNotEmpty()
   readonly zip: string;
 
   @IsString()
+  @IsNotEmpty()
   readonly city: string;
 
   @IsString()
+  @IsNotEmpty()
   readonly country: string;
 
   readonly cart: [

@@ -11,11 +11,11 @@ export interface NewOrder {
   other?: string;
   productsPrice: number;
   shippingPrice: number;
-  cart: [{
+  cart: {
     productName: string;
     signatureName: string;
     price: number;
-  }]
+  }[]
 }
 
 export interface ExistingOrder {
@@ -33,11 +33,11 @@ export interface ExistingOrder {
   other?: string;
   productsPrice: number;
   shippingPrice: number;
-  cart: [{
+  cart: {
     productName: string;
     signatureName: string;
     price: number;
-  }]
+  }[]
 }
 
 export enum OrderStatus {

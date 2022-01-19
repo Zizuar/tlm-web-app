@@ -22,8 +22,8 @@ export class OrdersService {
     try {
       const newOrder = new this.orderModel({
         ...createOrderDto,
-        createdDate: Date.now(),
-        updatedDate: Date.now(),
+        createdDate: new Date(),
+        updatedDate: new Date(),
         orderStatus: OrderStatus.CREATED,
         shippingPrice: this.calculateShipping(createOrderDto.country),
         productsPrice: this.calculateProductsPrice(createOrderDto.cart),
@@ -65,7 +65,9 @@ export class OrdersService {
   async update(id: string, updateOrderDto: UpdateOrderDto): Promise<Order> {
     const updatedOrder = {
       ...updateOrderDto,
-      updatedDate: Date.now(),
+      updatedDate: new Date(),
+      shippingPrice: this.calculateShipping(updateOrderDto.country),
+      productsPrice: this.calculateProductsPrice(updateOrderDto.cart),
     };
 
     const errors = await validate(updatedOrder);

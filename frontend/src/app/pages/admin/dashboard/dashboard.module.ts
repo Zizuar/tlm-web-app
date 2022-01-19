@@ -17,6 +17,8 @@ import { FormsModule } from "@angular/forms";
 import { DashOrdersListComponent } from './dash-orders/dash-orders-list/dash-orders-list.component';
 import { DashOrdersListItemComponent } from './dash-orders/dash-orders-list/dash-orders-list-item/dash-orders-list-item.component';
 import { DashOrdersListActionButtonComponent } from './dash-orders/dash-orders-list/dash-orders-list-action-button/dash-orders-list-action-button.component';
+import { DashOrdersEditModalComponent } from './dash-orders/dash-orders-edit-modal/dash-orders-edit-modal.component';
+import { SharedComponentsModule } from "../../../components/components.shared.module";
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { DashOrdersListActionButtonComponent } from './dash-orders/dash-orders-l
     DashOrdersListComponent,
     DashOrdersListItemComponent,
     DashOrdersListActionButtonComponent,
+    DashOrdersEditModalComponent,
   ],
   exports: [DashboardComponent],
   imports: [
@@ -43,6 +46,7 @@ import { DashOrdersListActionButtonComponent } from './dash-orders/dash-orders-l
     FormsModule,
     NgbCollapseModule,
     NgbDropdownModule,
+    SharedComponentsModule,
   ],
 })
 export class DashboardModule {}

@@ -34,7 +34,7 @@
                       </h5>
                       <p class="card-text" *ngIf="release.text.subheader" [innerHTML]="release.text.subheader | unescape"></p>
                       <p class="card-text" *ngIf="release.text.text" [innerHTML]="release.text.text | unescape"></p>
-                      <div *ngIf="release.tracklist">
+                      <div *ngIf="release.tracklist && release.tracklist.length > 0">
                         <p class="card-text pb-1 mb-0">Featured tracks:</p>
                         <p class="my-0 py-0 ps-1" *ngFor="let track of release.tracklist">
                           <a *ngIf="track.youtubeLink" [href]="track.youtubeLink" target="_blank"> {{track.title}}</a>

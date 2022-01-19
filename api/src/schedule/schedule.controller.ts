@@ -21,6 +21,6 @@ export class ScheduleController {
     @Param('id') id: string,
     @Body() updateScheduleDto: UpdateScheduleDto,
   ) {
-    return this.scheduleService.update(id, updateScheduleDto);
+    return this.scheduleService.update(id, { ...updateScheduleDto });
   }
 }
