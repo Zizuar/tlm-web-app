@@ -1,6 +1,6 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, TemplateRef } from "@angular/core";
 import { ExistingOrder } from '../../../../../core/models/order.model';
-import { NgbActiveModal  } from "@ng-bootstrap/ng-bootstrap";
+import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Store } from '@ngrx/store';
 import { updateOrder } from '../../../../../store/orders.actions';
 import { IconDefinition } from "@fortawesome/free-regular-svg-icons";
@@ -18,6 +18,7 @@ export class DashOrdersEditModalComponent {
 
   constructor(
     public activeModal: NgbActiveModal,
+    private readonly modalService: NgbModal,
     private readonly store: Store
   ) {}
 
@@ -26,9 +27,12 @@ export class DashOrdersEditModalComponent {
     this.activeModal.close('submitted');
   }
 
-  async removeCartItem(idx: number) {
-    this.order.cart = this.order.cart.filter((product, index) => {
-      return index !== idx;
-    });
+  async removeCartItem(modalContent: TemplateRef<any>, idx: number) {
+    const result = await this.modalService.open(modalContent).result;
+    if (result === 'DELETE') {
+      this.order.cart = this.order.cart.filter((product, index) => {
+        return index !== idx;
+      });
+    }
   }
 }
