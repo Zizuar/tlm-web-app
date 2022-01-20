@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {map, Observable} from 'rxjs';
 import { environment } from "../../environments/environment";
+import * as moment from "moment";
 
 export enum ReleaseCategories {
   Song = 'songs',
@@ -56,7 +57,7 @@ export class ReleasesService {
       map(response => response.map(release => {
         return {
           ...release,
-          releaseDate: new Date(release.releaseDate)
+          releaseDate: moment.parseZone(release.releaseDate).local(true).toDate(),
         }
       })),
       // Sort by date
@@ -69,7 +70,7 @@ export class ReleasesService {
       map(response => response.map(release => {
         return {
           ...release,
-          releaseDate: new Date(release.releaseDate)
+          releaseDate: moment.parseZone(release.releaseDate).local(true).toDate(),
         }
       })),
       // Sort by date
@@ -82,7 +83,7 @@ export class ReleasesService {
       map(release => {
         return {
           ...release,
-          releaseDate: new Date(release.releaseDate)
+          releaseDate: moment.parseZone(release.releaseDate).local(true).toDate(),
         }
       })
     );
