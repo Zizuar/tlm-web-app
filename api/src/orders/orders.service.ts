@@ -106,15 +106,7 @@ export class OrdersService {
   }
 
   private calculateProductsPrice(cart) {
-    const discount =
-      cart.find(
-        (cartItem) => cartItem.productName === 'Songs for Being Alone CD',
-      ) &&
-      cart.find(
-        (cartItem) => cartItem.productName === 'Tyler Levs EP (2019) CD',
-      )
-        ? 500
-        : 0;
+    const discount = 0;
     let productsPrice = 0;
     cart.forEach((cartItem) => {
       productsPrice += cartItem.price ? cartItem.price : 0;

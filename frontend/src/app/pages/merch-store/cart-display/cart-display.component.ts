@@ -61,17 +61,8 @@ export class CartDisplayComponent implements OnChanges {
   }
 
   private calculateDiscount(items: CartItem[]): void {
-    if (items.length > 0) {
-      const sfba = items.find(
-        (item) => item.product.name === 'Songs for Being Alone CD'
-      );
-      const ep = items.find(
-        (item) => item.product.name === 'Tyler Levs EP (2019) CD'
-      );
-      if (sfba && ep) {
-        this.discount = 500;
-      }
-    }
+    // discounts disabled for now
+    this.discount = 0;
   }
 
   private calculateSubtotal(items: CartItem[]) {
