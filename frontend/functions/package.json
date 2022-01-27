@@ -42,7 +42,7 @@
     "firebase-functions": "^3.16",
     "mongoose": "^6.1.5",
     "nest-router": "^1.0.9",
-    "node-fetch": "^2.6.6",
+    "node-fetch": "^2.6.7",
     "node-forge": ">=1.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
