@@ -8,9 +8,8 @@ describe('DashPressComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashPressComponent ]
-    })
-    .compileComponents();
+      declarations: [DashPressComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

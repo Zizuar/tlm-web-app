@@ -8,9 +8,8 @@ describe('AdminUnauthorizedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminUnauthorizedComponent ]
-    })
-    .compileComponents();
+      declarations: [AdminUnauthorizedComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

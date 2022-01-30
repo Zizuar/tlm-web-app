@@ -1,4 +1,4 @@
-import { MetaDefinition } from "@angular/platform-browser";
+import { MetaDefinition } from '@angular/platform-browser';
 
 export interface Environment {
   production: boolean;
@@ -7,7 +7,7 @@ export interface Environment {
     sitekey: string;
   };
   apiBaseUrl: string;
-  metadata: MetaDefinition[],
+  metadata: MetaDefinition[];
   auth: {
     clientId: string;
     domain: string;
@@ -18,8 +18,7 @@ export interface Environment {
           uri: string;
           allowAnonymous: boolean;
         }
-      ]
+      ];
     };
-  }
-
+  };
 }

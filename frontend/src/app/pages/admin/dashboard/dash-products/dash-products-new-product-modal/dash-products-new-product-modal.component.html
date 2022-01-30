@@ -1,0 +1,66 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add new product</h4>
+</div>
+<form (ngSubmit)="newProductForm.form.valid && saveNewProduct()" #newProductForm="ngForm">
+  <div class="modal-body">
+    <div class="row g-3">
+      <div class="col position-relative">
+        <label for="name" class="form-label">Product name</label>
+        <input type="text" name="name" id="name" class="form-control" #name="ngModel"
+               [ngClass]="{ 'is-invalid': (newProductForm.submitted || name.dirty) && name.invalid}"
+               [(ngModel)]="product.name" required>
+        <div class="invalid-tooltip">
+          You must provide a name for the product!
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col position-relative">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" name="description" id="description" #description="ngModel"
+                  [ngClass]="{ 'is-invalid': (newProductForm.submitted || description.dirty) && description.invalid}"
+                  [(ngModel)]="product.description" required></textarea>
+        <div class="invalid-tooltip">
+          You must provide a description for the product!
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col-6 position-relative">
+        <label for="description" class="form-label">Price (in cents)</label>
+        <input type="number" name="price" id="price" class="form-control" #price="ngModel"
+               [ngClass]="{ 'is-invalid': (newProductForm.submitted || price.dirty) && price.invalid}"
+               [(ngModel)]="product.price" required min="0" max="10000">
+        <div class="invalid-tooltip">
+          Price must be between 0 and 10,000 cents ($100).
+        </div>
+      </div>
+      <div class="col-6 d-flex flex-column justify-content-end align-items-center">
+        <div class="form-check form-switch">
+          <input type="checkbox" role="switch" name="signable" id="signable" class="form-check-input"
+                 [(ngModel)]="product.signable">
+          <label for="signable" class="form-check-label">Can item be customized (signed)?</label>
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col">
+        <label for="spotifyLink" class="form-label">Spotify link</label>
+        <input type="text" name="spotifyLink" id="spotifyLink" class="form-control"
+               [(ngModel)]="product.spotifyLink">
+      </div>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col">
+        <label for="promo" class="form-label">Promo text (for sales)</label>
+        <input type="text" name="promo" id="promo" class="form-control"
+               [(ngModel)]="product.promo">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer d-flex justify-content-between">
+    <button class="btn btn-outline-secondary" type="button" (click)="activeModal.dismiss()">Close without saving
+    </button>
+    <button class="btn btn-primary" type="submit" [disabled]="!newProductForm.form.valid">Save</button>
+  </div>
+</form>

@@ -8,9 +8,8 @@ describe('StreamingIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StreamingIconComponent ]
-    })
-    .compileComponents();
+      declarations: [StreamingIconComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

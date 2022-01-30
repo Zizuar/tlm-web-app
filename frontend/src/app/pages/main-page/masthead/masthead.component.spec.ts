@@ -8,9 +8,8 @@ describe('MastheadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MastheadComponent ]
-    })
-    .compileComponents();
+      declarations: [MastheadComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

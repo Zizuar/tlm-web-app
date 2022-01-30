@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Release} from '../../../../services/releases.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Release } from '../../../../services/releases.service';
 
 @Component({
   selector: 'app-release-item',
@@ -12,7 +12,7 @@ export class ReleaseItemComponent implements OnInit {
   isReleased: boolean = true;
 
   ngOnInit(): void {
-    this.isReleased = Date.parse(this.release.releaseDate.toString()) < this.now;
+    this.isReleased =
+      Date.parse(this.release.releaseDate.toString()) < this.now;
   }
-
 }

@@ -1,9 +1,9 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-streaming-icon',
   templateUrl: './streaming-icon.component.html',
-  styleUrls: ['./streaming-icon.component.scss']
+  styleUrls: ['./streaming-icon.component.scss'],
 })
 export class StreamingIconComponent {
   @Input() name: string = '';

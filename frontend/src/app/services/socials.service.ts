@@ -1,7 +1,15 @@
-import {Injectable} from '@angular/core';
-import {IconDefinition} from '@fortawesome/free-regular-svg-icons';
-import {faFacebook, faInstagram, faSpotify, faTiktok, faTwitch, faTwitter, faYoutube} from '@fortawesome/free-brands-svg-icons';
-import {Observable, of} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
+import {
+  faFacebook,
+  faInstagram,
+  faSpotify,
+  faTiktok,
+  faTwitch,
+  faTwitter,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
+import { Observable, of } from 'rxjs';
 
 export interface Social {
   name: string;
@@ -51,8 +59,7 @@ export class SocialsService {
     },
   ];
 
-  constructor() {
-  }
+  constructor() {}
 
   getSocials(): Observable<Social[]> {
     return of(this.socials);

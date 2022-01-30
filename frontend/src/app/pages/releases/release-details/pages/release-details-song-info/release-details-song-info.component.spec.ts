@@ -8,9 +8,8 @@ describe('ReleaseDetailsSongInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReleaseDetailsSongInfoComponent ]
-    })
-    .compileComponents();
+      declarations: [ReleaseDetailsSongInfoComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

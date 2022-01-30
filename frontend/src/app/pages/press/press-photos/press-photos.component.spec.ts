@@ -8,9 +8,8 @@ describe('PressPhotosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PressPhotosComponent ]
-    })
-    .compileComponents();
+      declarations: [PressPhotosComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

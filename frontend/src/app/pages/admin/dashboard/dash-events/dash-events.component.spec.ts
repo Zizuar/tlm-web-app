@@ -8,9 +8,8 @@ describe('DashEventsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashEventsComponent ]
-    })
-    .compileComponents();
+      declarations: [DashEventsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

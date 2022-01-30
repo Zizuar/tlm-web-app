@@ -8,9 +8,8 @@ describe('AdminLoginInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminLoginInfoComponent ]
-    })
-    .compileComponents();
+      declarations: [AdminLoginInfoComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

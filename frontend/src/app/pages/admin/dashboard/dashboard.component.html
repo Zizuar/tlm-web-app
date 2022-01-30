@@ -11,7 +11,7 @@
         <app-dash-orders></app-dash-orders>
       </ng-template>
     </li>
-    <li ngbNavItem="products" [disabled]="true" *ngIf="(scopes$ | async)?.includes(SCOPES.PRODUCTS_WRITE)">
+    <li ngbNavItem="products" *ngIf="(scopes$ | async)?.includes(SCOPES.PRODUCTS_WRITE)">
       <a ngbNavLink="products">Products</a>
       <ng-template ngbNavContent>
         <app-dash-products></app-dash-products>

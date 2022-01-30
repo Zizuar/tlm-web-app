@@ -4,7 +4,7 @@ export interface ScheduledEvent {
   venue: string;
   town: string;
   venueLink?: string;
-  eventLink?:string;
+  eventLink?: string;
 }
 
 export interface ApiEvent {
@@ -13,5 +13,5 @@ export interface ApiEvent {
   venue: string;
   town: string;
   venueLink?: string;
-  eventLink?:string;
+  eventLink?: string;
 }

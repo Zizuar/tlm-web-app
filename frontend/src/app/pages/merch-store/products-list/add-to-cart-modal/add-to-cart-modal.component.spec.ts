@@ -8,9 +8,8 @@ describe('ModalDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddToCartModalComponent ]
-    })
-    .compileComponents();
+      declarations: [AddToCartModalComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

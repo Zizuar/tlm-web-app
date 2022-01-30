@@ -22,6 +22,9 @@ export class Product {
 
   @Prop()
   promo: string;
+
+  @Prop({ required: true })
+  createdAt: Date;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

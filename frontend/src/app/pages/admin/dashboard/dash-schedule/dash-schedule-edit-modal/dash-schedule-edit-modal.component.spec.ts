@@ -8,9 +8,8 @@ describe('DashScheduleEditModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashScheduleEditModalComponent ]
-    })
-    .compileComponents();
+      declarations: [DashScheduleEditModalComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

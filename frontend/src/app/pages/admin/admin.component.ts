@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { login, logout } from '../../store/auth.actions';
+import { login, logout } from '../../store/auth/auth.actions';
 import { Observable } from 'rxjs';
 import {
   selectCurrentUserProfile,
-  selectIsLoggedIn, selectScopes
-} from "../../store/auth.selectors";
+  selectIsLoggedIn,
+  selectScopes,
+} from '../../store/auth/auth.selectors';
 import { SCOPES } from '../../core/auth/scopes';
 
 @Component({
@@ -20,9 +21,7 @@ export class AdminComponent {
   profile$: Observable<any>;
   scopes$: Observable<string>;
 
-  constructor(
-    private readonly store: Store,
-  ) {
+  constructor(private readonly store: Store) {
     this.loggedIn$ = this.store.select(selectIsLoggedIn);
     this.profile$ = this.store.select(selectCurrentUserProfile);
     this.scopes$ = this.store.select(selectScopes);

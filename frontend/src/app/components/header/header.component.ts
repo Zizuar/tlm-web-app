@@ -1,12 +1,12 @@
-import {Component, Input, OnDestroy,Renderer2} from '@angular/core';
-import {throttle} from 'lodash';
-import {ViewportScroller} from '@angular/common';
-import {Router} from '@angular/router';
+import { Component, Input, OnDestroy, Renderer2 } from '@angular/core';
+import { throttle } from 'lodash';
+import { ViewportScroller } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnDestroy {
   @Input() pageType = '';
@@ -19,11 +19,15 @@ export class HeaderComponent implements OnDestroy {
   constructor(
     private readonly renderer2: Renderer2,
     private readonly viewportScroller: ViewportScroller,
-    private readonly router: Router,
+    private readonly router: Router
   ) {
-    this.listener = this.renderer2.listen('window', 'scroll', throttle(() => {
-      this.scrolled = this.getYPosition() > 0;
-    }, 200));
+    this.listener = this.renderer2.listen(
+      'window',
+      'scroll',
+      throttle(() => {
+        this.scrolled = this.getYPosition() > 0;
+      }, 200)
+    );
   }
 
   getYPosition(): number {
@@ -34,12 +38,11 @@ export class HeaderComponent implements OnDestroy {
     if (this.pageType === 'main') {
       this.viewportScroller.scrollToAnchor(section);
     } else {
-      this.router.navigate(['/'], {state: {scrollToFragment: section}});
+      this.router.navigate(['/'], { state: { scrollToFragment: section } });
     }
   }
 
   ngOnDestroy() {
     this.listener();
   }
-
 }

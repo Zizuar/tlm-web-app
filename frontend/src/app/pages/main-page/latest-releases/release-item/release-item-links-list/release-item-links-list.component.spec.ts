@@ -8,9 +8,8 @@ describe('ReleaseItemLinksListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReleaseItemLinksListComponent ]
-    })
-    .compileComponents();
+      declarations: [ReleaseItemLinksListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,7 +1,8 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { ScheduleState } from "./schedule.reducer";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { ScheduleState } from './schedule.reducer';
 
-export const selectScheduleFeatureState = createFeatureSelector<ScheduleState>('schedule');
+export const selectScheduleFeatureState =
+  createFeatureSelector<ScheduleState>('schedule');
 
 export const selectSchedule = createSelector(
   selectScheduleFeatureState,

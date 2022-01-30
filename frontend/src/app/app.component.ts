@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { checkAuth } from './store/auth.actions';
-import { Meta } from "@angular/platform-browser";
-import { environment } from "../environments/environment";
+import { checkAuth } from './store/auth/auth.actions';
+import { Meta } from '@angular/platform-browser';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +12,7 @@ import { environment } from "../environments/environment";
 export class AppComponent implements OnInit {
   title = 'tlm-web-app';
 
-  constructor(
-    private readonly store: Store,
-    private readonly meta: Meta,
-    ) {}
+  constructor(private readonly store: Store, private readonly meta: Meta) {}
 
   ngOnInit() {
     this.store.dispatch(checkAuth());

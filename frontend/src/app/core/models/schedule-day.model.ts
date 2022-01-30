@@ -9,7 +9,7 @@ export interface StreamingScheduleElement {
   isOff: boolean;
   startHour?: string;
   startAMPM?: string;
-  startFlexible?: boolean
+  startFlexible?: boolean;
   endHour?: string;
   endAMPM?: string;
 }

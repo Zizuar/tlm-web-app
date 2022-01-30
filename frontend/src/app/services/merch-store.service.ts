@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, lastValueFrom, Observable } from "rxjs";
+import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
 import { OrderFormDataService } from './order-form-data.service';
-import { HttpClient } from '@angular/common/http';
-import { Product } from '../core/models/product.model';
 import { CartItem } from '../core/models/cart-item.model';
-import { NewOrder, OrderStatus } from "../core/models/order.model";
-import { environment } from "../../environments/environment";
-import { OrdersService } from "./orders.service";
+import { NewOrder, OrderStatus } from '../core/models/order.model';
+import { OrdersService } from './orders.service';
+import { ProductsService } from './products.service';
 
 export enum StoreState {
   Main,
@@ -20,8 +18,6 @@ export enum StoreState {
   providedIn: 'root',
 })
 export class MerchStoreService {
-  private readonly productsApiUrl = `${environment.apiBaseUrl}/v1/products`;
-
   private readonly DOM_SHIPPING = [
     'US',
     'AS',
@@ -46,13 +42,9 @@ export class MerchStoreService {
 
   constructor(
     private readonly orderFormDataService: OrderFormDataService,
-    private readonly http: HttpClient,
     private readonly ordersService: OrdersService,
+    private readonly productsService: ProductsService
   ) {}
-
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsApiUrl);
-  }
 
   getCart(): Observable<CartItem[]> {
     return this.cartStore$;
@@ -88,9 +80,11 @@ export class MerchStoreService {
 
   async addItemToCart(
     productId: string,
-    itemFormData?: any
+    itemFormData?: { requested: boolean; toWhom: string }
   ): Promise<boolean> {
-    const productToAdd = await lastValueFrom(this.http.get<Product>(`${this.productsApiUrl}/${productId}`));
+    const productToAdd = await lastValueFrom(
+      this.productsService.getProduct(productId)
+    );
     if (!productToAdd) {
       return false;
     }
@@ -99,7 +93,9 @@ export class MerchStoreService {
       {
         product: productToAdd,
         quantity: 1,
-        signatureRequested: itemFormData,
+        signatureRequested: itemFormData
+          ? itemFormData
+          : { requested: false, toWhom: '' },
       },
     ]);
     return true;
@@ -109,6 +105,4 @@ export class MerchStoreService {
     this._cart.next([]);
     return true;
   }
-
-
 }

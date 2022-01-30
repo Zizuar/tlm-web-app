@@ -8,9 +8,8 @@ describe('ReleaseDetailsCoverComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReleaseDetailsCoverComponent ]
-    })
-    .compileComponents();
+      declarations: [ReleaseDetailsCoverComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

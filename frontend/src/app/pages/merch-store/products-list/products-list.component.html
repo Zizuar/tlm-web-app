@@ -1,4 +1,5 @@
 <div class="container">
+  <app-loading-spinner *ngIf="(this.areProductsFetched | async) !== true"></app-loading-spinner>
   <div class="row d-flex justify-content-around">
     <div class="col-12 col-sm-6 col-lg-4" *ngFor="let product of products | async">
       <app-products-list-item [product]="product"></app-products-list-item>

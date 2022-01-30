@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { ExistingOrder, NewOrder } from '../core/models/order.model';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { ApiBaseService } from './api-base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class OrdersService {
+export class OrdersService extends ApiBaseService {
   private readonly orderApiUrl = `${environment.apiBaseUrl}/v1/orders`;
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {
+    super();
+  }
 
   getOrders(): Observable<ExistingOrder[]> {
     return this.http
@@ -34,18 +37,5 @@ export class OrdersService {
     return this.http
       .delete<ExistingOrder>(`${this.orderApiUrl}/${id}`)
       .pipe(catchError(this.handleError));
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    console.error('Error encountered:', error);
-    if (error.status === 0) {
-      console.error('An error occurred:', error.error);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, body was: `,
-        error.error
-      );
-    }
-    return throwError(() => 'Something bad happened; please try again later.');
   }
 }
