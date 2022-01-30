@@ -10,7 +10,7 @@ import { MastheadComponent } from './masthead/masthead.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EventItemComponent } from './events/event-item/event-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {LatestReleasesModule} from './latest-releases/latest-releases.module';
+import { LatestReleasesModule } from './latest-releases/latest-releases.module';
 import { UpcomingReleasesComponent } from './upcoming-releases/upcoming-releases.component';
 import { CountdownComponent } from './masthead/countdown/countdown.component';
 
@@ -33,7 +33,6 @@ import { CountdownComponent } from './masthead/countdown/countdown.component';
     NgbModule,
     LatestReleasesModule,
   ],
-  exports: [
-  ],
+  exports: [],
 })
-export class MainPageModule { }
+export class MainPageModule {}

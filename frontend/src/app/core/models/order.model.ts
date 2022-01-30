@@ -15,7 +15,7 @@ export interface NewOrder {
     productName: string;
     signatureName: string;
     price: number;
-  }[]
+  }[];
 }
 
 export interface ExistingOrder {
@@ -37,7 +37,7 @@ export interface ExistingOrder {
     productName: string;
     signatureName: string;
     price: number;
-  }[]
+  }[];
 }
 
 export enum OrderStatus {
@@ -45,5 +45,5 @@ export enum OrderStatus {
   INVOICE_SENT,
   PAID,
   SHIPPED,
-  ABANDONED
+  ABANDONED,
 }

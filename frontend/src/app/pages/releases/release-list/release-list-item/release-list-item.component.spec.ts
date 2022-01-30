@@ -8,9 +8,8 @@ describe('ReleaseListItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReleaseListItemComponent ]
-    })
-    .compileComponents();
+      declarations: [ReleaseListItemComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

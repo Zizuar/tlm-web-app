@@ -10,7 +10,10 @@ import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CartItem } from '../../../core/models/cart-item.model';
-import { MerchStoreService, StoreState as StoreStates } from '../../../services/merch-store.service';
+import {
+  MerchStoreService,
+  StoreState as StoreStates,
+} from '../../../services/merch-store.service';
 
 class StoreState {}
 

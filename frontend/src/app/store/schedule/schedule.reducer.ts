@@ -1,5 +1,5 @@
-import { StreamingScheduleElement } from '../core/models/schedule-day.model';
-import { Action, createReducer, on } from "@ngrx/store";
+import { StreamingScheduleElement } from '../../core/models/schedule-day.model';
+import { Action, createReducer, on } from '@ngrx/store';
 import * as scheduleActions from './schedule.actions';
 
 export interface ScheduleState {
@@ -15,13 +15,16 @@ export const initialState: ScheduleState = {
 const scheduleReducerInternal = createReducer(
   initialState,
 
-  on(scheduleActions.fetchScheduleCompleted, (state, { schedule }): ScheduleState => {
-    return {
-      ...state,
-      schedule,
-      scheduleFetched: true,
-    };
-  })
+  on(
+    scheduleActions.fetchScheduleCompleted,
+    (state, { schedule }): ScheduleState => {
+      return {
+        ...state,
+        schedule,
+        scheduleFetched: true,
+      };
+    }
+  )
 );
 
 export function scheduleReducer(

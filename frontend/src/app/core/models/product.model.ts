@@ -1,5 +1,4 @@
-export interface Product {
-  _id: string;
+export interface NewProduct {
   name: string;
   description: string;
   price: number;
@@ -7,4 +6,9 @@ export interface Product {
   spotifyLink?: string;
   preOrderDate?: Date;
   promo?: string;
+}
+
+export interface Product extends NewProduct {
+  _id: string;
+  createdAt: Date;
 }

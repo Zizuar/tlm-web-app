@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { AuthenticationService } from '../services/auth.service';
-import {
-  AuthActionTypes,
-  LoginAction,
-} from './auth.actions';
+import { AuthenticationService } from '../../services/auth.service';
+import { AuthActionTypes, LoginAction } from './auth.actions';
 import * as authActions from './auth.actions';
 import { combineLatest, of, switchMap, tap } from 'rxjs';
 

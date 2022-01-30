@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ViewportScroller} from '@angular/common';
-import {environment} from '../../../../environments/environment';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-order-confirmation',
   templateUrl: './order-confirmation.component.html',
-  styleUrls: ['./order-confirmation.component.scss']
+  styleUrls: ['./order-confirmation.component.scss'],
 })
 export class OrderConfirmationComponent implements OnInit {
   @Input() formData = {
@@ -28,10 +28,10 @@ export class OrderConfirmationComponent implements OnInit {
 
   recaptchaSiteKey = environment.recaptcha.sitekey;
 
-  constructor(private readonly viewportScroller: ViewportScroller) { }
+  constructor(private readonly viewportScroller: ViewportScroller) {}
 
   ngOnInit() {
-    this.viewportScroller.scrollToPosition([0,0]);
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 
   goBack() {

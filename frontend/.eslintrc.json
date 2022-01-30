@@ -24,6 +24,7 @@
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
+        "plugin:prettier/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {

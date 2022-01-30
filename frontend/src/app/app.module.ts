@@ -17,12 +17,14 @@ import { AdminModule } from './pages/admin/admin.module';
 import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { authReducer } from './store/auth.reducer';
-import { AuthEffects } from './store/auth.effects';
-import { scheduleReducer } from "./store/schedule.reducer";
-import { ScheduleEffects } from "./store/schedule.effects";
-import { orderReducer } from "./store/orders.reducer";
-import { OrderEffects } from "./store/orders.effects";
+import { authReducer } from './store/auth/auth.reducer';
+import { AuthEffects } from './store/auth/auth.effects';
+import { scheduleReducer } from './store/schedule/schedule.reducer';
+import { ScheduleEffects } from './store/schedule/schedule.effects';
+import { orderReducer } from './store/orders/orders.reducer';
+import { OrderEffects } from './store/orders/orders.effects';
+import { productsReducer } from './store/products/products.reducer';
+import { ProductsEffects } from './store/products/products.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,8 +41,18 @@ import { OrderEffects } from "./store/orders.effects";
     MerchStoreModule,
     PressModule,
     AdminModule,
-    StoreModule.forRoot({ auth: authReducer, schedule: scheduleReducer, order: orderReducer }),
-    EffectsModule.forRoot([AuthEffects, ScheduleEffects, OrderEffects]),
+    StoreModule.forRoot({
+      auth: authReducer,
+      schedule: scheduleReducer,
+      order: orderReducer,
+      products: productsReducer,
+    }),
+    EffectsModule.forRoot([
+      AuthEffects,
+      ScheduleEffects,
+      OrderEffects,
+      ProductsEffects,
+    ]),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },

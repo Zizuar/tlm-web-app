@@ -12,7 +12,7 @@ export class AddToCartModalComponent {
 
   signatureRequested = {
     requested: false,
-    toWhom: undefined,
+    toWhom: '',
   };
 
   constructor(public activeModal: NgbActiveModal) {}

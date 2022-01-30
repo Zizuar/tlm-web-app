@@ -1,17 +1,20 @@
-import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
-import { ExistingOrder, OrderStatus } from "../../../../core/models/order.model";
-import { Store } from "@ngrx/store";
-import { selectOrders } from "../../../../store/orders.selectors";
-import { map } from "rxjs/operators";
-import { fetchOrders } from "../../../../store/orders.actions";
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import {
+  ExistingOrder,
+  OrderStatus,
+} from '../../../../core/models/order.model';
+import { Store } from '@ngrx/store';
+import { selectOrders } from '../../../../store/orders/orders.selectors';
+import { map } from 'rxjs/operators';
+import { fetchOrders } from '../../../../store/orders/orders.actions';
 
 @Component({
   selector: 'app-dash-orders',
   templateUrl: './dash-orders.component.html',
-  styleUrls: ['./dash-orders.component.scss']
+  styleUrls: ['./dash-orders.component.scss'],
 })
-export class DashOrdersComponent implements OnInit{
+export class DashOrdersComponent implements OnInit {
   readonly orders$: Observable<ExistingOrder[]>;
 
   readonly newOrders$: Observable<ExistingOrder[]>;
@@ -68,7 +71,7 @@ export class DashOrdersComponent implements OnInit{
     return a.createdDate > b.createdDate
       ? 1
       : a.createdDate < b.createdDate
-        ? -1
-        : 0;
+      ? -1
+      : 0;
   }
 }

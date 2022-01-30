@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { StreamingScheduleService } from '../services/streaming-schedule.service';
+import { StreamingScheduleService } from '../../services/streaming-schedule.service';
 import { ScheduleActionTypes, UpdateScheduleAction } from './schedule.actions';
 import * as scheduleActions from './schedule.actions';
 import { of, switchMap } from 'rxjs';

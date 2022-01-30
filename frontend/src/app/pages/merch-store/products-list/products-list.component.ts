@@ -1,17 +1,41 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { MerchStoreService } from '../../../services/merch-store.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Product } from '../../../core/models/product.model';
+import { Store } from '@ngrx/store';
+import {
+  selectProducts,
+  selectProductsFetched,
+} from '../../../store/products/products.selectors';
+import { fetchProducts } from '../../../store/products/products.actions';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.scss'],
 })
-export class ProductsListComponent {
+export class ProductsListComponent implements OnInit, OnDestroy {
+  areProductsFetched: Observable<boolean> = this.store.select(
+    selectProductsFetched
+  );
   products: Observable<Product[]>;
 
-  constructor(private readonly merchStoreService: MerchStoreService) {
-    this.products = this.merchStoreService.getProducts();
+  mainSub: Subscription = new Subscription();
+
+  constructor(private readonly store: Store) {
+    this.products = this.store.select(selectProducts);
+  }
+
+  ngOnInit() {
+    this.mainSub.add(
+      this.areProductsFetched.subscribe((productsFetched) => {
+        if (!productsFetched) {
+          this.store.dispatch(fetchProducts());
+        }
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.mainSub.unsubscribe();
   }
 }

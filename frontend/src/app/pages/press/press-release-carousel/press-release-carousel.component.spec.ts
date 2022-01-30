@@ -8,9 +8,8 @@ describe('PressReleaseCarouselComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PressReleaseCarouselComponent ]
-    })
-    .compileComponents();
+      declarations: [PressReleaseCarouselComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

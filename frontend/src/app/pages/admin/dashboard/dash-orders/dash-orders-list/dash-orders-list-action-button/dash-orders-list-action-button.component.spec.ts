@@ -8,9 +8,8 @@ describe('DashOrdersListActionButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashOrdersListActionButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [DashOrdersListActionButtonComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

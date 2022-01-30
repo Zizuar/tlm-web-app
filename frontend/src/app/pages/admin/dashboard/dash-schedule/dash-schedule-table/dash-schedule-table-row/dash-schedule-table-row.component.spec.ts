@@ -8,9 +8,8 @@ describe('DashScheduleTableRowComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashScheduleTableRowComponent ]
-    })
-    .compileComponents();
+      declarations: [DashScheduleTableRowComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

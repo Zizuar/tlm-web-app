@@ -1,33 +1,33 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { EventsService } from '../../../services/events.service';
-import {BehaviorSubject, Subscription} from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
-import { ScheduledEvent } from "../../../core/models/scheduled-event.model";
-
+import { ScheduledEvent } from '../../../core/models/scheduled-event.model';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss'],
 })
-export class EventsComponent implements OnDestroy{
+export class EventsComponent implements OnDestroy {
   DEFAULT_EVENTS_TO_SHOW = 3;
 
   @ViewChild('collapse', { static: true }) collapse: NgbCollapse | undefined;
   futureEvents: ScheduledEvent[] = [];
   numberOfEventsToShow = 0;
-  eventsToShow: BehaviorSubject<ScheduledEvent[]> =
-    new BehaviorSubject(this.futureEvents.slice(0, this.numberOfEventsToShow));
+  eventsToShow: BehaviorSubject<ScheduledEvent[]> = new BehaviorSubject(
+    this.futureEvents.slice(0, this.numberOfEventsToShow)
+  );
 
   subscriptions = new Subscription();
 
-  constructor(
-    private readonly eventsService: EventsService,
-  ) {
-    this.eventsService.getFutureEvents().subscribe(eventList => {
+  constructor(private readonly eventsService: EventsService) {
+    this.eventsService.getFutureEvents().subscribe((eventList) => {
       this.futureEvents = eventList;
-      this.numberOfEventsToShow = this.futureEvents.length <= this.DEFAULT_EVENTS_TO_SHOW
-        ? this.futureEvents.length : this.DEFAULT_EVENTS_TO_SHOW;
+      this.numberOfEventsToShow =
+        this.futureEvents.length <= this.DEFAULT_EVENTS_TO_SHOW
+          ? this.futureEvents.length
+          : this.DEFAULT_EVENTS_TO_SHOW;
       this.refreshEvents(this.numberOfEventsToShow);
     });
   }
@@ -46,7 +46,8 @@ export class EventsComponent implements OnDestroy{
 
   private refreshEvents(numberToShow: number) {
     this.numberOfEventsToShow = numberToShow;
-    this.eventsToShow.next(this.futureEvents.slice(0, this.numberOfEventsToShow));
+    this.eventsToShow.next(
+      this.futureEvents.slice(0, this.numberOfEventsToShow)
+    );
   }
-
 }

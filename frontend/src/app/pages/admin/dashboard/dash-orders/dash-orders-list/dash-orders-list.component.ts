@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { ExistingOrder } from "../../../../../core/models/order.model";
+import { Component, Input } from '@angular/core';
+import { ExistingOrder } from '../../../../../core/models/order.model';
 
 @Component({
   selector: 'app-dash-orders-list',

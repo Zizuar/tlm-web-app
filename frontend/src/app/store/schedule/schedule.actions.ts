@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { StreamingScheduleElement } from "../core/models/schedule-day.model";
+import { StreamingScheduleElement } from '../../core/models/schedule-day.model';
 
 export enum ScheduleActionTypes {
   FETCH_SCHEDULE = '[Schedule] Fetch schedule',

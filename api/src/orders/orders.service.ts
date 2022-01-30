@@ -34,7 +34,7 @@ export class OrdersService {
       }
       await newOrder.save();
       await session.commitTransaction();
-      await console.log('New order added!');
+      console.log('New order added!');
       await this.emailService.sendEmailTemplate(
         EmailTemplates.ORDER_ADDED,
         process.env.TYLER_EMAIL,
@@ -81,7 +81,7 @@ export class OrdersService {
       .exec();
   }
 
-  async remove(id: string): Promise<any> {
+  async remove(id: string): Promise<Order> {
     return await this.orderModel.findByIdAndRemove(id).exec();
   }
 

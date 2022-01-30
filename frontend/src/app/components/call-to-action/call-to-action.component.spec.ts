@@ -8,9 +8,8 @@ describe('CallToActionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CallToActionComponent ]
-    })
-    .compileComponents();
+      declarations: [CallToActionComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

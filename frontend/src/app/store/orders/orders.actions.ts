@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ExistingOrder } from '../core/models/order.model';
+import { ExistingOrder } from '../../core/models/order.model';
 
 export enum OrderActionTypes {
   FETCH_ORDERS = '[Order] Fetch orders',

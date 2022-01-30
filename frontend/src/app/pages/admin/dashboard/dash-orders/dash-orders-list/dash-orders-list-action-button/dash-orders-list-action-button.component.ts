@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   ExistingOrder,
   OrderStatus,
@@ -8,10 +8,14 @@ import { Store } from '@ngrx/store';
 import {
   removeOrder,
   updateOrder,
-} from '../../../../../../store/orders.actions';
+} from '../../../../../../store/orders/orders.actions';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DashOrdersEditModalComponent } from '../../dash-orders-edit-modal/dash-orders-edit-modal.component';
-import {cloneDeep} from 'lodash';
+import { cloneDeep } from 'lodash';
+import {
+  DeleteConfirmDialogResult,
+  DeleteConfirmModalComponent,
+} from '../../../../../../components/delete-confirm-modal/delete-confirm-modal.component';
 
 @Component({
   selector: 'app-dash-orders-list-action-button',
@@ -47,7 +51,7 @@ export class DashOrdersListActionButtonComponent implements OnInit {
     }
   }
 
-  async nextStateButton(modalContent: TemplateRef<any>) {
+  async nextStateButton() {
     if (
       this.order.status !== OrderStatus.SHIPPED &&
       this.order.status !== OrderStatus.ABANDONED
@@ -58,17 +62,20 @@ export class DashOrdersListActionButtonComponent implements OnInit {
       };
       this.store.dispatch(updateOrder({ updatedOrder }));
     } else {
-      const result = await this.modalService.open(modalContent).result;
-      if (result === 'DELETE') {
-        this.removeOrder();
-      }
+      await this.deleteWarning();
     }
   }
 
-  async deleteWarning(modalContent: TemplateRef<any>) {
-    const result = await this.modalService.open(modalContent).result;
-    if (result === 'DELETE') {
-      this.removeOrder();
+  async deleteWarning() {
+    try {
+      const modal = this.modalService.open(DeleteConfirmModalComponent);
+      modal.componentInstance.itemType = 'order';
+      const result = await modal.result;
+      if (result === DeleteConfirmDialogResult.DELETE) {
+        this.removeOrder();
+      }
+    } catch (e) {
+      console.log('Dialog closed without answer');
     }
   }
 
