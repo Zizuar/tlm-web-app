@@ -5,6 +5,7 @@ import {
   Min,
   Max,
   IsBoolean,
+  IsOptional,
 } from 'class-validator';
 
 export class CreateProductDto {
@@ -24,9 +25,11 @@ export class CreateProductDto {
   @IsBoolean()
   signable: boolean;
 
+  @IsOptional()
   @IsString()
   spotifyLink?: string;
 
+  @IsOptional()
   @IsString()
   promo?: string;
 }

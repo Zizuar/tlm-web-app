@@ -23,7 +23,7 @@ export class Order {
   @Prop({ required: true })
   street1: string;
 
-  @Prop({ required: true })
+  @Prop()
   street2: string;
 
   @Prop()
