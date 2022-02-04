@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateOrderDto {
   @IsEmail()
@@ -13,9 +13,11 @@ export class CreateOrderDto {
   @IsNotEmpty()
   readonly street1: string;
 
+  @IsOptional()
   @IsString()
   readonly street2?: string;
 
+  @IsOptional()
   @IsString()
   readonly state?: string;
 
@@ -35,6 +37,7 @@ export class CreateOrderDto {
     { productName: string; signatureName: string; price: number },
   ];
 
+  @IsOptional()
   @IsString()
   readonly otherRequests?: string;
 }
