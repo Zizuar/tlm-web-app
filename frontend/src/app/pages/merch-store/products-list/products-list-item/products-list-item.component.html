@@ -15,7 +15,7 @@
       </p>
     </div>
     <div class="d-flex justify-content-between align-items-center">
-      <div>${{(product.price)/100 | number: '1.2-2'}}</div>
+      <div>{{product.price | currency: 'USD':'symbol':'1.2-2'}}</div>
       <div><button class="btn btn-primary" (click)="handleAddToCartClick()">Add to cart</button></div>
     </div>
   </div>
