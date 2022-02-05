@@ -36,9 +36,9 @@
     </div>
     <div class="col-3 text-center">
       <h6>Price</h6>
-      <p>Products: ${{order.productsPrice}}</p>
-      <p>Shipping: ${{order.shippingPrice}}</p>
-      <p>Total: ${{order.productsPrice + order.shippingPrice}}</p>
+      <p>Products: {{order.productsPrice | currency: 'USD':'symbol':'1.2-2'}}</p>
+      <p>Shipping: {{order.shippingPrice | currency: 'USD':'symbol':'1.2-2'}}</p>
+      <p>Total: {{(order.productsPrice + order.shippingPrice) | currency: 'USD':'symbol':'1.2-2'}}</p>
       <h6 class="mt-2">Other requests</h6>
       <p>{{order.otherRequests ? order.otherRequests : 'No special requests'}}</p>
     </div>

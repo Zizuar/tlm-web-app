@@ -1,7 +1,7 @@
 <div class="row mb-2 align-items-center">
   <div class="col-4">{{product.name}}</div>
   <div class="col-6 description-column">{{product.description}}</div>
-  <div class="col-1">${{product.price / 100}}</div>
+  <div class="col-1">{{product.price | currency: 'USD':'symbol':'1.2-2'}}</div>
   <div class="col-1 d-flex justify-content-center align-items-center">
     <button class="btn btn-sm btn-primary" type="button" (click)="openEditProductModal()">
       <fa-icon [icon]="editIcon"></fa-icon>

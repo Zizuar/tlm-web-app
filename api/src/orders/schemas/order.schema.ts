@@ -39,7 +39,7 @@ export class Order {
   country: string;
 
   @Prop({ required: true })
-  cart: [{ productName: string; signatureName: string }];
+  cart: [{ productName: string; signatureName: string; price: number }];
 
   @Prop()
   shippingPrice?: number;

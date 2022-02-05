@@ -1,11 +1,11 @@
 import {
-  IsInt,
   IsNotEmpty,
   IsString,
   Min,
   Max,
   IsBoolean,
   IsOptional,
+  IsNumber,
 } from 'class-validator';
 
 export class CreateProductDto {
@@ -17,9 +17,9 @@ export class CreateProductDto {
   @IsNotEmpty()
   readonly description: string;
 
-  @IsInt()
+  @IsNumber()
   @Min(0)
-  @Max(10000)
+  @Max(500)
   price: number;
 
   @IsBoolean()

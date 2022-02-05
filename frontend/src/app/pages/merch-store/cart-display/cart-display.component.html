@@ -16,7 +16,7 @@
         <p class="mb-0">{{item.product.name}}</p>
       </div>
       <div class="col-3 d-flex justify-content-center">
-        <p class="mb-0">${{(item.product.price / 100) | number: '1.2-2'}}</p>
+        <p class="mb-0">{{item.product.price | currency: 'USD':'symbol':'1.2-2'}}</p>
       </div>
       <div class="col-12 col-lg-9 mt-0" *ngIf="item.product.signable && item.signatureRequested.requested">
         <small>CUSTOMIZED <span *ngIf="item.signatureRequested.toWhom"> - Signed for: {{item.signatureRequested.toWhom}}</span></small>
@@ -27,7 +27,7 @@
         <p>Products:</p>
       </div>
       <div class="col-3 d-flex justify-content-center">
-        <p>${{ (this.productsPrice / 100) | number: '1.2-2'}}</p>
+        <p>{{ this.productsPrice | currency: 'USD':'symbol':'1.2-2'}}</p>
       </div>
     </div>
     <div class="row d-flex justify-content-center">
@@ -35,7 +35,7 @@
         <p>Discount:</p>
       </div>
       <div class="col-3 d-flex justify-content-center">
-        <p>${{ (this.discount / 100) | number: '1.2-2'}}</p>
+        <p>{{ this.discount | currency: 'USD':'symbol':'1.2-2'}}</p>
       </div>
     </div>
     <div class="row d-flex justify-content-center">
@@ -43,7 +43,7 @@
         <p><strong>Subtotal:</strong></p>
       </div>
       <div class="col-3 d-flex justify-content-center">
-        <p><strong>${{ (this.subtotal / 100) | number: '1.2-2'}}</strong></p>
+        <p><strong>{{ this.subtotal | currency: 'USD':'symbol':'1.2-2'}}</strong></p>
       </div>
     </div>
     <div class="row d-flex justify-content-center">
@@ -51,7 +51,7 @@
         <p>Shipping&Handling:</p>
       </div>
       <div class="col-3 d-flex justify-content-center">
-        <p *ngIf="storeState === StoreState.Confirm">${{ (this.shipping / 100) | number: '1.2-2'}}</p>
+        <p *ngIf="storeState === StoreState.Confirm">{{ this.shipping | currency: 'USD':'symbol':'1.2-2'}}</p>
         <p class="text-center" *ngIf="storeState === StoreState.Main">
           <fa-icon [icon]="faQuestion" [ngbPopover]="popContent" popoverTitle="Calculated based on country:"></fa-icon>
           <ng-template #popContent>US Domestic: $7<br>Canada: $10<br>International: $15</ng-template>
@@ -63,7 +63,7 @@
         <p><strong>Total:</strong></p>
       </div>
       <div class="col-3 d-flex justify-content-center">
-        <p *ngIf="storeState === StoreState.Confirm">${{ (this.total / 100) | number: '1.2-2'}}</p>
+        <p *ngIf="storeState === StoreState.Confirm">{{ this.total | currency: 'USD':'symbol':'1.2-2'}}</p>
       </div>
     </div>
     <div *ngIf="storeState === StoreState.Main" class="row d-flex justify-content-center">

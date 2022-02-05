@@ -111,6 +111,6 @@ export class OrdersService {
     cart.forEach((cartItem) => {
       productsPrice += cartItem.price ? cartItem.price : 0;
     });
-    return (productsPrice - discount) / 100;
+    return productsPrice - discount;
   }
 }

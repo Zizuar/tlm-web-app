@@ -32,9 +32,9 @@ export class MerchStoreService {
   ];
   private readonly CAN_SHIPPING = ['CA'];
   private SHIPPING_PRICES = {
-    Domestic: 700,
-    Canada: 1000,
-    International: 1500,
+    Domestic: 7,
+    Canada: 10,
+    International: 15,
   };
 
   private _cart = new BehaviorSubject<CartItem[]>([]);
