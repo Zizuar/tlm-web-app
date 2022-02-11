@@ -1,43 +1,90 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { ScheduledEvent, ApiEvent } from '../core/models/scheduled-event.model';
+import {
+  NewScheduledEvent,
+  ExistingScheduledEvent,
+} from '../core/models/scheduled-event.model';
+import * as moment from 'moment';
+import { ApiBaseService } from './api-base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EventsService {
+export class EventsService extends ApiBaseService {
   eventsApiUrl = `${environment.apiBaseUrl}/v1/events`;
 
-  constructor(private readonly http: HttpClient) {}
-
-  getAllEvents() {
-    return this.http.get<ScheduledEvent[]>(this.eventsApiUrl);
+  constructor(private readonly http: HttpClient) {
+    super();
   }
 
-  getFutureEvents(): Observable<ScheduledEvent[]> {
-    return this.http.get<ApiEvent[]>(this.eventsApiUrl).pipe(
+  getAllEvents(): Observable<ExistingScheduledEvent[]> {
+    return this.http.get<ExistingScheduledEvent[]>(this.eventsApiUrl).pipe(
       map((apiEventArray) =>
-        apiEventArray.map<ScheduledEvent>((apiEvent) => {
+        apiEventArray.map<ExistingScheduledEvent>((apiEvent) => {
           return {
             ...apiEvent,
             date: new Date(apiEvent.date),
+            createdAt: new Date(apiEvent.createdAt),
           };
-        })
-      ),
-      map((scheduledEventArray) => {
-        const now = new Date();
-        return scheduledEventArray.filter((event) => {
-          return event.date > now;
-        });
-      }),
-      // Sort by date
-      map((results) =>
-        results.sort((a, b) => {
-          return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
         })
       )
     );
+  }
+
+  getEvent(id: string): Observable<ExistingScheduledEvent> {
+    return this.http
+      .get<ExistingScheduledEvent>(`${this.eventsApiUrl}/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  postEvent(newEvent: NewScheduledEvent): Observable<ExistingScheduledEvent> {
+    return this.http
+      .post<ExistingScheduledEvent>(this.eventsApiUrl, newEvent)
+      .pipe(catchError(this.handleError));
+  }
+
+  patchEvent(
+    updatedEvent: ExistingScheduledEvent
+  ): Observable<ExistingScheduledEvent> {
+    return this.http
+      .patch<ExistingScheduledEvent>(
+        `${this.eventsApiUrl}/${updatedEvent._id}`,
+        updatedEvent
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+  deleteEvent(id: string): Observable<ExistingScheduledEvent> {
+    return this.http
+      .delete<ExistingScheduledEvent>(`${this.eventsApiUrl}/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  // STATIC HELPER FUNCTIONS
+
+  static filterFutureEvents(
+    events: ExistingScheduledEvent[]
+  ): ExistingScheduledEvent[] {
+    const now = new Date();
+    return events.filter((event) => {
+      // only compare the day, not the actual start time
+      return moment(event.date).isAfter(now, 'day');
+    });
+  }
+
+  static sortEventsByDateDescending(
+    a: ExistingScheduledEvent,
+    b: ExistingScheduledEvent
+  ) {
+    return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
+  }
+
+  static sortEventsByDateAscending(
+    a: ExistingScheduledEvent,
+    b: ExistingScheduledEvent
+  ) {
+    return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
   }
 }

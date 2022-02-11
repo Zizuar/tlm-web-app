@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import * as moment from 'moment';
-import { ScheduledEvent } from '../../../../core/models/scheduled-event.model';
+import { NewScheduledEvent } from '../../../../core/models/scheduled-event.model';
 
 @Component({
   selector: 'app-event-item',
@@ -8,7 +8,7 @@ import { ScheduledEvent } from '../../../../core/models/scheduled-event.model';
   styleUrls: ['./event-item.component.scss'],
 })
 export class EventItemComponent {
-  @Input() scheduledEvent!: ScheduledEvent;
+  @Input() scheduledEvent!: NewScheduledEvent;
 
   moment = moment;
 

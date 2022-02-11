@@ -1,33 +1,68 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { InjectConnection, InjectModel } from '@nestjs/mongoose';
+import { Connection, Model } from 'mongoose';
 import { Event, EventDocument } from './schemas/event.schema';
+import { validate } from 'class-validator';
 
 @Injectable()
 export class EventsService {
   constructor(
     @InjectModel(Event.name) private readonly eventModel: Model<EventDocument>,
+    @InjectConnection() private readonly connection: Connection,
   ) {}
 
-  create(createEventDto: CreateEventDto) {
-    return 'This action adds a new event';
+  async create(createEventDto: CreateEventDto): Promise<Event> {
+    const session = await this.connection.startSession();
+    session.startTransaction();
+    try {
+      const newEvent = new this.eventModel({
+        ...createEventDto,
+        createdAt: new Date(),
+      });
+
+      const errors = await validate(newEvent);
+      if (errors.length > 0) {
+        throw new BadRequestException(errors, 'Invalid value(s) in request');
+      }
+
+      await newEvent.save();
+      await session.commitTransaction();
+      console.log('New event added');
+      return newEvent;
+    } catch (error) {
+      console.error(error);
+      await session.abortTransaction();
+      await session.endSession();
+      throw error;
+    }
   }
 
   async findAll(): Promise<Event[]> {
     return await this.eventModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} event`;
+  async findOne(id: string): Promise<Event> {
+    return await this.eventModel.findById(id).exec();
   }
 
-  update(id: number, updateEventDto: UpdateEventDto) {
-    return `This action updates a #${id} event`;
+  async update(id: string, updateEventDto: UpdateEventDto): Promise<Event> {
+    const updatedEvent = {
+      ...updateEventDto,
+    };
+
+    const errors = await validate(updatedEvent);
+    if (errors.length > 0) {
+      throw new BadRequestException(errors, 'Invalid value(s) in request');
+    }
+
+    return await this.eventModel
+      .findByIdAndUpdate(id, updatedEvent, { new: true })
+      .exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} event`;
+  async remove(id: string): Promise<Event> {
+    return await this.eventModel.findByIdAndRemove(id).exec();
   }
 }

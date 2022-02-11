@@ -1,0 +1,16 @@
+<div class="row mb-3">
+  <div class="col-4" [ngClass]="{ 'past-event-date': !isFutureEvent }">
+    {{ moment(event.date).format('MMMM Do YYYY, h a') }}
+  </div>
+  <div class="col-6">{{ event.venue }}, {{event.town}}</div>
+  <div class="col-2 d-flex justify-content-center align-items-center">
+    <button class="btn btn-sm btn-primary" type="button" (click)="openEditEventModal()">
+      <fa-icon [icon]="editIcon"></fa-icon>
+      <span class="visually-hidden">Edit event</span>
+    </button>
+    <button class="btn btn-sm btn-danger ms-2" type="button" (click)="openDeleteConfirm()">
+      <fa-icon [icon]="deleteIcon"></fa-icon>
+      <span class="visually-hidden">Delete event</span>
+    </button>
+  </div>
+</div>

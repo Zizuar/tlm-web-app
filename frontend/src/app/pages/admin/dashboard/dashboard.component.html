@@ -35,7 +35,7 @@
         <app-dash-schedule></app-dash-schedule>
       </ng-template>
     </li>
-    <li ngbNavItem="events" [disabled]="true" *ngIf="(scopes$ | async)?.includes(SCOPES.EVENTS_WRITE)">
+    <li ngbNavItem="events" *ngIf="(scopes$ | async)?.includes(SCOPES.EVENTS_WRITE)">
       <a ngbNavLink="events">Events</a>
       <ng-template ngbNavContent>
         <app-dash-events></app-dash-events>
