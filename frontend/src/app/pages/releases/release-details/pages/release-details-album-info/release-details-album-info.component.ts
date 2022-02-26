@@ -8,4 +8,5 @@ import { Release } from '../../../../../services/releases.service';
 })
 export class ReleaseDetailsAlbumInfoComponent {
   @Input() release!: Release;
+  today: Date = new Date();
 }
