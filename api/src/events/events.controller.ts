@@ -6,7 +6,6 @@ import {
   Patch,
   Param,
   Delete,
-  NotImplementedException,
   UseGuards,
 } from '@nestjs/common';
 import { EventsService } from './events.service';
@@ -24,8 +23,7 @@ export class EventsController {
   @Post()
   @Permissions('write:events')
   create(@Body() createEventDto: CreateEventDto) {
-    throw new NotImplementedException();
-    // return this.eventsService.create(createEventDto);
+    return this.eventsService.create(createEventDto);
   }
 
   @Get()
@@ -35,23 +33,20 @@ export class EventsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    throw new NotImplementedException();
-    // return this.eventsService.findOne(+id);
+    return this.eventsService.findOne(id);
   }
 
   @UseGuards(AuthGuard('jwt'), PermissionsGuard)
   @Patch(':id')
   @Permissions('write:events')
   update(@Param('id') id: string, @Body() updateEventDto: UpdateEventDto) {
-    throw new NotImplementedException();
-    // return this.eventsService.update(+id, updateEventDto);
+    return this.eventsService.update(id, updateEventDto);
   }
 
   @UseGuards(AuthGuard('jwt'), PermissionsGuard)
   @Delete(':id')
   @Permissions('write:events')
   remove(@Param('id') id: string) {
-    throw new NotImplementedException();
-    // return this.eventsService.remove(+id);
+    return this.eventsService.remove(id);
   }
 }

@@ -1,1 +1,28 @@
-<p>dash-events works!</p>
+<div class="container-fluid">
+  <h4 class="mb-4 text-center">Events</h4>
+  <div class="container">
+    <div class="card shadow">
+      <div class="card-body">
+        <div class="card-title">
+          <div class="row mb-3">
+            <div class="col-4 fw-bolder">Date (browser local time)</div>
+            <div class="col-6 fw-bolder">Venue</div>
+            <div class="col-2"></div>
+          </div>
+          <app-dash-events-list-item *ngFor="let event of events | async" [event]="event"></app-dash-events-list-item>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3">
+    <p class="text-center">The events with red dates are in the past and are not displayed on the front page anymore.</p>
+  </div>
+  <div class="mt-4 d-flex justify-content-center align-items-center">
+    <button class="btn btn-xl btn-primary" type="button" (click)="openNewEventModal()">
+      <span class="d-flex justify-content-center align-items-center">
+        <fa-icon [icon]="plusSquare" size="2x"></fa-icon>
+        <span class="ms-2">New event</span>
+      </span>
+    </button>
+  </div>
+</div>

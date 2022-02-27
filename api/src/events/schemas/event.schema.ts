@@ -22,6 +22,9 @@ export class Event {
 
   @Prop()
   fbEventLink?: string;
+
+  @Prop({ required: true, type: Date })
+  createdAt: Date;
 }
 
 export const EventSchema = SchemaFactory.createForClass(Event);

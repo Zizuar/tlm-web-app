@@ -1,8 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription, tap } from 'rxjs';
+import { ExistingScheduledEvent } from '../../../../core/models/scheduled-event.model';
+import {
+  faPlusSquare,
+  IconDefinition,
+} from '@fortawesome/free-regular-svg-icons';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DashEventsNewEventModalComponent } from './dash-events-new-event-modal/dash-events-new-event-modal.component';
+import { Store } from '@ngrx/store';
+import {
+  selectEventsAscendingByDate,
+  selectEventsFetched,
+} from '../../../../store/events/events.selectors';
+import { fetchEvents } from '../../../../store/events/events.actions';
 
 @Component({
   selector: 'app-dash-events',
   templateUrl: './dash-events.component.html',
   styleUrls: ['./dash-events.component.scss'],
 })
-export class DashEventsComponent {}
+export class DashEventsComponent implements OnInit, OnDestroy {
+  plusSquare: IconDefinition = faPlusSquare;
+
+  events: Observable<ExistingScheduledEvent[]>;
+
+  mainSub = new Subscription();
+
+  constructor(
+    private readonly store: Store,
+    private readonly modalService: NgbModal
+  ) {
+    this.events = this.store.select(selectEventsAscendingByDate);
+  }
+
+  ngOnInit() {
+    this.mainSub.add(
+      this.store
+        .select(selectEventsFetched)
+        .pipe(
+          tap((eventsFetched: boolean) => {
+            if (!eventsFetched) {
+              this.store.dispatch(fetchEvents());
+            }
+          })
+        )
+        .subscribe()
+    );
+  }
+
+  openNewEventModal() {
+    this.modalService.open(DashEventsNewEventModalComponent, {
+      size: 'lg',
+    });
+  }
+
+  ngOnDestroy() {
+    this.mainSub.unsubscribe();
+  }
+}

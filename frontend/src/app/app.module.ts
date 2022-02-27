@@ -25,6 +25,8 @@ import { orderReducer } from './store/orders/orders.reducer';
 import { OrderEffects } from './store/orders/orders.effects';
 import { productsReducer } from './store/products/products.reducer';
 import { ProductsEffects } from './store/products/products.effects';
+import { eventsReducer } from './store/events/events.reducer';
+import { EventsEffects } from './store/events/events.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -46,12 +48,14 @@ import { ProductsEffects } from './store/products/products.effects';
       schedule: scheduleReducer,
       order: orderReducer,
       products: productsReducer,
+      events: eventsReducer,
     }),
     EffectsModule.forRoot([
       AuthEffects,
       ScheduleEffects,
       OrderEffects,
       ProductsEffects,
+      EventsEffects,
     ]),
   ],
   providers: [

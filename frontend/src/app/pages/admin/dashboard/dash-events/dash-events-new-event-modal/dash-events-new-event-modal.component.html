@@ -1,0 +1,88 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add new event</h4>
+</div>
+<form (ngSubmit)="newEventForm.form.valid && saveNewEvent()" #newEventForm="ngForm">
+  <div class="modal-body">
+    <div class="row g-3">
+      <div class="col position-relative">
+        <label for="name" class="form-label">Event name</label>
+        <input type="text" name="name" id="name" class="form-control" #name="ngModel"
+               [ngClass]="{ 'is-invalid': (newEventForm.submitted || name.dirty) && name.invalid}"
+               [(ngModel)]="event.name" required>
+        <div class="invalid-tooltip">
+          You must provide a name for the event!
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col position-relative">
+        <label for="town" class="form-label">Town</label>
+        <input type="text" class="form-control" name="town" id="town" #town="ngModel"
+               [ngClass]="{ 'is-invalid': (newEventForm.submitted || town.dirty) && town.invalid}"
+               [(ngModel)]="event.town" required>
+        <div class="invalid-tooltip">
+          You must provide a town for the event!
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col position-relative">
+        <label for="venue" class="form-label">Venue name</label>
+        <input type="text" class="form-control" name="venue" id="venue" #venue="ngModel"
+               [ngClass]="{ 'is-invalid': (newEventForm.submitted || venue.dirty) && venue.invalid}"
+               [(ngModel)]="event.venue" required>
+        <div class="invalid-tooltip">
+          You must provide a venue name for the event!
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mt-2 align-items-center">
+      <div class="col-4 position-relative">
+        <div class="input-group">
+          <label for="dp" class="visually-hidden">Event date</label>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" id="dp" ngbDatepicker #d="ngbDatepicker"
+                 [(ngModel)]="formDate" [minDate]="minDate" required>
+          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button" aria-label="Select date">
+            <fa-icon [icon]="faCalendar"></fa-icon>
+          </button>
+        </div>
+      </div>
+      <div class="col-4 position-relative">
+        <label for="time" class="visually-hidden">Event time</label>
+        <ngb-timepicker name="time" id="time" [(ngModel)]="formTime" [meridian]="true" required></ngb-timepicker>
+      </div>
+      <div class="col-4 position-relative">
+        <label for="timezone" class="visually-hidden">Event timezone</label>
+        <select class="form-select" aria-label="Select timezone" name="timezone" id="timezone"
+                [(ngModel)]="formTimezone">
+          <option value="America/New_York" selected>America/New_York</option>
+          <option *ngFor="let timezone of timezones" value="{{ timezone }}">{{ timezone }}</option>
+        </select>
+        <div class="invalid-tooltip">
+          You must provide a timezone for the event!
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col position-relative">
+        <label for="venueLink" class="form-label">Venue link (optional)</label>
+        <input type="text" class="form-control" name="venueLink" id="venueLink" #venueLink="ngModel"
+               [ngClass]="{ 'is-invalid': (newEventForm.submitted || venueLink.dirty) && venueLink.invalid}"
+               [(ngModel)]="event.venueLink">
+      </div>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col position-relative">
+        <label for="eventLink" class="form-label">FB event link (optional)</label>
+        <input type="text" class="form-control" name="eventLink" id="eventLink" #eventLink="ngModel"
+               [ngClass]="{ 'is-invalid': (newEventForm.submitted || eventLink.dirty) && eventLink.invalid}"
+               [(ngModel)]="event.fbEventLink">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer d-flex justify-content-between">
+    <button class="btn btn-outline-secondary" type="button" (click)="activeModal.dismiss()">Close without saving
+    </button>
+    <button class="btn btn-primary" type="submit" [disabled]="!newEventForm.form.valid">Save</button>
+  </div>
+</form>
