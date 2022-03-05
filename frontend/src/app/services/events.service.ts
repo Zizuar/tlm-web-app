@@ -67,10 +67,10 @@ export class EventsService extends ApiBaseService {
   static filterFutureEvents(
     events: ExistingScheduledEvent[]
   ): ExistingScheduledEvent[] {
-    const now = new Date();
+    const now = moment();
     return events.filter((event) => {
       // only compare the day, not the actual start time
-      return moment(event.date).isAfter(now, 'day');
+      return !now.isAfter(moment(event.date), 'day');
     });
   }
 
