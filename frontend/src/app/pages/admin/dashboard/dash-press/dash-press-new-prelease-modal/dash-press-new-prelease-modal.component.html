@@ -1,0 +1,160 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add new press release</h4>
+</div>
+<form (ngSubmit)="newPressReleaseForm.form.valid && saveNewPressRelease()" #newPressReleaseForm="ngForm">
+  <div class="modal-body">
+    <div class="row g-3">
+      <div class="col-12 col-lg-6 position-relative">
+        <label for="songId" class="form-label">Song id (this will be the identifier in the URL)</label>
+        <input type="text" name="songId" id="songId" class="form-control" #songId="ngModel"
+               [ngClass]="{ 'is-invalid': (newPressReleaseForm.submitted || songId.dirty) && songId.invalid}"
+               [(ngModel)]="pressRelease.songId" pattern="^[a-zA-Z0-9-]+$" required>
+        <div class="invalid-tooltip">
+          You must provide a valid id for the press release! It can only contain letters, numbers and hyphens (-). It
+          must be unique.
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 position-relative">
+        <label for="imgName" class="form-label">Image name (must be uploaded already)</label>
+        <input type="text" name="imgName" id="imgName" class="form-control" #imgName="ngModel"
+               [ngClass]="{ 'is-invalid': (newPressReleaseForm.submitted || imgName.dirty) && imgName.invalid}"
+               [(ngModel)]="pressRelease.imgName" pattern="^[a-zA-Z0-9-]+$" required>
+        <div class="invalid-tooltip">
+          You must provide a valid name for the event! It can only contain letters, numbers and hyphens (-). It must be
+          unique.
+        </div>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-12 col-lg-6 position-relative">
+        <label for="dateStampPlace" class="form-label">Date stamp place</label>
+        <input type="text" name="dateStampPlace" id="dateStampPlace" class="form-control" #dateStampPlace="ngModel"
+               placeholder="Example: Nashua, NH"
+               [ngClass]="{ 'is-invalid': (newPressReleaseForm.submitted || dateStampPlace.dirty) && dateStampPlace.invalid}"
+               [(ngModel)]="pressRelease.dateStamp.place" required>
+        <div class="invalid-tooltip">
+          You must provide a place for the datestamp.
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 position-relative">
+        <label for="dateStampDate" class="form-label">Date stamp date</label>
+        <input type="text" name="dateStampDate" id="dateStampDate" class="form-control" #dateStampDate="ngModel"
+               placeholder="Example: June 2021"
+               [ngClass]="{ 'is-invalid': (newPressReleaseForm.submitted || dateStampDate.dirty) && dateStampDate.invalid}"
+               [(ngModel)]="pressRelease.dateStamp.date" required>
+        <div class="invalid-tooltip">
+          You must provide a date for the datestamp.
+        </div>
+      </div>
+      <div class="row g-3">
+        <label class="form-label">Release after date</label>
+        <div class="input-group">
+          <label for="dp" class="visually-hidden">Release after date</label>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" id="dp" ngbDatepicker #d="ngbDatepicker"
+                 [(ngModel)]="formDate" required>
+          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button" aria-label="Select date">
+            <fa-icon [icon]="faCalendar"></fa-icon>
+          </button>
+        </div>
+      </div>
+      <div class="row g-3">
+        <div class="col position-relative">
+          <label for="header" class="form-label">Header (page title)</label>
+          <input type="text" name="header" id="header" class="form-control" #header="ngModel"
+                 [ngClass]="{ 'is-invalid': (newPressReleaseForm.submitted || header.dirty) && header.invalid}"
+                 [(ngModel)]="pressRelease.text.header" required>
+          <div class="invalid-tooltip">
+            You must provide a header.
+          </div>
+        </div>
+      </div>
+      <div class="row g-3">
+        <div class="col position-relative">
+          <label for="subheader" class="form-label">Subheader (paragraph under header)</label>
+          <input type="text" name="subheader" id="subheader" class="form-control" #subheader="ngModel"
+                 [ngClass]="{ 'is-invalid': (newPressReleaseForm.submitted || subheader.dirty) && subheader.invalid}"
+                 [(ngModel)]="pressRelease.text.subheader" required>
+          <div class="invalid-tooltip">
+            You must provide a subheader.
+          </div>
+        </div>
+      </div>
+      <div class="row g-3">
+        <label class="form-label">Paragraphs</label>
+        <div class="col position-relative">
+          <div class="row mb-3" *ngFor="let paragraph of pressRelease.text.paragraphs; index as i; trackBy: trackByFn">
+            <div class="col-11">
+              <textarea class="form-control" name="paragraph-{{ i+1 }}"
+                        id="paragraph-{{ i+1 }}" placeholder="Paragraph {{ i+1 }}"
+                        [(ngModel)]="pressRelease.text.paragraphs[i]" required></textarea>
+            </div>
+            <div class="col-1 d-flex justify-content-center align-items-center">
+              <button type="button" class="btn btn-danger"
+                      (click)="removeParagraph(i)" [disabled]="pressRelease.text.paragraphs.length === 1">
+                <fa-icon [icon]="deleteIcon"></fa-icon>
+                <span class="visually-hidden">Delete paragraph</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid d-flex justify-content-start">
+          <button type="button" class="btn btn-primary" (click)="addParagraph()">
+            <fa-icon [icon]="addIcon"></fa-icon>
+            &nbsp;Add paragraph
+          </button>
+        </div>
+      </div>
+      <div class="row g-3">
+        <label class="form-label">Streaming links</label>
+        <div *ngIf="!pressRelease.links" class="col d-flex justify-content-start">
+          <button type="button" class="btn btn-primary" (click)="addLinks()">
+            <fa-icon [icon]="addIcon"></fa-icon>
+            &nbsp;Add links
+          </button>
+        </div>
+        <div class="row" *ngIf="pressRelease.links">
+          <div class="row mb-2">
+            <div class="col-3">
+              <label for="spotifyLink" class="form-label">Spotify</label>
+            </div>
+            <div class="col-9">
+              <input type="text" name="spotifyLink" id="spotifyLink" class="form-control"
+                     [(ngModel)]="pressRelease.links.spotify">
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
+              <label for="amazonLink" class="form-label">Amazon</label>
+            </div>
+            <div class="col-9">
+              <input type="text" name="amazonLink" id="amazonLink" class="form-control"
+                     [(ngModel)]="pressRelease.links.amazon">
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
+              <label for="appleLink" class="form-label">Apple</label>
+            </div>
+            <div class="col-9">
+              <input type="text" name="appleLink" id="appleLink" class="form-control"
+                     [(ngModel)]="pressRelease.links.apple">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col d-flex justify-content-start">
+              <button type="button" class="btn btn-danger" (click)="removeLinks()">
+                <fa-icon [icon]="deleteIcon"></fa-icon>
+                &nbsp;Remove links
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer d-flex justify-content-between">
+    <button class="btn btn-outline-secondary" type="button" (click)="activeModal.dismiss()">Close without saving
+    </button>
+    <button class="btn btn-primary" type="submit" [disabled]="!newPressReleaseForm.form.valid">Save</button>
+  </div>
+</form>

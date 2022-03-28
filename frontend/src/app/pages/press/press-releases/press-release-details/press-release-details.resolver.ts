@@ -7,16 +7,14 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import {
-  PressRelease,
-  PressReleaseService,
-} from '../../../../services/press-release.service';
+import { PressReleaseService } from '../../../../services/press-release.service';
+import { ExistingPressRelease } from '../../../../core/models/press-release.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PressReleaseDetailsResolver
-  implements Resolve<PressRelease | null>
+  implements Resolve<ExistingPressRelease | null>
 {
   constructor(
     private readonly pressReleasesService: PressReleaseService,
@@ -26,9 +24,9 @@ export class PressReleaseDetailsResolver
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<PressRelease | null> {
+  ): Observable<ExistingPressRelease | null> {
     return this.pressReleasesService.getPressReleases().pipe(
-      map<PressRelease[], PressRelease | null>((releases) => {
+      map<ExistingPressRelease[], ExistingPressRelease | null>((releases) => {
         const release = releases.find(
           (release) => release.songId === route.params['songId']
         );

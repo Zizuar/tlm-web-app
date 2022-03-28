@@ -7,13 +7,7 @@ export interface NewScheduledEvent {
   fbEventLink?: string;
 }
 
-export interface ExistingScheduledEvent {
+export interface ExistingScheduledEvent extends NewScheduledEvent {
   _id: string;
   createdAt: Date;
-  date: Date;
-  name: string;
-  venue: string;
-  town: string;
-  venueLink?: string;
-  fbEventLink?: string;
 }

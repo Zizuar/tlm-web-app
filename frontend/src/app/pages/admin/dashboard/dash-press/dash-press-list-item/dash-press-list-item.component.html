@@ -1,0 +1,14 @@
+<div class="row mb-3">
+  <div class="col-4">{{ moment(pressRelease.releaseAfter).format('MMMM Do YYYY') }}</div>
+  <div class="col-6">{{ pressRelease.text.header }}</div>
+  <div class="col-2 d-flex justify-content-center align-items-center">
+    <button class="btn btn-sm btn-primary" type="button" (click)="openEditPressReleaseModal()">
+      <fa-icon [icon]="editIcon"></fa-icon>
+      <span class="visually-hidden">Edit press release</span>
+    </button>
+    <button class="btn btn-sm btn-danger ms-2" type="button" (click)="openDeleteConfirm()">
+      <fa-icon [icon]="deleteIcon"></fa-icon>
+      <span class="visually-hidden">Delete press release</span>
+    </button>
+  </div>
+</div>

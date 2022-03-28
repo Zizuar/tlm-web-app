@@ -41,7 +41,7 @@
         <app-dash-events></app-dash-events>
       </ng-template>
     </li>
-    <li ngbNavItem="press" [disabled]="true" *ngIf="(scopes$ | async)?.includes(SCOPES.PRESS_WRITE)">
+    <li ngbNavItem="press" *ngIf="(scopes$ | async)?.includes(SCOPES.PRESS_WRITE)">
       <a ngbNavLink="press">Press releases</a>
       <ng-template ngbNavContent>
         <app-dash-press></app-dash-press>

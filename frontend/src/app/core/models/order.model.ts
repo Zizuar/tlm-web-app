@@ -18,26 +18,10 @@ export interface NewOrder {
   }[];
 }
 
-export interface ExistingOrder {
+export interface ExistingOrder extends NewOrder {
   _id: string;
   createdDate: Date;
   status: OrderStatus;
-  email: string;
-  mailName: string;
-  street1: string;
-  street2?: string;
-  city: string;
-  zip: string;
-  state?: string;
-  country: string;
-  otherRequests?: string;
-  productsPrice: number;
-  shippingPrice: number;
-  cart: {
-    productName: string;
-    signatureName: string;
-    price: number;
-  }[];
 }
 
 export enum OrderStatus {

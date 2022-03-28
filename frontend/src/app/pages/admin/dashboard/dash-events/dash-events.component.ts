@@ -22,16 +22,16 @@ import { fetchEvents } from '../../../../store/events/events.actions';
 export class DashEventsComponent implements OnInit, OnDestroy {
   plusSquare: IconDefinition = faPlusSquare;
 
-  events: Observable<ExistingScheduledEvent[]>;
+  events: Observable<ExistingScheduledEvent[]> = this.store.select(
+    selectEventsAscendingByDate
+  );
 
-  mainSub = new Subscription();
+  private readonly mainSub = new Subscription();
 
   constructor(
     private readonly store: Store,
     private readonly modalService: NgbModal
-  ) {
-    this.events = this.store.select(selectEventsAscendingByDate);
-  }
+  ) {}
 
   ngOnInit() {
     this.mainSub.add(
