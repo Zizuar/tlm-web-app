@@ -30,7 +30,6 @@ export class ReleasesController {
   @Get('press')
   findForPressPage() {
     return this.releasesService.findForPress();
-    // return this.releasesService.findOne(+id);
   }
 
   @Get(':category')

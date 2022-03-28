@@ -46,7 +46,7 @@ export class DashEventsListItemComponent implements OnInit {
   async openDeleteConfirm() {
     try {
       const modal = this.modalService.open(DeleteConfirmModalComponent);
-      modal.componentInstance.itemType = 'product';
+      modal.componentInstance.itemType = 'event';
       const result = await modal.result;
       if (result === DeleteConfirmDialogResult.DELETE) {
         this.deleteEvent();

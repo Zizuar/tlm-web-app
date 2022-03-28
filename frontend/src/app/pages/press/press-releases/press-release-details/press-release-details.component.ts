@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import { PressRelease } from '../../../../services/press-release.service';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
+import { NewPressRelease } from '../../../../core/models/press-release.model';
 
 @Component({
   selector: 'app-press-release-details',
@@ -11,7 +11,7 @@ import * as moment from 'moment';
   styleUrls: ['./press-release-details.component.scss'],
 })
 export class PressReleaseDetailsComponent {
-  pressRelease: PressRelease =
+  pressRelease: NewPressRelease =
     this.activatedRoute.snapshot.data['pressRelease'];
 
   faChevronLeft: IconDefinition = faChevronLeft;

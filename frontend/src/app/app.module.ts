@@ -13,8 +13,8 @@ import { ReleasesModule } from './pages/releases/releases.module';
 import { MerchStoreModule } from './pages/merch-store/merch-store.module';
 import { PressModule } from './pages/press/press.module';
 import { AdminModule } from './pages/admin/admin.module';
-
 import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
+
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { authReducer } from './store/auth/auth.reducer';
@@ -27,6 +27,8 @@ import { productsReducer } from './store/products/products.reducer';
 import { ProductsEffects } from './store/products/products.effects';
 import { eventsReducer } from './store/events/events.reducer';
 import { EventsEffects } from './store/events/events.effects';
+import { pressReleasesReducer } from './store/press-releases/press-releases.reducer';
+import { PressReleasesEffects } from './store/press-releases/press-releases.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,6 +51,7 @@ import { EventsEffects } from './store/events/events.effects';
       order: orderReducer,
       products: productsReducer,
       events: eventsReducer,
+      pressReleases: pressReleasesReducer,
     }),
     EffectsModule.forRoot([
       AuthEffects,
@@ -56,6 +59,7 @@ import { EventsEffects } from './store/events/events.effects';
       OrderEffects,
       ProductsEffects,
       EventsEffects,
+      PressReleasesEffects,
     ]),
   ],
   providers: [
