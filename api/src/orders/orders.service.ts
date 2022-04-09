@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
@@ -16,7 +16,7 @@ export class OrdersService {
     private readonly emailService: EmailService,
   ) {}
 
-  async create(createOrderDto: CreateOrderDto): Promise<Order> {
+  async create(createOrderDto: CreateOrderDto): Promise<Order | HttpException> {
     const session = await this.connection.startSession();
     session.startTransaction();
     try {
@@ -25,12 +25,12 @@ export class OrdersService {
         createdDate: new Date(),
         updatedDate: new Date(),
         orderStatus: OrderStatus.CREATED,
-        shippingPrice: this.calculateShipping(createOrderDto.country),
+        shippingPrice: OrdersService.calculateShipping(createOrderDto.country),
         productsPrice: this.calculateProductsPrice(createOrderDto.cart),
       });
       const errors = await validate(newOrder);
       if (errors.length > 0) {
-        throw new BadRequestException(errors, 'Invalid value(s) in request');
+        return new BadRequestException(errors, 'Invalid value(s) in request');
       }
       await newOrder.save();
       await session.commitTransaction();
@@ -66,7 +66,7 @@ export class OrdersService {
     const updatedOrder = {
       ...updateOrderDto,
       updatedDate: new Date(),
-      shippingPrice: this.calculateShipping(updateOrderDto.country),
+      shippingPrice: OrdersService.calculateShipping(updateOrderDto.country),
       productsPrice: this.calculateProductsPrice(updateOrderDto.cart),
     };
 
@@ -85,7 +85,16 @@ export class OrdersService {
     return await this.orderModel.findByIdAndRemove(id).exec();
   }
 
-  private calculateShipping(country) {
+  private calculateProductsPrice(cart) {
+    const discount = 0;
+    let productsPrice = 0;
+    cart.forEach((cartItem) => {
+      productsPrice += cartItem.price ? cartItem.price : 0;
+    });
+    return productsPrice - discount;
+  }
+
+  private static calculateShipping(country) {
     const domesticShippingCountries = [
       'United States of America',
       'American Samoa',
@@ -103,14 +112,5 @@ export class OrdersService {
       : domesticShippingCountries.includes(country)
       ? 7
       : 15;
-  }
-
-  private calculateProductsPrice(cart) {
-    const discount = 0;
-    let productsPrice = 0;
-    cart.forEach((cartItem) => {
-      productsPrice += cartItem.price ? cartItem.price : 0;
-    });
-    return productsPrice - discount;
   }
 }

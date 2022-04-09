@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
 import { CreatePressReleaseDto } from './dto/create-press-release.dto';
 import { UpdatePressReleaseDto } from './dto/update-press-release.dto';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
@@ -16,7 +16,7 @@ export class PressReleasesService {
 
   async create(
     createPressReleaseDto: CreatePressReleaseDto,
-  ): Promise<PressRelease> {
+  ): Promise<PressRelease | HttpException> {
     const session = await this.connection.startSession();
     session.startTransaction();
     try {
@@ -26,7 +26,7 @@ export class PressReleasesService {
 
       const errors = await validate(newPressRelease);
       if (errors.length > 0) {
-        throw new BadRequestException(errors, 'Invalid value(s) in request');
+        return new BadRequestException(errors, 'Invalid value(s) in request');
       }
 
       await newPressRelease.save();
