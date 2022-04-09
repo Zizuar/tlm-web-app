@@ -7,6 +7,7 @@ export const environment: Environment = {
     sitekey: '6Ley8FwaAAAAAKrEXqlKLPkKivxIkfVN6VnnoHP7',
   },
   apiBaseUrl: 'https://tlm-api.herokuapp.com',
+  coversAssetUrl: 'https://covers.tylerlevs.com',
   metadata: [
     {
       name: 'description',

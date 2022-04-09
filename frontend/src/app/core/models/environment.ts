@@ -7,6 +7,7 @@ export interface Environment {
     sitekey: string;
   };
   apiBaseUrl: string;
+  coversAssetUrl: string;
   metadata: MetaDefinition[];
   auth: {
     clientId: string;

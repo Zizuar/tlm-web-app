@@ -6,6 +6,7 @@ import {
   faChevronLeft,
   faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-press-release-carousel',
@@ -18,5 +19,8 @@ export class PressReleaseCarouselComponent {
   faChevronRight: IconDefinition = faChevronRight;
   faChevronLeft: IconDefinition = faChevronLeft;
   faEnvelope: IconDefinition = faEnvelope;
+
+  environment = environment;
+
   constructor() {}
 }

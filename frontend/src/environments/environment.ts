@@ -11,6 +11,7 @@ export const environment: Environment = {
     sitekey: '6Ley8FwaAAAAAKrEXqlKLPkKivxIkfVN6VnnoHP7',
   },
   apiBaseUrl: 'http://localhost:3000',
+  coversAssetUrl: 'https://covers.tylerlevs.com',
   metadata: [
     {
       name: 'description',

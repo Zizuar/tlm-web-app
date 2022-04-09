@@ -3,6 +3,7 @@ import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
+import { environment } from '../../../../../environments/environment';
 import { NewPressRelease } from '../../../../core/models/press-release.model';
 
 @Component({
@@ -17,6 +18,7 @@ export class PressReleaseDetailsComponent {
   faChevronLeft: IconDefinition = faChevronLeft;
 
   moment = moment;
+  environment = environment;
 
   constructor(private readonly activatedRoute: ActivatedRoute) {}
 }

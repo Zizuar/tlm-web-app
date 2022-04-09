@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { environment } from '../../../../../environments/environment';
 import { Release } from '../../../../services/releases.service';
 
 @Component({
@@ -8,4 +9,6 @@ import { Release } from '../../../../services/releases.service';
 })
 export class ReleaseListItemComponent {
   @Input() release!: Release;
+
+  environment = environment;
 }
