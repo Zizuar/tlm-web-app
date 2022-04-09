@@ -17,11 +17,11 @@
     <div class="row mb-4">
       <div class="col-12 col-md-6">
         <picture class="card-img">
-          <source srcset="assets/img/{{pressRelease.imgName}}-cover.webp" type="image/webp">
-          <source srcset="assets/img/{{pressRelease.imgName}}-cover.png" type="image/png">
+          <source srcset="{{environment.coversAssetUrl}}/{{pressRelease.imgName}}-cover.webp" type="image/webp">
+          <source srcset="{{environment.coversAssetUrl}}/{{pressRelease.imgName}}-cover.png" type="image/png">
           <img
             id="cover-img"
-            src="assets/img/{{pressRelease.imgName}}-cover.jpg"
+            src="{{environment.coversAssetUrl}}/{{pressRelease.imgName}}-cover.jpg"
             alt="{{pressRelease.text.header}} Cover Art"
             class="img-fluid rounded">
         </picture>

@@ -1,5 +1,5 @@
 <div class="card mt-3 shadow">
-  <img src="assets/img/{{release.imageName}}-cover.webp" class="card-img-top" alt="{{release.title}} cover art">
+  <img src="{{environment.coversAssetUrl}}/{{release.imageName}}-cover.webp" class="card-img-top" alt="{{release.title}} cover art">
   <div class="card-body">
     <h5 class="card-title" >{{release.text.header}}</h5>
     <h6 *ngIf="release.text.subheader" class="card-subtitle mb-2 text-muted" [innerHTML]="release.text.subheader | unescape"></h6>

@@ -2,11 +2,11 @@
   <div class="row no-gutters">
     <div class="col-md-4 d-flex align-items-center">
       <picture class="card-img">
-        <source srcset="assets/img/{{release.imageName}}-cover.webp" type="image/webp">
-        <source srcset="assets/img/{{release.imageName}}-cover.png" type="image/png">
+        <source srcset="{{environment.coversAssetUrl}}/{{release.imageName}}-cover.webp" type="image/webp">
+        <source srcset="{{environment.coversAssetUrl}}/{{release.imageName}}-cover.png" type="image/png">
         <img
           id="cover-img"
-          src="assets/img/{{release.imageName}}-cover.jpg"
+          src="{{environment.coversAssetUrl}}/{{release.imageName}}-cover.jpg"
           alt="{{release.title}} Cover Art"
           class="img-fluid rounded">
       </picture>

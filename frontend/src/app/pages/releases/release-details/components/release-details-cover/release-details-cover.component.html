@@ -1,10 +1,10 @@
 <div class="d-flex justify-content-center mb-2">
   <picture>
-    <source srcset="/assets/img/{{release.imageName}}-cover.webp" type="image/webp">
-    <source srcset="/assets/img/{{release.imageName}}-cover.png" type="image/png">
+    <source srcset="{{environment.coversAssetUrl}}/{{release.imageName}}-cover.webp" type="image/webp">
+    <source srcset="{{environment.coversAssetUrl}}/{{release.imageName}}-cover.png" type="image/png">
     <img
       id=""
-      src="/assets/img/{{release.imageName}}-cover.jpg"
+      src="{{environment.coversAssetUrl}}/{{release.imageName}}-cover.jpg"
       alt="{{release.title}} Cover Art"
       class="img-fluid rounded">
   </picture>

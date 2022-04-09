@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Release } from '../../../../../services/releases.service';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-release-details-cover',
@@ -8,4 +9,6 @@ import { Release } from '../../../../../services/releases.service';
 })
 export class ReleaseDetailsCoverComponent {
   @Input() release!: Release;
+
+  environment = environment;
 }
