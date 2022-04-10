@@ -18,7 +18,7 @@
         <label for="imgName" class="form-label">Image name (must be uploaded already)</label>
         <input type="text" name="imgName" id="imgName" class="form-control" #imgName="ngModel"
                [ngClass]="{ 'is-invalid': (editPressReleaseForm.submitted || imgName.dirty) && imgName.invalid}"
-               [(ngModel)]="pressRelease.imgName" pattern="^[a-zA-Z0-9-]+$" required>
+               [(ngModel)]="pressRelease.imgName" pattern="^[a-zA-Z0-9-_]+$" required>
         <div class="invalid-tooltip">
           You must provide a valid name for the event! It can only contain letters, numbers and hyphens (-). It must be
           unique.

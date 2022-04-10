@@ -6,6 +6,8 @@ import { fetchReleases } from '../../../../store/releases/releases.actions';
 import { ExistingRelease } from '../../../../core/models/release.model';
 import { Observable } from 'rxjs';
 import { selectReleases } from '../../../../store/releases/releases.selectors';
+import { DashReleasesNewReleaseModalComponent } from './dash-releases-new-release-modal/dash-releases-new-release-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dash-releases',
@@ -17,13 +19,18 @@ export class DashReleasesComponent implements OnInit {
 
   releases: Observable<ExistingRelease[]> = this.store.select(selectReleases);
 
-  constructor(private readonly store: Store) {}
+  constructor(
+    private readonly store: Store,
+    private readonly modalService: NgbModal
+  ) {}
 
   ngOnInit() {
     this.store.dispatch(fetchReleases());
   }
 
   openNewReleaseModal() {
-    console.log('Opening new release modal');
+    this.modalService.open(DashReleasesNewReleaseModalComponent, {
+      size: 'lg',
+    });
   }
 }

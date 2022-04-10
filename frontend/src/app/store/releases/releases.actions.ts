@@ -1,5 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import { ExistingRelease, NewRelease } from '../../core/models/release.model';
+import {
+  ExistingRelease,
+  NewRelease,
+  ReleaseCategories,
+} from '../../core/models/release.model';
 
 export enum ReleasesActionTypes {
   FETCH_RELEASES = '[Releases] Fetch all releases',
@@ -41,7 +45,7 @@ export const updateReleaseCompleted = createAction(
 
 export const removeRelease = createAction(
   ReleasesActionTypes.REMOVE_RELEASE,
-  props<{ id: string }>()
+  props<{ category: ReleaseCategories; id: string }>()
 );
 export type RemoveRelease = ReturnType<typeof removeRelease>;
 
