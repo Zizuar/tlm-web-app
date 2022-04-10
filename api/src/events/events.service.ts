@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
@@ -13,7 +13,7 @@ export class EventsService {
     @InjectConnection() private readonly connection: Connection,
   ) {}
 
-  async create(createEventDto: CreateEventDto): Promise<Event> {
+  async create(createEventDto: CreateEventDto): Promise<Event | HttpException> {
     const session = await this.connection.startSession();
     session.startTransaction();
     try {
@@ -24,7 +24,7 @@ export class EventsService {
 
       const errors = await validate(newEvent);
       if (errors.length > 0) {
-        throw new BadRequestException(errors, 'Invalid value(s) in request');
+        return new BadRequestException(errors, 'Invalid value(s) in request');
       }
 
       await newEvent.save();

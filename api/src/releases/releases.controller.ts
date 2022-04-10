@@ -6,20 +6,24 @@ import {
   Patch,
   Param,
   Delete,
-  NotImplementedException,
+  UseGuards,
 } from '@nestjs/common';
 import { ReleasesService } from './releases.service';
 import { CreateReleaseDto } from './dto/create-release.dto';
 import { UpdateReleaseDto } from './dto/update-release.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { PermissionsGuard } from '../authz/guards/permissions.guard';
+import { Permissions } from '../authz/decorators/permissions.decorator';
 
 @Controller({ path: 'releases', version: '1' })
 export class ReleasesController {
   constructor(private readonly releasesService: ReleasesService) {}
 
+  @UseGuards(AuthGuard('jwt'), PermissionsGuard)
   @Post()
+  @Permissions('write:releases')
   create(@Body() createReleaseDto: CreateReleaseDto) {
-    throw new NotImplementedException();
-    // return this.releasesService.create(createReleaseDto);
+    return this.releasesService.create(createReleaseDto);
   }
 
   @Get()
@@ -42,15 +46,17 @@ export class ReleasesController {
     return this.releasesService.findOne(id);
   }
 
+  @UseGuards(AuthGuard('jwt'), PermissionsGuard)
   @Patch(':category/:id')
+  @Permissions('write:releases')
   update(@Param('id') id: string, @Body() updateReleaseDto: UpdateReleaseDto) {
-    throw new NotImplementedException();
-    // return this.releasesService.update(+id, updateReleaseDto);
+    return this.releasesService.update(id, updateReleaseDto);
   }
 
+  @UseGuards(AuthGuard('jwt'), PermissionsGuard)
   @Delete(':category/:id')
+  @Permissions('write:releases')
   remove(@Param('id') id: string) {
-    throw new NotImplementedException();
-    // return this.releasesService.remove(+id);
+    return this.releasesService.remove(id);
   }
 }

@@ -4,25 +4,47 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
 } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Release, ReleasesService } from '../../../services/releases.service';
+import { Observable, of, switchMap, take } from 'rxjs';
+import { Store } from '@ngrx/store';
+import {
+  selectReleases,
+  selectReleasesFetched,
+} from '../../../store/releases/releases.selectors';
+import { ExistingRelease } from '../../../core/models/release.model';
+import { fetchReleases } from '../../../store/releases/releases.actions';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ReleaseListResolver implements Resolve<Release[]> {
-  constructor(private readonly releasesService: ReleasesService) {}
+export class ReleaseListResolver implements Resolve<ExistingRelease[]> {
+  constructor(private readonly store: Store) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<Release[]> {
+  ): Observable<ExistingRelease[]> {
+    this.store
+      .select(selectReleasesFetched)
+      .pipe(take(1))
+      .subscribe((areReleasesFetched) => {
+        if (!areReleasesFetched) {
+          this.store.dispatch(fetchReleases());
+        }
+      });
     if (route.params['category']) {
-      return this.releasesService.getReleasesByCategory(
-        route.params['category']
-      );
+      return this.store
+        .select(selectReleases)
+        .pipe(
+          switchMap((releases: ExistingRelease[]) =>
+            of(
+              releases.filter(
+                (release) => release.category === route.params['category']
+              )
+            )
+          )
+        );
     } else {
-      return this.releasesService.getAllReleases();
+      return this.store.select(selectReleases);
     }
   }
 }

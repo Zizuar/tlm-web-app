@@ -1,0 +1,15 @@
+<div class="row mb-3">
+  <div class="col-2">{{moment(release.releaseDate).format('YYYY-MM-DD')}}</div>
+  <div class="col-2">{{release.category}}</div>
+  <div class="col-5">{{release.title}}</div>
+  <div class="col-3 d-flex justify-content-center align-items-center">
+    <button class="btn btn-sm btn-primary" type="button" (click)="openEditReleaseModal()">
+      <fa-icon [icon]="editIcon"></fa-icon>
+      <span class="visually-hidden">Edit press release</span>
+    </button>
+    <button class="btn btn-sm btn-danger ms-2" type="button" (click)="openDeleteConfirm()">
+      <fa-icon [icon]="deleteIcon"></fa-icon>
+      <span class="visually-hidden">Delete press release</span>
+    </button>
+  </div>
+</div>

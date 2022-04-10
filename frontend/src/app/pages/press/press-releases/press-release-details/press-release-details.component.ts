@@ -4,7 +4,7 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import { environment } from '../../../../../environments/environment';
-import { NewPressRelease } from '../../../../core/models/press-release.model';
+import { ExistingPressRelease } from '../../../../core/models/press-release.model';
 
 @Component({
   selector: 'app-press-release-details',
@@ -12,7 +12,7 @@ import { NewPressRelease } from '../../../../core/models/press-release.model';
   styleUrls: ['./press-release-details.component.scss'],
 })
 export class PressReleaseDetailsComponent {
-  pressRelease: NewPressRelease =
+  pressRelease: ExistingPressRelease =
     this.activatedRoute.snapshot.data['pressRelease'];
 
   faChevronLeft: IconDefinition = faChevronLeft;

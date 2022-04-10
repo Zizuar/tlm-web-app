@@ -1,23 +1,29 @@
-import { AfterContentInit, Component, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { AfterContentInit, Component } from '@angular/core';
+import { Observable, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
-import { Release, ReleasesService } from '../../services/releases.service';
+import { ExistingRelease } from '../../core/models/release.model';
+import { Store } from '@ngrx/store';
+import {
+  selectFutureReleases,
+  selectPastReleases,
+  selectReleasesFetched,
+} from '../../store/releases/releases.selectors';
+import { fetchReleases } from '../../store/releases/releases.actions';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
 })
-export class MainPageComponent implements AfterContentInit, OnDestroy {
-  private subscriptions: Subscription[] = [];
+export class MainPageComponent implements AfterContentInit {
   pageType = 'main';
 
-  allReleases$: Observable<Release[]> = this.releasesService.getAllReleases();
-  countdowns: Release[] = [];
+  countdowns: Observable<ExistingRelease[]> =
+    this.store.select(selectFutureReleases);
+  releases: Observable<ExistingRelease[]> =
+    this.store.select(selectPastReleases);
 
-  releases: Release[] = [];
   today: Date = new Date();
 
   fragmentOnInit: string | null;
@@ -25,43 +31,19 @@ export class MainPageComponent implements AfterContentInit, OnDestroy {
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly viewportScroller: ViewportScroller,
-    private readonly releasesService: ReleasesService,
+    private readonly store: Store,
     private readonly router: Router
   ) {
-    // get upcoming-releases from observable
-    this.sub = this.allReleases$
-      .pipe(
-        map<Release[], void>((releases) => {
-          this.countdowns = releases
-            .filter((release) => release.releaseDate > this.today)
-            .sort((a, b) => {
-              return a.releaseDate > b.releaseDate
-                ? 1
-                : a.releaseDate < b.releaseDate
-                ? -1
-                : 0;
-            });
-        })
-      )
-      .subscribe();
-    // get releases from observable
-    this.sub = this.allReleases$
-      .pipe(
-        map<Release[], Release[]>((releaseArray) =>
-          releaseArray.map<Release>((release) => {
-            return {
-              ...release,
-              date: new Date(release.releaseDate),
-            };
-          })
-        ),
-        map<Release[], void>((releaseArray) => {
-          this.releases = releaseArray.filter(
-            (release) => release.releaseDate < this.today
-          );
-        })
-      )
-      .subscribe();
+    // fetch releases if not fetched yet
+    this.store
+      .select(selectReleasesFetched)
+      .pipe(take(1))
+      .subscribe((areReleasesFetched) => {
+        if (!areReleasesFetched) {
+          this.store.dispatch(fetchReleases());
+        }
+      });
+    // fragment-based scrolling
     const navigation = this.router.getCurrentNavigation();
     const navigationExtrasState =
       navigation && navigation.extras && navigation.extras.state
@@ -78,13 +60,5 @@ export class MainPageComponent implements AfterContentInit, OnDestroy {
         this.viewportScroller.scrollToAnchor(this.fragmentOnInit);
       }
     }, 500);
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach((sub) => sub.unsubscribe());
-  }
-
-  private set sub(sub: Subscription) {
-    this.subscriptions.push(sub);
   }
 }

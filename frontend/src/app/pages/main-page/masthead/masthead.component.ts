@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Release } from '../../../services/releases.service';
 import { ViewportScroller } from '@angular/common';
+import { ExistingRelease } from '../../../core/models/release.model';
 
 @Component({
   selector: 'app-masthead',
@@ -8,7 +8,7 @@ import { ViewportScroller } from '@angular/common';
   styleUrls: ['./masthead.component.scss'],
 })
 export class MastheadComponent {
-  @Input() countdowns: Release[] = [];
+  @Input() countdowns: ExistingRelease[] | null | undefined;
 
   constructor(private readonly viewportScroller: ViewportScroller) {}
 

@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
@@ -14,7 +14,9 @@ export class ProductsService {
     @InjectConnection() private readonly connection: Connection,
   ) {}
 
-  async create(createProductDto: CreateProductDto): Promise<Product> {
+  async create(
+    createProductDto: CreateProductDto,
+  ): Promise<Product | HttpException> {
     const session = await this.connection.startSession();
     session.startTransaction();
     try {
@@ -25,7 +27,7 @@ export class ProductsService {
 
       const errors = await validate(newProduct);
       if (errors.length > 0) {
-        throw new BadRequestException(errors, 'Invalid value(s) in request');
+        return new BadRequestException(errors, 'Invalid value(s) in request');
       }
 
       await newProduct.save();

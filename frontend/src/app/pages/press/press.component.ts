@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Release } from '../../services/releases.service';
 import { ActivatedRoute } from '@angular/router';
+import { ExistingRelease } from '../../core/models/release.model';
 
 @Component({
   selector: 'app-press',
@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./press.component.scss'],
 })
 export class PressComponent {
-  releases: Release[] = this.activatedRoute.snapshot.data['releases'];
+  releases: ExistingRelease[] = this.activatedRoute.snapshot.data['releases'];
+
   constructor(private activatedRoute: ActivatedRoute) {}
 }

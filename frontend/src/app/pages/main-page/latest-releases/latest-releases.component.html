@@ -1,5 +1,5 @@
 <section class="page-section" id="latest">
-  <div class="container">
+  <div class="container" *ngIf="releases">
     <h2 class="text-center mt-0">Latest Releases</h2>
     <hr class="divider my-4">
     <div *ngFor="let release of releases; let i = index">
@@ -9,5 +9,6 @@
       <button class="btn btn-primary btn-xl" routerLink="/releases">See all releases</button>
     </div>
   </div>
+  <app-loading-spinner *ngIf="!releases"></app-loading-spinner>
 </section>
 

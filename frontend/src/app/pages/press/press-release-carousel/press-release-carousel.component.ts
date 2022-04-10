@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Release } from '../../../services/releases.service';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import {
   faChevronRight,
@@ -7,6 +6,7 @@ import {
   faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
 import { environment } from '../../../../environments/environment';
+import { ExistingRelease } from '../../../core/models/release.model';
 
 @Component({
   selector: 'app-press-release-carousel',
@@ -14,7 +14,7 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./press-release-carousel.component.scss'],
 })
 export class PressReleaseCarouselComponent {
-  @Input() releases: Release[] = [];
+  @Input() releases: ExistingRelease[] = [];
 
   faChevronRight: IconDefinition = faChevronRight;
   faChevronLeft: IconDefinition = faChevronLeft;

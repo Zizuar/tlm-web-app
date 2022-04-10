@@ -5,23 +5,20 @@ import {
   ActivatedRouteSnapshot,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Release, ReleasesService } from '../../services/releases.service';
+import { ExistingRelease } from '../../core/models/release.model';
+import { Store } from '@ngrx/store';
+import { selectReleasesForPress } from '../../store/releases/releases.selectors';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PressResolver implements Resolve<Release[]> {
-  constructor(private readonly releasesService: ReleasesService) {}
+export class PressResolver implements Resolve<ExistingRelease[]> {
+  constructor(private readonly store: Store) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<Release[]> {
-    return this.releasesService.getAllReleases().pipe(
-      map<Release[], Release[]>((releases) => {
-        return releases.filter((release) => release.onPressPage);
-      })
-    );
+  ): Observable<ExistingRelease[]> {
+    return this.store.select(selectReleasesForPress);
   }
 }

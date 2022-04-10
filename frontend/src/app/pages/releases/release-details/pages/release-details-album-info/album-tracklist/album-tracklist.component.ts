@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AlbumTrack } from '../../../../../../services/releases.service';
+import { AlbumTrack } from '../../../../../../core/models/release.model';
 
 @Component({
   selector: 'app-album-tracklist',

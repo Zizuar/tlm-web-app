@@ -1,0 +1,262 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add new release</h4>
+</div>
+<form (ngSubmit)="newReleaseForm.form.valid && saveNewRelease()" #newReleaseForm="ngForm">
+  <div class="modal-body">
+    <!-- Base data -->
+    <div class="row g-3 mb-3">
+      <div class="col-12">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" id="title" class="form-control" #songTitle="ngModel"
+               [ngClass]="{ 'is-invalid': (newReleaseForm.submitted || songTitle.dirty) && songTitle.invalid}"
+               [(ngModel)]="release.title" placeholder="Required" required>
+        <div class="invalid-tooltip">
+          You must provide a valid title for the release! It can only contain letters, numbers and hyphens (-). It
+          must be unique.
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 mb-3">
+      <div class="col-12 col-lg-6 position-relative">
+        <label for="id" class="form-label">Song id (this will be the identifier in the URL)</label>
+        <input type="text" name="id" id="id" class="form-control" #songId="ngModel"
+               [ngClass]="{ 'is-invalid': (newReleaseForm.submitted || songId.dirty) && songId.invalid}"
+               [(ngModel)]="release.id" pattern="^[a-zA-Z0-9-]+$" placeholder="Required" required>
+        <div class="invalid-tooltip">
+          You must provide a valid id for the release! It can only contain letters, numbers and hyphens (-). It
+          must be unique.
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 position-relative">
+        <label for="imageName" class="form-label">Image name (must be uploaded already)</label>
+        <input type="text" name="imageName" id="imageName" class="form-control" #imgName="ngModel"
+               [ngClass]="{ 'is-invalid': (newReleaseForm.submitted || imgName.dirty) && imgName.invalid}"
+               [(ngModel)]="release.imageName" pattern="^[a-zA-Z0-9-_]+$" placeholder="Required" required>
+        <div class="invalid-tooltip">
+          You must provide a valid image name! It can only contain letters, numbers and hyphens (-).
+        </div>
+      </div>
+    </div>
+    <!-- Date and category -->
+    <div class="row g-3 mb-3">
+      <div class="col-12 col-lg-6">
+        <label class="form-label">Release date</label>
+        <div class="input-group">
+          <label for="dp" class="visually-hidden">Release date</label>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" id="dp" ngbDatepicker #d="ngbDatepicker"
+                 [(ngModel)]="formDate" required>
+          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button" aria-label="Select date">
+            <fa-icon [icon]="faCalendar"></fa-icon>
+          </button>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <label class="form-label" for="category">Release category</label>
+        <select [(ngModel)]="release.category" name="category" id="category" aria-label="Select category"
+                class="form-select" required>
+          <option [value]="releaseCategories.Songs">Song</option>
+          <option [value]="releaseCategories.Collections">Song collection</option>
+          <option [value]="releaseCategories.Albums">Album</option>
+        </select>
+      </div>
+    </div>
+    <!-- Text -->
+    <div class="row g-3 mb-3">
+      <div class="col">
+        <div class="row mb-1">
+          <div class="col-2 d-flex align-items-center">
+            <label for="header" class="form-label my-0">Header</label>
+          </div>
+          <div class="col-10">
+            <input type="text" name="header" id="header" class="form-control" #header="ngModel" placeholder="Required (usually the title)"
+                   [ngClass]="{ 'is-invalid': (newReleaseForm.submitted || header.dirty) && header.invalid}"
+                   [(ngModel)]="release.text.header" required>
+          </div>
+        </div>
+        <div class="row mb-1">
+          <div class="col-2 d-flex align-items-center">
+            <label for="subheader" class="form-label my-0">Subheader</label>
+          </div>
+          <div class="col-10">
+            <input type="text" name="subheader" id="subheader" class="form-control" [(ngModel)]="release.text.subheader" placeholder="Optional">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2 d-flex align-items-center">
+            <label for="text" class="form-label my-0">Text</label>
+          </div>
+          <div class="col-10">
+            <input type="text" name="text" id="text" class="form-control" [(ngModel)]="release.text.text" placeholder="Optional">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Presave -->
+    <div class="row g-3 mb-3" *ngIf="release.category !== releaseCategories.Collections">
+      <div class="col-12">
+        <label for="presave" class="form-label">Presave</label>
+        <input type="text" name="presave" id="presave" class="form-control"
+               [(ngModel)]="formOptionalParts.presaveLink" placeholder="Optional">
+      </div>
+    </div>
+    <!-- Links -->
+    <div class="row g-3 mb-3" *ngIf="release.category !== releaseCategories.Collections">
+      <div class="col">
+        <div class="row mb-1">
+          <div class="col-2 d-flex align-items-center">
+            <label for="spotify" class="form-label my-0">Spotify</label>
+          </div>
+          <div class="col-10">
+            <input type="text" name="spotify" id="spotify" class="form-control" placeholder="Optional"
+                   [(ngModel)]="formOptionalParts.links.spotify">
+          </div>
+        </div>
+        <div class="row mb-1">
+          <div class="col-2 d-flex align-items-center">
+            <label for="amazon" class="form-label my-0">Amazon</label>
+          </div>
+          <div class="col-10">
+            <input type="text" name="amazon" id="amazon" class="form-control" placeholder="Optional"
+                   [(ngModel)]="formOptionalParts.links.amazon">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2 d-flex align-items-center">
+            <label for="apple" class="form-label my-0">Apple</label>
+          </div>
+          <div class="col-10">
+            <input type="text" name="apple" id="apple" class="form-control" placeholder="Optional"
+                   [(ngModel)]="formOptionalParts.links.apple">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Link array (for collections) -->
+    <div class="row g-3 mb-3" *ngIf="release.category === releaseCategories.Collections">
+      <div class="row mb-3 d-flex flex-column justify-content-center align-items-center">
+        <div class="col-9 mt-3" *ngFor="let links of formOptionalParts.linksArray; index as i">
+          <div class="row mb-1">
+            <div class="col-9 d-flex align-items-center">
+              <label for="title-{{i}}" class="form-label my-0">Item {{i+1}} in collection</label>
+            </div>
+            <div class="col-3 d-flex justify-content-end">
+              <button type="button" class="btn btn-danger"
+                      (click)="removeLinksFromArray(i)">
+                <fa-icon [icon]="deleteIcon"></fa-icon>
+                <span class="visually-hidden">Delete item</span>
+              </button>
+            </div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-2 d-flex align-items-center">
+              <label for="title-{{i}}" class="form-label my-0">Title</label>
+            </div>
+            <div class="col-10">
+              <input type="text" name="title-{{i}}" id="title-{{i}}" class="form-control" placeholder="Optional"
+                     [(ngModel)]="links.title">
+            </div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-2 d-flex align-items-center">
+              <label for="spotify-{{i}}" class="form-label my-0">Spotify</label>
+            </div>
+            <div class="col-10">
+              <input type="text" name="spotify-{{i}}" id="spotify-{{i}}" class="form-control" placeholder="Optional"
+                     [(ngModel)]="links.spotify">
+            </div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-2 d-flex align-items-center">
+              <label for="amazon-{{i}}" class="form-label my-0">Amazon</label>
+            </div>
+            <div class="col-10">
+              <input type="text" name="amazon-{{i}}" id="amazon-{{i}}" class="form-control" placeholder="Optional"
+                     [(ngModel)]="links.amazon">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2 d-flex align-items-center">
+              <label for="apple-{{i}}" class="form-label my-0">Apple</label>
+            </div>
+            <div class="col-10">
+              <input type="text" name="apple-{{i}}" id="apple-{{i}}" class="form-control" placeholder="Optional"
+                     [(ngModel)]="links.apple">
+            </div>
+          </div>
+        </div>
+        <div class="col-12 my-3 d-flex justify-content-center align-items-center">
+          <button type="button" class="btn btn-primary" (click)="addLinksToArray()">
+            <fa-icon [icon]="addIcon"></fa-icon>
+            &nbsp;Add links
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Tracklist (for albums) -->
+    <div class="row g-3 mb-3" *ngIf="release.category === releaseCategories.Albums">
+      <div class="row mb-3 d-flex flex-column justify-content-center align-items-center">
+        <div class="col-9 mt-3" *ngFor="let track of formOptionalParts.trackList; index as i">
+          <div class="row mb-1">
+            <div class="col-9 d-flex align-items-center">
+              <label for="title-{{i}}" class="form-label my-0">Item {{i+1}} in tracklist</label>
+            </div>
+            <div class="col-3 d-flex justify-content-end">
+              <button type="button" class="btn btn-danger"
+                      (click)="removeTrackFromTrackList(i)">
+                <fa-icon [icon]="deleteIcon"></fa-icon>
+                <span class="visually-hidden">Delete track</span>
+              </button>
+            </div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-2 d-flex align-items-center">
+              <label for="trackTitle-{{i}}" class="form-label my-0">Title</label>
+            </div>
+            <div class="col-10">
+              <input type="text" name="trackTitle-{{i}}" id="trackTitle-{{i}}" class="form-control" placeholder="Optional"
+                     [(ngModel)]="track.title">
+            </div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-2 d-flex align-items-center">
+              <label for="ytLink-{{i}}" class="form-label my-0">Youtube link</label>
+            </div>
+            <div class="col-10">
+              <input type="text" name="ytLink-{{i}}" id="ytLink-{{i}}" class="form-control" placeholder="Optional"
+                     [(ngModel)]="track.youtubeLink">
+            </div>
+          </div>
+        </div>
+        <div class="col-12 my-3 d-flex justify-content-center align-items-center">
+          <button type="button" class="btn btn-primary" (click)="addTrackToTracklist()">
+            <fa-icon [icon]="addIcon"></fa-icon>
+            &nbsp;Add item to tracklist
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Display options -->
+    <div class="row g-3">
+      <div class="col">
+        <div class="form-check form-switch">
+          <input type="checkbox" class="form-check-input" id="onPressPage" name="onPressPage" [(ngModel)]="release.onPressPage">
+          <label for="onPressPage" class="form-check-label">Release should appear on press page</label>
+        </div>
+        <div class="form-check form-switch">
+          <input type="checkbox" class="form-check-input" id="orderEnabled" name="orderEnabled" [(ngModel)]="release.orderEnabled">
+          <label for="orderEnabled" class="form-check-label">CD order information segment should be shown on details page</label>
+        </div>
+        <div class="form-check form-switch">
+          <input type="checkbox" class="form-check-input" id="merchEnabled" name="merchEnabled" [(ngModel)]="release.merchEnabled">
+          <label for="merchEnabled" class="form-check-label">Merch information segment should be shown on details page</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer d-flex justify-content-between">
+    <button class="btn btn-outline-secondary" type="button"
+            (click)="activeModal.dismiss()">Close without saving
+    </button>
+    <button class="btn btn-primary" type="submit" [disabled]="!newReleaseForm.form.valid">Save</button>
+  </div>
+</form>
