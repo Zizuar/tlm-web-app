@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Release } from '../../../services/releases.service';
+import { ExistingRelease } from '../../../core/models/release.model';
 
 @Component({
   selector: 'app-latest-releases',
@@ -7,5 +7,5 @@ import { Release } from '../../../services/releases.service';
   styleUrls: ['./latest-releases.component.scss'],
 })
 export class LatestReleasesComponent {
-  @Input() releases: Release[] = [];
+  @Input() releases: ExistingRelease[] | null | undefined;
 }

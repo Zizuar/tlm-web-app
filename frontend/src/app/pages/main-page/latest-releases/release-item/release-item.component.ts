@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Release } from '../../../../services/releases.service';
 import { environment } from '../../../../../environments/environment';
+import { ExistingRelease } from '../../../../core/models/release.model';
 
 @Component({
   selector: 'app-release-item',
@@ -8,7 +8,7 @@ import { environment } from '../../../../../environments/environment';
   styleUrls: ['./release-item.component.scss'],
 })
 export class ReleaseItemComponent implements OnInit {
-  @Input() release!: Release;
+  @Input() release!: ExistingRelease;
   now = Date.now();
   isReleased: boolean = true;
 

@@ -1,8 +1,8 @@
 <app-header [pageType]="pageType"></app-header>
-<app-masthead [countdowns]="countdowns"></app-masthead>
+<app-masthead [countdowns]="countdowns | async"></app-masthead>
 <div class="main-content">
-  <app-upcoming-releases [countdowns]="countdowns"></app-upcoming-releases>
-  <app-latest-releases [releases]="releases"></app-latest-releases>
+  <app-upcoming-releases [countdowns]="countdowns | async"></app-upcoming-releases>
+  <app-latest-releases [releases]="releases | async"></app-latest-releases>
   <app-events></app-events>
   <app-twitch></app-twitch>
   <app-youtube></app-youtube>

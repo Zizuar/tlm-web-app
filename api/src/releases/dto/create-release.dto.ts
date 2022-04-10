@@ -7,6 +7,11 @@ import {
   IsString,
 } from 'class-validator';
 import { Type } from 'class-transformer';
+import {
+  AlbumTrack,
+  ReleaseLinks,
+  ReleaseText,
+} from '../interfaces/release.interface';
 
 export class CreateReleaseDto {
   @IsString()
@@ -33,39 +38,26 @@ export class CreateReleaseDto {
   @IsOptional()
   presaveLink?: string;
 
-  @IsOptional()
-  text?: {
-    header?: string;
-    subheader?: string;
-    text?: string;
-  };
+  text?: ReleaseText;
 
   @IsOptional()
-  links?: {
-    spotify: string;
-    amazon: string;
-    apple: string;
-  };
+  links?: ReleaseLinks;
 
   @IsOptional()
-  linksArray?: [
-    {
-      title: string;
-      spotify?: string;
-      amazon?: string;
-      apple?: string;
-    },
-  ];
+  linksArray?: ReleaseLinks[];
 
   @IsOptional()
-  tracklist?: [
-    {
-      title: string;
-      youtubeLink?: string;
-    },
-  ];
+  tracklist?: AlbumTrack[];
 
   @IsBoolean()
   @IsOptional()
   onPressPage?: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  orderEnabled?: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  merchEnabled?: boolean;
 }

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Release } from '../../../../../services/releases.service';
 import { environment } from '../../../../../../environments/environment';
+import { ExistingRelease } from '../../../../../core/models/release.model';
 
 @Component({
   selector: 'app-release-details-cover',
@@ -8,7 +8,7 @@ import { environment } from '../../../../../../environments/environment';
   styleUrls: ['./release-details-cover.component.scss'],
 })
 export class ReleaseDetailsCoverComponent {
-  @Input() release!: Release;
+  @Input() release!: ExistingRelease;
 
   environment = environment;
 }

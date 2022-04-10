@@ -3,46 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import * as moment from 'moment';
-
-export enum ReleaseCategories {
-  Song = 'songs',
-  Collection = 'collections',
-  Album = 'albums',
-}
-
-export interface ReleaseText {
-  header: string;
-  subheader?: string;
-  text?: string;
-}
-
-export interface ReleaseLinks {
-  title?: string;
-  spotify?: string;
-  amazon?: string;
-  apple?: string;
-}
-
-export interface AlbumTrack {
-  title: string;
-  youtubeLink?: string;
-}
-
-export interface Release {
-  id: string;
-  title: string;
-  category: ReleaseCategories;
-  releaseDate: Date;
-  imageName: string;
-  text: ReleaseText;
-  links?: ReleaseLinks;
-  linksArray?: ReleaseLinks[];
-  orderEnabled?: boolean;
-  merchEnabled?: boolean;
-  tracklist?: AlbumTrack[];
-  presaveLink?: string;
-  onPressPage?: boolean;
-}
+import {
+  ExistingRelease,
+  ReleaseCategories,
+} from '../core/models/release.model';
 
 @Injectable({
   providedIn: 'root',
@@ -52,8 +16,8 @@ export class ReleasesService {
 
   constructor(private readonly http: HttpClient) {}
 
-  getAllReleases(): Observable<Release[]> {
-    return this.http.get<Release[]>(this.releasesApiUrl).pipe(
+  getAllReleases(): Observable<ExistingRelease[]> {
+    return this.http.get<ExistingRelease[]>(this.releasesApiUrl).pipe(
       map((response) =>
         response.map((release) => {
           return {
@@ -66,31 +30,38 @@ export class ReleasesService {
         })
       ),
       // Sort by date
-      map((results) => results.sort(this.sortByDate))
+      map((results) => results.sort(ReleasesService.sortByDateAscending))
     );
   }
 
-  getReleasesByCategory(category: ReleaseCategories): Observable<Release[]> {
-    return this.http.get<Release[]>(`${this.releasesApiUrl}/${category}`).pipe(
-      map((response) =>
-        response.map((release) => {
-          return {
-            ...release,
-            releaseDate: moment
-              .parseZone(release.releaseDate)
-              .local(true)
-              .toDate(),
-          };
-        })
-      ),
-      // Sort by date
-      map((results) => results.sort(this.sortByDate))
-    );
-  }
-
-  getReleaseById(category: ReleaseCategories, id: string): Observable<Release> {
+  getReleasesByCategory(
+    category: ReleaseCategories
+  ): Observable<ExistingRelease[]> {
     return this.http
-      .get<Release>(`${this.releasesApiUrl}/${category}/${id}`)
+      .get<ExistingRelease[]>(`${this.releasesApiUrl}/${category}`)
+      .pipe(
+        map((response) =>
+          response.map((release) => {
+            return {
+              ...release,
+              releaseDate: moment
+                .parseZone(release.releaseDate)
+                .local(true)
+                .toDate(),
+            };
+          })
+        ),
+        // Sort by date
+        map((results) => results.sort(ReleasesService.sortByDateAscending))
+      );
+  }
+
+  getReleaseById(
+    category: ReleaseCategories,
+    id: string
+  ): Observable<ExistingRelease> {
+    return this.http
+      .get<ExistingRelease>(`${this.releasesApiUrl}/${category}/${id}`)
       .pipe(
         map((release) => {
           return {
@@ -104,10 +75,24 @@ export class ReleasesService {
       );
   }
 
-  private sortByDate(a: Release, b: Release): number {
+  public static sortByDateAscending(
+    a: ExistingRelease,
+    b: ExistingRelease
+  ): number {
     return a.releaseDate < b.releaseDate
       ? 1
       : a.releaseDate > b.releaseDate
+      ? -1
+      : 0;
+  }
+
+  public static sortByDateDescending(
+    a: ExistingRelease,
+    b: ExistingRelease
+  ): number {
+    return a.releaseDate > b.releaseDate
+      ? 1
+      : a.releaseDate < b.releaseDate
       ? -1
       : 0;
   }

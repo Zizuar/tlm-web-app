@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Release } from '../../../../../services/releases.service';
+import { ExistingRelease } from '../../../../../core/models/release.model';
 
 @Component({
   selector: 'app-release-details-collections-info',
@@ -7,5 +7,5 @@ import { Release } from '../../../../../services/releases.service';
   styleUrls: ['./release-details-collections-info.component.scss'],
 })
 export class ReleaseDetailsCollectionsInfoComponent {
-  @Input() release!: Release;
+  @Input() release!: ExistingRelease;
 }

@@ -11,11 +11,11 @@
       </div>
       <div class="col-lg-8 fw-normal align-self-baseline">
         <p class="text-white-75 fw-bolder mb-5">Singer/Songwriter, Musician, Twitch Streamer, <br>Fellow Human Being</p>
-        <div *ngIf="countdowns.length === 0">
+        <div *ngIf="!countdowns || countdowns.length === 0">
           <a class="btn btn-primary btn-xl mb-3" (click)="scrollToFragment('twitch')">Check Out the live stream</a>
           <a class="btn btn-primary btn-xl mb-3 ms-2" (click)="scrollToFragment('events')">... or upcoming events</a>
         </div>
-        <div *ngIf="countdowns.length > 0">
+        <div *ngIf="countdowns && countdowns.length > 0">
           <app-countdown [releaseDate]="countdowns[0].releaseDate"></app-countdown>
         </div>
       </div>

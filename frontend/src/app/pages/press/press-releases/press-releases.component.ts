@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription, tap } from 'rxjs';
 import * as moment from 'moment';
-import { NewPressRelease } from '../../../core/models/press-release.model';
+import { ExistingPressRelease } from '../../../core/models/press-release.model';
 import { Store } from '@ngrx/store';
 import {
   selectPressReleases,
@@ -15,7 +15,7 @@ import { fetchPressReleases } from '../../../store/press-releases/press-releases
   styleUrls: ['./press-releases.component.scss'],
 })
 export class PressReleasesComponent implements OnInit, OnDestroy {
-  pressReleases: Observable<NewPressRelease[]> =
+  pressReleases: Observable<ExistingPressRelease[]> =
     this.store.select(selectPressReleases);
   moment = moment;
 

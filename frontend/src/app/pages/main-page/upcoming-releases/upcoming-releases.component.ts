@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Release } from '../../../services/releases.service';
 import * as moment from 'moment';
+import { ExistingRelease } from '../../../core/models/release.model';
 
 @Component({
   selector: 'app-upcoming-releases',
@@ -8,7 +8,7 @@ import * as moment from 'moment';
   styleUrls: ['./upcoming-releases.component.scss'],
 })
 export class UpcomingReleasesComponent {
-  @Input() countdowns: Release[] = [];
+  @Input() countdowns: ExistingRelease[] | null | undefined;
   moment = moment;
 
   constructor() {}

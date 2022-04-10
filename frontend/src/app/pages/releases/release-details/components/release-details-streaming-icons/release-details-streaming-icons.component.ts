@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ReleaseLinks } from '../../../../../services/releases.service';
+import { ReleaseLinks } from '../../../../../core/models/release.model';
 
 @Component({
   selector: 'app-release-details-streaming-icons',

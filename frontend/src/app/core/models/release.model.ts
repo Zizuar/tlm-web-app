@@ -1,36 +1,43 @@
-import { Document } from 'mongoose';
-import { ReleaseCategory } from './release-category.interface';
-
-export type ReleaseText = {
+export interface ReleaseText {
   header: string;
   subheader?: string;
   text?: string;
-};
+}
 
-export type ReleaseLinks = {
+export interface ReleaseLinks {
   title?: string;
   spotify?: string;
   amazon?: string;
   apple?: string;
-};
+}
 
-export type AlbumTrack = {
+export interface AlbumTrack {
   title: string;
   youtubeLink?: string;
-};
+}
 
-export interface Release extends Document {
+export enum ReleaseCategories {
+  Songs = 'songs',
+  Collections = 'collections',
+  Albums = 'albums',
+}
+
+export interface NewRelease {
   id: string;
   title: string;
-  category: ReleaseCategory;
+  category: ReleaseCategories;
   releaseDate: Date;
   imageName: string;
-  text: ReleaseText;
   presaveLink?: string;
+  text: ReleaseText;
   links?: ReleaseLinks;
   linksArray?: ReleaseLinks[];
   tracklist?: AlbumTrack[];
   onPressPage?: boolean;
   orderEnabled?: boolean;
   merchEnabled?: boolean;
+}
+
+export interface ExistingRelease extends NewRelease {
+  _id: string;
 }

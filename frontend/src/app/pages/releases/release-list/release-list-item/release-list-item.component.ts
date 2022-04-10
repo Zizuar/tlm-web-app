@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
-import { Release } from '../../../../services/releases.service';
+import { ExistingRelease } from '../../../../core/models/release.model';
 
 @Component({
   selector: 'app-release-list-item',
@@ -8,7 +8,7 @@ import { Release } from '../../../../services/releases.service';
   styleUrls: ['./release-list-item.component.scss'],
 })
 export class ReleaseListItemComponent {
-  @Input() release!: Release;
+  @Input() release!: ExistingRelease;
 
   environment = environment;
 }

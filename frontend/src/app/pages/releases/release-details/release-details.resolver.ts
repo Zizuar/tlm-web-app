@@ -3,29 +3,47 @@ import {
   Resolve,
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
+  Router,
 } from '@angular/router';
-import { map, Observable } from 'rxjs';
-import { Release, ReleasesService } from '../../../services/releases.service';
+import { Observable, of, switchMap, take } from 'rxjs';
+import {
+  selectReleases,
+  selectReleasesFetched,
+} from '../../../store/releases/releases.selectors';
+import { fetchReleases } from '../../../store/releases/releases.actions';
+import { Store } from '@ngrx/store';
+import { ExistingRelease } from '../../../core/models/release.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ReleaseDetailsResolver implements Resolve<Release> {
-  constructor(private readonly releasesService: ReleasesService) {}
+export class ReleaseDetailsResolver
+  implements Resolve<ExistingRelease | undefined>
+{
+  constructor(private readonly store: Store, private readonly router: Router) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<Release> {
-    return this.releasesService
-      .getReleaseById(route.params['category'], route.params['id'])
-      .pipe(
-        map((release: Release) => {
-          return {
-            ...release,
-            releaseDate: new Date(release.releaseDate),
-          };
-        })
-      );
+  ): Observable<ExistingRelease | undefined> {
+    this.store
+      .select(selectReleasesFetched)
+      .pipe(take(1))
+      .subscribe((areReleasesFetched) => {
+        if (!areReleasesFetched) {
+          this.store.dispatch(fetchReleases());
+        }
+      });
+    return this.store.select(selectReleases).pipe(
+      switchMap((releases) => {
+        const release = releases.find(
+          (release) => release.id === route.params['id']
+        );
+        if (!release) {
+          this.router.navigateByUrl('/releases');
+        }
+        return of(release);
+      })
+    );
   }
 }

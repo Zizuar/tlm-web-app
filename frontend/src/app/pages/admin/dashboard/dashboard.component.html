@@ -23,7 +23,7 @@
         <app-dash-products></app-dash-products>
       </ng-template>
     </li>
-    <li ngbNavItem="releases" [disabled]="true" *ngIf="(scopes$ | async)?.includes(SCOPES.RELEASES_WRITE)">
+    <li ngbNavItem="releases" *ngIf="(scopes$ | async)?.includes(SCOPES.RELEASES_WRITE)">
       <a ngbNavLink="releases">Releases</a>
       <ng-template ngbNavContent>
         <app-dash-releases></app-dash-releases>
