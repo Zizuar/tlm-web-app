@@ -31,9 +31,10 @@ import { pressReleasesReducer } from './store/press-releases/press-releases.redu
 import { PressReleasesEffects } from './store/press-releases/press-releases.effects';
 import { releasesReducer } from './store/releases/releases.reducer';
 import { ReleasesEffects } from './store/releases/releases.effects';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ContactPageComponent],
   imports: [
     BrowserModule,
     AuthModule.forRoot(environment.auth),
