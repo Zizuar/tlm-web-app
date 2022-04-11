@@ -6,6 +6,7 @@ import {
   Routes,
 } from '@angular/router';
 import { AppComponent } from './app.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       import('./pages/admin/admin.routing').then((m) => m.AdminRoutingModule),
+  },
+  {
+    path: 'contact',
+    component: ContactPageComponent,
   },
   {
     path: 'login',

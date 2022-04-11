@@ -40,11 +40,6 @@
         "type": 302
       },
       {
-        "source": "/contact",
-        "destination": "/#contact",
-        "type": 302
-      },
-      {
         "source": "/events",
         "destination": "/#events",
         "type": 302

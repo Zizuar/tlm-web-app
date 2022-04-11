@@ -9,6 +9,7 @@ import {
   selectFutureEvents,
 } from '../../../store/events/events.selectors';
 import { fetchEvents } from '../../../store/events/events.actions';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-events',
@@ -32,7 +33,8 @@ export class EventsComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly eventsService: EventsService,
-    private readonly store: Store
+    private readonly store: Store,
+    private readonly viewportScroller: ViewportScroller
   ) {
     this.subscriptions.add(
       this.store
@@ -71,6 +73,10 @@ export class EventsComponent implements OnInit, OnDestroy {
 
   showFewerEvents() {
     this.refreshEvents(this.DEFAULT_EVENTS_TO_SHOW);
+  }
+
+  scrollToSection(section: string) {
+    this.viewportScroller.scrollToAnchor(section);
   }
 
   private refreshEvents(numberToShow: number) {
