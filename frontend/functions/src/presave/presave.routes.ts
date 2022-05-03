@@ -35,6 +35,8 @@ presaveRouter.get('/:title', (req, res) => {
     res.redirect('https://distrokid.com/hyperfollow/tylerlevs/struck');
   } else if (req.params.title === 'struck-ep') {
     res.redirect('https://distrokid.com/hyperfollow/tylerlevs/struck-the-ep');
+  } else if (req.params.title === 'sad-thoughts') {
+    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/sad-thoughts-2');
   } else {
     res.redirect('/');
   }
