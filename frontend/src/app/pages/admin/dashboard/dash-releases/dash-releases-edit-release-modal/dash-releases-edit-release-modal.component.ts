@@ -120,11 +120,11 @@ export class DashReleasesEditReleaseModalComponent implements OnInit {
 
   private buildDate(): Date {
     // build date from datepicker data
-    const momentDate = this.moment.utc(
+    const momentDate = this.moment(
       `${this.formDate?.year}-${this.formDate?.month
         .toString()
         .padStart(2, '0')}-${this.formDate?.day.toString().padStart(2, '0')}`
-    );
+    ).utc(true);
     return momentDate.toDate();
   }
 }
