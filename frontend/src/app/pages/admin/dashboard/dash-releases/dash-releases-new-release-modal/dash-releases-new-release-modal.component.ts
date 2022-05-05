@@ -129,7 +129,7 @@ export class DashReleasesNewReleaseModalComponent {
       `${this.formDate?.year}-${this.formDate?.month
         .toString()
         .padStart(2, '0')}-${this.formDate?.day.toString().padStart(2, '0')}`
-    );
+    ).utc(true);
     return momentDate.toDate();
   }
 }
