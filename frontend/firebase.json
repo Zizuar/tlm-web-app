@@ -133,6 +133,11 @@
         "source": "/merch",
         "destination": "https://teespring.com/stores/tylerlevsmusic",
         "type": 302
+      },
+      {
+        "source": "/discord",
+        "destination": "https://discord.gg/hZj4kSV",
+        "type": 302
       }
     ]
   },
