@@ -106,12 +106,12 @@
       },
       {
         "source": "/tip",
-        "destination": "https://streamelements.com/tylerlevsmusic/tip",
+        "destination": "https://streamlabs.com/tylerlevsmusic/tip",
         "type": 302
       },
       {
         "source": "/donate",
-        "destination": "https://streamelements.com/tylerlevsmusic/tip",
+        "destination": "https://streamlabs.com/tylerlevsmusic/tip",
         "type": 302
       },
       {
