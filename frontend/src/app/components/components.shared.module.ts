@@ -15,6 +15,8 @@ import { CountryCodeToNamePipe } from '../pipes/country-code-to-name.pipe';
 import { ClickStopPropagationDirective } from '../directives/click-stop-propagation.directive';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { DeleteConfirmModalComponent } from './delete-confirm-modal/delete-confirm-modal.component';
+import { EventsListComponent } from './events-list/events-list.component';
+import { EventItemComponent } from './events-list/event-item/event-item.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { DeleteConfirmModalComponent } from './delete-confirm-modal/delete-confi
     ClickStopPropagationDirective,
     LoadingSpinnerComponent,
     DeleteConfirmModalComponent,
+    EventsListComponent,
+    EventItemComponent,
   ],
   imports: [CommonModule, NgbModule, FontAwesomeModule, RouterModule],
   exports: [
@@ -44,6 +48,7 @@ import { DeleteConfirmModalComponent } from './delete-confirm-modal/delete-confi
     CountryCodeToNamePipe,
     ClickStopPropagationDirective,
     LoadingSpinnerComponent,
+    EventsListComponent,
   ],
 })
 export class SharedComponentsModule {}
