@@ -8,6 +8,7 @@ import { AdminLoginInfoComponent } from './admin-login-info/admin-login-info.com
 import { AdminUnauthorizedComponent } from './admin-unauthorized/admin-unauthorized.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedComponentsModule } from '../../components/components.shared.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   imports: [
     CommonModule,
+    SharedComponentsModule,
     DashboardModule,
     RouterModule,
     NgbNavModule,

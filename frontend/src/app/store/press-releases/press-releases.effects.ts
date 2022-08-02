@@ -14,12 +14,14 @@ import {
 } from './press-releases.actions';
 import { of, switchMap } from 'rxjs';
 import { ExistingPressRelease } from '../../core/models/press-release.model';
+import { ToastService } from '../../services/toast.service';
 
 @Injectable()
 export class PressReleasesEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly pressReleaseService: PressReleaseService
+    private readonly pressReleaseService: PressReleaseService,
+    private readonly toastService: ToastService
   ) {}
 
   fetchPressReleases$ = createEffect(() => {
@@ -52,6 +54,13 @@ export class PressReleasesEffects {
     return this.actions$.pipe(
       ofType(PressReleasesActionTypes.CREATE_PRESS_RELEASE_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Press release successfully created',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchPressReleases());
       })
     );
@@ -75,6 +84,13 @@ export class PressReleasesEffects {
     return this.actions$.pipe(
       ofType(PressReleasesActionTypes.UPDATE_PRESS_RELEASE_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Press release successfully updated',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchPressReleases());
       })
     );
@@ -96,6 +112,13 @@ export class PressReleasesEffects {
     return this.actions$.pipe(
       ofType(PressReleasesActionTypes.REMOVE_PRESS_RELEASE_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Press release successfully removed',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchPressReleases());
       })
     );

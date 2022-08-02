@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { StreamingScheduleElement } from '../core/models/schedule-day.model';
 import { ApiBaseService } from './api-base.service';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +13,8 @@ import { ApiBaseService } from './api-base.service';
 export class StreamingScheduleService extends ApiBaseService {
   private readonly scheduleApiUrl = `${environment.apiBaseUrl}/v1/schedule`;
 
-  constructor(private readonly http: HttpClient) {
-    super();
+  constructor(private readonly http: HttpClient, toastService: ToastService) {
+    super(toastService);
   }
 
   getSchedule(): Observable<StreamingScheduleElement[]> {

@@ -1,6 +1,7 @@
 <div class="admin-container">
   <app-admin-header [isLoggedIn]="(loggedIn$ | async) || false" [profile]="(profile$ | async) || {}" (loginEvent)="login('/admin')" (logoutEvent)="logout()"></app-admin-header>
   <div class="content-container">
+    <app-toasts></app-toasts>
     <app-admin-login-info *ngIf="(loggedIn$ | async) !== true"></app-admin-login-info>
     <app-dashboard *ngIf="(loggedIn$ | async) && (scopes$ | async)?.includes(SCOPES.ADMIN_ACCESS)"></app-dashboard>
     <app-admin-unauthorized *ngIf="(loggedIn$ | async) && !(scopes$ | async)?.includes(SCOPES.ADMIN_ACCESS)"></app-admin-unauthorized>

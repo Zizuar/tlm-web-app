@@ -4,6 +4,7 @@ import { ExistingOrder, NewOrder } from '../core/models/order.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ApiBaseService } from './api-base.service';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,8 @@ import { ApiBaseService } from './api-base.service';
 export class OrdersService extends ApiBaseService {
   private readonly orderApiUrl = `${environment.apiBaseUrl}/v1/orders`;
 
-  constructor(private readonly http: HttpClient) {
-    super();
+  constructor(private readonly http: HttpClient, toastService: ToastService) {
+    super(toastService);
   }
 
   getOrders(): Observable<ExistingOrder[]> {

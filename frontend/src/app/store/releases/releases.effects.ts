@@ -14,12 +14,14 @@ import {
 import { ReleasesService } from '../../services/releases.service';
 import { of, switchMap } from 'rxjs';
 import { ExistingRelease } from '../../core/models/release.model';
+import { ToastService } from '../../services/toast.service';
 
 @Injectable()
 export class ReleasesEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly releasesService: ReleasesService
+    private readonly releasesService: ReleasesService,
+    private readonly toastService: ToastService
   ) {}
 
   fetchReleases$ = createEffect(() => {
@@ -50,6 +52,13 @@ export class ReleasesEffects {
     return this.actions$.pipe(
       ofType(ReleasesActionTypes.CREATE_RELEASE_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Release successfully created',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchReleases());
       })
     );
@@ -71,6 +80,13 @@ export class ReleasesEffects {
     return this.actions$.pipe(
       ofType(ReleasesActionTypes.UPDATE_RELEASE_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Release successfully updated',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchReleases());
       })
     );
@@ -92,6 +108,13 @@ export class ReleasesEffects {
     return this.actions$.pipe(
       ofType(ReleasesActionTypes.REMOVE_RELEASE_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Release successfully removed',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchReleases());
       })
     );

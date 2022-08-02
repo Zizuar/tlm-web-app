@@ -4,12 +4,14 @@ import { StreamingScheduleService } from '../../services/streaming-schedule.serv
 import { ScheduleActionTypes, UpdateScheduleAction } from './schedule.actions';
 import * as scheduleActions from './schedule.actions';
 import { of, switchMap } from 'rxjs';
+import { ToastService } from '../../services/toast.service';
 
 @Injectable()
 export class ScheduleEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly scheduleService: StreamingScheduleService
+    private readonly scheduleService: StreamingScheduleService,
+    private readonly toastService: ToastService
   ) {}
 
   fetchSchedule$ = createEffect(() => {
@@ -38,6 +40,13 @@ export class ScheduleEffects {
     return this.actions$.pipe(
       ofType(ScheduleActionTypes.UPDATE_SCHEDULE_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Schedule successfully updated',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(scheduleActions.fetchSchedule());
       })
     );

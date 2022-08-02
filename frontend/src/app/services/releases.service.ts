@@ -9,6 +9,7 @@ import {
   ReleaseCategories,
 } from '../core/models/release.model';
 import { ApiBaseService } from './api-base.service';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +17,8 @@ import { ApiBaseService } from './api-base.service';
 export class ReleasesService extends ApiBaseService {
   releasesApiUrl = `${environment.apiBaseUrl}/v1/releases`;
 
-  constructor(private readonly http: HttpClient) {
-    super();
+  constructor(private readonly http: HttpClient, toastService: ToastService) {
+    super(toastService);
   }
 
   getAllReleases(): Observable<ExistingRelease[]> {
