@@ -7,6 +7,7 @@ import {
 } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
+import { EventsPageComponent } from './pages/events-page/events-page.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactPageComponent,
+  },
+  {
+    path: 'events',
+    component: EventsPageComponent,
   },
   {
     path: 'login',

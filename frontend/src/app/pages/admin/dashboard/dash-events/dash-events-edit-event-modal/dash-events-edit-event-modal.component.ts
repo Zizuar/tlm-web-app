@@ -10,6 +10,8 @@ import { faCalendarDay } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { updateEvent } from '../../../../../store/events/events.actions';
 import * as moment from 'moment-timezone';
+import { MinDate } from '../dash-events-new-event-modal/dash-events-new-event-modal.component';
+import { EventsService } from '../../../../../services/events.service';
 
 @Component({
   selector: 'app-edit-event-modal',
@@ -23,10 +25,14 @@ export class DashEventsEditEventModalComponent implements OnInit {
   timezones: string[] = moment.tz.zonesForCountry('US');
 
   today: Date = new Date();
-  minDate;
+  minDate: MinDate;
+  minEndDate: MinDate;
 
   formDate: NgbDateStruct | undefined;
   formTime: NgbTimeStruct | undefined;
+  formEndDateEnabled = false;
+  formEndDate: NgbDateStruct | undefined;
+  formEndTime: NgbTimeStruct | undefined;
   formTimezone: string = 'America/New_York';
 
   faCalendar: IconDefinition = faCalendarDay;
@@ -36,7 +42,7 @@ export class DashEventsEditEventModalComponent implements OnInit {
     private readonly store: Store
   ) {
     // configure datepicker
-    this.minDate = {
+    this.minDate = this.minEndDate = {
       year: this.today.getFullYear(),
       month: this.today.getMonth() + 1,
       day: this.today.getDate(),
@@ -44,6 +50,11 @@ export class DashEventsEditEventModalComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.minEndDate = {
+      year: this.event.date.getFullYear(),
+      month: this.event.date.getMonth() + 1,
+      day: this.event.date.getDate(),
+    };
     const tzDate = moment.tz(this.event.date, 'America/New_York');
     this.formDate = {
       year: tzDate.year(),
@@ -55,28 +66,54 @@ export class DashEventsEditEventModalComponent implements OnInit {
       minute: tzDate.minute(),
       second: 0,
     };
-  }
-
-  private buildTime(): Date {
-    // build date from date and timepicker data
-    const momentDate = moment.tz(
-      `${this.formDate?.year}-${this.formDate?.month
-        .toString()
-        .padStart(2, '0')}-${this.formDate?.day
-        .toString()
-        .padStart(2, '0')}T${this.formTime?.hour
-        .toString()
-        .padStart(2, '0')}:${this.formTime?.minute
-        .toString()
-        .padStart(2, '0')}`,
-      this.formTimezone
-    );
-    return momentDate.toDate();
+    if (this.event.endDate) {
+      this.formEndDateEnabled = true;
+      const tzEndDate = moment.tz(this.event.date, 'America/New_York');
+      this.formEndDate = {
+        year: tzEndDate.year(),
+        month: tzEndDate.month() + 1,
+        day: tzEndDate.date(),
+      };
+      this.formEndTime = {
+        hour: tzEndDate.hour(),
+        minute: tzEndDate.minute(),
+        second: 0,
+      };
+    }
   }
 
   updateEvent() {
-    this.event.date = this.buildTime();
+    if (!this.formDate || !this.formTime) {
+      return;
+    }
+    this.event.date = EventsService.buildDateFromDatepicker(
+      this.formDate,
+      this.formTime,
+      this.formTimezone
+    );
+    if (this.formEndDateEnabled && this.formEndDate && this.formEndTime) {
+      this.event.endDate = EventsService.buildDateFromDatepicker(
+        this.formEndDate,
+        this.formEndTime,
+        this.formTimezone
+      );
+    } else if (!this.formEndDateEnabled) {
+      this.event.endDate = null;
+    }
     this.store.dispatch(updateEvent({ updatedEvent: this.event }));
     this.activeModal.dismiss();
+  }
+
+  updateEndDate() {
+    if (this.formDate) {
+      if (!this.formEndDate && this.formEndDateEnabled) {
+        this.formEndDate = this.formDate;
+      }
+      this.minEndDate = {
+        year: this.formDate.year,
+        month: this.formDate.month,
+        day: this.formDate.day,
+      };
+    }
   }
 }

@@ -8,6 +8,9 @@ export class Event {
   @Prop({ required: true, type: Date })
   date: Date;
 
+  @Prop({ required: false, type: Date })
+  endDate: Date;
+
   @Prop({ required: true })
   name: string;
 

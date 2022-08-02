@@ -36,20 +36,21 @@
         </div>
       </div>
     </div>
+    <!-- Start date -->
     <div class="row g-3 mt-2 align-items-center">
       <div class="col-4 position-relative">
         <div class="input-group">
-          <label for="dp" class="visually-hidden">Event date</label>
-          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" id="dp" ngbDatepicker #d="ngbDatepicker"
-                 [(ngModel)]="formDate" [minDate]="minDate" required>
-          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button" aria-label="Select date">
+          <label for="dp-start" class="visually-hidden">Event start date</label>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="dp-start" id="dp-start" ngbDatepicker #ds="ngbDatepicker"
+                 [(ngModel)]="formDate" (ngModelChange)="updateEndDate()" [minDate]="minDate" required>
+          <button class="btn btn-outline-secondary" (click)="ds.toggle()" type="button" aria-label="Select date">
             <fa-icon [icon]="faCalendar"></fa-icon>
           </button>
         </div>
       </div>
       <div class="col-4 position-relative">
-        <label for="time" class="visually-hidden">Event time</label>
-        <ngb-timepicker name="time" id="time" [(ngModel)]="formTime" [meridian]="true" required></ngb-timepicker>
+        <label for="time-start" class="visually-hidden">Event time</label>
+        <ngb-timepicker name="time-start" id="time-start" [(ngModel)]="formTime" [meridian]="true" required></ngb-timepicker>
       </div>
       <div class="col-4 position-relative">
         <label for="timezone" class="visually-hidden">Event timezone</label>
@@ -60,6 +61,37 @@
         </select>
         <div class="invalid-tooltip">
           You must provide a timezone for the event!
+        </div>
+      </div>
+    </div>
+    <!-- End date -->
+    <div class="row g-3 mt-2 align-items-center">
+      <div class="col-4 position-relative">
+        <div class="input-group">
+          <label for="dp-end" class="visually-hidden">Event end date</label>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="dp-end" id="dp-end"
+                 ngbDatepicker #de="ngbDatepicker" required
+                 [(ngModel)]="formEndDate" [minDate]="minEndDate" [disabled]="!formEndDateEnabled">
+          <button class="btn btn-outline-secondary" (click)="de.toggle()" type="button" aria-label="Select date">
+            <fa-icon [icon]="faCalendar"></fa-icon>
+          </button>
+          <div class="invalid-tooltip">
+            The end date must be the same or later than start time.
+          </div>
+        </div>
+      </div>
+      <div class="col-4 position-relative">
+        <label for="end-time" class="visually-hidden">Event end time</label>
+        <ngb-timepicker name="end-time" id="end-time" [(ngModel)]="formEndTime" [meridian]="true"
+                        [disabled]="!formEndDateEnabled" required></ngb-timepicker>
+      </div>
+      <div class="col-4 position-relative">
+        <div class="form-check form-switch">
+          <input type="checkbox" class="form-check-input" id="onPressPage" name="onPressPage" [(ngModel)]="formEndDateEnabled">
+          <label for="onPressPage" class="form-check-label">Show end time</label>
+        </div>
+        <div>
+          <small>Must be later than start</small>
         </div>
       </div>
     </div>

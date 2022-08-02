@@ -1,5 +1,6 @@
 export interface NewScheduledEvent {
   date: Date;
+  endDate?: Date | null;
   name: string;
   venue: string;
   town: string;

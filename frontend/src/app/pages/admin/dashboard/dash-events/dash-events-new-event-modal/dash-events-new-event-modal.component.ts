@@ -10,6 +10,13 @@ import { createEvent } from '../../../../../store/events/events.actions';
 import * as moment from 'moment-timezone';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faCalendarDay } from '@fortawesome/free-solid-svg-icons';
+import { EventsService } from '../../../../../services/events.service';
+
+export interface MinDate {
+  year: number;
+  month: number;
+  day: number;
+}
 
 @Component({
   selector: 'app-new-event-modal',
@@ -22,10 +29,14 @@ export class DashEventsNewEventModalComponent {
 
   event: NewScheduledEvent;
   today: Date;
-  minDate;
+  minDate: MinDate;
+  minEndDate: MinDate;
 
   formDate: NgbDateStruct | undefined;
   formTime: NgbTimeStruct | undefined;
+  formEndDateEnabled = false;
+  formEndDate: NgbDateStruct | undefined;
+  formEndTime: NgbTimeStruct | undefined;
   formTimezone: string = 'America/New_York';
 
   faCalendar: IconDefinition = faCalendarDay;
@@ -45,33 +56,43 @@ export class DashEventsNewEventModalComponent {
     };
     this.today = now;
     // configure datepicker
-    this.minDate = {
+    this.minDate = this.minEndDate = {
       year: this.today.getFullYear(),
       month: this.today.getMonth() + 1,
       day: this.today.getDate(),
     };
   }
 
-  private buildTime(): Date {
-    // build date from date and timepicker data
-    const momentDate = moment.tz(
-      `${this.formDate?.year}-${this.formDate?.month
-        .toString()
-        .padStart(2, '0')}-${this.formDate?.day
-        .toString()
-        .padStart(2, '0')}T${this.formTime?.hour
-        .toString()
-        .padStart(2, '0')}:${this.formTime?.minute
-        .toString()
-        .padStart(2, '0')}`,
+  saveNewEvent() {
+    if (!this.formDate || !this.formTime) {
+      return;
+    }
+    this.event.date = EventsService.buildDateFromDatepicker(
+      this.formDate,
+      this.formTime,
       this.formTimezone
     );
-    return momentDate.toDate();
-  }
-
-  saveNewEvent() {
-    this.event.date = this.buildTime();
+    if (this.formEndDateEnabled && this.formEndDate && this.formEndTime) {
+      this.event.endDate = EventsService.buildDateFromDatepicker(
+        this.formEndDate,
+        this.formEndTime,
+        this.formTimezone
+      );
+    }
     this.store.dispatch(createEvent({ event: this.event }));
     this.activeModal.dismiss();
+  }
+
+  updateEndDate() {
+    if (this.formDate) {
+      if (!this.formEndDate && this.formEndDateEnabled) {
+        this.formEndDate = this.formDate;
+      }
+      this.minEndDate = {
+        year: this.formDate.year,
+        month: this.formDate.month,
+        day: this.formDate.day,
+      };
+    }
   }
 }

@@ -40,11 +40,6 @@
         "type": 302
       },
       {
-        "source": "/events",
-        "destination": "/#events",
-        "type": 302
-      },
-      {
         "source": "/lets-begin",
         "destination": "/releases/songs/lets-begin",
         "type": 302
