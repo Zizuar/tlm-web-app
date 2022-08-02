@@ -7,6 +7,7 @@ import {
   NewPressRelease,
 } from '../core/models/press-release.model';
 import { ApiBaseService } from './api-base.service';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +15,8 @@ import { ApiBaseService } from './api-base.service';
 export class PressReleaseService extends ApiBaseService {
   pressReleasesApiUrl = `${environment.apiBaseUrl}/v1/press-releases`;
 
-  constructor(private readonly http: HttpClient) {
-    super();
+  constructor(private readonly http: HttpClient, toastService: ToastService) {
+    super(toastService);
   }
 
   getPressReleases(): Observable<ExistingPressRelease[]> {

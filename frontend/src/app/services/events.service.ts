@@ -9,6 +9,7 @@ import {
 import * as moment from 'moment';
 import { ApiBaseService } from './api-base.service';
 import { NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +17,8 @@ import { NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 export class EventsService extends ApiBaseService {
   eventsApiUrl = `${environment.apiBaseUrl}/v1/events`;
 
-  constructor(private readonly http: HttpClient) {
-    super();
+  constructor(private readonly http: HttpClient, toastService: ToastService) {
+    super(toastService);
   }
 
   getAllEvents(): Observable<ExistingScheduledEvent[]> {

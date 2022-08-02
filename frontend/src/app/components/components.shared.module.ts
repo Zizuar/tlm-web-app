@@ -17,6 +17,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { DeleteConfirmModalComponent } from './delete-confirm-modal/delete-confirm-modal.component';
 import { EventsListComponent } from './events-list/events-list.component';
 import { EventItemComponent } from './events-list/event-item/event-item.component';
+import { ToastsContainerComponent } from './toasts-container/toasts-container.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { EventItemComponent } from './events-list/event-item/event-item.componen
     DeleteConfirmModalComponent,
     EventsListComponent,
     EventItemComponent,
+    ToastsContainerComponent,
   ],
   imports: [CommonModule, NgbModule, FontAwesomeModule, RouterModule],
   exports: [
@@ -49,6 +51,7 @@ import { EventItemComponent } from './events-list/event-item/event-item.componen
     ClickStopPropagationDirective,
     LoadingSpinnerComponent,
     EventsListComponent,
+    ToastsContainerComponent,
   ],
 })
 export class SharedComponentsModule {}

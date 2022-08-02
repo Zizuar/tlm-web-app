@@ -14,12 +14,14 @@ import {
 } from './events.actions';
 import { of, switchMap } from 'rxjs';
 import { ExistingScheduledEvent } from '../../core/models/scheduled-event.model';
+import { ToastService } from '../../services/toast.service';
 
 @Injectable()
 export class EventsEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly eventsService: EventsService
+    private readonly eventsService: EventsService,
+    private readonly toastService: ToastService
   ) {}
 
   fetchEvents$ = createEffect(() => {
@@ -50,6 +52,13 @@ export class EventsEffects {
     return this.actions$.pipe(
       ofType(EventsActionTypes.CREATE_EVENT_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Event successfully created',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchEvents());
       })
     );
@@ -71,6 +80,13 @@ export class EventsEffects {
     return this.actions$.pipe(
       ofType(EventsActionTypes.UPDATE_EVENT_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Event successfully updated',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchEvents());
       })
     );
@@ -92,6 +108,13 @@ export class EventsEffects {
     return this.actions$.pipe(
       ofType(EventsActionTypes.REMOVE_EVENT_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Event successfully removed',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchEvents());
       })
     );

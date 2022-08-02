@@ -15,12 +15,14 @@ import {
 import { of, switchMap } from 'rxjs';
 import { Product } from '../../core/models/product.model';
 import { map } from 'rxjs/operators';
+import { ToastService } from '../../services/toast.service';
 
 @Injectable()
 export class ProductsEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly productsService: ProductsService
+    private readonly productsService: ProductsService,
+    private readonly toastService: ToastService
   ) {}
 
   fetchProducts$ = createEffect(() => {
@@ -69,6 +71,13 @@ export class ProductsEffects {
     return this.actions$.pipe(
       ofType(ProductsActionTypes.CREATE_PRODUCT_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Product successfully created',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchProducts());
       })
     );
@@ -90,6 +99,13 @@ export class ProductsEffects {
     return this.actions$.pipe(
       ofType(ProductsActionTypes.UPDATE_PRODUCT_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Product successfully updated',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchProducts());
       })
     );
@@ -111,6 +127,13 @@ export class ProductsEffects {
     return this.actions$.pipe(
       ofType(ProductsActionTypes.REMOVE_PRODUCT_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Product successfully removed',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchProducts());
       })
     );

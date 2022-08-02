@@ -11,12 +11,14 @@ import {
   updateOrderCompleted,
 } from './orders.actions';
 import { of, switchMap } from 'rxjs';
+import { ToastService } from '../../services/toast.service';
 
 @Injectable()
 export class OrderEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly ordersService: OrdersService
+    private readonly ordersService: OrdersService,
+    private readonly toastService: ToastService
   ) {}
 
   fetchOrders$ = createEffect(() => {
@@ -47,6 +49,13 @@ export class OrderEffects {
     return this.actions$.pipe(
       ofType(OrderActionTypes.UPDATE_ORDER_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Order successfully updated',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchOrders());
       })
     );
@@ -68,6 +77,13 @@ export class OrderEffects {
     return this.actions$.pipe(
       ofType(OrderActionTypes.REMOVE_ORDER_COMPLETED),
       switchMap(() => {
+        this.toastService.show({
+          text: 'Order successfully removed',
+          classname: 'bg-success text-light',
+          options: {
+            delay: 10000,
+          },
+        });
         return of(fetchOrders());
       })
     );

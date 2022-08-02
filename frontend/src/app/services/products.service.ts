@@ -4,6 +4,7 @@ import { NewProduct, Product } from '../core/models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ApiBaseService } from './api-base.service';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,8 @@ import { ApiBaseService } from './api-base.service';
 export class ProductsService extends ApiBaseService {
   private readonly productsApiUrl = `${environment.apiBaseUrl}/v1/products`;
 
-  constructor(private readonly http: HttpClient) {
-    super();
+  constructor(private readonly http: HttpClient, toastService: ToastService) {
+    super(toastService);
   }
 
   getProducts(): Observable<Product[]> {
