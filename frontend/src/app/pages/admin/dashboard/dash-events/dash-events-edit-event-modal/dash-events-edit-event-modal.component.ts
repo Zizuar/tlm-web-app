@@ -68,7 +68,7 @@ export class DashEventsEditEventModalComponent implements OnInit {
     };
     if (this.event.endDate) {
       this.formEndDateEnabled = true;
-      const tzEndDate = moment.tz(this.event.date, 'America/New_York');
+      const tzEndDate = moment.tz(this.event.endDate, 'America/New_York');
       this.formEndDate = {
         year: tzEndDate.year(),
         month: tzEndDate.month() + 1,
