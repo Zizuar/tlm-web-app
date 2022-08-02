@@ -7,6 +7,11 @@ export class CreateEventDto {
   @IsNotEmpty()
   readonly date: Date;
 
+  @IsDate()
+  @Type(() => Date)
+  @IsNotEmpty()
+  readonly endDate: Date;
+
   @IsString()
   @IsNotEmpty()
   readonly name: string;
