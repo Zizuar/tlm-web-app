@@ -1,6 +1,6 @@
 {
   "name": "tlm-api",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "description": "REST API for the TylerLevsMusic web app",
   "author": "Gabor Meszaros",
   "private": true,

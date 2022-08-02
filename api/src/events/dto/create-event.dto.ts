@@ -7,9 +7,9 @@ export class CreateEventDto {
   @IsNotEmpty()
   readonly date: Date;
 
+  @IsOptional()
   @IsDate()
   @Type(() => Date)
-  @IsNotEmpty()
   readonly endDate: Date;
 
   @IsString()
