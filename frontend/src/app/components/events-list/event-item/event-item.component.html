@@ -5,8 +5,10 @@
         <div class="card-body">
           <h5 class="card-title fw-bolder">{{scheduledEvent.name}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">
-            {{moment(scheduledEvent.date).format('LLLL')}}
-            <span *ngIf="scheduledEvent.endDate">&nbsp;-&nbsp;{{moment(scheduledEvent.endDate).format('LT')}}</span>
+            {{startMoment.format('LLLL')}}
+            <span *ngIf="endMoment">&nbsp;-&nbsp;</span>
+            <span *ngIf="endMoment && duration <= 24">{{endMoment.format('LT')}}</span>
+            <span *ngIf="endMoment && duration > 24"><br />{{endMoment.format('LLLL')}}</span>
           </h6>
           <p class="card-text">{{ scheduledEvent.venue }}, {{scheduledEvent.town}}</p>
           <a *ngIf="scheduledEvent.venueLink" href="{{scheduledEvent.venueLink}}" class="card-link"
@@ -24,9 +26,9 @@
         class="col-md-3 order-1 order-md-2  ">
         <div
           class="card-body h-100 bg-primary p-3 d-flex flex-column align-items-center justify-content-around text-white">
-          <div class="text-center"><h5>{{ moment(scheduledEvent.date).format('MMMM') }}</h5></div>
-          <div class="text-center"><h5>{{ moment(scheduledEvent.date).format('Do') }} </h5></div>
-          <div class="text-center"><h5>{{ moment(scheduledEvent.date).format('YYYY') }}</h5></div>
+          <div class="text-center"><h5>{{ startMoment.format('MMMM') }}</h5></div>
+          <div class="text-center"><h5>{{ startMoment.format('Do') }} </h5></div>
+          <div class="text-center"><h5>{{ startMoment.format('YYYY') }}</h5></div>
         </div>
       </div>
     </div>
