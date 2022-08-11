@@ -61,8 +61,8 @@ export class ContactsService {
     {
       name: 'Email',
       icon: faEnvelope,
-      url: 'mailto:tylerlevsmusic@gmail.com',
-      username: 'tylerlevsmusic@gmail.com',
+      url: 'mailto:contact@tylerlevs.com',
+      username: 'contact@tylerlevs.com',
     },
   ];
 

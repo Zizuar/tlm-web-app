@@ -9,6 +9,8 @@ import {
 import { EventsService } from '../../services/events.service';
 import { Store } from '@ngrx/store';
 import { fetchEvents } from '../../store/events/events.actions';
+import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-events-list',
@@ -19,6 +21,8 @@ export class EventsListComponent implements OnInit, OnDestroy {
   @Input() showAllEvents = false;
 
   DEFAULT_EVENTS_TO_SHOW = 3;
+
+  faEnvelope: IconDefinition = faEnvelope;
 
   @ViewChild('collapse', { static: true }) collapse: NgbCollapse | undefined;
   futureEvents: ExistingScheduledEvent[] = [];
