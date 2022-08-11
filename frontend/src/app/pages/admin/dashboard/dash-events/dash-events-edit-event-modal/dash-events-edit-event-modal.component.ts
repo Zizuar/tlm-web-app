@@ -42,7 +42,7 @@ export class DashEventsEditEventModalComponent implements OnInit {
     private readonly store: Store
   ) {
     // configure datepicker
-    this.minDate = this.minEndDate = {
+    this.minDate = {
       year: this.today.getFullYear(),
       month: this.today.getMonth() + 1,
       day: this.today.getDate(),
@@ -50,12 +50,12 @@ export class DashEventsEditEventModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.minEndDate = {
-      year: this.event.date.getFullYear(),
-      month: this.event.date.getMonth() + 1,
-      day: this.event.date.getDate(),
-    };
     const tzDate = moment.tz(this.event.date, 'America/New_York');
+    this.minEndDate = {
+      year: tzDate.year(),
+      month: tzDate.month() + 1,
+      day: tzDate.date(),
+    };
     this.formDate = {
       year: tzDate.year(),
       month: tzDate.month() + 1,
