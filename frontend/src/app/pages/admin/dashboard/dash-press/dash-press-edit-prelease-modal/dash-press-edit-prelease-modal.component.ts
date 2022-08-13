@@ -3,11 +3,7 @@ import { ExistingPressRelease } from '../../../../../core/models/press-release.m
 import * as moment from 'moment';
 import { NgbActiveModal, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
-import {
-  faCalendarDay,
-  faPlus,
-  faTrash,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDay, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { updatePressRelease } from '../../../../../store/press-releases/press-releases.actions';
 
@@ -27,10 +23,7 @@ export class DashPressEditPreleaseModalComponent implements OnInit {
   deleteIcon: IconDefinition = faTrash;
   addIcon: IconDefinition = faPlus;
 
-  constructor(
-    public readonly activeModal: NgbActiveModal,
-    private readonly store: Store
-  ) {}
+  constructor(public readonly activeModal: NgbActiveModal, private readonly store: Store) {}
 
   ngOnInit() {
     const tzDate = moment(this.pressRelease.releaseAfter);
@@ -46,8 +39,7 @@ export class DashPressEditPreleaseModalComponent implements OnInit {
   }
 
   removeParagraph(index: number) {
-    this.pressRelease.text.paragraphs =
-      this.pressRelease.text.paragraphs.filter((item, i) => index !== i);
+    this.pressRelease.text.paragraphs = this.pressRelease.text.paragraphs.filter((item, i) => index !== i);
   }
 
   addLinks() {
@@ -80,9 +72,9 @@ export class DashPressEditPreleaseModalComponent implements OnInit {
   private buildDate(): Date {
     // build date from datepicker data
     const momentDate = this.moment.utc(
-      `${this.formDate?.year}-${this.formDate?.month
+      `${this.formDate?.year}-${this.formDate?.month.toString().padStart(2, '0')}-${this.formDate?.day
         .toString()
-        .padStart(2, '0')}-${this.formDate?.day.toString().padStart(2, '0')}`
+        .padStart(2, '0')}`
     );
     return momentDate.toDate();
   }

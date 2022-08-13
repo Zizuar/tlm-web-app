@@ -22,6 +22,7 @@
           "options": {
             "allowedCommonJsDependencies": [
               "lodash",
+              "moment/moment",
               "moment-timezone"
             ],
             "outputPath": "dist/tlm-web-app",

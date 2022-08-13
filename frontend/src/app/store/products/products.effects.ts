@@ -42,11 +42,7 @@ export class ProductsEffects {
           })
           .sort((a: Product, b: Product) => {
             // sort by created date
-            return a.createdAt < b.createdAt
-              ? 1
-              : a.createdAt > b.createdAt
-              ? -1
-              : 0;
+            return a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : 0;
           });
       }),
       switchMap((sortedProducts: Product[]) => {

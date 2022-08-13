@@ -1,17 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription, tap } from 'rxjs';
 import { ExistingScheduledEvent } from '../../../../core/models/scheduled-event.model';
-import {
-  faPlusSquare,
-  IconDefinition,
-} from '@fortawesome/free-regular-svg-icons';
+import { faPlusSquare, IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DashEventsNewEventModalComponent } from './dash-events-new-event-modal/dash-events-new-event-modal.component';
 import { Store } from '@ngrx/store';
-import {
-  selectEventsAscendingByDate,
-  selectEventsFetched,
-} from '../../../../store/events/events.selectors';
+import { selectEventsAscendingByDate, selectEventsFetched } from '../../../../store/events/events.selectors';
 import { fetchEvents } from '../../../../store/events/events.actions';
 
 @Component({
@@ -22,16 +16,11 @@ import { fetchEvents } from '../../../../store/events/events.actions';
 export class DashEventsComponent implements OnInit, OnDestroy {
   plusSquare: IconDefinition = faPlusSquare;
 
-  events: Observable<ExistingScheduledEvent[]> = this.store.select(
-    selectEventsAscendingByDate
-  );
+  events: Observable<ExistingScheduledEvent[]> = this.store.select(selectEventsAscendingByDate);
 
   private readonly mainSub = new Subscription();
 
-  constructor(
-    private readonly store: Store,
-    private readonly modalService: NgbModal
-  ) {}
+  constructor(private readonly store: Store, private readonly modalService: NgbModal) {}
 
   ngOnInit() {
     this.mainSub.add(

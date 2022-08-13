@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  MerchStoreService,
-  StoreState,
-} from '../../services/merch-store.service';
+import { MerchStoreService, StoreState } from '../../services/merch-store.service';
 import { Observable } from 'rxjs';
 import { CartItem } from '../../core/models/cart-item.model';
 

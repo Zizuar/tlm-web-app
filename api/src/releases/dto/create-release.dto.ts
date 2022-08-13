@@ -1,17 +1,7 @@
 import { ReleaseCategory } from '../interfaces/release-category.interface';
-import {
-  IsBoolean,
-  IsDate,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsBoolean, IsDate, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { Type } from 'class-transformer';
-import {
-  AlbumTrack,
-  ReleaseLinks,
-  ReleaseText,
-} from '../interfaces/release.interface';
+import { AlbumTrack, ReleaseLinks, ReleaseText } from '../interfaces/release.interface';
 
 export class CreateReleaseDto {
   @IsString()

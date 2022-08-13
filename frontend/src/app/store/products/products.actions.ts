@@ -19,32 +19,17 @@ export const fetchProductsCompleted = createAction(
   props<{ products: Product[] }>()
 );
 
-export const createProduct = createAction(
-  ProductsActionTypes.CREATE_PRODUCT,
-  props<{ product: NewProduct }>()
-);
+export const createProduct = createAction(ProductsActionTypes.CREATE_PRODUCT, props<{ product: NewProduct }>());
 export type CreateProduct = ReturnType<typeof createProduct>;
 
-export const createProductCompleted = createAction(
-  ProductsActionTypes.CREATE_PRODUCT_COMPLETED
-);
+export const createProductCompleted = createAction(ProductsActionTypes.CREATE_PRODUCT_COMPLETED);
 
-export const updateProduct = createAction(
-  ProductsActionTypes.UPDATE_PRODUCT,
-  props<{ updatedProduct: Product }>()
-);
+export const updateProduct = createAction(ProductsActionTypes.UPDATE_PRODUCT, props<{ updatedProduct: Product }>());
 export type UpdateProduct = ReturnType<typeof updateProduct>;
 
-export const updateProductCompleted = createAction(
-  ProductsActionTypes.UPDATE_PRODUCT_COMPLETED
-);
+export const updateProductCompleted = createAction(ProductsActionTypes.UPDATE_PRODUCT_COMPLETED);
 
-export const removeProduct = createAction(
-  ProductsActionTypes.REMOVE_PRODUCT,
-  props<{ id: string }>()
-);
+export const removeProduct = createAction(ProductsActionTypes.REMOVE_PRODUCT, props<{ id: string }>());
 export type RemoveProduct = ReturnType<typeof removeProduct>;
 
-export const removeProductCompleted = createAction(
-  ProductsActionTypes.REMOVE_PRODUCT_COMPLETED
-);
+export const removeProductCompleted = createAction(ProductsActionTypes.REMOVE_PRODUCT_COMPLETED);

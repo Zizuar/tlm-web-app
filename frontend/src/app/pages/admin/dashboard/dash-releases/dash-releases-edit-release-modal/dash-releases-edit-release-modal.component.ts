@@ -1,17 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  ExistingRelease,
-  ReleaseCategories,
-} from '../../../../../core/models/release.model';
+import { ExistingRelease, ReleaseCategories } from '../../../../../core/models/release.model';
 import { NgbActiveModal, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import { Store } from '@ngrx/store';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
-import {
-  faCalendarDay,
-  faPlus,
-  faTrash,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDay, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { updateRelease } from 'src/app/store/releases/releases.actions';
 
 @Component({
@@ -31,10 +24,7 @@ export class DashReleasesEditReleaseModalComponent implements OnInit {
   addIcon: IconDefinition = faPlus;
   releaseCategories = ReleaseCategories;
 
-  constructor(
-    public readonly activeModal: NgbActiveModal,
-    private readonly store: Store
-  ) {}
+  constructor(public readonly activeModal: NgbActiveModal, private readonly store: Store) {}
 
   ngOnInit() {
     if (this.release.category !== ReleaseCategories.Collections) {
@@ -79,9 +69,7 @@ export class DashReleasesEditReleaseModalComponent implements OnInit {
 
   removeLinksFromArray(index: number) {
     if (this.release.linksArray) {
-      this.release.linksArray = this.release.linksArray.filter(
-        (v, i) => i !== index
-      );
+      this.release.linksArray = this.release.linksArray.filter((v, i) => i !== index);
     }
   }
 
@@ -106,9 +94,7 @@ export class DashReleasesEditReleaseModalComponent implements OnInit {
 
   removeTrackFromTrackList(index: number) {
     if (this.release.tracklist) {
-      this.release.tracklist = this.release.tracklist.filter(
-        (v, i) => i !== index
-      );
+      this.release.tracklist = this.release.tracklist.filter((v, i) => i !== index);
     }
   }
 
@@ -121,9 +107,9 @@ export class DashReleasesEditReleaseModalComponent implements OnInit {
   private buildDate(): Date {
     // build date from datepicker data
     const momentDate = this.moment(
-      `${this.formDate?.year}-${this.formDate?.month
+      `${this.formDate?.year}-${this.formDate?.month.toString().padStart(2, '0')}-${this.formDate?.day
         .toString()
-        .padStart(2, '0')}-${this.formDate?.day.toString().padStart(2, '0')}`
+        .padStart(2, '0')}`
     ).utc(true);
     return momentDate.toDate();
   }

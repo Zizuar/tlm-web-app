@@ -12,10 +12,7 @@ import { updateSchedule } from '../../../../../store/schedule/schedule.actions';
 export class DashScheduleEditModalComponent {
   @Input() scheduleDay!: StreamingScheduleElement;
 
-  constructor(
-    public activeModal: NgbActiveModal,
-    private readonly store: Store
-  ) {}
+  constructor(public activeModal: NgbActiveModal, private readonly store: Store) {}
 
   saveChanges() {
     this.store.dispatch(updateSchedule({ schedule: this.scheduleDay }));

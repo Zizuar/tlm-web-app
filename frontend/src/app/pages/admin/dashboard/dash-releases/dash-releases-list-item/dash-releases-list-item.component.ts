@@ -26,18 +26,12 @@ export class DashReleasesListItemComponent {
   editIcon: IconDefinition = faEdit;
   deleteIcon: IconDefinition = faTrash;
 
-  constructor(
-    private readonly modalService: NgbModal,
-    private readonly store: Store
-  ) {}
+  constructor(private readonly modalService: NgbModal, private readonly store: Store) {}
 
   openEditReleaseModal() {
-    const modal = this.modalService.open(
-      DashReleasesEditReleaseModalComponent,
-      {
-        size: 'lg',
-      }
-    );
+    const modal = this.modalService.open(DashReleasesEditReleaseModalComponent, {
+      size: 'lg',
+    });
     modal.componentInstance.release = cloneDeep(this.release);
   }
 
@@ -55,8 +49,6 @@ export class DashReleasesListItemComponent {
   }
 
   private deleteRelease() {
-    this.store.dispatch(
-      removeRelease({ category: this.release.category, id: this.release._id })
-    );
+    this.store.dispatch(removeRelease({ category: this.release.category, id: this.release._id }));
   }
 }

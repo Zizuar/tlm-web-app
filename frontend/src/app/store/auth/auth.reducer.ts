@@ -16,16 +16,13 @@ export const initialState: AuthState = {
 const authReducerInternal = createReducer(
   initialState,
 
-  on(
-    authActions.loginCompleted,
-    (state, { profile, isLoggedIn }): AuthState => {
-      return {
-        ...state,
-        userProfile: profile,
-        isLoggedIn,
-      };
-    }
-  ),
+  on(authActions.loginCompleted, (state, { profile, isLoggedIn }): AuthState => {
+    return {
+      ...state,
+      userProfile: profile,
+      isLoggedIn,
+    };
+  }),
 
   on(authActions.logoutCompleted, (state, {}): AuthState => {
     return {
@@ -43,9 +40,6 @@ const authReducerInternal = createReducer(
   })
 );
 
-export function authReducer(
-  state: AuthState | undefined,
-  action: Action
-): AuthState {
+export function authReducer(state: AuthState | undefined, action: Action): AuthState {
   return authReducerInternal(state, action);
 }

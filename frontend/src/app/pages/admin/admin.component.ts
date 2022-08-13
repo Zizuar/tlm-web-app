@@ -2,11 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { login, logout } from '../../store/auth/auth.actions';
 import { Observable } from 'rxjs';
-import {
-  selectCurrentUserProfile,
-  selectIsLoggedIn,
-  selectScopes,
-} from '../../store/auth/auth.selectors';
+import { selectCurrentUserProfile, selectIsLoggedIn, selectScopes } from '../../store/auth/auth.selectors';
 import { SCOPES } from '../../core/auth/scopes';
 
 @Component({

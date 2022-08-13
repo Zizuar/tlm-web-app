@@ -1,13 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { PressReleasesService } from './press-releases.service';
 import { CreatePressReleaseDto } from './dto/create-press-release.dto';
 import { UpdatePressReleaseDto } from './dto/update-press-release.dto';
@@ -39,10 +30,7 @@ export class PressReleasesController {
   @UseGuards(AuthGuard('jwt'), PermissionsGuard)
   @Patch(':id')
   @Permissions('write:press')
-  update(
-    @Param('id') id: string,
-    @Body() updatePressReleaseDto: UpdatePressReleaseDto,
-  ) {
+  update(@Param('id') id: string, @Body() updatePressReleaseDto: UpdatePressReleaseDto) {
     return this.pressReleasesService.update(id, updatePressReleaseDto);
   }
 

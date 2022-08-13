@@ -7,10 +7,6 @@ import { ScheduleDay, ScheduleDaySchema } from './schemas/schedule-day.schema';
 @Module({
   controllers: [ScheduleController],
   providers: [ScheduleService],
-  imports: [
-    MongooseModule.forFeature([
-      { name: ScheduleDay.name, schema: ScheduleDaySchema },
-    ]),
-  ],
+  imports: [MongooseModule.forFeature([{ name: ScheduleDay.name, schema: ScheduleDaySchema }])],
 })
 export class ScheduleModule {}

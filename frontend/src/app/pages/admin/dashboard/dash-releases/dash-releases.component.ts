@@ -19,10 +19,7 @@ export class DashReleasesComponent implements OnInit {
 
   releases: Observable<ExistingRelease[]> = this.store.select(selectReleases);
 
-  constructor(
-    private readonly store: Store,
-    private readonly modalService: NgbModal
-  ) {}
+  constructor(private readonly store: Store, private readonly modalService: NgbModal) {}
 
   ngOnInit() {
     this.store.dispatch(fetchReleases());

@@ -14,9 +14,7 @@ export class PressReleasesService {
     @InjectConnection() private readonly connection: Connection,
   ) {}
 
-  async create(
-    createPressReleaseDto: CreatePressReleaseDto,
-  ): Promise<PressRelease | HttpException> {
+  async create(createPressReleaseDto: CreatePressReleaseDto): Promise<PressRelease | HttpException> {
     const session = await this.connection.startSession();
     session.startTransaction();
     try {
@@ -49,10 +47,7 @@ export class PressReleasesService {
     return await this.pressReleaseModel.findById(id).exec();
   }
 
-  async update(
-    id: string,
-    updatePressReleaseDto: UpdatePressReleaseDto,
-  ): Promise<PressRelease> {
+  async update(id: string, updatePressReleaseDto: UpdatePressReleaseDto): Promise<PressRelease> {
     const updatedPressRelease = { ...updatePressReleaseDto };
 
     const errors = await validate(updatedPressRelease);
@@ -60,9 +55,7 @@ export class PressReleasesService {
       throw new BadRequestException(errors, 'Invalid value(s) in request');
     }
 
-    return await this.pressReleaseModel
-      .findByIdAndUpdate(id, updatedPressRelease, { new: true })
-      .exec();
+    return await this.pressReleaseModel.findByIdAndUpdate(id, updatedPressRelease, { new: true }).exec();
   }
 
   async remove(id: string): Promise<PressRelease> {

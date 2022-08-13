@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { StreamingScheduleElement } from '../../../../../core/models/schedule-day.model';
 import { Observable, take } from 'rxjs';
-import {
-  selectIsScheduleFetched,
-  selectSchedule,
-} from '../../../../../store/schedule/schedule.selectors';
+import { selectIsScheduleFetched, selectSchedule } from '../../../../../store/schedule/schedule.selectors';
 import { fetchSchedule } from '../../../../../store/schedule/schedule.actions';
 
 @Component({

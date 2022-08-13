@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  faHandPointLeft,
-  IconDefinition,
-} from '@fortawesome/free-regular-svg-icons';
+import { faHandPointLeft, IconDefinition } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-dash-index',

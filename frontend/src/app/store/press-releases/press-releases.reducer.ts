@@ -15,21 +15,15 @@ export const initialState: PressReleasesState = {
 const pressReleasesReducerInternal = createReducer(
   initialState,
 
-  on(
-    pressReleasesActions.fetchPressReleasesCompleted,
-    (state, { pressReleases }): PressReleasesState => {
-      return {
-        ...state,
-        pressReleases,
-        pressReleasesFetched: true,
-      };
-    }
-  )
+  on(pressReleasesActions.fetchPressReleasesCompleted, (state, { pressReleases }): PressReleasesState => {
+    return {
+      ...state,
+      pressReleases,
+      pressReleasesFetched: true,
+    };
+  })
 );
 
-export function pressReleasesReducer(
-  state: PressReleasesState | undefined,
-  action: Action
-): PressReleasesState {
+export function pressReleasesReducer(state: PressReleasesState | undefined, action: Action): PressReleasesState {
   return pressReleasesReducerInternal(state, action);
 }

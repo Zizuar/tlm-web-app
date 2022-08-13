@@ -3,10 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ExistingRelease } from '../../../core/models/release.model';
 import { Observable, of, switchMap, take } from 'rxjs';
 import { Store } from '@ngrx/store';
-import {
-  selectPastReleases,
-  selectReleasesFetched,
-} from '../../../store/releases/releases.selectors';
+import { selectPastReleases, selectReleasesFetched } from '../../../store/releases/releases.selectors';
 import { fetchReleases } from '../../../store/releases/releases.actions';
 
 @Component({
@@ -17,10 +14,7 @@ import { fetchReleases } from '../../../store/releases/releases.actions';
 export class ReleaseListComponent {
   releases: Observable<ExistingRelease[]>;
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private readonly store: Store
-  ) {
+  constructor(private activatedRoute: ActivatedRoute, private readonly store: Store) {
     this.store
       .select(selectReleasesFetched)
       .pipe(take(1))
@@ -32,13 +26,7 @@ export class ReleaseListComponent {
     this.releases = this.store.select(selectPastReleases).pipe(
       switchMap((releases: ExistingRelease[]) => {
         return this.activatedRoute.snapshot.params['category']
-          ? of(
-              releases.filter(
-                (release) =>
-                  release.category ===
-                  this.activatedRoute.snapshot.params['category']
-              )
-            )
+          ? of(releases.filter((release) => release.category === this.activatedRoute.snapshot.params['category']))
           : of(releases);
       })
     );

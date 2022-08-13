@@ -1,9 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import {
-  ExistingRelease,
-  NewRelease,
-  ReleaseCategories,
-} from '../../core/models/release.model';
+import { ExistingRelease, NewRelease, ReleaseCategories } from '../../core/models/release.model';
 
 export enum ReleasesActionTypes {
   FETCH_RELEASES = '[Releases] Fetch all releases',
@@ -23,15 +19,10 @@ export const fetchReleasesCompleted = createAction(
   props<{ releases: ExistingRelease[] }>()
 );
 
-export const createRelease = createAction(
-  ReleasesActionTypes.CREATE_RELEASE,
-  props<{ newRelease: NewRelease }>()
-);
+export const createRelease = createAction(ReleasesActionTypes.CREATE_RELEASE, props<{ newRelease: NewRelease }>());
 export type CreateRelease = ReturnType<typeof createRelease>;
 
-export const createReleaseCompleted = createAction(
-  ReleasesActionTypes.CREATE_RELEASE_COMPLETED
-);
+export const createReleaseCompleted = createAction(ReleasesActionTypes.CREATE_RELEASE_COMPLETED);
 
 export const updateRelease = createAction(
   ReleasesActionTypes.UPDATE_RELEASE,
@@ -39,9 +30,7 @@ export const updateRelease = createAction(
 );
 export type UpdateRelease = ReturnType<typeof updateRelease>;
 
-export const updateReleaseCompleted = createAction(
-  ReleasesActionTypes.UPDATE_RELEASE_COMPLETED
-);
+export const updateReleaseCompleted = createAction(ReleasesActionTypes.UPDATE_RELEASE_COMPLETED);
 
 export const removeRelease = createAction(
   ReleasesActionTypes.REMOVE_RELEASE,
@@ -49,6 +38,4 @@ export const removeRelease = createAction(
 );
 export type RemoveRelease = ReturnType<typeof removeRelease>;
 
-export const removeReleaseCompleted = createAction(
-  ReleasesActionTypes.REMOVE_RELEASE_COMPLETED
-);
+export const removeReleaseCompleted = createAction(ReleasesActionTypes.REMOVE_RELEASE_COMPLETED);

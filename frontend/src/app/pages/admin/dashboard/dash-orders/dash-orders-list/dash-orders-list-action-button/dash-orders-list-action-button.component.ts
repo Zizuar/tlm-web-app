@@ -1,14 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  ExistingOrder,
-  OrderStatus,
-} from '../../../../../../core/models/order.model';
+import { ExistingOrder, OrderStatus } from '../../../../../../core/models/order.model';
 import { BehaviorSubject } from 'rxjs';
 import { Store } from '@ngrx/store';
-import {
-  removeOrder,
-  updateOrder,
-} from '../../../../../../store/orders/orders.actions';
+import { removeOrder, updateOrder } from '../../../../../../store/orders/orders.actions';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DashOrdersEditModalComponent } from '../../dash-orders-edit-modal/dash-orders-edit-modal.component';
 import { cloneDeep } from 'lodash';
@@ -29,10 +23,7 @@ export class DashOrdersListActionButtonComponent implements OnInit {
 
   OrderStatus = OrderStatus;
 
-  constructor(
-    private readonly store: Store,
-    private readonly modalService: NgbModal
-  ) {}
+  constructor(private readonly store: Store, private readonly modalService: NgbModal) {}
 
   ngOnInit() {
     switch (this.order.status) {
@@ -52,10 +43,7 @@ export class DashOrdersListActionButtonComponent implements OnInit {
   }
 
   async nextStateButton() {
-    if (
-      this.order.status !== OrderStatus.SHIPPED &&
-      this.order.status !== OrderStatus.ABANDONED
-    ) {
+    if (this.order.status !== OrderStatus.SHIPPED && this.order.status !== OrderStatus.ABANDONED) {
       const updatedOrder: ExistingOrder = {
         ...this.order,
         status: this.order.status + 1,

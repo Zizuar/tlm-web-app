@@ -1,5 +1,30 @@
-.placeholder-image-container {
-  background: black;
+.video-preview {
+  max-width: 90vw;
+  width: 560px;
+  aspect-ratio: 16 / 9;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.video-preview:hover {
+  .yt-play-icon {
+    opacity: 1;
+  }
+}
+
+.yt-play-icon {
+  z-index: 10;
+  opacity: 0.8;
+}
+
+.yt-thumbnail {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
 }
 
 #youtube-video {

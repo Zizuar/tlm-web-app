@@ -16,13 +16,7 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
     DashPressEditPreleaseModalComponent,
     DashPressNewPreleaseModalComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedComponentsModule,
-    FontAwesomeModule,
-    FormsModule,
-    NgbDatepickerModule,
-  ],
+  imports: [CommonModule, SharedComponentsModule, FontAwesomeModule, FormsModule, NgbDatepickerModule],
   exports: [DashPressComponent],
 })
 export class DashPressModule {}

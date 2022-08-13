@@ -7,5 +7,4 @@ presaveServer.use(express.urlencoded({ extended: false }));
 import presaveRouter from './presave/presave.routes';
 
 presaveServer.use('/presave', presaveRouter);
-export const presave: functions.HttpsFunction =
-  functions.https.onRequest(presaveServer);
+export const presave: functions.HttpsFunction = functions.https.onRequest(presaveServer);

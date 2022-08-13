@@ -1,10 +1,5 @@
 import { NgModule } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  RouterModule,
-  RouterStateSnapshot,
-  Routes,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { EventsPageComponent } from './pages/events-page/events-page.component';
@@ -12,34 +7,23 @@ import { EventsPageComponent } from './pages/events-page/events-page.component';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () =>
-      import('./pages/main-page/main-page.routing').then(
-        (m) => m.MainPageRoutingModule
-      ),
+    loadChildren: () => import('./pages/main-page/main-page.routing').then((m) => m.MainPageRoutingModule),
   },
   {
     path: 'releases',
-    loadChildren: () =>
-      import('./pages/releases/releases.routing').then(
-        (m) => m.ReleasesRoutingModule
-      ),
+    loadChildren: () => import('./pages/releases/releases.routing').then((m) => m.ReleasesRoutingModule),
   },
   {
     path: 'store',
-    loadChildren: () =>
-      import('./pages/merch-store/merch-store.routing').then(
-        (m) => m.StoreRoutingModule
-      ),
+    loadChildren: () => import('./pages/merch-store/merch-store.routing').then((m) => m.StoreRoutingModule),
   },
   {
     path: 'press',
-    loadChildren: () =>
-      import('./pages/press/press.routing').then((m) => m.PressRoutingModule),
+    loadChildren: () => import('./pages/press/press.routing').then((m) => m.PressRoutingModule),
   },
   {
     path: 'admin',
-    loadChildren: () =>
-      import('./pages/admin/admin.routing').then((m) => m.AdminRoutingModule),
+    loadChildren: () => import('./pages/admin/admin.routing').then((m) => m.AdminRoutingModule),
   },
   {
     path: 'contact',
@@ -66,9 +50,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
-  ],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule],
   providers: [
     {

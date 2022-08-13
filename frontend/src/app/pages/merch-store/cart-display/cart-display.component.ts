@@ -1,19 +1,9 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CartItem } from '../../../core/models/cart-item.model';
-import {
-  MerchStoreService,
-  StoreState as StoreStates,
-} from '../../../services/merch-store.service';
+import { MerchStoreService, StoreState as StoreStates } from '../../../services/merch-store.service';
 
 class StoreState {}
 
@@ -38,10 +28,7 @@ export class CartDisplayComponent implements OnChanges {
   shipping = 0;
   total = 0;
 
-  constructor(
-    private readonly merchStoreService: MerchStoreService,
-    private readonly config: NgbPopoverConfig
-  ) {
+  constructor(private readonly merchStoreService: MerchStoreService, private readonly config: NgbPopoverConfig) {
     config.triggers = 'hover click';
   }
 

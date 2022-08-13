@@ -24,9 +24,6 @@ const eventsReducerInternal = createReducer(
   })
 );
 
-export function eventsReducer(
-  state: EventsState | undefined,
-  action: Action
-): EventsState {
+export function eventsReducer(state: EventsState | undefined, action: Action): EventsState {
   return eventsReducerInternal(state, action);
 }

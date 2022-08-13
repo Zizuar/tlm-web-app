@@ -1,8 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import {
-  ExistingScheduledEvent,
-  NewScheduledEvent,
-} from '../../core/models/scheduled-event.model';
+import { ExistingScheduledEvent, NewScheduledEvent } from '../../core/models/scheduled-event.model';
 
 export enum EventsActionTypes {
   FETCH_EVENTS = '[Events] Fetch events',
@@ -22,15 +19,10 @@ export const fetchEventsCompleted = createAction(
   props<{ events: ExistingScheduledEvent[] }>()
 );
 
-export const createEvent = createAction(
-  EventsActionTypes.CREATE_EVENT,
-  props<{ event: NewScheduledEvent }>()
-);
+export const createEvent = createAction(EventsActionTypes.CREATE_EVENT, props<{ event: NewScheduledEvent }>());
 export type CreateEvent = ReturnType<typeof createEvent>;
 
-export const createEventCompleted = createAction(
-  EventsActionTypes.CREATE_EVENT_COMPLETED
-);
+export const createEventCompleted = createAction(EventsActionTypes.CREATE_EVENT_COMPLETED);
 
 export const updateEvent = createAction(
   EventsActionTypes.UPDATE_EVENT,
@@ -38,16 +30,9 @@ export const updateEvent = createAction(
 );
 export type UpdateEvent = ReturnType<typeof updateEvent>;
 
-export const updateEventCompleted = createAction(
-  EventsActionTypes.UPDATE_EVENT_COMPLETED
-);
+export const updateEventCompleted = createAction(EventsActionTypes.UPDATE_EVENT_COMPLETED);
 
-export const removeEvent = createAction(
-  EventsActionTypes.REMOVE_EVENT,
-  props<{ id: string }>()
-);
+export const removeEvent = createAction(EventsActionTypes.REMOVE_EVENT, props<{ id: string }>());
 export type RemoveEvent = ReturnType<typeof removeEvent>;
 
-export const removeEventCompleted = createAction(
-  EventsActionTypes.REMOVE_EVENT_COMPLETED
-);
+export const removeEventCompleted = createAction(EventsActionTypes.REMOVE_EVENT_COMPLETED);

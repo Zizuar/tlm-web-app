@@ -9,10 +9,6 @@ import { ServicesModule } from '../services/services.module';
 @Module({
   controllers: [OrdersController],
   providers: [OrdersService],
-  imports: [
-    ServicesModule,
-    HttpModule,
-    MongooseModule.forFeature([{ name: Order.name, schema: OrderSchema }]),
-  ],
+  imports: [ServicesModule, HttpModule, MongooseModule.forFeature([{ name: Order.name, schema: OrderSchema }])],
 })
 export class OrdersModule {}

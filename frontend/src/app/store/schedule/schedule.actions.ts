@@ -21,6 +21,4 @@ export const updateSchedule = createAction(
 );
 export type UpdateScheduleAction = ReturnType<typeof updateSchedule>;
 
-export const updateScheduleCompleted = createAction(
-  ScheduleActionTypes.UPDATE_SCHEDULE_COMPLETED
-);
+export const updateScheduleCompleted = createAction(ScheduleActionTypes.UPDATE_SCHEDULE_COMPLETED);

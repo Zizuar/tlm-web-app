@@ -1,10 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
-import {
-  faChevronRight,
-  faChevronLeft,
-  faEnvelope,
-} from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faChevronLeft, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { environment } from '../../../../environments/environment';
 import { ExistingRelease } from '../../../core/models/release.model';
 

@@ -19,9 +19,6 @@ export class DashScheduleTableRowComponent {
       size: 'lg',
     });
     // send a copy of the object to the edit form
-    modalRef.componentInstance.scheduleDay = Object.assign(
-      {},
-      this.scheduleDay
-    );
+    modalRef.componentInstance.scheduleDay = Object.assign({}, this.scheduleDay);
   }
 }

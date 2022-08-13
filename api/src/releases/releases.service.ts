@@ -14,9 +14,7 @@ export class ReleasesService {
     @InjectConnection() private readonly connection: Connection,
   ) {}
 
-  async create(
-    createReleaseDto: CreateReleaseDto,
-  ): Promise<Release | HttpException> {
+  async create(createReleaseDto: CreateReleaseDto): Promise<Release | HttpException> {
     const session = await this.connection.startSession();
     session.startTransaction();
     try {
@@ -57,10 +55,7 @@ export class ReleasesService {
     return await this.releaseModel.findOne({ id: id }).exec();
   }
 
-  async update(
-    id: string,
-    updateReleaseDto: UpdateReleaseDto,
-  ): Promise<Release> {
+  async update(id: string, updateReleaseDto: UpdateReleaseDto): Promise<Release> {
     const updatedRelease = { ...updateReleaseDto };
 
     const errors = await validate(updatedRelease);
@@ -68,9 +63,7 @@ export class ReleasesService {
       throw new BadRequestException(errors, 'Invalid value(s) in request');
     }
 
-    return await this.releaseModel
-      .findByIdAndUpdate(id, updatedRelease, { new: true })
-      .exec();
+    return await this.releaseModel.findByIdAndUpdate(id, updatedRelease, { new: true }).exec();
   }
 
   async remove(id: string) {

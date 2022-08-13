@@ -19,10 +19,8 @@ import { fetchReleases } from '../../store/releases/releases.actions';
 export class MainPageComponent implements AfterContentInit {
   pageType = 'main';
 
-  countdowns: Observable<ExistingRelease[]> =
-    this.store.select(selectFutureReleases);
-  releases: Observable<ExistingRelease[]> =
-    this.store.select(selectPastReleases);
+  countdowns: Observable<ExistingRelease[]> = this.store.select(selectFutureReleases);
+  releases: Observable<ExistingRelease[]> = this.store.select(selectPastReleases);
 
   today: Date = new Date();
 
@@ -46,12 +44,8 @@ export class MainPageComponent implements AfterContentInit {
     // fragment-based scrolling
     const navigation = this.router.getCurrentNavigation();
     const navigationExtrasState =
-      navigation && navigation.extras && navigation.extras.state
-        ? navigation.extras.state
-        : null;
-    this.fragmentOnInit = navigationExtrasState
-      ? navigationExtrasState['scrollToFragment']
-      : null;
+      navigation && navigation.extras && navigation.extras.state ? navigation.extras.state : null;
+    this.fragmentOnInit = navigationExtrasState ? navigationExtrasState['scrollToFragment'] : null;
   }
 
   ngAfterContentInit() {
