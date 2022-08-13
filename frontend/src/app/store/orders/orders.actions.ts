@@ -17,22 +17,12 @@ export const fetchOrdersCompleted = createAction(
   props<{ orders: ExistingOrder[] }>()
 );
 
-export const updateOrder = createAction(
-  OrderActionTypes.UPDATE_ORDER,
-  props<{ updatedOrder: ExistingOrder }>()
-);
+export const updateOrder = createAction(OrderActionTypes.UPDATE_ORDER, props<{ updatedOrder: ExistingOrder }>());
 export type UpdateOrder = ReturnType<typeof updateOrder>;
 
-export const updateOrderCompleted = createAction(
-  OrderActionTypes.UPDATE_ORDER_COMPLETED
-);
+export const updateOrderCompleted = createAction(OrderActionTypes.UPDATE_ORDER_COMPLETED);
 
-export const removeOrder = createAction(
-  OrderActionTypes.REMOVE_ORDER,
-  props<{ id: string }>()
-);
+export const removeOrder = createAction(OrderActionTypes.REMOVE_ORDER, props<{ id: string }>());
 export type RemoveOrder = ReturnType<typeof removeOrder>;
 
-export const removeOrderCompleted = createAction(
-  OrderActionTypes.REMOVE_ORDER_COMPLETED
-);
+export const removeOrderCompleted = createAction(OrderActionTypes.REMOVE_ORDER_COMPLETED);

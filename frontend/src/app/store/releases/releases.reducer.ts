@@ -15,21 +15,15 @@ export const initialState: ReleasesState = {
 const releasesReducerInternal = createReducer(
   initialState,
 
-  on(
-    releasesActions.fetchReleasesCompleted,
-    (state, { releases }): ReleasesState => {
-      return {
-        ...state,
-        releases,
-        releasesFetched: true,
-      };
-    }
-  )
+  on(releasesActions.fetchReleasesCompleted, (state, { releases }): ReleasesState => {
+    return {
+      ...state,
+      releases,
+      releasesFetched: true,
+    };
+  })
 );
 
-export function releasesReducer(
-  state: ReleasesState | undefined,
-  action: Action
-): ReleasesState {
+export function releasesReducer(state: ReleasesState | undefined, action: Action): ReleasesState {
   return releasesReducerInternal(state, action);
 }

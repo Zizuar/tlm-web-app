@@ -3,11 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import * as moment from 'moment';
-import {
-  ExistingRelease,
-  NewRelease,
-  ReleaseCategories,
-} from '../core/models/release.model';
+import { ExistingRelease, NewRelease, ReleaseCategories } from '../core/models/release.model';
 import { ApiBaseService } from './api-base.service';
 import { ToastService } from './toast.service';
 
@@ -27,10 +23,7 @@ export class ReleasesService extends ApiBaseService {
         response.map((release) => {
           return {
             ...release,
-            releaseDate: moment
-              .parseZone(release.releaseDate)
-              .local(true)
-              .toDate(),
+            releaseDate: moment.parseZone(release.releaseDate).local(true).toDate(),
           };
         })
       ),
@@ -39,90 +32,53 @@ export class ReleasesService extends ApiBaseService {
     );
   }
 
-  getReleasesByCategory(
-    category: ReleaseCategories
-  ): Observable<ExistingRelease[]> {
-    return this.http
-      .get<ExistingRelease[]>(`${this.releasesApiUrl}/${category}`)
-      .pipe(
-        map((response) =>
-          response.map((release) => {
-            return {
-              ...release,
-              releaseDate: moment
-                .parseZone(release.releaseDate)
-                .local(true)
-                .toDate(),
-            };
-          })
-        ),
-        // Sort by date
-        map((results) => results.sort(ReleasesService.sortByDateAscending))
-      );
-  }
-
-  getReleaseById(
-    category: ReleaseCategories,
-    id: string
-  ): Observable<ExistingRelease> {
-    return this.http
-      .get<ExistingRelease>(`${this.releasesApiUrl}/${category}/${id}`)
-      .pipe(
-        map((release) => {
+  getReleasesByCategory(category: ReleaseCategories): Observable<ExistingRelease[]> {
+    return this.http.get<ExistingRelease[]>(`${this.releasesApiUrl}/${category}`).pipe(
+      map((response) =>
+        response.map((release) => {
           return {
             ...release,
-            releaseDate: moment
-              .parseZone(release.releaseDate)
-              .local(true)
-              .toDate(),
+            releaseDate: moment.parseZone(release.releaseDate).local(true).toDate(),
           };
         })
-      );
+      ),
+      // Sort by date
+      map((results) => results.sort(ReleasesService.sortByDateAscending))
+    );
+  }
+
+  getReleaseById(category: ReleaseCategories, id: string): Observable<ExistingRelease> {
+    return this.http.get<ExistingRelease>(`${this.releasesApiUrl}/${category}/${id}`).pipe(
+      map((release) => {
+        return {
+          ...release,
+          releaseDate: moment.parseZone(release.releaseDate).local(true).toDate(),
+        };
+      })
+    );
   }
 
   postRelease(release: NewRelease): Observable<ExistingRelease> {
-    return this.http
-      .post<ExistingRelease>(this.releasesApiUrl, release)
-      .pipe(catchError(this.handleError));
+    return this.http.post<ExistingRelease>(this.releasesApiUrl, release).pipe(catchError(this.handleError));
   }
 
   patchRelease(updatedRelease: ExistingRelease): Observable<ExistingRelease> {
     return this.http
-      .patch<ExistingRelease>(
-        `${this.releasesApiUrl}/${updatedRelease.category}/${updatedRelease._id}`,
-        updatedRelease
-      )
+      .patch<ExistingRelease>(`${this.releasesApiUrl}/${updatedRelease.category}/${updatedRelease._id}`, updatedRelease)
       .pipe(catchError(this.handleError));
   }
 
-  deleteRelease(
-    category: ReleaseCategories,
-    id: string
-  ): Observable<ExistingRelease> {
+  deleteRelease(category: ReleaseCategories, id: string): Observable<ExistingRelease> {
     return this.http
       .delete<ExistingRelease>(`${this.releasesApiUrl}/${category}/${id}`)
       .pipe(catchError(this.handleError));
   }
 
-  public static sortByDateAscending(
-    a: ExistingRelease,
-    b: ExistingRelease
-  ): number {
-    return a.releaseDate < b.releaseDate
-      ? 1
-      : a.releaseDate > b.releaseDate
-      ? -1
-      : 0;
+  public static sortByDateAscending(a: ExistingRelease, b: ExistingRelease): number {
+    return a.releaseDate < b.releaseDate ? 1 : a.releaseDate > b.releaseDate ? -1 : 0;
   }
 
-  public static sortByDateDescending(
-    a: ExistingRelease,
-    b: ExistingRelease
-  ): number {
-    return a.releaseDate > b.releaseDate
-      ? 1
-      : a.releaseDate < b.releaseDate
-      ? -1
-      : 0;
+  public static sortByDateDescending(a: ExistingRelease, b: ExistingRelease): number {
+    return a.releaseDate > b.releaseDate ? 1 : a.releaseDate < b.releaseDate ? -1 : 0;
   }
 }

@@ -15,7 +15,6 @@ export class ReleaseItemComponent implements OnInit {
   environment = environment;
 
   ngOnInit(): void {
-    this.isReleased =
-      Date.parse(this.release.releaseDate.toString()) < this.now;
+    this.isReleased = Date.parse(this.release.releaseDate.toString()) < this.now;
   }
 }

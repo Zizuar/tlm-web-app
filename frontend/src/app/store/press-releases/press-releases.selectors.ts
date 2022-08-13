@@ -1,8 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { PressReleasesState } from './press-releases.reducer';
 
-export const selectPressReleasesFeatureState =
-  createFeatureSelector<PressReleasesState>('pressReleases');
+export const selectPressReleasesFeatureState = createFeatureSelector<PressReleasesState>('pressReleases');
 
 export const selectPressReleases = createSelector(
   selectPressReleasesFeatureState,

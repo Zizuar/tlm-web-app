@@ -17,26 +17,18 @@ export class OrdersService extends ApiBaseService {
   }
 
   getOrders(): Observable<ExistingOrder[]> {
-    return this.http
-      .get<ExistingOrder[]>(this.orderApiUrl)
-      .pipe(catchError(this.handleError));
+    return this.http.get<ExistingOrder[]>(this.orderApiUrl).pipe(catchError(this.handleError));
   }
 
   postOrder(order: NewOrder): Observable<NewOrder> {
-    return this.http
-      .post<NewOrder>(this.orderApiUrl, order)
-      .pipe(catchError(this.handleError));
+    return this.http.post<NewOrder>(this.orderApiUrl, order).pipe(catchError(this.handleError));
   }
 
   patchOrder(order: ExistingOrder): Observable<ExistingOrder> {
-    return this.http
-      .patch<ExistingOrder>(`${this.orderApiUrl}/${order._id}`, order)
-      .pipe(catchError(this.handleError));
+    return this.http.patch<ExistingOrder>(`${this.orderApiUrl}/${order._id}`, order).pipe(catchError(this.handleError));
   }
 
   removeOrder(id: string): Observable<ExistingOrder> {
-    return this.http
-      .delete<ExistingOrder>(`${this.orderApiUrl}/${id}`)
-      .pipe(catchError(this.handleError));
+    return this.http.delete<ExistingOrder>(`${this.orderApiUrl}/${id}`).pipe(catchError(this.handleError));
   }
 }

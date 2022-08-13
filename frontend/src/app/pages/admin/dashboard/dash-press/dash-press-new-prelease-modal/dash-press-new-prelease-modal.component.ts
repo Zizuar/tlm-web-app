@@ -5,11 +5,7 @@ import * as moment from 'moment';
 import { NewPressRelease } from '../../../../../core/models/press-release.model';
 import { createPressRelease } from '../../../../../store/press-releases/press-releases.actions';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
-import {
-  faCalendarDay,
-  faPlus,
-  faTrash,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDay, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dash-press-new-prelease-modal',
@@ -26,10 +22,7 @@ export class DashPressNewPreleaseModalComponent {
   deleteIcon: IconDefinition = faTrash;
   addIcon: IconDefinition = faPlus;
 
-  constructor(
-    public readonly activeModal: NgbActiveModal,
-    private readonly store: Store
-  ) {
+  constructor(public readonly activeModal: NgbActiveModal, private readonly store: Store) {
     this.pressRelease = {
       songId: '',
       imgName: '',
@@ -51,8 +44,7 @@ export class DashPressNewPreleaseModalComponent {
   }
 
   removeParagraph(index: number) {
-    this.pressRelease.text.paragraphs =
-      this.pressRelease.text.paragraphs.filter((item, i) => index !== i);
+    this.pressRelease.text.paragraphs = this.pressRelease.text.paragraphs.filter((item, i) => index !== i);
   }
 
   addLinks() {
@@ -69,9 +61,7 @@ export class DashPressNewPreleaseModalComponent {
 
   saveNewPressRelease() {
     this.pressRelease.releaseAfter = this.buildDate();
-    this.store.dispatch(
-      createPressRelease({ newPressRelease: this.pressRelease })
-    );
+    this.store.dispatch(createPressRelease({ newPressRelease: this.pressRelease }));
     this.activeModal.dismiss();
   }
 
@@ -83,9 +73,9 @@ export class DashPressNewPreleaseModalComponent {
   private buildDate(): Date {
     // build date from datepicker data
     const momentDate = this.moment.utc(
-      `${this.formDate?.year}-${this.formDate?.month
+      `${this.formDate?.year}-${this.formDate?.month.toString().padStart(2, '0')}-${this.formDate?.day
         .toString()
-        .padStart(2, '0')}-${this.formDate?.day.toString().padStart(2, '0')}`
+        .padStart(2, '0')}`
     );
     return momentDate.toDate();
   }

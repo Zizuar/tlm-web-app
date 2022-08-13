@@ -18,18 +18,7 @@ export enum StoreState {
   providedIn: 'root',
 })
 export class MerchStoreService {
-  private readonly DOM_SHIPPING = [
-    'US',
-    'AS',
-    'GU',
-    'MH',
-    'FM',
-    'MP',
-    'PW',
-    'PR',
-    'UM',
-    'VI',
-  ];
+  private readonly DOM_SHIPPING = ['US', 'AS', 'GU', 'MH', 'FM', 'MP', 'PW', 'PR', 'UM', 'VI'];
   private readonly CAN_SHIPPING = ['CA'];
   private SHIPPING_PRICES = {
     Domestic: 7,
@@ -78,13 +67,8 @@ export class MerchStoreService {
     return this.ordersService.postOrder(postData);
   }
 
-  async addItemToCart(
-    productId: string,
-    itemFormData?: { requested: boolean; toWhom: string }
-  ): Promise<boolean> {
-    const productToAdd = await lastValueFrom(
-      this.productsService.getProduct(productId)
-    );
+  async addItemToCart(productId: string, itemFormData?: { requested: boolean; toWhom: string }): Promise<boolean> {
+    const productToAdd = await lastValueFrom(this.productsService.getProduct(productId));
     if (!productToAdd) {
       return false;
     }
@@ -93,9 +77,7 @@ export class MerchStoreService {
       {
         product: productToAdd,
         quantity: 1,
-        signatureRequested: itemFormData
-          ? itemFormData
-          : { requested: false, toWhom: '' },
+        signatureRequested: itemFormData ? itemFormData : { requested: false, toWhom: '' },
       },
     ]);
     return true;

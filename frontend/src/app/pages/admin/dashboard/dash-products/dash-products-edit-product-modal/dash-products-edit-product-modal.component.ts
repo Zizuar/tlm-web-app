@@ -12,10 +12,7 @@ import { updateProduct } from '../../../../../store/products/products.actions';
 export class DashProductsEditProductModalComponent {
   @Input() product!: Product;
 
-  constructor(
-    public readonly activeModal: NgbActiveModal,
-    private readonly store: Store
-  ) {}
+  constructor(public readonly activeModal: NgbActiveModal, private readonly store: Store) {}
 
   saveChanges() {
     this.store.dispatch(updateProduct({ updatedProduct: this.product }));

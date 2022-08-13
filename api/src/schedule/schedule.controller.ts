@@ -17,10 +17,7 @@ export class ScheduleController {
   @UseGuards(AuthGuard('jwt'), PermissionsGuard)
   @Patch(':id')
   @Permissions('write:schedule')
-  update(
-    @Param('id') id: string,
-    @Body() updateScheduleDto: UpdateScheduleDto,
-  ) {
+  update(@Param('id') id: string, @Body() updateScheduleDto: UpdateScheduleDto) {
     return this.scheduleService.update(id, { ...updateScheduleDto });
   }
 }

@@ -19,13 +19,9 @@ export class EventItemComponent implements OnInit {
 
   ngOnInit() {
     this.startMoment = moment(this.scheduledEvent.date);
-    this.endMoment = this.scheduledEvent.endDate
-      ? moment(this.scheduledEvent.endDate)
-      : null;
+    this.endMoment = this.scheduledEvent.endDate ? moment(this.scheduledEvent.endDate) : null;
     if (this.endMoment) {
-      this.duration = moment
-        .duration(this.endMoment.diff(this.startMoment))
-        .asHours();
+      this.duration = moment.duration(this.endMoment.diff(this.startMoment)).asHours();
     }
   }
 }

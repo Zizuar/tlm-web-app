@@ -2,10 +2,7 @@ import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 import { ExistingScheduledEvent } from '../../core/models/scheduled-event.model';
 import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
-import {
-  selectEventsFetched,
-  selectFutureEvents,
-} from '../../store/events/events.selectors';
+import { selectEventsFetched, selectFutureEvents } from '../../store/events/events.selectors';
 import { EventsService } from '../../services/events.service';
 import { Store } from '@ngrx/store';
 import { fetchEvents } from '../../store/events/events.actions';
@@ -31,15 +28,11 @@ export class EventsListComponent implements OnInit, OnDestroy {
     this.futureEvents.slice(0, this.numberOfEventsToShow)
   );
 
-  areEventsFetched: Observable<boolean> =
-    this.store.select(selectEventsFetched);
+  areEventsFetched: Observable<boolean> = this.store.select(selectEventsFetched);
 
   subscriptions = new Subscription();
 
-  constructor(
-    private readonly eventsService: EventsService,
-    private readonly store: Store
-  ) {
+  constructor(private readonly eventsService: EventsService, private readonly store: Store) {
     this.subscriptions.add(
       this.store
         .select(selectFutureEvents)
@@ -47,8 +40,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
           tap((futureEvents) => {
             this.futureEvents = futureEvents;
             this.numberOfEventsToShow =
-              this.futureEvents.length <= this.DEFAULT_EVENTS_TO_SHOW ||
-              this.showAllEvents
+              this.futureEvents.length <= this.DEFAULT_EVENTS_TO_SHOW || this.showAllEvents
                 ? this.futureEvents.length
                 : this.DEFAULT_EVENTS_TO_SHOW;
             this.refreshEvents(this.numberOfEventsToShow);
@@ -83,9 +75,7 @@ export class EventsListComponent implements OnInit, OnDestroy {
   private refreshEvents(numberToShow: number) {
     this.numberOfEventsToShow = numberToShow;
     this.eventsToShow.next(
-      this.futureEvents
-        .sort(EventsService.sortEventsByDateDescending)
-        .slice(0, this.numberOfEventsToShow)
+      this.futureEvents.sort(EventsService.sortEventsByDateDescending).slice(0, this.numberOfEventsToShow)
     );
   }
 }

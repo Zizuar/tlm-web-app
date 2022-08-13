@@ -1,8 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import {
-  ExpressAdapter,
-  NestExpressApplication,
-} from '@nestjs/platform-express';
+import { ExpressAdapter, NestExpressApplication } from '@nestjs/platform-express';
 import * as express from 'express';
 import * as mongoSanitize from 'express-mongo-sanitize';
 
@@ -14,11 +11,7 @@ const apiServer: express.Express = express();
 
 export const createApiNestServer = async (expressInstance: express.Express) => {
   const adapter = new ExpressAdapter(expressInstance);
-  const app = await NestFactory.create<NestExpressApplication>(
-    AppModule,
-    adapter,
-    {},
-  );
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, adapter, {});
 
   app.enableVersioning({
     type: VersioningType.URI,

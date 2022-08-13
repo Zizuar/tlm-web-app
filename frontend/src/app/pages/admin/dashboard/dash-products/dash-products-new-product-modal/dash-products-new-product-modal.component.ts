@@ -19,10 +19,7 @@ export class DashProductsNewProductModalComponent {
     promo: '',
   };
 
-  constructor(
-    public readonly activeModal: NgbActiveModal,
-    private readonly store: Store
-  ) {}
+  constructor(public readonly activeModal: NgbActiveModal, private readonly store: Store) {}
 
   saveNewProduct() {
     this.store.dispatch(createProduct({ product: this.product }));

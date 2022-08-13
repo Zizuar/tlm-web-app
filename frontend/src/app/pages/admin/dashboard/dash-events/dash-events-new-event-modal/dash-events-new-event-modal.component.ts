@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { NewScheduledEvent } from '../../../../../core/models/scheduled-event.model';
-import {
-  NgbActiveModal,
-  NgbDateStruct,
-  NgbTimeStruct,
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { createEvent } from '../../../../../store/events/events.actions';
 import * as moment from 'moment-timezone';
@@ -41,10 +37,7 @@ export class DashEventsNewEventModalComponent {
 
   faCalendar: IconDefinition = faCalendarDay;
 
-  constructor(
-    public readonly activeModal: NgbActiveModal,
-    private readonly store: Store
-  ) {
+  constructor(public readonly activeModal: NgbActiveModal, private readonly store: Store) {
     const now = new Date();
     this.event = {
       date: now,
@@ -67,17 +60,9 @@ export class DashEventsNewEventModalComponent {
     if (!this.formDate || !this.formTime) {
       return;
     }
-    this.event.date = EventsService.buildDateFromDatepicker(
-      this.formDate,
-      this.formTime,
-      this.formTimezone
-    );
+    this.event.date = EventsService.buildDateFromDatepicker(this.formDate, this.formTime, this.formTimezone);
     if (this.formEndDateEnabled && this.formEndDate && this.formEndTime) {
-      this.event.endDate = EventsService.buildDateFromDatepicker(
-        this.formEndDate,
-        this.formEndTime,
-        this.formTimezone
-      );
+      this.event.endDate = EventsService.buildDateFromDatepicker(this.formEndDate, this.formEndTime, this.formTimezone);
     }
     this.store.dispatch(createEvent({ event: this.event }));
     this.activeModal.dismiss();

@@ -1,10 +1,4 @@
-import {
-  IsDate,
-  IsNotEmpty,
-  IsNotEmptyObject,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsDate, IsNotEmpty, IsNotEmptyObject, IsOptional, IsString } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreatePressReleaseDto {

@@ -1,9 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {
-  Country,
-  OrderFormDataService,
-  State,
-} from '../../../services/order-form-data.service';
+import { Country, OrderFormDataService, State } from '../../../services/order-form-data.service';
 import { CartItem } from '../../../core/models/cart-item.model';
 
 @Component({

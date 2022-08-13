@@ -26,10 +26,7 @@ export class DashPressListItemComponent {
   editIcon: IconDefinition = faEdit;
   deleteIcon: IconDefinition = faTrash;
 
-  constructor(
-    private readonly modalService: NgbModal,
-    private readonly store: Store
-  ) {}
+  constructor(private readonly modalService: NgbModal, private readonly store: Store) {}
 
   openEditPressReleaseModal() {
     const modal = this.modalService.open(DashPressEditPreleaseModalComponent, {

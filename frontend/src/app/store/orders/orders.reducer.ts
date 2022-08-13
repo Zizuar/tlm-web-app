@@ -21,9 +21,6 @@ const orderReducerInternal = createReducer(
   })
 );
 
-export function orderReducer(
-  state: OrderState | undefined,
-  action: Action
-): OrderState {
+export function orderReducer(state: OrderState | undefined, action: Action): OrderState {
   return orderReducerInternal(state, action);
 }

@@ -17,12 +17,7 @@ import { FormsModule } from '@angular/forms';
     DashProductsNewProductModalComponent,
     DashProductsEditProductModalComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedComponentsModule,
-    FontAwesomeModule,
-    FormsModule,
-  ],
+  imports: [CommonModule, SharedComponentsModule, FontAwesomeModule, FormsModule],
   exports: [DashProductsComponent],
 })
 export class DashProductsModule {}

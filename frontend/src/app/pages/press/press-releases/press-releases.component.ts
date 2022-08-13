@@ -15,8 +15,7 @@ import { fetchPressReleases } from '../../../store/press-releases/press-releases
   styleUrls: ['./press-releases.component.scss'],
 })
 export class PressReleasesComponent implements OnInit, OnDestroy {
-  pressReleases: Observable<ExistingPressRelease[]> =
-    this.store.select(selectPressReleases);
+  pressReleases: Observable<ExistingPressRelease[]> = this.store.select(selectPressReleases);
   moment = moment;
 
   private readonly subscriptions = new Subscription();

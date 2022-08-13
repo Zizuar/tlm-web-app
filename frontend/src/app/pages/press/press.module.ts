@@ -18,12 +18,6 @@ import { PressReleaseDetailsComponent } from './press-releases/press-release-det
     PressReleasesComponent,
     PressReleaseDetailsComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedComponentsModule,
-    NgbCarouselModule,
-    FontAwesomeModule,
-    RouterModule,
-  ],
+  imports: [CommonModule, SharedComponentsModule, NgbCarouselModule, FontAwesomeModule, RouterModule],
 })
 export class PressModule {}

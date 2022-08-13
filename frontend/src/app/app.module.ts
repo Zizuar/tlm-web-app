@@ -68,9 +68,7 @@ import { EventsPageComponent } from './pages/events-page/events-page.component';
       ReleasesEffects,
     ]),
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
-  ],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

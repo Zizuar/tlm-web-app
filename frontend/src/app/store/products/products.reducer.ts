@@ -15,21 +15,15 @@ export const initialState: ProductsState = {
 const productsReducerInternal = createReducer(
   initialState,
 
-  on(
-    productsActions.fetchProductsCompleted,
-    (state, { products }): ProductsState => {
-      return {
-        ...state,
-        products,
-        productsFetched: true,
-      };
-    }
-  )
+  on(productsActions.fetchProductsCompleted, (state, { products }): ProductsState => {
+    return {
+      ...state,
+      products,
+      productsFetched: true,
+    };
+  })
 );
 
-export function productsReducer(
-  state: ProductsState | undefined,
-  action: Action
-): ProductsState {
+export function productsReducer(state: ProductsState | undefined, action: Action): ProductsState {
   return productsReducerInternal(state, action);
 }

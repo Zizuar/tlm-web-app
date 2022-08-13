@@ -8,10 +8,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(
-    public authService: AuthService,
-    private readonly http: HttpClient
-  ) {}
+  constructor(public authService: AuthService, private readonly http: HttpClient) {}
 
   get isLoggedIn$(): Observable<boolean> {
     return this.authService.isAuthenticated$;
@@ -37,10 +34,6 @@ export class AuthenticationService {
   }
 
   async getScopes(): Promise<{ scopes: string }> {
-    return await firstValueFrom(
-      this.http.get<{ scopes: string }>(
-        `${environment.apiBaseUrl}/v1/users/scopes`
-      )
-    );
+    return await firstValueFrom(this.http.get<{ scopes: string }>(`${environment.apiBaseUrl}/v1/users/scopes`));
   }
 }

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import {
-  ExistingOrder,
-  OrderStatus,
-} from '../../../../core/models/order.model';
+import { ExistingOrder, OrderStatus } from '../../../../core/models/order.model';
 import { Store } from '@ngrx/store';
 import { selectOrders } from '../../../../store/orders/orders.selectors';
 import { map } from 'rxjs/operators';
@@ -27,39 +24,19 @@ export class DashOrdersComponent implements OnInit {
     this.orders$ = this.store.select(selectOrders);
     // sort orders into categories
     this.newOrders$ = this.orders$.pipe(
-      map((orders) =>
-        orders
-          .filter((order) => order.status === OrderStatus.CREATED)
-          .sort(this.sortOrdersByDate)
-      )
+      map((orders) => orders.filter((order) => order.status === OrderStatus.CREATED).sort(this.sortOrdersByDate))
     );
     this.invoicedOrders$ = this.orders$.pipe(
-      map((orders) =>
-        orders
-          .filter((order) => order.status === OrderStatus.INVOICE_SENT)
-          .sort(this.sortOrdersByDate)
-      )
+      map((orders) => orders.filter((order) => order.status === OrderStatus.INVOICE_SENT).sort(this.sortOrdersByDate))
     );
     this.paidOrders$ = this.orders$.pipe(
-      map((orders) =>
-        orders
-          .filter((order) => order.status === OrderStatus.PAID)
-          .sort(this.sortOrdersByDate)
-      )
+      map((orders) => orders.filter((order) => order.status === OrderStatus.PAID).sort(this.sortOrdersByDate))
     );
     this.shippedOrders$ = this.orders$.pipe(
-      map((orders) =>
-        orders
-          .filter((order) => order.status === OrderStatus.SHIPPED)
-          .sort(this.sortOrdersByDate)
-      )
+      map((orders) => orders.filter((order) => order.status === OrderStatus.SHIPPED).sort(this.sortOrdersByDate))
     );
     this.abandonedOrders$ = this.orders$.pipe(
-      map((orders) =>
-        orders
-          .filter((order) => order.status === OrderStatus.ABANDONED)
-          .sort(this.sortOrdersByDate)
-      )
+      map((orders) => orders.filter((order) => order.status === OrderStatus.ABANDONED).sort(this.sortOrdersByDate))
     );
   }
 
@@ -68,10 +45,6 @@ export class DashOrdersComponent implements OnInit {
   }
 
   private sortOrdersByDate(a: ExistingOrder, b: ExistingOrder) {
-    return a.createdDate > b.createdDate
-      ? 1
-      : a.createdDate < b.createdDate
-      ? -1
-      : 0;
+    return a.createdDate > b.createdDate ? 1 : a.createdDate < b.createdDate ? -1 : 0;
   }
 }

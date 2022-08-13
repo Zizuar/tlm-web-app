@@ -15,21 +15,15 @@ export const initialState: ScheduleState = {
 const scheduleReducerInternal = createReducer(
   initialState,
 
-  on(
-    scheduleActions.fetchScheduleCompleted,
-    (state, { schedule }): ScheduleState => {
-      return {
-        ...state,
-        schedule,
-        scheduleFetched: true,
-      };
-    }
-  )
+  on(scheduleActions.fetchScheduleCompleted, (state, { schedule }): ScheduleState => {
+    return {
+      ...state,
+      schedule,
+      scheduleFetched: true,
+    };
+  })
 );
 
-export function scheduleReducer(
-  state: ScheduleState | undefined,
-  action: Action
-): ScheduleState {
+export function scheduleReducer(state: ScheduleState | undefined, action: Action): ScheduleState {
   return scheduleReducerInternal(state, action);
 }

@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import {
-  ExistingPressRelease,
-  NewPressRelease,
-} from '../core/models/press-release.model';
+import { ExistingPressRelease, NewPressRelease } from '../core/models/press-release.model';
 import { ApiBaseService } from './api-base.service';
 import { ToastService } from './toast.service';
 
@@ -36,27 +33,18 @@ export class PressReleaseService extends ApiBaseService {
   }
 
   getPressRelease(id: string): Observable<ExistingPressRelease> {
-    return this.http
-      .get<ExistingPressRelease>(`${this.pressReleasesApiUrl}/${id}`)
-      .pipe(catchError(this.handleError));
+    return this.http.get<ExistingPressRelease>(`${this.pressReleasesApiUrl}/${id}`).pipe(catchError(this.handleError));
   }
 
-  postPressRelease(
-    newPressRelease: NewPressRelease
-  ): Observable<ExistingPressRelease> {
+  postPressRelease(newPressRelease: NewPressRelease): Observable<ExistingPressRelease> {
     return this.http
       .post<ExistingPressRelease>(this.pressReleasesApiUrl, newPressRelease)
       .pipe(catchError(this.handleError));
   }
 
-  patchPressRelease(
-    updatedPressRelease: ExistingPressRelease
-  ): Observable<ExistingPressRelease> {
+  patchPressRelease(updatedPressRelease: ExistingPressRelease): Observable<ExistingPressRelease> {
     return this.http
-      .patch<ExistingPressRelease>(
-        `${this.pressReleasesApiUrl}/${updatedPressRelease._id}`,
-        updatedPressRelease
-      )
+      .patch<ExistingPressRelease>(`${this.pressReleasesApiUrl}/${updatedPressRelease._id}`, updatedPressRelease)
       .pipe(catchError(this.handleError));
   }
 
@@ -67,10 +55,6 @@ export class PressReleaseService extends ApiBaseService {
   }
 
   static sortByDate(a: NewPressRelease, b: NewPressRelease): number {
-    return a.releaseAfter < b.releaseAfter
-      ? 1
-      : a.releaseAfter > b.releaseAfter
-      ? -1
-      : 0;
+    return a.releaseAfter < b.releaseAfter ? 1 : a.releaseAfter > b.releaseAfter ? -1 : 0;
   }
 }

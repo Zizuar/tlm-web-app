@@ -6,10 +6,7 @@ import { ExistingPressRelease } from '../../../../core/models/press-release.mode
 import { Observable } from 'rxjs';
 import { DashPressNewPreleaseModalComponent } from './dash-press-new-prelease-modal/dash-press-new-prelease-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {
-  faPlusSquare,
-  IconDefinition,
-} from '@fortawesome/free-regular-svg-icons';
+import { faPlusSquare, IconDefinition } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-dash-press',
@@ -19,13 +16,9 @@ import {
 export class DashPressComponent implements OnInit {
   plusSquare: IconDefinition = faPlusSquare;
 
-  pressReleases$: Observable<ExistingPressRelease[]> =
-    this.store.select(selectPressReleases);
+  pressReleases$: Observable<ExistingPressRelease[]> = this.store.select(selectPressReleases);
 
-  constructor(
-    private readonly store: Store,
-    private readonly modalService: NgbModal
-  ) {}
+  constructor(private readonly store: Store, private readonly modalService: NgbModal) {}
 
   ngOnInit() {
     this.store.dispatch(fetchPressReleases());

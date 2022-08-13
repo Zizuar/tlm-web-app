@@ -7,8 +7,6 @@ import { Release, ReleaseSchema } from './schemas/release.schema';
 @Module({
   controllers: [ReleasesController],
   providers: [ReleasesService],
-  imports: [
-    MongooseModule.forFeature([{ name: Release.name, schema: ReleaseSchema }]),
-  ],
+  imports: [MongooseModule.forFeature([{ name: Release.name, schema: ReleaseSchema }])],
 })
 export class ReleasesModule {}

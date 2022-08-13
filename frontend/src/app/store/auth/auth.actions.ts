@@ -12,10 +12,7 @@ export enum AuthActionTypes {
 
 export const checkAuth = createAction(AuthActionTypes.CHECK_AUTH);
 
-export const login = createAction(
-  AuthActionTypes.LOGIN,
-  props<{ redirectUrl?: string }>()
-);
+export const login = createAction(AuthActionTypes.LOGIN, props<{ redirectUrl?: string }>());
 export type LoginAction = ReturnType<typeof login>;
 
 export const loginCompleted = createAction(
@@ -25,10 +22,7 @@ export const loginCompleted = createAction(
 
 export const fetchScopes = createAction(AuthActionTypes.FETCH_SCOPES);
 
-export const fetchScopesCompleted = createAction(
-  AuthActionTypes.FETCH_SCOPES_COMPLETED,
-  props<{ scopes: string }>()
-);
+export const fetchScopesCompleted = createAction(AuthActionTypes.FETCH_SCOPES_COMPLETED, props<{ scopes: string }>());
 
 export const logout = createAction(AuthActionTypes.LOGOUT);
 

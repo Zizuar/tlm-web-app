@@ -35,16 +35,8 @@ export class OrdersService {
       await newOrder.save();
       await session.commitTransaction();
       console.log('New order added!');
-      await this.emailService.sendEmailTemplate(
-        EmailTemplates.ORDER_ADDED,
-        process.env.TYLER_EMAIL,
-        'Tyler Levs',
-      );
-      await this.emailService.sendEmailTemplate(
-        EmailTemplates.SUCCESSFUL_ORDER,
-        newOrder.email,
-        newOrder.mailName,
-      );
+      await this.emailService.sendEmailTemplate(EmailTemplates.ORDER_ADDED, process.env.TYLER_EMAIL, 'Tyler Levs');
+      await this.emailService.sendEmailTemplate(EmailTemplates.SUCCESSFUL_ORDER, newOrder.email, newOrder.mailName);
       return newOrder;
     } catch (error) {
       console.error(error);
@@ -107,10 +99,6 @@ export class OrdersService {
       'United States Minor Outlying Islands',
       'Virgin Islands (U.S.)',
     ];
-    return country === 'Canada'
-      ? 10
-      : domesticShippingCountries.includes(country)
-      ? 7
-      : 15;
+    return country === 'Canada' ? 10 : domesticShippingCountries.includes(country) ? 7 : 15;
   }
 }

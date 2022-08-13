@@ -57,9 +57,7 @@ export class EventsService {
       throw new BadRequestException(errors, 'Invalid value(s) in request');
     }
 
-    return await this.eventModel
-      .findByIdAndUpdate(id, updatedEvent, { new: true })
-      .exec();
+    return await this.eventModel.findByIdAndUpdate(id, updatedEvent, { new: true }).exec();
   }
 
   async remove(id: string): Promise<Event> {

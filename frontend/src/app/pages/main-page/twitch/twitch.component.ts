@@ -5,10 +5,7 @@ import { StreamingScheduleService } from '../../../services/streaming-schedule.s
 import { Observable, take } from 'rxjs';
 import { StreamingScheduleElement } from '../../../core/models/schedule-day.model';
 import { Store } from '@ngrx/store';
-import {
-  selectIsScheduleFetched,
-  selectSchedule,
-} from '../../../store/schedule/schedule.selectors';
+import { selectIsScheduleFetched, selectSchedule } from '../../../store/schedule/schedule.selectors';
 import { fetchSchedule } from '../../../store/schedule/schedule.actions';
 
 @Component({
@@ -18,13 +15,9 @@ import { fetchSchedule } from '../../../store/schedule/schedule.actions';
 })
 export class TwitchComponent implements OnInit {
   twitchIcon: IconDefinition = faTwitch;
-  streamingSchedule$: Observable<StreamingScheduleElement[]> =
-    this.store.select(selectSchedule);
+  streamingSchedule$: Observable<StreamingScheduleElement[]> = this.store.select(selectSchedule);
 
-  constructor(
-    private readonly streamingScheduleService: StreamingScheduleService,
-    private readonly store: Store
-  ) {}
+  constructor(private readonly streamingScheduleService: StreamingScheduleService, private readonly store: Store) {}
 
   ngOnInit() {
     this.store

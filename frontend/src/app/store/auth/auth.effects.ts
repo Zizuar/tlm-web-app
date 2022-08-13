@@ -7,18 +7,13 @@ import { combineLatest, of, switchMap, tap } from 'rxjs';
 
 @Injectable()
 export class AuthEffects {
-  constructor(
-    private readonly actions$: Actions,
-    private readonly authService: AuthenticationService
-  ) {}
+  constructor(private readonly actions$: Actions, private readonly authService: AuthenticationService) {}
 
   login$ = createEffect(
     () => {
       return this.actions$.pipe(
         ofType<LoginAction>(AuthActionTypes.LOGIN),
-        tap((action) =>
-          this.authService.login(action.redirectUrl ? action.redirectUrl : '')
-        )
+        tap((action) => this.authService.login(action.redirectUrl ? action.redirectUrl : ''))
       );
     },
     { dispatch: false }
@@ -48,9 +43,7 @@ export class AuthEffects {
       // If an action with the type 'checkAuth' occurs in the actions$ stream...
       ofType(AuthActionTypes.CHECK_AUTH),
       // return an observable including the latest info from 'isLoggedIn' and 'userProfile'
-      switchMap(() =>
-        combineLatest([this.authService.isLoggedIn$, this.authService.user$])
-      ),
+      switchMap(() => combineLatest([this.authService.isLoggedIn$, this.authService.user$])),
       // Take it out and return the appropriate action based on if logged in or not
       switchMap(([isLoggedIn, profile]) => {
         if (isLoggedIn) {

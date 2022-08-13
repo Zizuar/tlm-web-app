@@ -40,9 +40,7 @@ export class PressReleasesEffects {
     return this.actions$.pipe(
       ofType<CreatePressRelease>(PressReleasesActionTypes.CREATE_PRESS_RELEASE),
       switchMap((action) => {
-        return this.pressReleaseService.postPressRelease(
-          action.newPressRelease
-        );
+        return this.pressReleaseService.postPressRelease(action.newPressRelease);
       }),
       switchMap(() => {
         return of(createPressReleaseCompleted());
@@ -70,9 +68,7 @@ export class PressReleasesEffects {
     return this.actions$.pipe(
       ofType<UpdatePressRelease>(PressReleasesActionTypes.UPDATE_PRESS_RELEASE),
       switchMap((action) => {
-        return this.pressReleaseService.patchPressRelease(
-          action.updatedPressRelease
-        );
+        return this.pressReleaseService.patchPressRelease(action.updatedPressRelease);
       }),
       switchMap(() => {
         return of(updatePressReleaseCompleted());

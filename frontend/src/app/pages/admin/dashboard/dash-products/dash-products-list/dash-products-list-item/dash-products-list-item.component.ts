@@ -22,18 +22,12 @@ export class DashProductsListItemComponent {
   editIcon: IconDefinition = faEdit;
   deleteIcon: IconDefinition = faTrash;
 
-  constructor(
-    private readonly modalService: NgbModal,
-    private readonly store: Store
-  ) {}
+  constructor(private readonly modalService: NgbModal, private readonly store: Store) {}
 
   openEditProductModal() {
-    const modal = this.modalService.open(
-      DashProductsEditProductModalComponent,
-      {
-        size: 'lg',
-      }
-    );
+    const modal = this.modalService.open(DashProductsEditProductModalComponent, {
+      size: 'lg',
+    });
     modal.componentInstance.product = cloneDeep(this.product);
   }
 

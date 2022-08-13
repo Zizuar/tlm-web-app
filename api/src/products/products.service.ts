@@ -14,9 +14,7 @@ export class ProductsService {
     @InjectConnection() private readonly connection: Connection,
   ) {}
 
-  async create(
-    createProductDto: CreateProductDto,
-  ): Promise<Product | HttpException> {
+  async create(createProductDto: CreateProductDto): Promise<Product | HttpException> {
     const session = await this.connection.startSession();
     session.startTransaction();
     try {
@@ -50,10 +48,7 @@ export class ProductsService {
     return await this.productModel.findById(id).exec();
   }
 
-  async update(
-    id: string,
-    updateProductDto: UpdateProductDto,
-  ): Promise<Product> {
+  async update(id: string, updateProductDto: UpdateProductDto): Promise<Product> {
     const updatedProduct = {
       ...updateProductDto,
     };
@@ -63,9 +58,7 @@ export class ProductsService {
       throw new BadRequestException(errors, 'Invalid value(s) in request');
     }
 
-    return await this.productModel
-      .findByIdAndUpdate(id, updatedProduct, { new: true })
-      .exec();
+    return await this.productModel.findByIdAndUpdate(id, updatedProduct, { new: true }).exec();
   }
 
   async remove(id: string): Promise<Product> {

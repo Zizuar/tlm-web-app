@@ -33,9 +33,7 @@ export class CreateOrderDto {
   @IsNotEmpty()
   readonly country: string;
 
-  readonly cart: [
-    { productName: string; signatureName: string; price: number },
-  ];
+  readonly cart: [{ productName: string; signatureName: string; price: number }];
 
   @IsOptional()
   @IsString()

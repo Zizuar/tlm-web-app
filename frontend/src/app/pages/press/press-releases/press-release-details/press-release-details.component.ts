@@ -12,8 +12,7 @@ import { ExistingPressRelease } from '../../../../core/models/press-release.mode
   styleUrls: ['./press-release-details.component.scss'],
 })
 export class PressReleaseDetailsComponent {
-  pressRelease: ExistingPressRelease =
-    this.activatedRoute.snapshot.data['pressRelease'];
+  pressRelease: ExistingPressRelease = this.activatedRoute.snapshot.data['pressRelease'];
 
   faChevronLeft: IconDefinition = faChevronLeft;
 

@@ -27,10 +27,7 @@ export class DashEventsListItemComponent implements OnInit {
   @Input() event!: ExistingScheduledEvent;
   isFutureEvent = false;
 
-  constructor(
-    private readonly modalService: NgbModal,
-    private readonly store: Store
-  ) {}
+  constructor(private readonly modalService: NgbModal, private readonly store: Store) {}
 
   ngOnInit(): void {
     this.isFutureEvent = moment(this.event.date).isAfter(new Date(), 'day');

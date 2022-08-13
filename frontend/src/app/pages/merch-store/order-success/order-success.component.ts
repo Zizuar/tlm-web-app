@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  faCheckCircle,
-  IconDefinition,
-} from '@fortawesome/free-regular-svg-icons';
+import { faCheckCircle, IconDefinition } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-order-success',

@@ -2,10 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Product } from '../../../core/models/product.model';
 import { Store } from '@ngrx/store';
-import {
-  selectProducts,
-  selectProductsFetched,
-} from '../../../store/products/products.selectors';
+import { selectProducts, selectProductsFetched } from '../../../store/products/products.selectors';
 import { fetchProducts } from '../../../store/products/products.actions';
 
 @Component({
@@ -14,9 +11,7 @@ import { fetchProducts } from '../../../store/products/products.actions';
   styleUrls: ['./products-list.component.scss'],
 })
 export class ProductsListComponent implements OnInit, OnDestroy {
-  areProductsFetched: Observable<boolean> = this.store.select(
-    selectProductsFetched
-  );
+  areProductsFetched: Observable<boolean> = this.store.select(selectProductsFetched);
   products: Observable<Product[]>;
 
   mainSub: Subscription = new Subscription();
