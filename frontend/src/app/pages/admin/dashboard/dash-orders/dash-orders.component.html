@@ -41,4 +41,5 @@
   <app-dash-orders-list [orders]="(paidOrders$ | async) || []" [title]="'Paid orders'"></app-dash-orders-list>
   <app-dash-orders-list [orders]="(shippedOrders$ | async)  || []" [title]="'Shipped orders'"></app-dash-orders-list>
   <app-dash-orders-list [orders]="(abandonedOrders$ | async)  || []" [title]="'Left unpaid'"></app-dash-orders-list>
+  <app-dash-orders-list [orders]="(archivedOrders$ | async)  || []" [title]="'Archive'"></app-dash-orders-list>
 </div>

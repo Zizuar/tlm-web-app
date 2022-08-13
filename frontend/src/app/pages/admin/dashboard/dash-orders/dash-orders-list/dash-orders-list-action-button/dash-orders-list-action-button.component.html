@@ -1,6 +1,6 @@
 <div class="btn-group buttons-container">
   <button class="btn btn-primary" (click)="nextStateButton()">{{buttonText_ | async}}</button>
-  <div class="btn-group" ngbDropdown container="body" role="group" aria-label="Order control menu">
+  <div class="btn-group" ngbDropdown container="body" role="group" aria-label="Order control menu" *ngIf="order.status !== OrderStatus.ARCHIVED">
     <button class="btn-primary dropdown-toggle-split" ngbDropdownToggle></button>
     <div class="dropdown-menu" ngbDropdownMenu>
       <button ngbDropdownItem *ngIf="order.status !== OrderStatus.CREATED" (click)="setStatus(OrderStatus.CREATED)">Mark new</button>
@@ -13,6 +13,9 @@
       </button>
       <div class="dropdown-divider"></div>
       <button ngbDropdownItem (click)="openEditModal()">Edit</button>
+      <button ngbDropdownItem class="text-danger" (click)="archiveOrder()">
+        Archive
+      </button>
       <button ngbDropdownItem class="text-danger" (click)="deleteWarning()">Remove</button>
     </div>
   </div>

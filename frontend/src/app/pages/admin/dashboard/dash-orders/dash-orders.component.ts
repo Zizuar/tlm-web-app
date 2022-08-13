@@ -19,6 +19,7 @@ export class DashOrdersComponent implements OnInit {
   readonly paidOrders$: Observable<ExistingOrder[]>;
   readonly shippedOrders$: Observable<ExistingOrder[]>;
   readonly abandonedOrders$: Observable<ExistingOrder[]>;
+  readonly archivedOrders$: Observable<ExistingOrder[]>;
 
   constructor(private readonly store: Store) {
     this.orders$ = this.store.select(selectOrders);
@@ -37,6 +38,9 @@ export class DashOrdersComponent implements OnInit {
     );
     this.abandonedOrders$ = this.orders$.pipe(
       map((orders) => orders.filter((order) => order.status === OrderStatus.ABANDONED).sort(this.sortOrdersByDate))
+    );
+    this.archivedOrders$ = this.orders$.pipe(
+      map((orders) => orders.filter((order) => order.status === OrderStatus.ARCHIVED).sort(this.sortOrdersByDate))
     );
   }
 

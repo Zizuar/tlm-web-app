@@ -4,6 +4,7 @@ import { ExistingOrder } from '../../core/models/order.model';
 export enum OrderActionTypes {
   FETCH_ORDERS = '[Order] Fetch orders',
   FETCH_ORDERS_COMPLETED = '[Order] Fetch orders completed',
+  ARCHIVE_ORDER = '[Order] Archive order',
   UPDATE_ORDER = '[Order] Update order',
   UPDATE_ORDER_COMPLETED = '[Order] Update order completed',
   REMOVE_ORDER = '[Order] Remove order',
@@ -19,6 +20,9 @@ export const fetchOrdersCompleted = createAction(
 
 export const updateOrder = createAction(OrderActionTypes.UPDATE_ORDER, props<{ updatedOrder: ExistingOrder }>());
 export type UpdateOrder = ReturnType<typeof updateOrder>;
+
+export const archiveOrder = createAction(OrderActionTypes.ARCHIVE_ORDER, props<{ orderToArchive: ExistingOrder }>());
+export type ArchiveOrder = ReturnType<typeof archiveOrder>;
 
 export const updateOrderCompleted = createAction(OrderActionTypes.UPDATE_ORDER_COMPLETED);
 

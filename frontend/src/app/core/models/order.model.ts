@@ -30,4 +30,5 @@ export enum OrderStatus {
   PAID,
   SHIPPED,
   ABANDONED,
+  ARCHIVED,
 }

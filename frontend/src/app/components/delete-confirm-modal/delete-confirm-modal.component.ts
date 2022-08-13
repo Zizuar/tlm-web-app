@@ -13,7 +13,9 @@ export enum DeleteConfirmDialogResult {
   styleUrls: ['./delete-confirm-modal.component.scss'],
 })
 export class DeleteConfirmModalComponent {
+  @Input() warningText: string = '';
   @Input() itemType: string = '';
+  @Input() deleteBtnText: string = 'Delete';
 
   result = DeleteConfirmDialogResult;
 
