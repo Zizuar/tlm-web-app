@@ -7,11 +7,23 @@ import { YoutubeVideoService } from '../../../services/youtube-video.service';
   styleUrls: ['./youtube.component.scss'],
 })
 export class YoutubeComponent implements AfterViewInit {
-  src: string = '';
+  thumbnailSrc: string = '';
+  videoSrc: string = '';
+  videoTitle: string = '';
+
+  readonly playIconBlack = './assets/svg/yt-play-black.svg';
+  readonly playIconRed = './assets/svg/yt-play-red.svg';
+
+  playIconSrc = this.playIconBlack;
+
+  showEmbed = false;
 
   constructor(private readonly youtubeVideoService: YoutubeVideoService) {}
 
   async ngAfterViewInit() {
-    this.src = await this.youtubeVideoService.getLatestVideoLink();
+    const thumbnailUrl = await this.youtubeVideoService.getLatestVideoThumbnailUrl();
+    this.thumbnailSrc = `url(${thumbnailUrl})`;
+    this.videoTitle = await this.youtubeVideoService.getLatestVideoTitle();
+    this.videoSrc = await this.youtubeVideoService.getLatestVideoLink();
   }
 }
