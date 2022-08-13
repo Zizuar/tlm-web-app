@@ -14,10 +14,10 @@ export class UpdateOrderDto extends PartialType(CreateOrderDto) {
 
   @IsDate()
   @Type(() => Date)
-  updatedDate: Date;
+  updatedDate: Date = new Date();
 
   @IsInt()
   @Min(0)
-  @Max(4)
+  @Max(5)
   status: OrderStatus;
 }

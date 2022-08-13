@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
-import { ExistingOrder, NewOrder } from '../core/models/order.model';
+import { ExistingOrder, NewOrder, OrderStatus } from '../core/models/order.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ApiBaseService } from './api-base.service';
@@ -28,7 +28,41 @@ export class OrdersService extends ApiBaseService {
     return this.http.patch<ExistingOrder>(`${this.orderApiUrl}/${order._id}`, order).pipe(catchError(this.handleError));
   }
 
+  archiveOrder(order: ExistingOrder): Observable<ExistingOrder> {
+    return this.http
+      .patch<ExistingOrder>(`${this.orderApiUrl}/${order._id}`, this.scrubPersonalData(order))
+      .pipe(catchError(this.handleError));
+  }
+
   removeOrder(id: string): Observable<ExistingOrder> {
     return this.http.delete<ExistingOrder>(`${this.orderApiUrl}/${id}`).pipe(catchError(this.handleError));
+  }
+
+  private scrubPersonalData(order: ExistingOrder): ExistingOrder {
+    const updatedOrder = {
+      ...order,
+      email: 'removed@for.privacy',
+      mailName: 'Removed',
+      street1: 'Removed',
+      city: 'Removed',
+      zip: 'Removed',
+      country: 'Removed',
+      otherRequests: 'Removed',
+      status: OrderStatus.ARCHIVED,
+    };
+    if (order.street2) {
+      updatedOrder.street2 = 'Removed';
+    }
+    if (order.state) {
+      updatedOrder.state = 'Removed';
+    }
+    updatedOrder.cart = [...order.cart].map((item) => {
+      const updatedItem = { ...item };
+      if (item.signatureName) {
+        updatedItem.signatureName = 'Removed';
+      }
+      return updatedItem;
+    });
+    return updatedOrder;
   }
 }

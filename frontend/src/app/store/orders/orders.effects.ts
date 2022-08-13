@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { OrdersService } from '../../services/orders.service';
 import {
+  ArchiveOrder,
   fetchOrders,
   fetchOrdersCompleted,
   OrderActionTypes,
@@ -29,6 +30,18 @@ export class OrderEffects {
       }),
       switchMap((orders) => {
         return of(fetchOrdersCompleted({ orders }));
+      })
+    );
+  });
+
+  archiveOrder$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType<ArchiveOrder>(OrderActionTypes.ARCHIVE_ORDER),
+      switchMap((action) => {
+        return this.ordersService.archiveOrder(action.orderToArchive);
+      }),
+      switchMap(() => {
+        return of(updateOrderCompleted());
       })
     );
   });
