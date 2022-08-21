@@ -11,6 +11,8 @@ presaveRouter.get('/:title', (req, res) => {
     res.redirect('https://distrokid.com/hyperfollow/tylerlevs/reset');
   } else if (req.params.title === 'love-harvest') {
     res.redirect('https://distrokid.com/hyperfollow/tylerlevs/love-harvest');
+  } else if (req.params.title === 'let-me-go-nostalgia-sucks') {
+    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/let-me-go-nostalgia-sucks');
   } else if (req.params.title === 'throw-me-feelings') {
     res.redirect('https://distrokid.com/hyperfollow/tylerlevs/throw-me-feelings');
   } else if (req.params.title === 'emergency') {
