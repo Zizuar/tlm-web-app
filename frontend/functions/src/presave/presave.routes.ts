@@ -5,34 +5,51 @@ const presaveRouter = express.Router();
 // Presave redirects
 
 presaveRouter.get('/:title', (req, res) => {
-  if (req.params.title === 'hit-me-like-a-dream') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/hit-me-like-a-dream');
-  } else if (req.params.title === 'reset') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/reset');
-  } else if (req.params.title === 'love-harvest') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/love-harvest');
-  } else if (req.params.title === 'let-me-go-nostalgia-sucks') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/let-me-go-nostalgia-sucks');
-  } else if (req.params.title === 'throw-me-feelings') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/throw-me-feelings');
-  } else if (req.params.title === 'emergency') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/emergency-2');
-  } else if (req.params.title === 'parallel-universe') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/parallel-universe');
-  } else if (req.params.title === 'through-the-valley') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/through-the-valley');
-  } else if (req.params.title === 'lets-begin') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevsandjoliet4/lets-begin');
-  } else if (req.params.title === 'worry-bout-that') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/worry-bout-that-in-the-morning');
-  } else if (req.params.title === 'struck') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/struck');
-  } else if (req.params.title === 'struck-ep') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/struck-the-ep');
-  } else if (req.params.title === 'sad-thoughts') {
-    res.redirect('https://distrokid.com/hyperfollow/tylerlevs/sad-thoughts-2');
-  } else {
-    res.redirect('/');
+  switch (req.params.title) {
+    case 'hit-me-like-a-dream':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/hit-me-like-a-dream');
+      break;
+    case 'reset':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/reset');
+      break;
+    case 'love-harvest':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/love-harvest');
+      break;
+    case 'let-me-go-nostalgia-sucks':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/let-me-go-nostalgia-sucks');
+      break;
+    case 'yes-no-maybe':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/yes-no-maybe');
+      break;
+    case 'throw-me-feelings':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/throw-me-feelings');
+      break;
+    case 'emergency':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/emergency-2');
+      break;
+    case 'parallel-universe':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/parallel-universe');
+      break;
+    case 'through-the-valley':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/through-the-valley');
+      break;
+    case 'lets-begin':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevsandjoliet4/lets-begin');
+      break;
+    case 'worry-bout-that':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/worry-bout-that-in-the-morning');
+      break;
+    case 'struck':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/struck');
+      break;
+    case 'struck-ep':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/struck-the-ep');
+      break;
+    case 'sad-thoughts':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/sad-thoughts-2');
+      break;
+    default:
+      res.redirect('/');
   }
 });
 
