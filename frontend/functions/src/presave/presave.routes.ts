@@ -19,7 +19,13 @@ presaveRouter.get('/:title', (req, res) => {
       res.redirect('https://distrokid.com/hyperfollow/tylerlevs/let-me-go-nostalgia-sucks');
       break;
     case 'yes-no-maybe':
-      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/yes-no-maybe');
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/yes-no-maybe-2');
+      break;
+    case 'never-look-back':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/never-look-back');
+      break;
+    case 'baggage':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/baggage');
       break;
     case 'throw-me-feelings':
       res.redirect('https://distrokid.com/hyperfollow/tylerlevs/throw-me-feelings');
