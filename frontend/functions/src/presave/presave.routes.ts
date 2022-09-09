@@ -27,6 +27,9 @@ presaveRouter.get('/:title', (req, res) => {
     case 'baggage':
       res.redirect('https://distrokid.com/hyperfollow/tylerlevs/baggage');
       break;
+    case 'gratitude':
+      res.redirect('https://distrokid.com/hyperfollow/tylerlevs/gratitude');
+      break;
     case 'throw-me-feelings':
       res.redirect('https://distrokid.com/hyperfollow/tylerlevs/throw-me-feelings');
       break;
