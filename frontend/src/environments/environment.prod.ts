@@ -6,7 +6,7 @@ export const environment: Environment = {
   recaptcha: {
     sitekey: '6Ley8FwaAAAAAKrEXqlKLPkKivxIkfVN6VnnoHP7',
   },
-  apiBaseUrl: 'https://tlm-api.herokuapp.com',
+  apiBaseUrl: 'https://api.tylerlevs.com',
   coversAssetUrl: 'https://covers.tylerlevs.com',
   metadata: [
     {
@@ -31,7 +31,7 @@ export const environment: Environment = {
     httpInterceptor: {
       allowedList: [
         {
-          uri: 'https://tlm-api.herokuapp.com/v1/*',
+          uri: 'https://api.tylerlevs.com/v1/*',
           allowAnonymous: true,
         },
       ],
