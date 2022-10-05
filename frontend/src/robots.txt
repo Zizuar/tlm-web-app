@@ -1,12 +1,9 @@
 User-agent: *
 Allow: /
-Allow: /aboutme
+Allow: /releases
 Allow: /events
-Allow: /collections/2021
-Allow: /album/songs-for-being-alone
-Allow: /order
-Allow: /song/hit-me-like-a-dream
-Allow: /song/lets-begin
-Allow: /song/through-the-valley
+Allow: /contact
+Allow: /press
+Allow: /store
 Disallow: /cdn-cgi
 Sitemap: https://tylerlevs.com/sitemap.xml
