@@ -18,4 +18,12 @@ export class DashScheduleEditModalComponent {
     this.store.dispatch(updateSchedule({ schedule: this.scheduleDay }));
     this.activeModal.close('submitted');
   }
+
+  updateStartHour(value: number) {
+    this.scheduleDay.startHour = value.toString();
+  }
+
+  updateEndHour(value: number) {
+    this.scheduleDay.startHour = value.toString();
+  }
 }

@@ -22,7 +22,8 @@
       <div class="col-4">
         <label for="startHour" class="form-label">Start hour</label>
         <input type="number" class="form-control" name="startHour" id="startHour"
-               [(ngModel)]="scheduleDay.startHour"
+               [ngModel]="scheduleDay.startHour"
+               (ngModelChange)="updateStartHour($event)"
                [disabled]="scheduleDay.isOff"
                min="1" max="12" required
         >
@@ -47,7 +48,8 @@
       <div class="col-4">
         <label for="endHour" class="form-label">End hour</label>
         <input type="number" class="form-control" name="endHour" id="endHour"
-               [(ngModel)]="scheduleDay.endHour"
+               [ngModel]="scheduleDay.endHour"
+               (ngModelChange)="updateEndHour($event)"
                [disabled]="scheduleDay.isOff"
                min="1" max="12" required
         >
@@ -83,7 +85,8 @@
     </div>
   </div>
   <div class="modal-footer d-flex justify-content-between">
-    <button class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Close without saving</button>
+    <button class="btn btn-outline-secondary" type="button" (click)="activeModal.dismiss()">
+      Close without saving</button>
     <button class="btn btn-primary" type="submit">Save</button>
   </div>
 </form>
