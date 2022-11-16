@@ -14,7 +14,7 @@
     <div *ngIf="isReleased" class="col-md-8 d-flex align-items-center">
       <div class="card-body">
         <h5 class="card-title fw-bolder mb-3">
-          <a href="/releases/{{release.category}}/{{release.id}}">{{release.text.header}}</a>
+          <a routerLink="/releases/{{release.category}}/{{release.id}}">{{release.text.header}}</a>
         </h5>
         <p *ngIf="release.text.subheader" class="card-text" [innerHTML]="release.text.subheader | unescape"></p>
         <p *ngIf="release.text.text" class="card-text mb-3" [innerHTML]="release.text.text | unescape"></p>

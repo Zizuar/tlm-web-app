@@ -1,9 +1,8 @@
-import { Component, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, of, Subscription, switchMap, take } from 'rxjs';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest, Observable, of, switchMap } from 'rxjs';
 import { ExistingRelease } from '../../../core/models/release.model';
-import { selectPastReleases, selectReleasesFetched } from '../../../store/releases/releases.selectors';
-import { fetchReleases } from '../../../store/releases/releases.actions';
+import { selectPastReleases } from '../../../store/releases/releases.selectors';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -11,27 +10,22 @@ import { Store } from '@ngrx/store';
   templateUrl: './release-details.component.html',
   styleUrls: ['./release-details.component.scss'],
 })
-export class ReleaseDetailsComponent implements OnDestroy {
+export class ReleaseDetailsComponent {
   release: Observable<ExistingRelease | undefined>;
-  paramsSub: Subscription = new Subscription();
 
-  constructor(private readonly activatedRoute: ActivatedRoute, private readonly store: Store) {
-    this.store
-      .select(selectReleasesFetched)
-      .pipe(take(1))
-      .subscribe((areReleasesFetched) => {
-        if (!areReleasesFetched) {
-          this.store.dispatch(fetchReleases());
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly store: Store,
+    private readonly router: Router
+  ) {
+    this.release = combineLatest([this.store.select(selectPastReleases), this.activatedRoute.params]).pipe(
+      switchMap(([releases, params]) => {
+        const release = releases.find((release) => params['id'] === release.id);
+        if (releases.length && !release) {
+          this.router.navigate(['releases']);
         }
-      });
-    this.release = this.store.select(selectPastReleases).pipe(
-      switchMap((releases) => {
-        return of(releases.find((release) => this.activatedRoute.snapshot.params['id'] === release.id));
+        return of(release);
       })
     );
-  }
-
-  ngOnDestroy() {
-    this.paramsSub.unsubscribe();
   }
 }
