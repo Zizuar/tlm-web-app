@@ -3,7 +3,7 @@
   padding-bottom: calc(10rem - 4.5rem);
   background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%,
     rgba(57, 82, 58, 0.8) 100%),
-  url("^./assets/img/bg-masthead.webp");
+  url("^./assets/img/330-1021-lores.webp"), rgba(53,118,68,255);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -15,7 +15,7 @@
   padding-bottom: calc(10rem - 4.5rem);
   background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%,
     rgba(57, 82, 58, 0.8) 100%),
-  url("^./assets/img/bg-masthead.jpg");
+  url("^./assets/img/330-1021-lores.jpg"), rgba(53,118,68,255);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -46,6 +46,32 @@
 @media (min-width: 1200px) {
   .masthead h1 {
     font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1450px) {
+  :host-context(.webp) .masthead {
+    padding-top: 10rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%,
+      rgba(57, 82, 58, 0.8) 100%),
+    url("^./assets/img/330-1021-hires.webp"), rgba(53,118,68,255);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+  }
+
+  :host-context(.no-webp) .masthead {
+    padding-top: 10rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%,
+      rgba(57, 82, 58, 0.8) 100%),
+    url("^./assets/img/330-1021-hires.jpg"), rgba(53,118,68,255);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
   }
 }
 
