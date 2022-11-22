@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('../../../admin/src/app/pages/admin/admin.routing').then((m) => m.AdminRoutingModule),
+    loadChildren: () => import('./pages/admin/admin.routing').then((m) => m.AdminRoutingModule),
   },
   {
     path: 'login',
