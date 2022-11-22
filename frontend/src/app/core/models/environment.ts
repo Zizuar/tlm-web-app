@@ -9,17 +9,4 @@ export interface Environment {
   apiBaseUrl: string;
   coversAssetUrl: string;
   metadata: MetaDefinition[];
-  auth: {
-    clientId: string;
-    domain: string;
-    audience: string;
-    httpInterceptor: {
-      allowedList: [
-        {
-          uri: string;
-          allowAnonymous: boolean;
-        }
-      ];
-    };
-  };
 }

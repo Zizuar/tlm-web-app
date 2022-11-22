@@ -24,17 +24,4 @@ export const environment: Environment = {
       content: 'Gabor Meszaros <https://github.com/MikeSierra88>',
     },
   ],
-  auth: {
-    clientId: 'QI6OizFa5JpBocC82KG2DXSX9VkSev9Y',
-    domain: 'tlm-auth.us.auth0.com',
-    audience: 'https://api.tylerlevs.com',
-    httpInterceptor: {
-      allowedList: [
-        {
-          uri: 'https://api.tylerlevs.com/v1/*',
-          allowAnonymous: true,
-        },
-      ],
-    },
-  },
 };
