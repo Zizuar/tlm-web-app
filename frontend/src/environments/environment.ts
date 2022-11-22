@@ -28,17 +28,4 @@ export const environment: Environment = {
       content: 'Gabor Meszaros <https://github.com/MikeSierra88>',
     },
   ],
-  auth: {
-    clientId: 'pTkbwjYx6vpV8qzhO7lioKupoSa5IbUP',
-    domain: 'tlm-auth-dev.us.auth0.com',
-    audience: 'https://api-test',
-    httpInterceptor: {
-      allowedList: [
-        {
-          uri: 'http://localhost:3000/v1/*',
-          allowAnonymous: true,
-        },
-      ],
-    },
-  },
 };

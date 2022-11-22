@@ -25,6 +25,11 @@
     ],
     "redirects": [
       {
+        "source": "/admin",
+        "destination": "https://admin.tylerlevs.com",
+        "type": 302
+      },
+      {
         "source": "/soon",
         "destination": "/#upcoming-releases",
         "type": 302

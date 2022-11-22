@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { EventsPageComponent } from './pages/events-page/events-page.component';
 
@@ -22,30 +21,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/press/press.routing').then((m) => m.PressRoutingModule),
   },
   {
-    path: 'admin',
-    loadChildren: () => import('./pages/admin/admin.routing').then((m) => m.AdminRoutingModule),
-  },
-  {
     path: 'contact',
     component: ContactPageComponent,
   },
   {
     path: 'events',
     component: EventsPageComponent,
-  },
-  {
-    path: 'login',
-    component: AppComponent,
-    resolve: {
-      url: 'externalUrlRedirectResolver',
-    },
-    data: {
-      externalUrl: 'https://tlm-auth.us.auth0.com/authorize',
-    },
-  },
-  {
-    path: '**',
-    redirectTo: '',
   },
 ];
 
