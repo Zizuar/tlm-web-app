@@ -10,7 +10,9 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-12 col-lg-4 ml-auto text-center mb-4" *ngFor="let contactMethod of contactMethods | async">
-        <fa-icon [icon]="contactMethod.icon" size="3x"></fa-icon>
+        <fa-icon *ngIf="contactMethod.icon" [icon]="contactMethod.icon" size="3x"></fa-icon>
+        <img *ngIf="contactMethod.svg" [src]="contactMethod.svg"
+             alt="{{contactMethod.name}} icon" class="contact-icon"/>
         <span class="sr-only">{{ contactMethod.name }}</span>
         <div *ngIf="!contactMethod.url">{{ contactMethod.username }}</div>
         <a *ngIf="contactMethod.url" class="d-block" href="{{ contactMethod.url }}" target="_blank"

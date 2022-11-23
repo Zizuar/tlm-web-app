@@ -6,7 +6,8 @@ import { Observable, of } from 'rxjs';
 
 export interface ContactMethod {
   name: string;
-  icon: IconDefinition;
+  icon?: IconDefinition;
+  svg?: string;
   username: string;
   url?: string;
 }
@@ -50,6 +51,11 @@ export class ContactsService {
       icon: faFacebook,
       url: 'https://www.facebook.com/tylerlevs',
       username: 'tylerlevs',
+    },
+    {
+      name: 'Hive',
+      svg: 'assets/img/beehive-icon.svg',
+      username: '@tylerlevs',
     },
     {
       name: 'Email',
