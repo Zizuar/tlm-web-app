@@ -15,6 +15,11 @@ import { fetchReleases } from "../../../../store/releases/releases.actions";
   styleUrls: ['./dash-releases.component.scss'],
 })
 export class DashReleasesComponent implements OnInit {
+  // pagination
+  page = 1;
+  pageSize = 25;
+  pageSizeOptions = [10, 25, 50];
+
   plusSquare: IconDefinition = faPlusSquare;
 
   releases: Observable<ExistingRelease[]> = this.store.select(selectReleases);
@@ -23,6 +28,11 @@ export class DashReleasesComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(fetchReleases());
+  }
+
+  pageSizeChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.pageSize = Number(input.value ?? '10');
   }
 
   openNewReleaseModal() {

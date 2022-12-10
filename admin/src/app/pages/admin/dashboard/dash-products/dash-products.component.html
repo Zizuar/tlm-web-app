@@ -1,5 +1,13 @@
 <div class="container-fluid">
   <h4 class="mb-4 text-center">Products</h4>
+  <div class="mb-4 d-flex justify-content-center align-items-center">
+    <button class="btn btn-xl btn-primary" type="button" (click)="newOrder()">
+      <span class="d-flex justify-content-center align-items-center">
+        <fa-icon [icon]="plusSquare" size="2x"></fa-icon>
+        <span class="ms-2">New product</span>
+      </span>
+    </button>
+  </div>
   <div class="container">
     <div class="card shadow">
       <div class="card-body">
@@ -15,12 +23,5 @@
       </div>
     </div>
   </div>
-  <div class="mt-4 d-flex justify-content-center align-items-center">
-    <button class="btn btn-xl btn-primary" type="button" (click)="newOrder()">
-      <span class="d-flex justify-content-center align-items-center">
-        <fa-icon [icon]="plusSquare" size="2x"></fa-icon>
-        <span class="ms-2">New product</span>
-      </span>
-    </button>
-  </div>
+
 </div>

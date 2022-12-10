@@ -14,6 +14,11 @@ import { fetchEvents } from "../../../../store/events/events.actions";
   styleUrls: ['./dash-events.component.scss'],
 })
 export class DashEventsComponent implements OnInit, OnDestroy {
+  // pagination
+  page = 1;
+  pageSize = 25;
+  pageSizeOptions = [10, 25, 50];
+
   plusSquare: IconDefinition = faPlusSquare;
 
   events: Observable<ExistingScheduledEvent[]> = this.store.select(selectEventsAscendingByDate);
@@ -41,6 +46,11 @@ export class DashEventsComponent implements OnInit, OnDestroy {
     this.modalService.open(DashEventsNewEventModalComponent, {
       size: 'lg',
     });
+  }
+
+  pageSizeChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.pageSize = Number(input.value ?? '10');
   }
 
   ngOnDestroy() {
