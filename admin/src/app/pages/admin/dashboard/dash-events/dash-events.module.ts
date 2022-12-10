@@ -6,7 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashEventsNewEventModalComponent } from './dash-events-new-event-modal/dash-events-new-event-modal.component';
 import { DashEventsEditEventModalComponent } from './dash-events-edit-event-modal/dash-events-edit-event-modal.component';
 import { FormsModule } from '@angular/forms';
-import { NgbDatepickerModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule, NgbPaginationModule, NgbTimepickerModule } from "@ng-bootstrap/ng-bootstrap";
 import { SharedComponentsModule } from "../../../../components/components.shared.module";
 
 @NgModule({
@@ -23,6 +23,7 @@ import { SharedComponentsModule } from "../../../../components/components.shared
     FormsModule,
     NgbDatepickerModule,
     NgbTimepickerModule,
+    NgbPaginationModule
   ],
   exports: [DashEventsComponent],
 })

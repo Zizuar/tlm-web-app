@@ -6,7 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashReleasesEditReleaseModalComponent } from './dash-releases-edit-release-modal/dash-releases-edit-release-modal.component';
 import { DashReleasesNewReleaseModalComponent } from './dash-releases-new-release-modal/dash-releases-new-release-modal.component';
 import { FormsModule } from '@angular/forms';
-import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule, NgbPaginationModule } from "@ng-bootstrap/ng-bootstrap";
 import { SharedComponentsModule } from "../../../../components/components.shared.module";
 
 @NgModule({
@@ -16,7 +16,7 @@ import { SharedComponentsModule } from "../../../../components/components.shared
     DashReleasesEditReleaseModalComponent,
     DashReleasesNewReleaseModalComponent,
   ],
-  imports: [CommonModule, SharedComponentsModule, FontAwesomeModule, FormsModule, NgbDatepickerModule],
+  imports: [CommonModule, SharedComponentsModule, FontAwesomeModule, FormsModule, NgbDatepickerModule, NgbPaginationModule],
   exports: [DashReleasesComponent],
 })
 export class DashReleasesModule {}
