@@ -50,7 +50,7 @@ export class SocialsService {
     {
       name: 'Youtube',
       icon: faYoutube,
-      url: 'https://www.youtube.com/c/TylerLevs',
+      url: 'https://www.youtube.com/@TylerLevs',
     },
     {
       name: 'Spotify',
