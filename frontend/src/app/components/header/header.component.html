@@ -7,10 +7,9 @@
         <div ngbDropdownMenu aria-labelledby="musicDropdown">
           <a ngbDropdownItem routerLink="/" fragment="upcoming-releases" (click)="handleFragmentLink('upcoming-releases')">Upcoming releases</a>
           <a ngbDropdownItem routerLink="/releases">Latest releases</a>
+          <a ngbDropdownItem routerLink="/releases/albums/330-1021">330-1021 (Songtober album)</a>
           <a ngbDropdownItem routerLink="/releases/songs/hit-me-like-a-dream">Hit Me Like A Dream (single)</a>
           <a ngbDropdownItem routerLink="/releases/songs/lets-begin">Let's Begin (feat. Joliet4)</a>
-          <a ngbDropdownItem routerLink="/releases/songs/through-the-valley">Through the Valley (Shawn James cover)</a>
-          <a ngbDropdownItem routerLink="/releases/collections/2021">2021 singles</a>
           <a ngbDropdownItem routerLink="/releases/albums/songs-for-being-alone">Songs For Being Alone (album)</a>
         </div>
       </li>
@@ -61,7 +60,7 @@
             <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('youtube')">Youtube</a></li>
             <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('about')">Bio</a></li>
             <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('contact')">Contact</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/store">Order a signed SFBA CD</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/store">Order signed CDs</a></li>
             <li class="nav-item"><a class="nav-link" href="https://tylerlevsmusic.creator-spring.com/" target="_blank">Merch Store (external)</a></li>
           </ul>
           <ul class="navbar-nav ml-auto my-2 my-lg-0" *ngIf="pageType === 'press'">
