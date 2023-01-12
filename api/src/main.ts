@@ -6,6 +6,7 @@ import * as mongoSanitize from 'express-mongo-sanitize';
 // api function
 import { AppModule } from './app.module';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
+import helmet from 'helmet';
 
 const apiServer: express.Express = express();
 
@@ -17,6 +18,7 @@ export const createApiNestServer = async (expressInstance: express.Express) => {
     type: VersioningType.URI,
   });
   app.enableCors();
+  app.use(helmet());
   app.use(mongoSanitize({ replaceWith: '. ' }));
   app.useGlobalPipes(new ValidationPipe());
 
