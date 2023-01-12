@@ -6,7 +6,7 @@ WORKDIR /home/node
 
 COPY . /home/node
 
-RUN npm ci --legacy-peer-deps \
+RUN npm ci \
     && npm run build \
     && npm prune --production
 
