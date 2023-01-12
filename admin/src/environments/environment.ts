@@ -6,7 +6,7 @@ import { Environment } from '../app/core/models/environment';
 
 export const environment: Environment = {
   production: false,
-  baseUrl: 'http://localhost:4200',
+  baseUrl: 'http://localhost:4201',
   apiBaseUrl: 'http://localhost:3000',
   auth: {
     clientId: 'pTkbwjYx6vpV8qzhO7lioKupoSa5IbUP',
