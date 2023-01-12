@@ -4,20 +4,23 @@
       <fa-icon [icon]="isCollapsed ? faPlus : faMinus" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
                aria-controls="orderCollapse"><span class="sr-only">Expand/collapse order</span></fa-icon>
     </div>
-    <div class="col-9">
+    <div class="col-9 col-md-8">
       <div class="row h-100">
         <div class="col-12 col-md-4 col-lg-3 d-flex align-items-center">
           {{ order.createdDate | date:'mediumDate' }}
         </div>
         <div class="col-12 col-md-8 col-lg-6 d-flex align-items-center">
-          {{ order.email }}
+          <span class="text-truncate">{{ order.email }}</span>
         </div>
         <div class="col-lg-3 d-none d-lg-flex align-items-center">
           {{ order.cart.length }} {{ order.cart.length === 1 ? 'product' : 'products' }}
         </div>
       </div>
     </div>
-    <div class="col-2">
+    <div class="col-md-2 d-none d-md-flex align-items-center">
+      {{ statusText }}
+    </div>
+    <div class="col-1 d-flex align-items-center">
       <app-dash-orders-list-action-button [order]="order"></app-dash-orders-list-action-button>
     </div>
   </div>

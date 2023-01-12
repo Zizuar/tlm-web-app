@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { archiveOrder, removeOrder, updateOrder } from '../../../../../../store/orders/orders.actions';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -16,52 +15,12 @@ import {
   templateUrl: './dash-orders-list-action-button.component.html',
   styleUrls: ['./dash-orders-list-action-button.component.scss'],
 })
-export class DashOrdersListActionButtonComponent implements OnInit {
+export class DashOrdersListActionButtonComponent {
   @Input() order!: ExistingOrder;
-
-  buttonText_ = new BehaviorSubject('');
 
   OrderStatus = OrderStatus;
 
   constructor(private readonly store: Store, private readonly modalService: NgbModal) {}
-
-  ngOnInit() {
-    switch (this.order.status) {
-      case OrderStatus.CREATED:
-        this.buttonText_.next('Invoiced');
-        break;
-      case OrderStatus.INVOICE_SENT:
-        this.buttonText_.next('Paid');
-        break;
-      case OrderStatus.PAID:
-        this.buttonText_.next('Shipped');
-        break;
-      case OrderStatus.SHIPPED:
-        this.buttonText_.next('Archive');
-        break;
-      default:
-        this.buttonText_.next('Remove');
-        break;
-    }
-  }
-
-  async nextStateButton() {
-    if (
-      this.order.status !== OrderStatus.SHIPPED &&
-      this.order.status !== OrderStatus.ABANDONED &&
-      this.order.status !== OrderStatus.ARCHIVED
-    ) {
-      const updatedOrder: ExistingOrder = {
-        ...this.order,
-        status: this.order.status + 1,
-      };
-      this.store.dispatch(updateOrder({ updatedOrder }));
-    } else if (this.order.status === OrderStatus.SHIPPED) {
-      await this.archiveOrder();
-    } else {
-      await this.deleteWarning();
-    }
-  }
 
   async deleteWarning() {
     try {
