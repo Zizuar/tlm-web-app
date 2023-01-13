@@ -7,7 +7,7 @@ import { DashOrdersListActionButtonComponent } from './dash-orders-list/dash-ord
 import { DashOrdersEditModalComponent } from './dash-orders-edit-modal/dash-orders-edit-modal.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
-import { NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule, NgbDropdownModule, NgbPaginationModule } from "@ng-bootstrap/ng-bootstrap";
 import { SharedComponentsModule } from "../../../../components/components.shared.module";
 
 @NgModule({
@@ -18,7 +18,15 @@ import { SharedComponentsModule } from "../../../../components/components.shared
     DashOrdersListActionButtonComponent,
     DashOrdersEditModalComponent,
   ],
-  imports: [CommonModule, FontAwesomeModule, FormsModule, NgbCollapseModule, NgbDropdownModule, SharedComponentsModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    FormsModule,
+    NgbCollapseModule,
+    NgbDropdownModule,
+    NgbPaginationModule,
+    SharedComponentsModule
+  ],
   exports: [DashOrdersComponent],
 })
 export class DashOrdersModule {}

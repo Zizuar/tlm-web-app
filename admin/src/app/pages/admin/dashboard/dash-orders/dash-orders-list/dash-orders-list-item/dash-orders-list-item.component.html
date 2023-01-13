@@ -25,6 +25,9 @@
     </div>
   </div>
   <div class="row mt-2" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+    <div class="col-12">
+      <p class="text-start"><span class="h6">Email:</span> {{ order.email }}</p>
+    </div>
     <div class="col-12 col-lg-4">
       <h6 class="text-center">Address</h6>
       <p class="text-start">{{order.mailName}}</p>
