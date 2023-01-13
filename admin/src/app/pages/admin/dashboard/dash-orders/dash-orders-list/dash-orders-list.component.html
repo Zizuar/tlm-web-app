@@ -4,6 +4,27 @@
     <div class="container-fluid" *ngIf="orders.length === 0">
       <p class="text-center">Nothing here...</p>
     </div>
-    <app-dash-orders-list-item *ngFor="let order of orders" [order]="order"></app-dash-orders-list-item>
+    <ng-container *ngIf="orders.length > 0 && status === OrderStatus.ARCHIVED">
+      <div class="row d-flex justify-content-between align-items-start">
+        <div class="col">
+          <ngb-pagination
+            [(page)]="page"
+            [pageSize]="pageSize"
+            [maxSize]="4"
+            [collectionSize]="orders.length"></ngb-pagination>
+        </div>
+        <div class="col-auto">
+          <select class="form-select" id="pageSizeSelect" aria-label="Select page size"
+                  [ngModel]="pageSize" (change)="pageSizeChange($event)">
+            <option *ngFor="let option of pageSizeOptions" [value]="option">{{option}}</option>
+          </select>
+        </div>
+      </div>
+      <app-dash-orders-list-item *ngFor="let order of orders | slice: (page-1) * pageSize : page * pageSize"
+                                 [order]="order"></app-dash-orders-list-item>
+    </ng-container>
+    <ng-container *ngIf="orders.length > 0 && status !== OrderStatus.ARCHIVED">
+      <app-dash-orders-list-item *ngFor="let order of orders" [order]="order"></app-dash-orders-list-item>
+    </ng-container>
   </div>
 </div>

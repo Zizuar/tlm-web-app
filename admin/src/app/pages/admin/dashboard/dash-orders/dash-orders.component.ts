@@ -21,6 +21,8 @@ export class DashOrdersComponent implements OnInit {
   readonly abandonedOrders$: Observable<ExistingOrder[]>;
   readonly archivedOrders$: Observable<ExistingOrder[]>;
 
+  readonly OrderStatus = OrderStatus;
+
   constructor(private readonly store: Store) {
     this.orders$ = this.store.select(selectOrders);
     // sort orders into categories
