@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PressReleaseService } from '../../../../services/press-release.service';
@@ -8,7 +8,7 @@ import { ExistingPressRelease } from '../../../../core/models/press-release.mode
 @Injectable({
   providedIn: 'root',
 })
-export class PressReleaseDetailsResolver implements Resolve<ExistingPressRelease | null> {
+export class PressReleaseDetailsResolver  {
   constructor(private readonly pressReleasesService: PressReleaseService, private readonly router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ExistingPressRelease | null> {

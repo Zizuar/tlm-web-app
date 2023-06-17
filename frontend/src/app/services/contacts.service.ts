@@ -20,7 +20,7 @@ export class ContactsService {
     {
       name: 'Discord',
       icon: faDiscord,
-      username: 'TylerLevsMusic#0949',
+      username: 'tylerlevsmusic',
     },
     {
       name: 'Twitch',

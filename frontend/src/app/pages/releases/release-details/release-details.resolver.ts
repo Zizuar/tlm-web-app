@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import { RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable, take } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectReleasesFetched } from '../../../store/releases/releases.selectors';
@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class ReleaseDetailsResolver implements Resolve<boolean> {
+export class ReleaseDetailsResolver  {
   constructor(private readonly store: Store) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
