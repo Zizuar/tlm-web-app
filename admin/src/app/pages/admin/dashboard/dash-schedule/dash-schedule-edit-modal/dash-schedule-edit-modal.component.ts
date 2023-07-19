@@ -24,6 +24,6 @@ export class DashScheduleEditModalComponent {
   }
 
   updateEndHour(value: number) {
-    this.scheduleDay.startHour = value.toString();
+    this.scheduleDay.endHour = value.toString();
   }
 }
