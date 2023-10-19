@@ -28,6 +28,16 @@
   padding-bottom: 1rem;
 }
 
+.jumbotron-guitar {
+  max-height: 150px;
+}
+
+@media (min-width: 576px) {
+  .jumbotron-guitar {
+    max-height: 200px;
+  }
+}
+
 @media (min-width: 992px) {
   .masthead {
     min-height: 40rem;
@@ -71,10 +81,6 @@
     background-attachment: scroll;
     background-size: cover;
   }
-}
-
-.jumbotron-guitar {
-  max-height: 300px;
 }
 
 .masthead .mutu4l-text-logo {
