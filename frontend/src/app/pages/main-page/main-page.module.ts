@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LatestReleasesModule } from './latest-releases/latest-releases.module';
 import { UpcomingReleasesComponent } from './upcoming-releases/upcoming-releases.component';
 import { CountdownComponent } from './masthead/countdown/countdown.component';
+import { Mutu4lComponent } from './mutu4l/mutu4l.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CountdownComponent } from './masthead/countdown/countdown.component';
     MastheadComponent,
     UpcomingReleasesComponent,
     CountdownComponent,
+    Mutu4lComponent,
   ],
   imports: [
     CommonModule,

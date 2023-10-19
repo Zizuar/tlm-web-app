@@ -1,6 +1,4 @@
 :host-context(.webp) .masthead {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 4.5rem);
   background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%,
     rgba(57, 82, 58, 0.8) 100%),
   url("^./assets/img/330-1021-lores.webp"), rgba(53,118,68,255);
@@ -11,8 +9,6 @@
 }
 
 :host-context(.no-webp) .masthead {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 4.5rem);
   background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%,
     rgba(57, 82, 58, 0.8) 100%),
   url("^./assets/img/330-1021-lores.jpg"), rgba(53,118,68,255);
@@ -28,13 +24,15 @@
 
 .masthead {
   height: 100vh;
+  padding-top: 4rem;
+  padding-bottom: 1rem;
 }
 
 @media (min-width: 992px) {
   .masthead {
     min-height: 40rem;
-    padding-top: 4.5rem;
-    padding-bottom: 0;
+    padding-top: 8rem;
+    padding-bottom: 2rem;
   }
   .masthead p {
     font-size: 1.15rem;
@@ -79,4 +77,8 @@
   max-height: 300px;
 }
 
+.masthead .mutu4l-text-logo {
+  max-width: 100px;
+  width: 40%;
+}
 
