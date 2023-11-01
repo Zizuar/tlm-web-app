@@ -1,12 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription, tap } from 'rxjs';
+import { Observable, Subscription, take, tap } from "rxjs";
 import { faPlusSquare, IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DashEventsNewEventModalComponent } from './dash-events-new-event-modal/dash-events-new-event-modal.component';
 import { Store } from '@ngrx/store';
 import { ExistingScheduledEvent } from "../../../../core/models/scheduled-event.model";
 import { selectEventsAscendingByDate, selectEventsFetched } from "../../../../store/events/events.selectors";
-import { fetchEvents } from "../../../../store/events/events.actions";
+import { fetchEvents, removeEventsById } from "../../../../store/events/events.actions";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { DeleteConfirmDialogResult, DeleteConfirmModalComponent } from "../../../../components/delete-confirm-modal/delete-confirm-modal.component";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-dash-events',
@@ -20,8 +23,10 @@ export class DashEventsComponent implements OnInit, OnDestroy {
   pageSizeOptions = [10, 25, 50];
 
   plusSquare: IconDefinition = faPlusSquare;
+  deleteIcon: IconDefinition = faTrash;
 
   events: Observable<ExistingScheduledEvent[]> = this.store.select(selectEventsAscendingByDate);
+  pastEvents: ExistingScheduledEvent[] = [];
 
   private readonly mainSub = new Subscription();
 
@@ -40,6 +45,13 @@ export class DashEventsComponent implements OnInit, OnDestroy {
         )
         .subscribe()
     );
+    this.mainSub.add(
+      this.events.pipe(
+        tap((events) => {
+          this.pastEvents = events.filter((event) => event.date < new Date());
+        })
+      ).subscribe()
+    );
   }
 
   openNewEventModal() {
@@ -51,6 +63,27 @@ export class DashEventsComponent implements OnInit, OnDestroy {
   pageSizeChange(event: Event) {
     const input = event.target as HTMLInputElement;
     this.pageSize = Number(input.value ?? '10');
+  }
+
+  async openDeleteOldEventsConfirm() {
+    try {
+      const modal = this.modalService.open(DeleteConfirmModalComponent);
+      modal.componentInstance.itemType = 'past events';
+      const result = await modal.result;
+      if (result === DeleteConfirmDialogResult.DELETE) {
+        this.deleteOldEvents();
+      }
+    } catch (e) {
+      console.log('Dialog closed without answer');
+    }
+  }
+
+  deleteOldEvents() {
+    const idArray = this.pastEvents.map((event) => event._id);
+    if (idArray.length === 0) {
+      return;
+    }
+    this.store.dispatch(removeEventsById({ idArray }));
   }
 
   ngOnDestroy() {

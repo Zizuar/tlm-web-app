@@ -8,6 +8,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { DeleteConfirmModalComponent } from './delete-confirm-modal/delete-confirm-modal.component';
 import { ToastsContainerComponent } from './toasts-container/toasts-container.component';
 import { ClickStopPropagationDirective } from "../directives/click-stop-propagation.directive";
+import { LoadingProgressbarModalComponent } from './loading-progressbar/loading-progressbar-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ClickStopPropagationDirective } from "../directives/click-stop-propagat
     DeleteConfirmModalComponent,
     ToastsContainerComponent,
     ClickStopPropagationDirective,
+    LoadingProgressbarModalComponent,
   ],
   imports: [CommonModule, NgbModule, FontAwesomeModule, RouterModule],
   exports: [

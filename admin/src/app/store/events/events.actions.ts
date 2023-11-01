@@ -10,6 +10,8 @@ export enum EventsActionTypes {
   UPDATE_EVENT_COMPLETED = '[Events] Update event completed',
   REMOVE_EVENT = '[Events] Remove event',
   REMOVE_EVENT_COMPLETED = '[Events] Remove event completed',
+  REMOVE_PAST_EVENTS = '[Events] Remove past events',
+  REMOVE_PAST_EVENTS_COMPLETED = '[Events] Remove past events completed',
 }
 
 export const fetchEvents = createAction(EventsActionTypes.FETCH_EVENTS);
@@ -36,3 +38,8 @@ export const removeEvent = createAction(EventsActionTypes.REMOVE_EVENT, props<{ 
 export type RemoveEvent = ReturnType<typeof removeEvent>;
 
 export const removeEventCompleted = createAction(EventsActionTypes.REMOVE_EVENT_COMPLETED);
+
+export const removeEventsById = createAction(EventsActionTypes.REMOVE_PAST_EVENTS, props<{ idArray: string[] }>());
+export type RemoveEventsById = ReturnType<typeof removeEventsById>
+
+export const removeEventsByIdCompleted = createAction(EventsActionTypes.REMOVE_PAST_EVENTS_COMPLETED);

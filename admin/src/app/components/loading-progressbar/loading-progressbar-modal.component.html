@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <h4 class="modal-title">Please wait</h4>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-12">
+      <ngb-progressbar type="success" [value]="(progressPct | async) || 0" [striped]="true"></ngb-progressbar>
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col-12">
+      <p class="text-center mb-2">{{(progress$ | async) || 0}}/{{totalNumber}}</p>
+      <p class="text-center">We are processing your request. Please wait...</p>
+    </div>
+  </div>
+</div>
