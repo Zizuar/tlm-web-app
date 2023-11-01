@@ -11,9 +11,12 @@ import { ToastService } from './toast.service';
   providedIn: 'root',
 })
 export class EventsService extends ApiBaseService {
-  eventsApiUrl = `${environment.apiBaseUrl}/v1/events`;
+  eventsApiUrl = `${environment.apiBaseUrl}/v1/events?futureOnly=true`;
 
-  constructor(private readonly http: HttpClient, toastService: ToastService) {
+  constructor(
+    private readonly http: HttpClient,
+    toastService: ToastService,
+  ) {
     super(toastService);
   }
 
@@ -26,8 +29,8 @@ export class EventsService extends ApiBaseService {
             date: new Date(apiEvent.date),
             createdAt: new Date(apiEvent.createdAt),
           };
-        })
-      )
+        }),
+      ),
     );
   }
 

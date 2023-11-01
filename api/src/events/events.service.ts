@@ -43,6 +43,10 @@ export class EventsService {
     return await this.eventModel.find().exec();
   }
 
+  async findFuture(): Promise<Event[]> {
+    return await this.eventModel.find({ date: { $gte: new Date() } }).exec();
+  }
+
   async findOne(id: string): Promise<Event> {
     return await this.eventModel.findById(id).exec();
   }

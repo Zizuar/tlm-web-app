@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Query } from '@nestjs/common';
 import { EventsService } from './events.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
@@ -18,7 +18,10 @@ export class EventsController {
   }
 
   @Get()
-  findAll() {
+  findAll(@Query('futureOnly') futureOnly: string) {
+    if (futureOnly?.toLocaleLowerCase() === 'true') {
+      return this.eventsService.findFuture();
+    }
     return this.eventsService.findAll();
   }
 
