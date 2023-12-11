@@ -1,5 +1,3 @@
-<app-release-details-order-info *ngIf="release.orderEnabled"></app-release-details-order-info>
-<app-release-details-merch-info *ngIf="release.merchEnabled"></app-release-details-merch-info>
 <section id="links" *ngIf="release.linksArray">
   <div class="col-12 mt-5" *ngFor="let links of release.linksArray">
     <div class="card mb-3 shadow">
@@ -12,3 +10,5 @@
     </div>
   </div>
 </section>
+<app-release-details-order-info *ngIf="release.orderEnabled"></app-release-details-order-info>
+<app-release-details-merch-info *ngIf="release.merchEnabled"></app-release-details-merch-info>

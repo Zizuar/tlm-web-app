@@ -14,6 +14,7 @@ import { StreamingIconComponent } from './release-details/components/release-det
 import { ReleaseDetailsMerchInfoComponent } from './release-details/components/release-details-merch-info/release-details-merch-info.component';
 import { ReleaseDetailsOrderInfoComponent } from './release-details/components/release-details-order-info/release-details-order-info.component';
 import { AlbumTracklistComponent } from './release-details/pages/release-details-album-info/album-tracklist/album-tracklist.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,6 @@ import { AlbumTracklistComponent } from './release-details/pages/release-details
     ReleaseDetailsOrderInfoComponent,
     AlbumTracklistComponent,
   ],
-  imports: [CommonModule, SharedComponentsModule, RouterModule],
+  imports: [CommonModule, SharedComponentsModule, RouterModule, FontAwesomeModule],
 })
 export class ReleasesModule {}

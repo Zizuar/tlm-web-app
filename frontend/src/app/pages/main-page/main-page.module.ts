@@ -13,6 +13,7 @@ import { LatestReleasesModule } from './latest-releases/latest-releases.module';
 import { UpcomingReleasesComponent } from './upcoming-releases/upcoming-releases.component';
 import { CountdownComponent } from './masthead/countdown/countdown.component';
 import { Mutu4lComponent } from './mutu4l/mutu4l.component';
+import { MerchStoreModule } from '../merch-store/merch-store.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { Mutu4lComponent } from './mutu4l/mutu4l.component';
     FontAwesomeModule,
     NgbModule,
     LatestReleasesModule,
+    MerchStoreModule,
   ],
   exports: [],
 })

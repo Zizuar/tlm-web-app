@@ -40,6 +40,6 @@ import { RouterModule } from '@angular/router';
     NgbPopoverModule,
     RouterModule,
   ],
-  exports: [ProductsListItemComponent],
+  exports: [ProductsListItemComponent, MerchPromoComponent],
 })
 export class MerchStoreModule {}

@@ -1,4 +1,4 @@
 <app-release-details-streaming-icons *ngIf="release.releaseDate <= today" [links]="release.links"></app-release-details-streaming-icons>
+<app-album-tracklist *ngIf="release.tracklist" [tracklist]="release.tracklist"></app-album-tracklist>
 <app-release-details-order-info *ngIf="release.orderEnabled"></app-release-details-order-info>
 <app-release-details-merch-info *ngIf="release.merchEnabled"></app-release-details-merch-info>
-<app-album-tracklist *ngIf="release.tracklist" [tracklist]="release.tracklist"></app-album-tracklist>
