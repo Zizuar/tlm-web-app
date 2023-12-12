@@ -1,18 +1,24 @@
+.masthead {
+  height: 100vh;
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+}
+
 :host-context(.webp) .masthead {
-  background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%,
-    rgba(57, 82, 58, 0.8) 100%),
-  url("^./assets/img/330-1021-lores.webp"), rgba(53,118,68,255);
-  background-position: center;
+  background:
+    linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%, rgba(57, 82, 58, 0.8) 100%),
+    url("^./assets/img/bg-masthead-202312-square-lores.webp"), rgba(53,118,68,255);
+  background-position: center top;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
 
 :host-context(.no-webp) .masthead {
-  background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%,
-    rgba(57, 82, 58, 0.8) 100%),
-  url("^./assets/img/330-1021-lores.jpg"), rgba(53,118,68,255);
-  background-position: center;
+  background:
+    linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%, rgba(57, 82, 58, 0.8) 100%),
+    url("^./assets/img/bg-masthead-202312-square-lores.jpg"), rgba(53,118,68,255);
+  background-position: center top;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
@@ -20,12 +26,6 @@
 
 .masthead h1 {
   font-size: 2.25rem;
-}
-
-.masthead {
-  height: 100vh;
-  padding-top: 4rem;
-  padding-bottom: 1rem;
 }
 
 .jumbotron-guitar {
@@ -36,9 +36,49 @@
   .jumbotron-guitar {
     max-height: 200px;
   }
+
+  :host-context(.webp) .masthead {
+    background:
+      linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%, rgba(57, 82, 58, 0.8) 100%),
+      url("^./assets/img/bg-masthead-202312-square-midres.webp"), rgba(53,118,68,255);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+  }
+
+  :host-context(.no-webp) .masthead {
+    background:
+      linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%, rgba(57, 82, 58, 0.8) 100%),
+      url("^./assets/img/bg-masthead-202312-square-midres.jpg"), rgba(53,118,68,255);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+  }
 }
 
 @media (min-width: 992px) {
+  :host-context(.webp) .masthead {
+    background:
+      linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%, rgba(57, 82, 58, 0.8) 100%),
+      url("^./assets/img/bg-masthead-202312-square-hires.webp"), rgba(53,118,68,255);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+  }
+
+  :host-context(.no-webp) .masthead {
+    background:
+      linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%, rgba(57, 82, 58, 0.8) 100%),
+      url("^./assets/img/bg-masthead-202312-square-hires.jpg"), rgba(53,118,68,255);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+  }
+
   .masthead {
     min-height: 40rem;
     padding-top: 8rem;
@@ -59,27 +99,28 @@
 
 @media (min-width: 1450px) {
   :host-context(.webp) .masthead {
-    padding-top: 10rem;
-    padding-bottom: calc(10rem - 4.5rem);
-    background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%,
-      rgba(57, 82, 58, 0.8) 100%),
-    url("^./assets/img/330-1021-hires.webp"), rgba(53,118,68,255);
-    background-position: center;
+    background:
+      linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%, rgba(57, 82, 58, 0.8) 100%),
+      url("^./assets/img/bg-masthead-202312-square-ultra.webp"), rgba(53,118,68,255);
+    background-position: center top;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
   }
 
   :host-context(.no-webp) .masthead {
-    padding-top: 10rem;
-    padding-bottom: calc(10rem - 4.5rem);
-    background: linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%,
-      rgba(57, 82, 58, 0.8) 100%),
-    url("^./assets/img/330-1021-hires.jpg"), rgba(53,118,68,255);
-    background-position: center;
+    background:
+      linear-gradient(to bottom, rgba(57, 82, 58, 0.7) 0%, rgba(57, 82, 58, 0.8) 100%),
+      url("^./assets/img/bg-masthead-202312-square-ultra.jpg"), rgba(53,118,68,255);
+    background-position: center top;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
+  }
+
+  .masthead {
+    padding-top: 10rem;
+    padding-bottom: calc(10rem - 4.5rem);
   }
 }
 
@@ -88,3 +129,21 @@
   width: 40%;
 }
 
+@media (min-height: 712px) {
+  .masthead .mutu4l-text-logo {
+    max-width: 150px;
+  }
+}
+
+@media (min-height: 846px) {
+  .masthead .mutu4l-text-logo {
+    max-width: 200px;
+  }
+}
+
+
+@media (min-height: 1024px) {
+  .masthead .mutu4l-text-logo {
+    max-width: 250px;
+  }
+}
