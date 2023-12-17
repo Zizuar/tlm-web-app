@@ -4,6 +4,7 @@ import {
   faFacebook,
   faInstagram,
   faSpotify,
+  faThreads,
   faTiktok,
   faTwitch,
   faTwitter,
@@ -41,6 +42,11 @@ export class SocialsService {
       name: 'Instagram',
       icon: faInstagram,
       url: 'https://www.instagram.com/tylerlevs/',
+    },
+    {
+      name: 'Threads',
+      icon: faThreads,
+      url: 'https://www.threads.net/@tylerlevs',
     },
     {
       name: 'Tiktok',

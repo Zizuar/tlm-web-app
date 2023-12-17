@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
-import { faDiscord, faFacebook, faInstagram, faTiktok, faTwitch, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import {
+  faDiscord,
+  faFacebook,
+  faInstagram,
+  faTiktok,
+  faTwitch,
+  faTwitter,
+  faThreads,
+} from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { Observable, of } from 'rxjs';
 
@@ -47,15 +55,16 @@ export class ContactsService {
       username: 'tylerlevs',
     },
     {
+      name: 'Threads',
+      icon: faThreads,
+      url: 'https://www.threads.net/@tylerlevs',
+      username: '@tylerlevs',
+    },
+    {
       name: 'Facebook',
       icon: faFacebook,
       url: 'https://www.facebook.com/tylerlevs',
       username: 'tylerlevs',
-    },
-    {
-      name: 'Hive',
-      svg: 'assets/img/beehive-icon.svg',
-      username: '@tylerlevs',
     },
     {
       name: 'Email',
