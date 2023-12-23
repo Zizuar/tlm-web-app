@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { EventsPageComponent } from './pages/events-page/events-page.component';
+import { BioPageComponent } from './pages/bio-page/bio-page.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'events',
     component: EventsPageComponent,
+  },
+  {
+    path: 'about',
+    component: BioPageComponent,
   },
 ];
 

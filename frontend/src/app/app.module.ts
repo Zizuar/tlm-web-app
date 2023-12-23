@@ -26,9 +26,10 @@ import { releasesReducer } from './store/releases/releases.reducer';
 import { ReleasesEffects } from './store/releases/releases.effects';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { EventsPageComponent } from './pages/events-page/events-page.component';
+import { BioPageComponent } from './pages/bio-page/bio-page.component';
 
 @NgModule({
-  declarations: [AppComponent, ContactPageComponent, EventsPageComponent],
+  declarations: [AppComponent, ContactPageComponent, EventsPageComponent, BioPageComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

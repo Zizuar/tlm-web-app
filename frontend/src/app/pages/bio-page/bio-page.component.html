@@ -1,0 +1,14 @@
+<app-header pageType="sub"></app-header>
+<section class="page-section bio-page-container">
+  <div class="d-flex justify-content-center align-items-center mb-4">
+    <img class="bio-page-guitar"
+         src="assets/svg/guitar-logo-green.svg"
+         alt="Guitar logo with Tyler Levs text in it">
+  </div>
+  <div class="d-flex flex-column justify-content-center align-items-center mb-4">
+    <a class="btn btn-xl btn-primary" routerLink="/">To main page</a>
+  </div>
+  <app-bio [isSubPage]="true"></app-bio>
+  <app-contacts></app-contacts>
+  <app-merch-promo></app-merch-promo>
+</section>

@@ -35,8 +35,8 @@
         "type": 302
       },
       {
-        "source": "/about",
-        "destination": "/#about",
+        "source": "/bio",
+        "destination": "/about",
         "type": 302
       },
       {
@@ -76,11 +76,6 @@
       },
       {
         "source": "/through-the-valley",
-        "destination": "/releases/songs/through-the-valley",
-        "type": 302
-      },
-      {
-        "source": "/throughthevalley",
         "destination": "/releases/songs/through-the-valley",
         "type": 302
       },

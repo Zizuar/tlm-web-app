@@ -3,6 +3,7 @@ Allow: /
 Allow: /releases
 Allow: /events
 Allow: /contact
+Allow: /about
 Allow: /press
 Allow: /store
 Disallow: /cdn-cgi
