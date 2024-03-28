@@ -32,7 +32,7 @@
     "@sendinblue/client": "^3.3.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
-    "express": "^4.18.2",
+    "express": "^4.19.2",
     "express-mongo-sanitize": "^2.2.0",
     "helmet": "^7.0.0",
     "jwks-rsa": "^3.0.1",
