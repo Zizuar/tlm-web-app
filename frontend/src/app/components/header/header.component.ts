@@ -19,14 +19,14 @@ export class HeaderComponent implements OnDestroy {
   constructor(
     private readonly renderer2: Renderer2,
     private readonly viewportScroller: ViewportScroller,
-    private readonly router: Router
+    private readonly router: Router,
   ) {
     this.listener = this.renderer2.listen(
       'window',
       'scroll',
       throttle(() => {
         this.scrolled = this.getYPosition() > 0;
-      }, 200)
+      }, 200),
     );
   }
 
@@ -40,6 +40,7 @@ export class HeaderComponent implements OnDestroy {
     } else {
       this.router.navigate(['/'], { state: { scrollToFragment: section } });
     }
+    this.isMenuCollapsed = true;
   }
 
   ngOnDestroy() {

@@ -43,8 +43,17 @@ export class EventsService {
     return await this.eventModel.find().exec();
   }
 
+  /**
+   * Find all events that are either in the future, ended less than 12 hours ago, or started less than 12 hours ago.
+   */
   async findFuture(): Promise<Event[]> {
-    return await this.eventModel.find({ date: { $gte: new Date() } }).exec();
+    const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1000);
+
+    return await this.eventModel
+      .find({
+        $or: [{ endDate: { $exists: true, $gte: twelveHoursAgo } }, { date: { $gte: twelveHoursAgo } }],
+      })
+      .exec();
   }
 
   async findOne(id: string): Promise<Event> {

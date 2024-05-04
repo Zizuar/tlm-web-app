@@ -31,7 +31,7 @@
         <a class="nav-link press-header" routerLink="/">Levs</a>
       </li>
       <li class="nav-item" *ngIf="pageType !== 'press'">
-        <a class="nav-link" (click)="handleFragmentLink('about')">Bio</a>
+        <a class="nav-link" (click)="handleFragmentLink('events')">Events</a>
       </li>
       <li class="nav-item" *ngIf="pageType !== 'press'">
         <a class="nav-link" (click)="handleFragmentLink('contact')">Contact</a>
@@ -56,6 +56,7 @@
           <ul class="navbar-nav ml-auto my-2 my-lg-0" *ngIf="pageType !== 'press'">
             <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('upcoming-releases')">Upcoming releases</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/releases">Latest Releases</a></li>
+            <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('events')">Events</a></li>
             <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('twitch')">Twitch</a></li>
             <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('youtube')">Youtube</a></li>
             <li class="nav-item"><a class="nav-link" (click)="handleFragmentLink('about')">Bio</a></li>
