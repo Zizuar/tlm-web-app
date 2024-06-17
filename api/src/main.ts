@@ -2,11 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter, NestExpressApplication } from '@nestjs/platform-express';
 import * as express from 'express';
 import * as mongoSanitize from 'express-mongo-sanitize';
+import * as dotenv from 'dotenv';
 
 // api function
 import { AppModule } from './app.module';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import helmet from 'helmet';
+
+dotenv.config();
 
 const apiServer: express.Express = express();
 

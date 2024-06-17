@@ -23,7 +23,10 @@ import { ServicesModule } from './services/services.module';
     ProductsModule,
     ScheduleModule,
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.DATABASE_URL),
+    MongooseModule.forRoot(process.env.DATABASE_URL, {
+      retryWrites: true,
+      w: 'majority',
+    }),
     AuthzModule,
     UsersModule,
   ],

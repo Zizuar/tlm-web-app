@@ -1,0 +1,19 @@
+{
+  "name": "tlm-web-app",
+  "description": "TylerLevsMusic web application",
+  "author": "Gabor Meszaros <reklam11@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MikeSierra88/tlm-web-app.git"
+  },
+  "private": true,
+  "scripts": {
+    "start": "concurrently --kill-others -n api,frontend,admin -c red,green,blue \"npm run api:dev\"  \"npm run frontend:dev\" \"npm run admin:dev\"",
+    "api:dev": "cd api && npm run start:dev",
+    "frontend:dev": "cd frontend && npm run start",
+    "admin:dev": "cd admin && npm run start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
