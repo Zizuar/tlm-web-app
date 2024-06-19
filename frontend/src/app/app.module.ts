@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,9 +30,9 @@ import { BioPageComponent } from './pages/bio-page/bio-page.component';
 
 @NgModule({
   declarations: [AppComponent, ContactPageComponent, EventsPageComponent, BioPageComponent],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
@@ -50,7 +50,6 @@ import { BioPageComponent } from './pages/bio-page/bio-page.component';
     }),
     EffectsModule.forRoot([ScheduleEffects, ProductsEffects, EventsEffects, PressReleasesEffects, ReleasesEffects]),
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
 })
 export class AppModule {}

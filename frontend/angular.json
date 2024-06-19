@@ -80,10 +80,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "tlm-web-app:build:production"
+              "buildTarget": "tlm-web-app:build:production"
             },
             "development": {
-              "browserTarget": "tlm-web-app:build:development"
+              "buildTarget": "tlm-web-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -91,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tlm-web-app:build"
+            "buildTarget": "tlm-web-app:build"
           }
         },
         "test": {

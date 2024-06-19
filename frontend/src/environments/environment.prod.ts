@@ -4,7 +4,7 @@ export const environment: Environment = {
   production: true,
   baseUrl: 'https://tylerlevs.com',
   recaptcha: {
-    sitekey: '6Ley8FwaAAAAAKrEXqlKLPkKivxIkfVN6VnnoHP7',
+    sitekey: '0x4AAAAAAAc3y2pkAgMlYpQ-',
   },
   apiBaseUrl: 'https://api.tylerlevs.com',
   coversAssetUrl: 'https://covers.tylerlevs.com',

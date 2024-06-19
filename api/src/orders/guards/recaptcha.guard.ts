@@ -12,8 +12,12 @@ export class RecaptchaGuard implements CanActivate {
     if (body.captcha === undefined || body.captcha === '' || body.captcha === null) {
       throw new ForbiddenException('You need to complete the captcha challenge to submit an order!');
     }
-    const verificationURL = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${body['captcha']}`;
-    const { data } = await lastValueFrom(this.http.post(verificationURL));
+
+    const verificationURL = `https://challenges.cloudflare.com/turnstile/v0/siteverify`;
+    const { data } = await lastValueFrom(
+      this.http.post(verificationURL, { secret: process.env.RECAPTCHA_SECRET, response: body.captcha }),
+    );
+
     if (!data.success) {
       throw new ForbiddenException('Captcha verification unsuccessful');
     }

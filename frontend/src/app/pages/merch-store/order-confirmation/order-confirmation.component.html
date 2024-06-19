@@ -43,9 +43,13 @@
   <form (ngSubmit)="confirmForm.form.valid && submitOrder()" #confirmForm="ngForm"
         class="d-flex justify-content-center flex-wrap">
     <div class="col-12 col-md-9 mb-3 d-flex justify-content-center flex-wrap">
-      <re-captcha name="captcha" [(ngModel)]="formData.captcha" [siteKey]="recaptchaSiteKey" #captcha="ngModel"
-                  [ngClass]="{ 'is-invalid': confirmForm.submitted && captcha.invalid, 'is-valid': captcha.dirty && captcha.valid }"
-                  required></re-captcha>
+      <ngx-turnstile name="captcha"
+                     #captcha="ngModel"
+                     [siteKey]="recaptchaSiteKey"
+                     theme="light"
+                     [(ngModel)]="formData.captcha"
+                     [ngClass]="{ 'is-invalid': confirmForm.submitted && captcha.invalid, 'is-valid': captcha.dirty && captcha.valid }"
+                     required></ngx-turnstile>
       <div class="invalid-feedback text-center">
         You must complete the Captcha challenge before submitting!
       </div>

@@ -11,6 +11,7 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
+  "plugins": ["@ngrx"],
   "overrides": [
     {
       "files": [
@@ -25,7 +26,8 @@
       "extends": [
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "plugin:@ngrx/all"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
@@ -60,14 +62,6 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {}
-    },
-    {
-      "files": [
-        "*.ts"
-      ],
-      "extends": [
-        "plugin:ngrx/recommended"
-      ]
     }
   ]
 }

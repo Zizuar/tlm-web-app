@@ -1,6 +1,6 @@
 {
   "name": "tlm-api",
-  "version": "1.10.1",
+  "version": "1.11.0",
   "description": "REST API for the TylerLevsMusic web app",
   "author": "Gabor Meszaros",
   "private": true,
@@ -21,6 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@getbrevo/brevo": "^2.2.0",
     "@nestjs/axios": "^3.0.2",
     "@nestjs/common": "^10.3.9",
     "@nestjs/config": "^3.2.2",
@@ -29,7 +30,6 @@
     "@nestjs/mongoose": "^10.0.6",
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-express": "^10.3.9",
-    "@sendinblue/client": "^3.3.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "express": "^4.19.2",

@@ -8,7 +8,7 @@ export const environment: Environment = {
   production: false,
   baseUrl: 'http://localhost:4200',
   recaptcha: {
-    sitekey: '6Ley8FwaAAAAAKrEXqlKLPkKivxIkfVN6VnnoHP7',
+    sitekey: '3x00000000000000000000FF',
   },
   apiBaseUrl: 'http://localhost:3000',
   coversAssetUrl: 'https://covers.tylerlevs.com',
