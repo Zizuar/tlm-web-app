@@ -67,6 +67,6 @@ export class ReleasesService {
   }
 
   async remove(id: string) {
-    return await this.releaseModel.findByIdAndRemove(id).exec();
+    return await this.releaseModel.findByIdAndDelete(id).exec();
   }
 }

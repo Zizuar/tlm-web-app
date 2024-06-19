@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import dayjs from 'dayjs';
 import { NgbActiveModal, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faCalendarDay, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { ExistingPressRelease } from "../../../../../core/models/press-release.model";
 import { updatePressRelease } from "../../../../../store/press-releases/press-releases.actions";
+import {DateUtils} from "../../../../../utils/DateUtils";
 
 @Component({
   selector: 'app-dash-press-edit-prelease-modal',
@@ -14,8 +15,6 @@ import { updatePressRelease } from "../../../../../store/press-releases/press-re
 })
 export class DashPressEditPreleaseModalComponent implements OnInit {
   @Input() pressRelease!: ExistingPressRelease;
-
-  moment = moment;
 
   formDate: NgbDateStruct | undefined;
 
@@ -26,7 +25,7 @@ export class DashPressEditPreleaseModalComponent implements OnInit {
   constructor(public readonly activeModal: NgbActiveModal, private readonly store: Store) {}
 
   ngOnInit() {
-    const tzDate = moment(this.pressRelease.releaseAfter);
+    const tzDate = dayjs.utc(this.pressRelease.releaseAfter);
     this.formDate = {
       year: tzDate.year(),
       month: tzDate.month() + 1,
@@ -55,7 +54,7 @@ export class DashPressEditPreleaseModalComponent implements OnInit {
   }
 
   saveNewPressRelease() {
-    this.pressRelease.releaseAfter = this.buildDate();
+    this.pressRelease.releaseAfter = DateUtils.buildDateFromFormData(this.formDate);
     this.store.dispatch(
       updatePressRelease({
         updatedPressRelease: this.pressRelease,
@@ -67,15 +66,5 @@ export class DashPressEditPreleaseModalComponent implements OnInit {
   // This is needed for the array of primitive strings in the form
   trackByFn(index: any) {
     return index;
-  }
-
-  private buildDate(): Date {
-    // build date from datepicker data
-    const momentDate = this.moment.utc(
-      `${this.formDate?.year}-${this.formDate?.month.toString().padStart(2, '0')}-${this.formDate?.day
-        .toString()
-        .padStart(2, '0')}`
-    );
-    return momentDate.toDate();
   }
 }

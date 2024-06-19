@@ -7,5 +7,5 @@ export const selectProducts = createSelector(selectProductsFeatureState, (state:
 
 export const selectProductsFetched = createSelector(
   selectProductsFeatureState,
-  (state: ProductsState) => state.productsFetched
+  (state: ProductsState) => state.productsFetched,
 );

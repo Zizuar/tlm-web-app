@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import * as moment from 'moment';
+import dayjs from 'dayjs';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +19,7 @@ import { removePressRelease } from "../../../../../store/press-releases/press-re
   styleUrls: ['./dash-press-list-item.component.scss'],
 })
 export class DashPressListItemComponent {
-  moment = moment;
+  dayjs = dayjs;
 
   @Input() pressRelease!: ExistingPressRelease;
 

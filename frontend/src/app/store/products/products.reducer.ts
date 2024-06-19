@@ -21,7 +21,7 @@ const productsReducerInternal = createReducer(
       products,
       productsFetched: true,
     };
-  })
+  }),
 );
 
 export function productsReducer(state: ProductsState | undefined, action: Action): ProductsState {

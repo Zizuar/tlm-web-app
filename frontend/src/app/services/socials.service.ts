@@ -7,7 +7,7 @@ import {
   faThreads,
   faTiktok,
   faTwitch,
-  faTwitter,
+  faXTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 import { Observable, of } from 'rxjs';
@@ -34,9 +34,9 @@ export class SocialsService {
       url: 'https://www.facebook.com/tylerlevs',
     },
     {
-      name: 'Twitter',
-      icon: faTwitter,
-      url: 'https://twitter.com/tyler_levs',
+      name: 'X',
+      icon: faXTwitter,
+      url: 'https://x.com/tyler_levs',
     },
     {
       name: 'Instagram',

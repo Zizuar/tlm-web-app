@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as moment from 'moment/moment';
+import dayjs from 'dayjs';
 import { Social, SocialsService } from '../../services/socials.service';
 import { Observable } from 'rxjs';
 import packageJson from '../../../../package.json';
@@ -11,7 +11,7 @@ import packageJson from '../../../../package.json';
 })
 export class FooterComponent {
   socials: Observable<Social[]> = this.socialsService.getSocials();
-  year: number = moment().year();
+  year: number = dayjs().year();
   version: string = packageJson.version;
 
   constructor(private readonly socialsService: SocialsService) {}

@@ -16,5 +16,10 @@ export const selectFutureEvents = createSelector(selectEventsFeatureState, (stat
 
 export const selectEventsFetched = createSelector(
   selectEventsFeatureState,
-  (state: EventsState) => state.eventsFetched
+  (state: EventsState) => state.eventsFetched,
+);
+
+export const selectShowEventsInBrowserTimezone = createSelector(
+  selectEventsFeatureState,
+  (state: EventsState) => state.showEventsInBrowserTimezone,
 );

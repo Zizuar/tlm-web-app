@@ -7,7 +7,10 @@ import { of, switchMap } from 'rxjs';
 
 @Injectable()
 export class ScheduleEffects {
-  constructor(private readonly actions$: Actions, private readonly scheduleService: StreamingScheduleService) {}
+  constructor(
+    private readonly actions$: Actions,
+    private readonly scheduleService: StreamingScheduleService,
+  ) {}
 
   fetchSchedule$ = createEffect(() => {
     return this.actions$.pipe(
@@ -15,7 +18,7 @@ export class ScheduleEffects {
       switchMap(() => this.scheduleService.getSchedule()),
       switchMap((schedule) => {
         return of(scheduleActions.fetchScheduleCompleted({ schedule }));
-      })
+      }),
     );
   });
 }

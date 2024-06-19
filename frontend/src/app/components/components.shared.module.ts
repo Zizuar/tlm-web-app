@@ -18,6 +18,7 @@ import { DeleteConfirmModalComponent } from './delete-confirm-modal/delete-confi
 import { EventsListComponent } from './events-list/events-list.component';
 import { EventItemComponent } from './events-list/event-item/event-item.component';
 import { ToastsContainerComponent } from './toasts-container/toasts-container.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { ToastsContainerComponent } from './toasts-container/toasts-container.co
     EventItemComponent,
     ToastsContainerComponent,
   ],
-  imports: [CommonModule, NgbModule, FontAwesomeModule, RouterModule],
+  imports: [CommonModule, NgbModule, FontAwesomeModule, RouterModule, FormsModule],
   exports: [
     HeaderComponent,
     FooterComponent,

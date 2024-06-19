@@ -16,7 +16,7 @@ export class ReleaseDetailsComponent {
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly store: Store,
-    private readonly router: Router
+    private readonly router: Router,
   ) {
     this.release = combineLatest([this.store.select(selectPastReleases), this.activatedRoute.params]).pipe(
       switchMap(([releases, params]) => {
@@ -25,7 +25,7 @@ export class ReleaseDetailsComponent {
           this.router.navigate(['releases']);
         }
         return of(release);
-      })
+      }),
     );
   }
 }

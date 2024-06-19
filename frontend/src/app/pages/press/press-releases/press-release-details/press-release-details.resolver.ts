@@ -8,8 +8,11 @@ import { ExistingPressRelease } from '../../../../core/models/press-release.mode
 @Injectable({
   providedIn: 'root',
 })
-export class PressReleaseDetailsResolver  {
-  constructor(private readonly pressReleasesService: PressReleaseService, private readonly router: Router) {}
+export class PressReleaseDetailsResolver {
+  constructor(
+    private readonly pressReleasesService: PressReleaseService,
+    private readonly router: Router,
+  ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ExistingPressRelease | null> {
     return this.pressReleasesService.getPressReleases().pipe(
@@ -20,7 +23,7 @@ export class PressReleaseDetailsResolver  {
         }
         this.router.navigateByUrl('/press', { replaceUrl: true });
         return null;
-      })
+      }),
     );
   }
 }

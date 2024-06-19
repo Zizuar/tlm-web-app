@@ -30,7 +30,7 @@ export class MainPageComponent implements AfterContentInit {
     private readonly activatedRoute: ActivatedRoute,
     private readonly viewportScroller: ViewportScroller,
     private readonly store: Store,
-    private readonly router: Router
+    private readonly router: Router,
   ) {
     // fetch releases if not fetched yet
     this.store

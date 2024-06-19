@@ -46,13 +46,13 @@ export class CountdownComponent implements OnInit, OnDestroy {
   private allocateTimeUnits(timeDifference: number) {
     this.secondsToReleaseDate = Math.floor((timeDifference / this.milliSecondsInASecond) % this.SecondsInAMinute);
     this.minutesToReleaseDate = Math.floor(
-      (timeDifference / (this.milliSecondsInASecond * this.minutesInAnHour)) % this.SecondsInAMinute
+      (timeDifference / (this.milliSecondsInASecond * this.minutesInAnHour)) % this.SecondsInAMinute,
     );
     this.hoursToReleaseDate = Math.floor(
-      (timeDifference / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute)) % this.hoursInADay
+      (timeDifference / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute)) % this.hoursInADay,
     );
     this.daysToReleaseDate = Math.floor(
-      timeDifference / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay)
+      timeDifference / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay),
     );
   }
 }

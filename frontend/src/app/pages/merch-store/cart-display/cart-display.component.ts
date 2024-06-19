@@ -28,7 +28,10 @@ export class CartDisplayComponent implements OnChanges {
   shipping = 0;
   total = 0;
 
-  constructor(private readonly merchStoreService: MerchStoreService, private readonly config: NgbPopoverConfig) {
+  constructor(
+    private readonly merchStoreService: MerchStoreService,
+    private readonly config: NgbPopoverConfig,
+  ) {
     config.triggers = 'hover click';
   }
 

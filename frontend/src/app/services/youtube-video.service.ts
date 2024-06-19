@@ -43,7 +43,7 @@ export class YoutubeVideoService {
     const response = await fetch(
       `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(reqURL)}${this.CHANNEL_ID}`,
       // browser default headers cause CORS errors in Chrome
-      { headers: new Headers() }
+      { headers: new Headers() },
     );
     const videosJson = await response.json();
     const link = videosJson.items[0].link;

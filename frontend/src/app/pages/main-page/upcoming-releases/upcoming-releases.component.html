@@ -9,9 +9,9 @@
             <div class="col">
               <div
                 class="col d-flex flex-column align-items-center justify-content-around p-3 text-white bg-primary user-select-none">
-                <div class="text-center"><h5>{{ moment(countdown.releaseDate).format('MMMM') }}</h5></div>
-                <div class="text-center"><h5>{{ moment(countdown.releaseDate).format('Do') }}</h5></div>
-                <div class="text-center"><h5>{{ moment(countdown.releaseDate).format('YYYY') }}</h5></div>
+                <div class="text-center"><h5>{{ dayjs(countdown.releaseDate).format('MMMM') }}</h5></div>
+                <div class="text-center"><h5>{{ dayjs(countdown.releaseDate).format('Do') }}</h5></div>
+                <div class="text-center"><h5>{{ dayjs(countdown.releaseDate).format('YYYY') }}</h5></div>
               </div>
               <div
                 class="countdown-card card-body d-flex flex-column justify-content-center align-items-center text-center">

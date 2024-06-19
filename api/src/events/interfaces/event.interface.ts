@@ -8,4 +8,5 @@ export interface Event extends Document {
   town: string;
   venueLink?: string;
   fbEventLink?: string;
+  timezone?: string;
 }

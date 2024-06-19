@@ -10,5 +10,5 @@ export const fetchProducts = createAction(ProductsActionTypes.FETCH_PRODUCTS);
 
 export const fetchProductsCompleted = createAction(
   ProductsActionTypes.FETCH_PRODUCTS_COMPLETED,
-  props<{ products: Product[] }>()
+  props<{ products: Product[] }>(),
 );

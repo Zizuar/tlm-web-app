@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription, tap } from 'rxjs';
-import * as moment from 'moment';
+import dayjs from 'dayjs';
 import { ExistingPressRelease } from '../../../core/models/press-release.model';
 import { Store } from '@ngrx/store';
 import {
@@ -16,7 +16,7 @@ import { fetchPressReleases } from '../../../store/press-releases/press-releases
 })
 export class PressReleasesComponent implements OnInit, OnDestroy {
   pressReleases: Observable<ExistingPressRelease[]> = this.store.select(selectPressReleases);
-  moment = moment;
+  dayjs = dayjs;
 
   private readonly subscriptions = new Subscription();
 
@@ -31,9 +31,9 @@ export class PressReleasesComponent implements OnInit, OnDestroy {
             if (!arePressReleasesFetched) {
               this.store.dispatch(fetchPressReleases());
             }
-          })
+          }),
         )
-        .subscribe()
+        .subscribe(),
     );
   }
 

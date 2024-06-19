@@ -11,7 +11,10 @@
     "start": "concurrently --kill-others -n api,frontend,admin -c red,green,blue \"npm run api:dev\"  \"npm run frontend:dev\" \"npm run admin:dev\"",
     "api:dev": "cd api && npm run start:dev",
     "frontend:dev": "cd frontend && npm run start",
-    "admin:dev": "cd admin && npm run start"
+    "admin:dev": "cd admin && npm run start",
+    "lint": "npm run lint:api && npm run lint:frontend",
+    "lint:api": "cd api && npm run lint",
+    "lint:frontend": "cd frontend && npm run lint"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

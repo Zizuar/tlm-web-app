@@ -5,11 +5,13 @@ import * as eventsActions from './events.actions';
 export interface EventsState {
   eventsFetched: boolean;
   events: ExistingScheduledEvent[];
+  showEventsInBrowserTimezone: boolean;
 }
 
 export const initialState: EventsState = {
   eventsFetched: false,
   events: [],
+  showEventsInBrowserTimezone: false,
 };
 
 const eventsReducerInternal = createReducer(
@@ -21,7 +23,14 @@ const eventsReducerInternal = createReducer(
       events: events,
       eventsFetched: true,
     };
-  })
+  }),
+
+  on(eventsActions.setShowEventsInBrowserTimezone, (state, { showEventsInBrowserTimezone }): EventsState => {
+    return {
+      ...state,
+      showEventsInBrowserTimezone,
+    };
+  }),
 );
 
 export function eventsReducer(state: EventsState | undefined, action: Action): EventsState {

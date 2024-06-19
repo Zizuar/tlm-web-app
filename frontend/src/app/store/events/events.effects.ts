@@ -7,7 +7,10 @@ import { ExistingScheduledEvent } from '../../core/models/scheduled-event.model'
 
 @Injectable()
 export class EventsEffects {
-  constructor(private readonly actions$: Actions, private readonly eventsService: EventsService) {}
+  constructor(
+    private readonly actions$: Actions,
+    private readonly eventsService: EventsService,
+  ) {}
 
   fetchEvents$ = createEffect(() => {
     return this.actions$.pipe(
@@ -17,7 +20,7 @@ export class EventsEffects {
       }),
       switchMap((events: ExistingScheduledEvent[]) => {
         return of(fetchEventsCompleted({ events }));
-      })
+      }),
     );
   });
 }

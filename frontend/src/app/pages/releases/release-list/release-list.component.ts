@@ -14,7 +14,10 @@ import { fetchReleases } from '../../../store/releases/releases.actions';
 export class ReleaseListComponent {
   releases: Observable<ExistingRelease[]>;
 
-  constructor(private activatedRoute: ActivatedRoute, private readonly store: Store) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private readonly store: Store,
+  ) {
     this.store
       .select(selectReleasesFetched)
       .pipe(take(1))
@@ -28,7 +31,7 @@ export class ReleaseListComponent {
         return this.activatedRoute.snapshot.params['category']
           ? of(releases.filter((release) => release.category === this.activatedRoute.snapshot.params['category']))
           : of(releases);
-      })
+      }),
     );
   }
 }

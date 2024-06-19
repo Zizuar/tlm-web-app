@@ -32,7 +32,7 @@ export class MerchStoreService {
   constructor(
     private readonly orderFormDataService: OrderFormDataService,
     private readonly ordersService: OrdersService,
-    private readonly productsService: ProductsService
+    private readonly productsService: ProductsService,
   ) {}
 
   getCart(): Observable<CartItem[]> {

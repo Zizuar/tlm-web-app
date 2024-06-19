@@ -6,7 +6,7 @@ import {
   faInstagram,
   faTiktok,
   faTwitch,
-  faTwitter,
+  faXTwitter,
   faThreads,
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -43,9 +43,9 @@ export class ContactsService {
       username: '@tylerlevsmusic',
     },
     {
-      name: 'Twitter',
-      icon: faTwitter,
-      url: 'https://twitter.com/tyler_levs',
+      name: 'X',
+      icon: faXTwitter,
+      url: 'https://x.com/tyler_levs',
       username: '@Tyler_Levs',
     },
     {

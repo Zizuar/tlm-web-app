@@ -7,7 +7,10 @@ import { ExistingPressRelease } from '../../core/models/press-release.model';
 
 @Injectable()
 export class PressReleasesEffects {
-  constructor(private readonly actions$: Actions, private readonly pressReleaseService: PressReleaseService) {}
+  constructor(
+    private readonly actions$: Actions,
+    private readonly pressReleaseService: PressReleaseService,
+  ) {}
 
   fetchPressReleases$ = createEffect(() => {
     return this.actions$.pipe(
@@ -17,7 +20,7 @@ export class PressReleasesEffects {
       }),
       switchMap((pressReleases: ExistingPressRelease[]) => {
         return of(fetchPressReleasesCompleted({ pressReleases }));
-      })
+      }),
     );
   });
 }

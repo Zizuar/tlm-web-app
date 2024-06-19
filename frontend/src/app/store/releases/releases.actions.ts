@@ -10,5 +10,5 @@ export const fetchReleases = createAction(ReleasesActionTypes.FETCH_RELEASES);
 
 export const fetchReleasesCompleted = createAction(
   ReleasesActionTypes.FETCH_RELEASES_COMPLETED,
-  props<{ releases: ExistingRelease[] }>()
+  props<{ releases: ExistingRelease[] }>(),
 );

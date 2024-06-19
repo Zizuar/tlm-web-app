@@ -21,7 +21,7 @@ const pressReleasesReducerInternal = createReducer(
       pressReleases,
       pressReleasesFetched: true,
     };
-  })
+  }),
 );
 
 export function pressReleasesReducer(state: PressReleasesState | undefined, action: Action): PressReleasesState {

@@ -3,12 +3,58 @@
   <hr class="divider my-4">
   <div class="row justify-content-center my-4">
     <div class="col-12 col-lg-7">
-      <p class="text-muted text-center">Tyler is currently based in New Hampshire/Maine.</p>
+      <p class="text-muted text-center">
+        Tyler is currently based in the New England area<br />
+        and regularly plays in New Hampshire, Maine and Massachusetts.
+      </p>
       <div class="text-center">
         <p class="text-muted">For booking-related inquiries, please send an email to the following address:</p>
         <div class="mt-2 d-flex flex-column justify-content-center align-items-center">
             <fa-icon class="cursor-pointer" [icon]="faEnvelope" size="3x"><span class="sr-only" (click)="emailLink.click()">Email</span></fa-icon>
             <a class="d-block" href="mailto:booking@tylerlevs.com" #emailLink>booking@tylerlevs.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-9 d-flex justify-content-end">
+      <div
+        role="button"
+        class="ms-2 btn btn-outline-primary timezone-collapse-btn"
+        (click)="isSettingsCollapsed = !isSettingsCollapsed"
+        [attr.aria-expanded]="!isSettingsCollapsed"
+        aria-controls="collapseExample"
+      >
+        <fa-icon *ngIf="isSettingsCollapsed" [icon]="faChevronRight"></fa-icon>
+        <fa-icon *ngIf="!isSettingsCollapsed" [icon]="faChevronDown"></fa-icon>
+        <span class="mx-2">Set timezone</span>
+      </div>
+    </div>
+  </div>
+  <div #collapse="ngbCollapse" [(ngbCollapse)]="isSettingsCollapsed">
+    <div class="row justify-content-center mt-2">
+      <div class="col-9 d-flex justify-content-end">
+        <div class="btn-group timezone-btn-group" role="group" aria-label="Select timezone display for events">
+          <input type="radio"
+                 class="btn-check btn-primary"
+                 name="tz-radio"
+                 id="tz-radio-venue"
+                 autocomplete="off"
+                 [value]="false"
+                 [(ngModel)]="showEventsInBrowserTimezone"
+                 (ngModelChange)="changeShowEventsInBrowserTimezone($event)"
+          >
+          <label class="btn btn-outline-primary" for="tz-radio-venue">At the venue</label>
+          <input type="radio"
+                 class="btn-check btn-primary"
+                 name="tz-radio"
+                 id="tz-radio-browser"
+                 autocomplete="off"
+                 [value]="true"
+                 [(ngModel)]="showEventsInBrowserTimezone"
+                 (ngModelChange)="changeShowEventsInBrowserTimezone($event)"
+          >
+          <label class="btn btn-outline-primary" for="tz-radio-browser">Current location</label>
         </div>
       </div>
     </div>

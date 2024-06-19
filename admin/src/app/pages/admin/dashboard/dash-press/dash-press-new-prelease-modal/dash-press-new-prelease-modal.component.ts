@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NgbActiveModal, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import * as moment from 'moment';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faCalendarDay, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { NewPressRelease } from "../../../../../core/models/press-release.model";
 import { createPressRelease } from "../../../../../store/press-releases/press-releases.actions";
+import {DateUtils} from "../../../../../utils/DateUtils";
 
 @Component({
   selector: 'app-dash-press-new-prelease-modal',
@@ -13,8 +13,6 @@ import { createPressRelease } from "../../../../../store/press-releases/press-re
   styleUrls: ['./dash-press-new-prelease-modal.component.scss'],
 })
 export class DashPressNewPreleaseModalComponent {
-  moment = moment;
-
   pressRelease: NewPressRelease;
   formDate: NgbDateStruct | undefined;
 
@@ -60,7 +58,7 @@ export class DashPressNewPreleaseModalComponent {
   }
 
   saveNewPressRelease() {
-    this.pressRelease.releaseAfter = this.buildDate();
+    this.pressRelease.releaseAfter = DateUtils.buildDateFromFormData(this.formDate);
     this.store.dispatch(createPressRelease({ newPressRelease: this.pressRelease }));
     this.activeModal.dismiss();
   }
@@ -68,15 +66,5 @@ export class DashPressNewPreleaseModalComponent {
   // This is needed for the array of primitive strings in the form
   trackByFn(index: any) {
     return index;
-  }
-
-  private buildDate(): Date {
-    // build date from datepicker data
-    const momentDate = this.moment.utc(
-      `${this.formDate?.year}-${this.formDate?.month.toString().padStart(2, '0')}-${this.formDate?.day
-        .toString()
-        .padStart(2, '0')}`
-    );
-    return momentDate.toDate();
   }
 }

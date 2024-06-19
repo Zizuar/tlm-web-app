@@ -8,7 +8,7 @@ import { selectReleasesForPress } from '../../store/releases/releases.selectors'
 @Injectable({
   providedIn: 'root',
 })
-export class PressResolver  {
+export class PressResolver {
   constructor(private readonly store: Store) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ExistingRelease[]> {

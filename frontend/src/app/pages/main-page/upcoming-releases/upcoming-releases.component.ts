@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 import { ExistingRelease } from '../../../core/models/release.model';
 
 @Component({
@@ -9,7 +9,7 @@ import { ExistingRelease } from '../../../core/models/release.model';
 })
 export class UpcomingReleasesComponent {
   @Input() countdowns: ExistingRelease[] | null | undefined;
-  moment = moment;
+  dayjs = dayjs;
 
   constructor() {}
 }

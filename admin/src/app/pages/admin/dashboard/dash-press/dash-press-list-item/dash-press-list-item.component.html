@@ -1,5 +1,5 @@
 <div class="row mb-3">
-  <div class="col-4">{{ moment(pressRelease.releaseAfter).format('MMMM Do YYYY') }}</div>
+  <div class="col-4">{{ dayjs.utc(pressRelease.releaseAfter).format('MMMM DD YYYY') }}</div>
   <div class="col-6">{{ pressRelease.text.header }}</div>
   <div class="col-2 d-flex justify-content-center align-items-center">
     <button class="btn btn-sm btn-primary" type="button" (click)="openEditPressReleaseModal()">

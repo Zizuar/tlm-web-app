@@ -8,7 +8,10 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ProductsEffects {
-  constructor(private readonly actions$: Actions, private readonly productsService: ProductsService) {}
+  constructor(
+    private readonly actions$: Actions,
+    private readonly productsService: ProductsService,
+  ) {}
 
   fetchProducts$ = createEffect(() => {
     return this.actions$.pipe(
@@ -32,7 +35,7 @@ export class ProductsEffects {
       }),
       switchMap((sortedProducts: Product[]) => {
         return of(fetchProductsCompleted({ products: sortedProducts }));
-      })
+      }),
     );
   });
 }

@@ -26,7 +26,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
         if (!productsFetched) {
           this.store.dispatch(fetchProducts());
         }
-      })
+      }),
     );
   }
 

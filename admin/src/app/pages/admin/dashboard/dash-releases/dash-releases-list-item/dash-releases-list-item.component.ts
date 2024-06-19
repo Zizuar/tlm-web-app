@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import * as moment from 'moment';
+import dayjs from 'dayjs';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -21,7 +21,7 @@ import { removeRelease } from "../../../../../store/releases/releases.actions";
 export class DashReleasesListItemComponent {
   @Input() release!: ExistingRelease;
 
-  moment = moment;
+  dayjs = dayjs;
 
   editIcon: IconDefinition = faEdit;
   deleteIcon: IconDefinition = faTrash;

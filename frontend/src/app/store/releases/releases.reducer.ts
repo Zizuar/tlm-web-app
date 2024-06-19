@@ -21,7 +21,7 @@ const releasesReducerInternal = createReducer(
       releases,
       releasesFetched: true,
     };
-  })
+  }),
 );
 
 export function releasesReducer(state: ReleasesState | undefined, action: Action): ReleasesState {

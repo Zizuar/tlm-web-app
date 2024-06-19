@@ -5,10 +5,10 @@ export const selectPressReleasesFeatureState = createFeatureSelector<PressReleas
 
 export const selectPressReleases = createSelector(
   selectPressReleasesFeatureState,
-  (state: PressReleasesState) => state.pressReleases
+  (state: PressReleasesState) => state.pressReleases,
 );
 
 export const selectPressReleasesFetched = createSelector(
   selectPressReleasesFeatureState,
-  (state: PressReleasesState) => state.pressReleasesFetched
+  (state: PressReleasesState) => state.pressReleasesFetched,
 );

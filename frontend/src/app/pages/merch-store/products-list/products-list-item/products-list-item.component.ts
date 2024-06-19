@@ -16,7 +16,10 @@ export class ProductsListItemComponent {
 
   faSpotify: IconDefinition = faSpotify;
 
-  constructor(private readonly modalService: NgbModal, private readonly merchStoreService: MerchStoreService) {}
+  constructor(
+    private readonly modalService: NgbModal,
+    private readonly merchStoreService: MerchStoreService,
+  ) {}
 
   async handleAddToCartClick() {
     try {

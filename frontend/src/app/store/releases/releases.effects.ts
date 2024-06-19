@@ -7,7 +7,10 @@ import { ExistingRelease } from '../../core/models/release.model';
 
 @Injectable()
 export class ReleasesEffects {
-  constructor(private readonly actions$: Actions, private readonly releasesService: ReleasesService) {}
+  constructor(
+    private readonly actions$: Actions,
+    private readonly releasesService: ReleasesService,
+  ) {}
 
   fetchReleases$ = createEffect(() => {
     return this.actions$.pipe(
@@ -17,7 +20,7 @@ export class ReleasesEffects {
       }),
       switchMap((releases: ExistingRelease[]) => {
         return of(fetchReleasesCompleted({ releases }));
-      })
+      }),
     );
   });
 }

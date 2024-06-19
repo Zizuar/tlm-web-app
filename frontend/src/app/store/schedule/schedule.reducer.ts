@@ -21,7 +21,7 @@ const scheduleReducerInternal = createReducer(
       schedule,
       scheduleFetched: true,
     };
-  })
+  }),
 );
 
 export function scheduleReducer(state: ScheduleState | undefined, action: Action): ScheduleState {

@@ -3,7 +3,7 @@ import { catchError, map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ExistingScheduledEvent } from '../core/models/scheduled-event.model';
-import * as moment from 'moment';
+import dayjs from 'dayjs';
 import { ApiBaseService } from './api-base.service';
 import { ToastService } from './toast.service';
 
@@ -41,10 +41,10 @@ export class EventsService extends ApiBaseService {
   // STATIC HELPER FUNCTIONS
 
   static filterFutureEvents(events: ExistingScheduledEvent[]): ExistingScheduledEvent[] {
-    const now = moment();
+    const now = dayjs();
     return events.filter((event) => {
       // only compare the day, not the actual start time
-      return !now.isAfter(moment(event.date), 'day');
+      return !now.isAfter(event.date, 'day');
     });
   }
 

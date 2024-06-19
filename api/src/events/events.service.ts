@@ -19,6 +19,7 @@ export class EventsService {
     try {
       const newEvent = new this.eventModel({
         ...createEventDto,
+        timezone: createEventDto.timezone ?? 'America/New_York',
         createdAt: new Date(),
       });
 
@@ -63,6 +64,7 @@ export class EventsService {
   async update(id: string, updateEventDto: UpdateEventDto): Promise<Event> {
     const updatedEvent = {
       ...updateEventDto,
+      timezone: updateEventDto.timezone ?? 'America/New_York',
     };
 
     const errors = await validate(updatedEvent);
@@ -74,6 +76,6 @@ export class EventsService {
   }
 
   async remove(id: string): Promise<Event> {
-    return await this.eventModel.findByIdAndRemove(id).exec();
+    return await this.eventModel.findByIdAndDelete(id).exec();
   }
 }

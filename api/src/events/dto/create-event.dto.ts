@@ -31,4 +31,8 @@ export class CreateEventDto {
   @IsOptional()
   @IsString()
   readonly fbEventLink?: string;
+
+  @IsOptional()
+  @IsString()
+  readonly timezone?: string;
 }

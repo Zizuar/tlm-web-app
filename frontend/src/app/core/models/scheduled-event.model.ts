@@ -6,6 +6,7 @@ export interface NewScheduledEvent {
   town: string;
   venueLink?: string;
   fbEventLink?: string;
+  timezone?: string;
 }
 
 export interface ExistingScheduledEvent extends NewScheduledEvent {

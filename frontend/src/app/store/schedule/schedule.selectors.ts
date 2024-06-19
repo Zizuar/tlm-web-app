@@ -7,5 +7,5 @@ export const selectSchedule = createSelector(selectScheduleFeatureState, (state:
 
 export const selectIsScheduleFetched = createSelector(
   selectScheduleFeatureState,
-  (state: ScheduleState) => state.scheduleFetched
+  (state: ScheduleState) => state.scheduleFetched,
 );

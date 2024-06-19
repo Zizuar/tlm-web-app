@@ -59,6 +59,6 @@ export class PressReleasesService {
   }
 
   async remove(id: string): Promise<PressRelease> {
-    return await this.pressReleaseModel.findByIdAndRemove(id).exec();
+    return await this.pressReleaseModel.findByIdAndDelete(id).exec();
   }
 }

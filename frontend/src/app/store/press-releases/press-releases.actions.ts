@@ -10,5 +10,5 @@ export const fetchPressReleases = createAction(PressReleasesActionTypes.FETCH_PR
 
 export const fetchPressReleasesCompleted = createAction(
   PressReleasesActionTypes.FETCH_PRESS_RELEASES_COMPLETED,
-  props<{ pressReleases: ExistingPressRelease[] }>()
+  props<{ pressReleases: ExistingPressRelease[] }>(),
 );

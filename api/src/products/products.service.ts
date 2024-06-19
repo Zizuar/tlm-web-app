@@ -62,6 +62,6 @@ export class ProductsService {
   }
 
   async remove(id: string): Promise<Product> {
-    return await this.productModel.findByIdAndRemove(id).exec();
+    return await this.productModel.findByIdAndDelete(id).exec();
   }
 }

@@ -10,5 +10,5 @@ export const fetchSchedule = createAction(ScheduleActionTypes.FETCH_SCHEDULE);
 
 export const fetchScheduleCompleted = createAction(
   ScheduleActionTypes.FETCH_SCHEDULE_COMPLETED,
-  props<{ schedule: StreamingScheduleElement[] }>()
+  props<{ schedule: StreamingScheduleElement[] }>(),
 );

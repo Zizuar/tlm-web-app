@@ -13,7 +13,10 @@ import { ToastService } from './toast.service';
 export class StreamingScheduleService extends ApiBaseService {
   private readonly scheduleApiUrl = `${environment.apiBaseUrl}/v1/schedule`;
 
-  constructor(private readonly http: HttpClient, toastService: ToastService) {
+  constructor(
+    private readonly http: HttpClient,
+    toastService: ToastService,
+  ) {
     super(toastService);
   }
 
@@ -24,8 +27,8 @@ export class StreamingScheduleService extends ApiBaseService {
         map((schedule) =>
           schedule.sort((a, b) => {
             return a.dayId > b.dayId ? 1 : a.dayId < b.dayId ? -1 : 0;
-          })
-        )
+          }),
+        ),
       )
       .pipe(catchError(this.handleError));
   }

@@ -17,7 +17,10 @@ export class TwitchComponent implements OnInit {
   twitchIcon: IconDefinition = faTwitch;
   streamingSchedule$: Observable<StreamingScheduleElement[]> = this.store.select(selectSchedule);
 
-  constructor(private readonly streamingScheduleService: StreamingScheduleService, private readonly store: Store) {}
+  constructor(
+    private readonly streamingScheduleService: StreamingScheduleService,
+    private readonly store: Store,
+  ) {}
 
   ngOnInit() {
     this.store

@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import * as moment from 'moment';
+import dayjs from 'dayjs';
 import { Store } from '@ngrx/store';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faCalendarDay, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ExistingRelease, ReleaseCategories } from "../../../../../core/models/release.model";
 import { updateRelease } from "../../../../../store/releases/releases.actions";
+import {DateUtils} from "../../../../../utils/DateUtils";
 
 @Component({
   selector: 'app-dash-releases-edit-release-modal',
@@ -14,8 +15,6 @@ import { updateRelease } from "../../../../../store/releases/releases.actions";
 })
 export class DashReleasesEditReleaseModalComponent implements OnInit {
   @Input() release!: ExistingRelease;
-
-  moment = moment;
 
   formDate: NgbDateStruct | undefined;
 
@@ -36,7 +35,7 @@ export class DashReleasesEditReleaseModalComponent implements OnInit {
         };
       }
     }
-    const tzDate = moment(this.release.releaseDate);
+    const tzDate = dayjs(this.release.releaseDate);
     this.formDate = {
       year: tzDate.year(),
       month: tzDate.month() + 1,
@@ -99,18 +98,8 @@ export class DashReleasesEditReleaseModalComponent implements OnInit {
   }
 
   updateRelease() {
-    this.release.releaseDate = this.buildDate();
+    this.release.releaseDate = DateUtils.buildDateFromFormData(this.formDate);
     this.store.dispatch(updateRelease({ updatedRelease: this.release }));
     this.activeModal.dismiss();
-  }
-
-  private buildDate(): Date {
-    // build date from datepicker data
-    const momentDate = this.moment(
-      `${this.formDate?.year}-${this.formDate?.month.toString().padStart(2, '0')}-${this.formDate?.day
-        .toString()
-        .padStart(2, '0')}`
-    ).utc(true);
-    return momentDate.toDate();
   }
 }

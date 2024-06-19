@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import * as moment from 'moment';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faCalendarDay, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { NgbActiveModal, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { AlbumTrack, NewRelease, ReleaseCategories, ReleaseLinks } from "../../../../../core/models/release.model";
 import { createRelease } from "../../../../../store/releases/releases.actions";
+import {DateUtils} from "../../../../../utils/DateUtils";
 
 @Component({
   selector: 'app-dash-releases-new-release-modal',
@@ -13,8 +13,6 @@ import { createRelease } from "../../../../../store/releases/releases.actions";
   styleUrls: ['./dash-releases-new-release-modal.component.scss'],
 })
 export class DashReleasesNewReleaseModalComponent {
-  moment = moment;
-
   faCalendar: IconDefinition = faCalendarDay;
   deleteIcon: IconDefinition = faTrash;
   addIcon: IconDefinition = faPlus;
@@ -82,7 +80,7 @@ export class DashReleasesNewReleaseModalComponent {
   }
 
   saveNewRelease() {
-    this.release.releaseDate = this.buildDate();
+    this.release.releaseDate = DateUtils.buildDateFromFormData(this.formDate);
     if (this.formOptionalParts.presaveLink && this.release.category !== ReleaseCategories.Collections) {
       this.release.presaveLink = this.formOptionalParts.presaveLink;
     }
@@ -97,15 +95,5 @@ export class DashReleasesNewReleaseModalComponent {
     }
     this.store.dispatch(createRelease({ newRelease: this.release }));
     this.activeModal.dismiss();
-  }
-
-  private buildDate(): Date {
-    // build date from datepicker data
-    const momentDate = this.moment(
-      `${this.formDate?.year}-${this.formDate?.month.toString().padStart(2, '0')}-${this.formDate?.day
-        .toString()
-        .padStart(2, '0')}`
-    ).utc(true);
-    return momentDate.toDate();
   }
 }

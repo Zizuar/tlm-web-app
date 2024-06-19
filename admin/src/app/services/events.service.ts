@@ -3,7 +3,7 @@ import { BehaviorSubject, catchError, forkJoin, map, Observable, tap } from "rxj
 import { HttpClient, HttpEventType, HttpResponse } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { ExistingScheduledEvent, NewScheduledEvent } from "../core/models/scheduled-event.model";
-import * as moment from "moment";
+import dayjs from "dayjs";
 import { ApiBaseService } from "./api-base.service";
 import { NgbDateStruct, NgbModalRef, NgbTimeStruct } from "@ng-bootstrap/ng-bootstrap";
 import { ToastService } from "./toast.service";
@@ -89,20 +89,20 @@ export class EventsService extends ApiBaseService {
 
   static buildDateFromDatepicker(date: NgbDateStruct, time: NgbTimeStruct, timezone: string): Date {
     // build date from date and timepicker data
-    const momentDate = moment.tz(
+    const dayjsDate = dayjs.tz(
       `${date.year}-${date.month.toString().padStart(2, '0')}-${date.day.toString().padStart(2, '0')}T${time.hour
         .toString()
         .padStart(2, '0')}:${time.minute.toString().padStart(2, '0')}`,
       timezone
     );
-    return momentDate.toDate();
+    return dayjsDate.toDate();
   }
 
   static filterFutureEvents(events: ExistingScheduledEvent[]): ExistingScheduledEvent[] {
-    const now = moment();
+    const now = dayjs();
     return events.filter((event) => {
       // only compare the day, not the actual start time
-      return !now.isAfter(moment(event.date), 'day');
+      return !now.isAfter(dayjs(event.date), 'day');
     });
   }
 

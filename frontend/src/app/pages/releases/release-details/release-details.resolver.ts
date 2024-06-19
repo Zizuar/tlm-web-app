@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class ReleaseDetailsResolver  {
+export class ReleaseDetailsResolver {
   constructor(private readonly store: Store) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
@@ -20,7 +20,7 @@ export class ReleaseDetailsResolver  {
           this.store.dispatch(fetchReleases());
         }
         return areReleasesFetched;
-      })
+      }),
     );
   }
 }

@@ -11,7 +11,10 @@ import { ToastService } from './services/toast.service';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'tlm-web-app';
 
-  constructor(private readonly meta: Meta, private readonly toastService: ToastService) {}
+  constructor(
+    private readonly meta: Meta,
+    private readonly toastService: ToastService,
+  ) {}
 
   ngOnInit() {
     this.meta.addTags(environment.metadata);

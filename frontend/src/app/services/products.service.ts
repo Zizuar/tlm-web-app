@@ -12,7 +12,10 @@ import { ToastService } from './toast.service';
 export class ProductsService extends ApiBaseService {
   private readonly productsApiUrl = `${environment.apiBaseUrl}/v1/products`;
 
-  constructor(private readonly http: HttpClient, toastService: ToastService) {
+  constructor(
+    private readonly http: HttpClient,
+    toastService: ToastService,
+  ) {
     super(toastService);
   }
 

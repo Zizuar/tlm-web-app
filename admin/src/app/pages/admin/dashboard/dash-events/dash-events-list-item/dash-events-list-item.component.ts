@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import dayjs from 'dayjs';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +19,6 @@ import { removeEvent } from "../../../../../store/events/events.actions";
   styleUrls: ['./dash-events-list-item.component.scss'],
 })
 export class DashEventsListItemComponent implements OnInit {
-  moment = moment;
 
   editIcon: IconDefinition = faEdit;
   deleteIcon: IconDefinition = faTrash;
@@ -30,7 +29,9 @@ export class DashEventsListItemComponent implements OnInit {
   constructor(private readonly modalService: NgbModal, private readonly store: Store) {}
 
   ngOnInit(): void {
-    this.isFutureEvent = moment(this.event.date).isAfter(new Date(), 'day');
+    this.isFutureEvent = dayjs
+      .tz(this.event.endDate ?? this.event.date, this.event.timezone ?? 'America/New_York')
+      .isAfter(new Date(), 'day');
   }
 
   openEditEventModal() {
@@ -56,4 +57,6 @@ export class DashEventsListItemComponent implements OnInit {
   deleteEvent() {
     this.store.dispatch(removeEvent({ id: this.event._id }));
   }
+
+  protected readonly dayjs = dayjs;
 }

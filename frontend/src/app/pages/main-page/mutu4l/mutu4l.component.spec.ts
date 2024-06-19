@@ -8,7 +8,7 @@ describe('Mutu4lComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [Mutu4lComponent]
+      declarations: [Mutu4lComponent],
     });
     fixture = TestBed.createComponent(Mutu4lComponent);
     component = fixture.componentInstance;

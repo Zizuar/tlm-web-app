@@ -33,8 +33,7 @@
             "scripts": [],
             "allowedCommonJsDependencies": [
               "lodash",
-              "moment",
-              "moment-timezone"
+              "dayjs"
             ]
           },
           "configurations": {

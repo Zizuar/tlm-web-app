@@ -168,6 +168,28 @@ a.btn:hover {
   border-color: #157d17;
 }
 
+.btn-outline-primary {
+  color: #157d17;
+  border-color: #157d17;
+}
+
+.btn-outline-primary:hover {
+  color: #7aee0d !important;
+  background-color: transparent;
+  border-color: #7aee0d !important;
+}
+
+.btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+  color: #fff;
+  background-color: #157d17;
+  border-color: #157d17;
+}
+
+.btn-check:checked + .btn:hover {
+  color: #fff !important;
+  background-color: #7aee0d;
+}
+
 .btn-light {
   color: #212529;
   background-color: #f8f9fa;

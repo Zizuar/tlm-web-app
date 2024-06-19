@@ -3,7 +3,8 @@ import { NgbActiveModal, NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-b
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faCalendarDay } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
-import * as moment from 'moment-timezone';
+import dayjs from 'dayjs';
+import { getCountry } from 'countries-and-timezones';
 import { MinDate } from '../dash-events-new-event-modal/dash-events-new-event-modal.component';
 import { ExistingScheduledEvent } from "../../../../../core/models/scheduled-event.model";
 import { EventsService } from "../../../../../services/events.service";
@@ -17,8 +18,7 @@ import { updateEvent } from "../../../../../store/events/events.actions";
 export class DashEventsEditEventModalComponent implements OnInit {
   @Input() event!: ExistingScheduledEvent;
 
-  moment = moment;
-  timezones: string[] = moment.tz.zonesForCountry('US');
+  timezones: string[] = getCountry('US').timezones;
 
   today: Date = new Date();
   minDate: MinDate;
@@ -43,7 +43,7 @@ export class DashEventsEditEventModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    const tzDate = moment.tz(this.event.date, 'America/New_York');
+    const tzDate = dayjs.tz(this.event.date, 'America/New_York');
     this.minEndDate = {
       year: tzDate.year(),
       month: tzDate.month() + 1,
@@ -61,7 +61,7 @@ export class DashEventsEditEventModalComponent implements OnInit {
     };
     if (this.event.endDate) {
       this.formEndDateEnabled = true;
-      const tzEndDate = moment.tz(this.event.endDate, 'America/New_York');
+      const tzEndDate = dayjs.tz(this.event.endDate, 'America/New_York');
       this.formEndDate = {
         year: tzEndDate.year(),
         month: tzEndDate.month() + 1,
@@ -73,6 +73,7 @@ export class DashEventsEditEventModalComponent implements OnInit {
         second: 0,
       };
     }
+    this.formTimezone = this.event.timezone ?? 'America/New_York';
   }
 
   updateEvent() {
@@ -85,6 +86,7 @@ export class DashEventsEditEventModalComponent implements OnInit {
     } else if (!this.formEndDateEnabled) {
       this.event.endDate = null;
     }
+    this.event.timezone = this.formTimezone;
     this.store.dispatch(updateEvent({ updatedEvent: this.event }));
     this.activeModal.dismiss();
   }

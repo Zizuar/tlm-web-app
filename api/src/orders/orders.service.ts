@@ -74,7 +74,7 @@ export class OrdersService {
   }
 
   async remove(id: string): Promise<Order> {
-    return await this.orderModel.findByIdAndRemove(id).exec();
+    return await this.orderModel.findByIdAndDelete(id).exec();
   }
 
   private calculateProductsPrice(cart) {

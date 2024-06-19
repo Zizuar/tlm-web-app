@@ -11,7 +11,7 @@
            data-target="#hit-me-like-a-dream-press-release">
           <div class="d-flex flex-column flex-sm-row w-100 justify-content-between mb-2">
             <h5 class="mb-1">{{pressRelease.text.header}}</h5>
-            <small>Release after: {{ moment(pressRelease.releaseAfter).format('MMMM Do YYYY') }}</small>
+            <small>Release after: {{ dayjs.utc(pressRelease.releaseAfter).format('MMMM Do YYYY') }}</small>
           </div>
           <small class="mb-1">{{ pressRelease.text.subheader }}</small>
           <p>

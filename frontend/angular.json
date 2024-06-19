@@ -23,7 +23,8 @@
             "allowedCommonJsDependencies": [
               "lodash",
               "moment/moment",
-              "moment-timezone"
+              "moment-timezone",
+              "dayjs"
             ],
             "outputPath": "dist/tlm-web-app",
             "index": "src/index.html",

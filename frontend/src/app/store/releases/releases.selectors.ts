@@ -18,9 +18,9 @@ export const selectPastReleases = createSelector(selectReleasesFeatureState, (st
 
 export const selectReleasesFetched = createSelector(
   selectReleasesFeatureState,
-  (state: ReleasesState) => state.releasesFetched
+  (state: ReleasesState) => state.releasesFetched,
 );
 
 export const selectReleasesForPress = createSelector(selectReleasesFeatureState, (state: ReleasesState) =>
-  state.releases.filter((release) => release.onPressPage)
+  state.releases.filter((release) => release.onPressPage),
 );

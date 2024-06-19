@@ -12,7 +12,10 @@ import { ToastService } from './toast.service';
 export class PressReleaseService extends ApiBaseService {
   pressReleasesApiUrl = `${environment.apiBaseUrl}/v1/press-releases`;
 
-  constructor(private readonly http: HttpClient, toastService: ToastService) {
+  constructor(
+    private readonly http: HttpClient,
+    toastService: ToastService,
+  ) {
     super(toastService);
   }
 
@@ -25,10 +28,10 @@ export class PressReleaseService extends ApiBaseService {
             releaseAfter: new Date(release.releaseAfter),
             createdAt: new Date(release.createdAt),
           };
-        })
+        }),
       ),
       // Sort by date
-      map((results) => results.sort(PressReleaseService.sortByDate))
+      map((results) => results.sort(PressReleaseService.sortByDate)),
     );
   }
 

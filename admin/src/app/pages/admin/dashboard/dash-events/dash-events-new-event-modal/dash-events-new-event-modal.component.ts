@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbActiveModal, NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import * as moment from 'moment-timezone';
+import { getCountry } from 'countries-and-timezones';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import { faCalendarDay } from '@fortawesome/free-solid-svg-icons';
 import { NewScheduledEvent } from "../../../../../core/models/scheduled-event.model";
@@ -20,8 +20,7 @@ export interface MinDate {
   styleUrls: ['./dash-events-new-event-modal.component.scss'],
 })
 export class DashEventsNewEventModalComponent {
-  moment = moment;
-  timezones: string[] = moment.tz.zonesForCountry('US');
+  timezones: string[] = getCountry('US').timezones;
 
   event: NewScheduledEvent;
   today: Date;
@@ -46,6 +45,7 @@ export class DashEventsNewEventModalComponent {
       town: '',
       venueLink: '',
       fbEventLink: '',
+      timezone: 'America/New_York',
     };
     this.today = now;
     // configure datepicker
@@ -64,6 +64,7 @@ export class DashEventsNewEventModalComponent {
     if (this.formEndDateEnabled && this.formEndDate && this.formEndTime) {
       this.event.endDate = EventsService.buildDateFromDatepicker(this.formEndDate, this.formEndTime, this.formTimezone);
     }
+    this.event.timezone = this.formTimezone;
     this.store.dispatch(createEvent({ event: this.event }));
     this.activeModal.dismiss();
   }

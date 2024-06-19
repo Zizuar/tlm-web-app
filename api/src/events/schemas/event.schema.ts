@@ -26,6 +26,9 @@ export class Event {
   @Prop()
   fbEventLink?: string;
 
+  @Prop()
+  timezone?: string;
+
   @Prop({ required: true, type: Date })
   createdAt: Date;
 }
