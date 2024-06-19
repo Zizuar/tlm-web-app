@@ -27,8 +27,8 @@ export class EventItemComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.timezoneSub = this.$showInBrowserTimezone.subscribe((showInBrowserTimezone) => {
       const timezone = showInBrowserTimezone ? dayjs.tz.guess() : this.scheduledEvent.timezone ?? 'America/New_York';
-      this.startDayjs = dayjs.tz(this.scheduledEvent.date, timezone);
-      this.endDayjs = this.scheduledEvent.endDate ? dayjs.tz(this.scheduledEvent.endDate, timezone) : null;
+      this.startDayjs = dayjs(this.scheduledEvent.date).tz(timezone);
+      this.endDayjs = this.scheduledEvent.endDate ? dayjs(this.scheduledEvent.endDate).tz(timezone) : null;
       if (this.endDayjs) {
         this.duration = dayjs.duration(this.endDayjs.diff(this.startDayjs)).asHours();
       }
