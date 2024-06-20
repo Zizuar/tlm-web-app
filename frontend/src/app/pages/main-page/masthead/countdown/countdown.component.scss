@@ -5,8 +5,10 @@
   transition: all 0.3s;
 }
 
-.countdown:hover {
-  background-color: rgba(255, 255, 255, 0.20);
+@media (hover: hover) and (pointer: fine) {
+  .countdown:hover {
+    background-color: rgba(255, 255, 255, 0.20);
+  }
 }
 
 .hours, .minutes, .days, .seconds {

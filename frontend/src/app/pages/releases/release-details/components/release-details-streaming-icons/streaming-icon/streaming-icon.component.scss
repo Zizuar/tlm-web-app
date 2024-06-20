@@ -11,12 +11,14 @@
   transition-duration: 400ms;
 }
 
-.features-icons-item:hover {
-  font-size: 1.1rem;
-  -webkit-transition: 400ms;
-  -moz-transition-duration: 400ms;
-  -o-transition-duration: 400ms;
-  transition-duration: 400ms;
+@media (hover: hover) and (pointer: fine) {
+  .features-icons-item:hover {
+    font-size: 1.1rem;
+    -webkit-transition: 400ms;
+    -moz-transition-duration: 400ms;
+    -o-transition-duration: 400ms;
+    transition-duration: 400ms;
+  }
 }
 
 .features-icons-item a {
@@ -33,13 +35,15 @@
   transition-duration: 400ms;
 }
 
-.features-icons-item:hover .features-icons-icon {
-  height: 5rem;
-  max-height: 5rem;
-  -webkit-transition: 400ms;
-  -moz-transition-duration: 400ms;
-  -o-transition-duration: 400ms;
-  transition-duration: 400ms;
+@media (hover: hover) and (pointer: fine) {
+  .features-icons-item:hover .features-icons-icon {
+    height: 5rem;
+    max-height: 5rem;
+    -webkit-transition: 400ms;
+    -moz-transition-duration: 400ms;
+    -o-transition-duration: 400ms;
+    transition-duration: 400ms;
+  }
 }
 
 .streaming-icon-link {
@@ -47,7 +51,9 @@
   color: #157d17;
 }
 
-.streaming-icon-link:hover {
-  cursor: pointer;
-  color: #157d17;
+@media (hover: hover) and (pointer: fine) {
+  .streaming-icon-link:hover {
+    cursor: pointer;
+    color: #157d17;
+  }
 }

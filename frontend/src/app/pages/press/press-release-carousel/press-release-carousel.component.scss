@@ -2,8 +2,10 @@ fa-icon {
   color: #156016;
 }
 
-fa-icon:hover {
-  color: #157d17;
+@media (hover: hover) and (pointer: fine) {
+  fa-icon:hover {
+    color: #157d17;
+  }
 }
 
 .cursor-pointer {
