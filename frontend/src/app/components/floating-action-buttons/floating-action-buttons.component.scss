@@ -14,7 +14,7 @@
 }
 
 @for $i from 2 through 20 {
-  .fab-container:focus .sub-button:nth-child(#{$i}), .fab-container.expanded .sub-button:nth-child(#{$i}) {
+  .fab-container:hover .sub-button:nth-child(#{$i}), .fab-container.expanded .sub-button:nth-child(#{$i}) {
     transform: translateY(calc(-60px * ($i - 1) - 20px));
   }
 }
