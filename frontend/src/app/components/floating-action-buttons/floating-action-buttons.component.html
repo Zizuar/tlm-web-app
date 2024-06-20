@@ -1,6 +1,10 @@
-<div class="fab-container" [ngClass]="{ expanded: isExpanded }" (mouseenter)="isExpanded = true" (mouseleave)="isExpanded = false">
+<div class="fab-container"
+     [ngClass]="{ expanded: isExpanded }"
+     (mouseenter)="setExpanded(true, true)"
+     (mouseleave)="setExpanded(false, true)"
+>
   <div class="fab shadow">
-    <div class="fab-content bg-primary" role="button" (click)="isExpanded = !isExpanded">
+    <div class="fab-content bg-primary" role="button" (click)="setExpanded(!isExpanded, false)">
       <fa-icon *ngIf="!isExpanded" [icon]="faPhone" size="2x" aria-label="Socials"></fa-icon>
       <fa-icon *ngIf="isExpanded" [icon]="faCancel" size="2x" aria-label="Close"></fa-icon>
     </div>

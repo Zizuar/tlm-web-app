@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
-import { faCancel, faMobilePhone, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faMobilePhone, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faSpotify, faTiktok, faTwitch, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
@@ -19,4 +19,18 @@ export class FloatingActionButtonsComponent {
   faTwitch: IconDefinition = faTwitch;
 
   isExpanded = false;
+
+  setExpanded(expanded: boolean, disableTouchDevice = false): void {
+    if (!disableTouchDevice || !this.isTouchDevice()) {
+      this.isExpanded = expanded;
+    }
+  }
+
+  private isTouchDevice(): boolean {
+    return (
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      ('msMaxTouchPoints' in navigator && (navigator.msMaxTouchPoints as number) > 0)
+    );
+  }
 }
