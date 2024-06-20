@@ -1,7 +1,7 @@
 <div class="fab-container"
      [ngClass]="{ expanded: isExpanded }"
      (mouseenter)="setExpanded(true, true)"
-     (mouseleave)="setExpanded(false, true)"
+     (mouseleave)="setExpanded(false, false)"
 >
   <div class="fab shadow">
     <div class="fab-content bg-primary" role="button" (click)="setExpanded(!isExpanded, false)">
