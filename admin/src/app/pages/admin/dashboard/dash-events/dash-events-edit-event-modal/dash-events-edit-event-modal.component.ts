@@ -43,7 +43,7 @@ export class DashEventsEditEventModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    const tzDate = dayjs.tz(this.event.date, 'America/New_York');
+    const tzDate = dayjs(this.event.date).tz(this.event.timezone ?? 'America/New_York');
     this.minEndDate = {
       year: tzDate.year(),
       month: tzDate.month() + 1,
@@ -61,7 +61,7 @@ export class DashEventsEditEventModalComponent implements OnInit {
     };
     if (this.event.endDate) {
       this.formEndDateEnabled = true;
-      const tzEndDate = dayjs.tz(this.event.endDate, 'America/New_York');
+      const tzEndDate = dayjs(this.event.endDate).tz(this.event.timezone ?? 'America/New_York');
       this.formEndDate = {
         year: tzEndDate.year(),
         month: tzEndDate.month() + 1,
