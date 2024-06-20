@@ -1,6 +1,6 @@
 <header class="masthead" id="page-top">
   <div class="container-fluid h-100">
-    <div class="row h-100 d-flex flex-column flex-nowrap align-items-center justify-content-between text-center">
+    <div class="row h-100 d-flex flex-column flex-nowrap align-items-center justify-content-around text-center">
       <div></div>
       <div class="row w-100 d-flex align-items-center justify-content-center">
         <div class="col-lg-10 align-self-end">
@@ -12,7 +12,7 @@
           <hr class="divider my-4">
         </div>
         <div class="col-lg-8 fw-normal align-self-baseline">
-          <p class="text-white-75 fw-bolder mb-5">Singer/Songwriter, Musician, Twitch Streamer, <br>Fellow Human Being</p>
+          <p class="text-white-75 fw-bolder mb-3">Singer/Songwriter, Musician, Twitch Streamer, <br>Fellow Human Being</p>
           <div *ngIf="!countdowns || countdowns.length === 0">
             <a class="btn btn-primary btn-xl mb-3" (click)="scrollToFragment('twitch')">Check Out the live stream</a>
             <a class="btn btn-primary btn-xl mb-3 ms-2" (click)="scrollToFragment('events')">... or upcoming events</a>

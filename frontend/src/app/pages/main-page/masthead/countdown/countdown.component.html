@@ -1,19 +1,21 @@
-<div class="col text-white row mt-3 d-flex justify-content-around countdown" (click)="scrollToFragment('upcoming-releases')">
-  <div class="col-6 col-md-3 mb-3">
-    <div class="days">{{ daysToReleaseDate }}</div>
-    <div class="countdown-label">Days</div>
+<div class="col row d-flex justify-content-center">
+  <div class="col-9 col-md text-white row mt-3 d-flex justify-content-around align-items-center countdown" (click)="scrollToFragment('upcoming-releases')">
+    <div class="col-6 col-md-3 py-2">
+      <div class="days">{{ daysToReleaseDate }}</div>
+      <div class="countdown-label">Days</div>
+    </div>
+    <div class="col-6 col-md-3 py-2">
+      <div class="hours">{{ hoursToReleaseDate }}</div>
+      <div class="countdown-label">Hours</div>
+    </div>
+    <div class="col-6 col-md-3 py-2">
+      <div class="minutes">{{ minutesToReleaseDate }}</div>
+      <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="col-6 col-md-3 py-2">
+      <div class="seconds">{{ secondsToReleaseDate }}</div>
+      <div class="countdown-label">Seconds</div>
+    </div>
+    <a class="d-none js-scroll-trigger" (click)="scrollToFragment('upcoming-releases')" id="countdown-href"></a>
   </div>
-  <div class="col-6 col-md-3 mb-3">
-    <div class="hours">{{ hoursToReleaseDate }}</div>
-    <div class="countdown-label">Hours</div>
-  </div>
-  <div class="col-6 col-md-3 mb-3">
-    <div class="minutes">{{ minutesToReleaseDate }}</div>
-    <div class="countdown-label">Minutes</div>
-  </div>
-  <div class="col-6 col-md-3 mb-3">
-    <div class="seconds">{{ secondsToReleaseDate }}</div>
-    <div class="countdown-label">Seconds</div>
-  </div>
-  <a class="d-none js-scroll-trigger" (click)="scrollToFragment('upcoming-releases')" id="countdown-href"></a>
 </div>

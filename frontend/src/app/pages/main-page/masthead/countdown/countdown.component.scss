@@ -1,5 +1,12 @@
 .countdown {
   cursor: pointer;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: all 0.3s;
+}
+
+.countdown:hover {
+  background-color: rgba(255, 255, 255, 0.20);
 }
 
 .hours, .minutes, .days, .seconds {
