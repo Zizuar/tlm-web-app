@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthHttpInterceptor, AuthModule } from "@auth0/auth0-angular";
 import { environment } from "../environments/environment";
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { SharedComponentsModule } from "./components/components.shared.module";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -31,24 +31,24 @@ import { ReleasesEffects } from "./store/releases/releases.effects";
   declarations: [
     AppComponent
   ],
+  bootstrap: [AppComponent],
   imports: [
-    BrowserModule,
     AuthModule.forRoot(environment.auth),
     AppRoutingModule,
-    HttpClientModule,
+    BrowserModule,
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
     SharedComponentsModule,
     AdminModule,
     StoreModule.forRoot({
-      auth: authReducer,
-      schedule: scheduleReducer,
-      order: orderReducer,
-      products: productsReducer,
-      events: eventsReducer,
-      pressReleases: pressReleasesReducer,
-      releases: releasesReducer,
+        auth: authReducer,
+        schedule: scheduleReducer,
+        order: orderReducer,
+        products: productsReducer,
+        events: eventsReducer,
+        pressReleases: pressReleasesReducer,
+        releases: releasesReducer,
     }),
     EffectsModule.forRoot([
       AuthEffects,
@@ -58,9 +58,11 @@ import { ReleasesEffects } from "./store/releases/releases.effects";
       EventsEffects,
       PressReleasesEffects,
       ReleasesEffects,
-    ]),
+    ])
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+    provideHttpClient(withInterceptorsFromDi())
+  ]
 })
 export class AppModule { }
