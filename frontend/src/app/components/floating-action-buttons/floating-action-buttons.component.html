@@ -1,0 +1,44 @@
+<div class="fab-container" [ngClass]="{ expanded: isExpanded }" (mouseenter)="isExpanded = true" (mouseleave)="isExpanded = false">
+  <div class="fab shadow">
+    <div class="fab-content bg-primary" role="button" (click)="isExpanded = !isExpanded">
+      <fa-icon *ngIf="!isExpanded" [icon]="faPhone" size="2x" aria-label="Socials"></fa-icon>
+      <fa-icon *ngIf="isExpanded" [icon]="faCancel" size="2x" aria-label="Close"></fa-icon>
+    </div>
+  </div>
+  <div class="sub-button bg-primary shadow">
+    <a class="fab-link d-flex justify-content-center align-items-center" href="https://www.instagram.com/tylerlevs/" target="_blank">
+      <fa-icon [icon]="faInstagram" size="lg"></fa-icon>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </div>
+  <div class="sub-button bg-primary shadow">
+    <a class="fab-link d-flex justify-content-center align-items-center" href="https://x.com/tyler_levs" target="_blank">
+      <fa-icon [icon]="faTwitter" size="lg"></fa-icon>
+      <span class="sr-only">Twitter</span>
+    </a>
+  </div>
+  <div class="sub-button bg-primary shadow">
+    <a class="fab-link d-flex justify-content-center align-items-center" href="https://www.tiktok.com/@tylerlevsmusic" target="_blank">
+      <fa-icon [icon]="faTiktok" size="lg"></fa-icon>
+      <span class="sr-only">Tiktok</span>
+    </a>
+  </div>
+  <div class="sub-button bg-primary shadow">
+    <a class="fab-link d-flex justify-content-center align-items-center" href="https://open.spotify.com/artist/5NUqe9c7M8oSBiHns5L6SE" target="_blank">
+      <fa-icon [icon]="faSpotify" size="lg"></fa-icon>
+      <span class="sr-only">Spotify</span>
+    </a>
+  </div>
+  <div class="sub-button bg-primary shadow">
+    <a class="fab-link d-flex justify-content-center align-items-center" href="https://www.youtube.com/@TylerLevs" target="_blank">
+      <fa-icon [icon]="faYoutube" size="lg"></fa-icon>
+      <span class="sr-only">Youtube</span>
+    </a>
+  </div>
+  <div class="sub-button bg-primary shadow">
+    <a class="fab-link d-flex justify-content-center align-items-center" href="https://twitch.tv/tylerlevsmusic" target="_blank">
+      <fa-icon [icon]="faTwitch" size="lg"></fa-icon>
+      <span class="sr-only">Twitch</span>
+    </a>
+  </div>
+</div>

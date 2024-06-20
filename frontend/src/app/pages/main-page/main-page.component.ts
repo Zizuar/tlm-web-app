@@ -15,6 +15,7 @@ import { fetchReleases } from '../../store/releases/releases.actions';
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
+  host: { class: 'position-relative' },
 })
 export class MainPageComponent implements AfterContentInit {
   pageType = 'main';

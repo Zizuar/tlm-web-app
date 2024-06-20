@@ -19,6 +19,7 @@ import { EventsListComponent } from './events-list/events-list.component';
 import { EventItemComponent } from './events-list/event-item/event-item.component';
 import { ToastsContainerComponent } from './toasts-container/toasts-container.component';
 import { FormsModule } from '@angular/forms';
+import { FloatingActionButtonsComponent } from './floating-action-buttons/floating-action-buttons.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     EventsListComponent,
     EventItemComponent,
     ToastsContainerComponent,
+    FloatingActionButtonsComponent,
   ],
   imports: [CommonModule, NgbModule, FontAwesomeModule, RouterModule, FormsModule],
   exports: [
@@ -53,6 +55,7 @@ import { FormsModule } from '@angular/forms';
     LoadingSpinnerComponent,
     EventsListComponent,
     ToastsContainerComponent,
+    FloatingActionButtonsComponent,
   ],
 })
 export class SharedComponentsModule {}
