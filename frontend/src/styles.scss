@@ -97,15 +97,13 @@ a {
   background-color: transparent;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  a:hover {
-    color: #157d17;
-    text-decoration: underline;
-  }
+a:hover {
+  color: #157d17;
+  text-decoration: underline;
+}
 
-  a.btn:hover {
-    text-decoration: none;
-  }
+a.btn:hover {
+  text-decoration: none;
 }
 
 .text-white-75 {
@@ -145,12 +143,10 @@ a {
   border-color: #157d17;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .btn-primary:hover {
-    color: #fff;
-    background-color: #12b315;
-    border-color: #7aee0d;
-  }
+.btn-primary:hover {
+  color: #fff;
+  background-color: #12b315;
+  border-color: #7aee0d;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -171,12 +167,10 @@ a {
   border-color: #157d17;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .btn-outline-primary:hover {
-    color: #7aee0d !important;
-    background-color: transparent;
-    border-color: #7aee0d !important;
-  }
+.btn-outline-primary:hover {
+  color: #7aee0d !important;
+  background-color: transparent;
+  border-color: #7aee0d !important;
 }
 
 .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
@@ -198,12 +192,10 @@ a {
   border-color: #f8f9fa;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .btn-light:hover {
-    color: #212529;
-    background-color: #e2e6ea;
-    border-color: #dae0e5;
-  }
+.btn-light:hover {
+  color: #212529;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
 }
 
 .btn-light:focus, .btn-light.focus {

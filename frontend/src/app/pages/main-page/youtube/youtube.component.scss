@@ -9,11 +9,9 @@
   background-size: cover;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .video-preview:hover {
-    .yt-play-icon {
-      opacity: 1;
-    }
+.video-preview:hover {
+  .yt-play-icon {
+    opacity: 1;
   }
 }
 

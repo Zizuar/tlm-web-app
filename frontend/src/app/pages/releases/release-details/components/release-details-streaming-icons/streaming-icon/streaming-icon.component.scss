@@ -51,9 +51,7 @@
   color: #157d17;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .streaming-icon-link:hover {
-    cursor: pointer;
-    color: #157d17;
-  }
+.streaming-icon-link:hover {
+  cursor: pointer;
+  color: #157d17;
 }

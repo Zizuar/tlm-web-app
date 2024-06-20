@@ -51,11 +51,9 @@
   transition: all 0.3s ease;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .fab-content:hover, .fab-container .sub-button:hover {
-    cursor: pointer;
-    background-color: #157d17 !important;
-  }
+.fab-content:hover, .fab-container .sub-button:hover {
+  cursor: pointer;
+  background-color: #157d17 !important;
 }
 
 .fab-checkbox-invisible-label {
