@@ -11,7 +11,9 @@ export const environment: Environment = {
   auth: {
     clientId: 'pTkbwjYx6vpV8qzhO7lioKupoSa5IbUP',
     domain: 'tlm-auth-dev.us.auth0.com',
-    audience: 'https://api-test',
+    authorizationParams: {
+      audience: 'https://api-test'
+    },
     httpInterceptor: {
       allowedList: [
         {

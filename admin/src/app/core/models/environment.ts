@@ -1,3 +1,5 @@
+import {AuthorizationParams} from "@auth0/auth0-angular";
+
 export interface Environment {
   production: boolean;
   baseUrl: string;
@@ -5,7 +7,7 @@ export interface Environment {
   auth: {
     clientId: string;
     domain: string;
-    audience: string;
+    authorizationParams?: AuthorizationParams;
     httpInterceptor: {
       allowedList: [
         {

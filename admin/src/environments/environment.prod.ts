@@ -7,7 +7,9 @@ export const environment: Environment = {
   auth: {
     clientId: 'QI6OizFa5JpBocC82KG2DXSX9VkSev9Y',
     domain: 'tlm-auth.us.auth0.com',
-    audience: 'https://api.tylerlevs.com',
+    authorizationParams: {
+      audience: 'https://api.tylerlevs.com',
+    },
     httpInterceptor: {
       allowedList: [
         {

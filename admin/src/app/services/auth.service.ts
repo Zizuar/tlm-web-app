@@ -24,13 +24,15 @@ export class AuthenticationService {
 
   login(callbackUrl: string): void {
     this.authService.loginWithRedirect({
-      redirect_uri: `${environment.baseUrl}${callbackUrl}`,
+      authorizationParams: {
+        redirect_uri: `${environment.baseUrl}${callbackUrl}`,
+      },
       appState: { target: callbackUrl },
     });
   }
 
   logout(): void {
-    this.authService.logout({ returnTo: document.location.origin });
+    this.authService.logout({ logoutParams: { returnTo: document.location.origin } });
   }
 
   async getScopes(): Promise<{ scopes: string }> {
