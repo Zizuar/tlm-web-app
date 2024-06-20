@@ -9,12 +9,12 @@
   right: 30px;
 }
 
-.fab-container:hover, .fab-container.expanded {
+.fab-container.expanded {
   height: 100%;
 }
 
 @for $i from 2 through 20 {
-  .fab-container:hover .sub-button:nth-child(#{$i}), .fab-container.expanded .sub-button:nth-child(#{$i}) {
+  .fab-container.expanded .sub-button:nth-child(#{$i}) {
     transform: translateY(calc(-60px * ($i - 1) - 20px));
   }
 }
