@@ -11,7 +11,7 @@
     "ng": "ng",
     "lint": "eslint \"{src,functions}/**/*.ts\" --fix",
     "start": "ng serve --proxy-config proxy.config.json --poll=2000",
-    "build": "ng build",
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
