@@ -17,24 +17,28 @@ export class ProductsService extends ApiBaseService {
   }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsApiUrl).pipe(catchError(this.handleError));
+    return this.http.get<Product[]>(this.productsApiUrl)
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   getProduct(id: string): Observable<Product> {
-    return this.http.get<Product>(`${this.productsApiUrl}/${id}`).pipe(catchError(this.handleError));
+    return this.http.get<Product>(`${this.productsApiUrl}/${id}`)
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   postProduct(product: NewProduct): Observable<Product> {
-    return this.http.post<Product>(this.productsApiUrl, product).pipe(catchError(this.handleError));
+    return this.http.post<Product>(this.productsApiUrl, product)
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   patchProduct(updatedProduct: Product): Observable<Product> {
     return this.http
       .patch<Product>(`${this.productsApiUrl}/${updatedProduct._id}`, updatedProduct)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   deleteProduct(id: string): Observable<Product> {
-    return this.http.delete<Product>(`${this.productsApiUrl}/${id}`).pipe(catchError(this.handleError));
+    return this.http.delete<Product>(`${this.productsApiUrl}/${id}`)
+      .pipe(catchError(this.handleError.bind(this)));
   }
 }

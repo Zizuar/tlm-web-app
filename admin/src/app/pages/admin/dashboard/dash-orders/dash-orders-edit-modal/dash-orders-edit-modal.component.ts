@@ -9,6 +9,7 @@ import {
   DeleteConfirmDialogResult,
   DeleteConfirmModalComponent
 } from "../../../../../components/delete-confirm-modal/delete-confirm-modal.component";
+import { Debug } from "../../../../../utils/Debug";
 
 @Component({
   selector: 'app-dash-orders-edit-modal',
@@ -42,7 +43,7 @@ export class DashOrdersEditModalComponent {
         });
       }
     } catch (e) {
-      console.log('Dialog closed without answer');
+      Debug.log('Dialog closed without answer');
     }
   }
 }

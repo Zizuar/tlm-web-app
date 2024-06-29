@@ -10,6 +10,7 @@ import { DashEventsModule } from './dash-events/dash-events.module';
 import { DashReleasesModule } from './dash-releases/dash-releases.module';
 import { DashPressModule } from './dash-press/dash-press.module';
 import { SharedComponentsModule } from "../../../components/components.shared.module";
+import { DashVenuesModule } from "./dash-venues/dash-venues.module";
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -25,6 +26,7 @@ import { SharedComponentsModule } from "../../../components/components.shared.mo
     DashProductsModule,
     DashReleasesModule,
     DashScheduleModule,
+    DashVenuesModule,
   ],
 })
 export class DashboardModule {}

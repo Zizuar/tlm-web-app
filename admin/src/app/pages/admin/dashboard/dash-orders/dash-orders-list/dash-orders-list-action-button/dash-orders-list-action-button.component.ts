@@ -9,6 +9,7 @@ import {
   DeleteConfirmDialogResult,
   DeleteConfirmModalComponent
 } from "../../../../../../components/delete-confirm-modal/delete-confirm-modal.component";
+import { Debug } from "../../../../../../utils/Debug";
 
 @Component({
   selector: 'app-dash-orders-list-action-button',
@@ -31,7 +32,7 @@ export class DashOrdersListActionButtonComponent {
         this.removeOrder();
       }
     } catch (e) {
-      console.log('Dialog closed without answer');
+      Debug.log('Dialog closed without answer');
     }
   }
 
@@ -55,7 +56,7 @@ export class DashOrdersListActionButtonComponent {
         this.store.dispatch(archiveOrder({ orderToArchive: order }));
       }
     } catch (e) {
-      console.log('Dialog closed without answer');
+      Debug.log('Dialog closed without answer');
     }
   }
 

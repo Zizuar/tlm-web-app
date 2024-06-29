@@ -4,7 +4,7 @@
 <form (ngSubmit)="newEventForm.form.valid && saveNewEvent()" #newEventForm="ngForm">
   <div class="modal-body">
     <div class="row g-3">
-      <div class="col position-relative">
+      <div class="col-9 position-relative">
         <label for="name" class="form-label">Event name</label>
         <input type="text" name="name" id="name" class="form-control" #name="ngModel"
                [ngClass]="{ 'is-invalid': (newEventForm.submitted || name.dirty) && name.invalid}"
@@ -12,6 +12,9 @@
         <div class="invalid-tooltip">
           You must provide a name for the event!
         </div>
+      </div>
+      <div class="col-3 d-flex align-items-end">
+        <div role="button" class="w-100 btn btn-primary" (click)="openVenueSelectModal()">Load</div>
       </div>
     </div>
     <div class="row g-3 mt-2">

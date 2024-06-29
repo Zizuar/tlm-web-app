@@ -36,17 +36,19 @@ export class EventsService extends ApiBaseService {
   }
 
   getEvent(id: string): Observable<ExistingScheduledEvent> {
-    return this.http.get<ExistingScheduledEvent>(`${this.eventsApiUrl}/${id}`).pipe(catchError(this.handleError));
+    return this.http.get<ExistingScheduledEvent>(`${this.eventsApiUrl}/${id}`)
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   postEvent(newEvent: NewScheduledEvent): Observable<ExistingScheduledEvent> {
-    return this.http.post<ExistingScheduledEvent>(this.eventsApiUrl, newEvent).pipe(catchError(this.handleError));
+    return this.http.post<ExistingScheduledEvent>(this.eventsApiUrl, newEvent)
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   patchEvent(updatedEvent: ExistingScheduledEvent): Observable<ExistingScheduledEvent> {
     return this.http
       .patch<ExistingScheduledEvent>(`${this.eventsApiUrl}/${updatedEvent._id}`, updatedEvent)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   deleteEvent(id: string): Observable<HttpResponse<ExistingScheduledEvent>> {
@@ -56,10 +58,10 @@ export class EventsService extends ApiBaseService {
         {
           observe: 'response',
         }
-      ).pipe(catchError(this.handleError));
+      ).pipe(catchError(this.handleError.bind(this)));
   }
 
-  deleteEventsById(idArray: string[], modal: NgbModalRef): Observable<any> {
+  deleteEventsByIdWithModalProgress(idArray: string[], modal: NgbModalRef): Observable<any> {
     const response: ExistingScheduledEvent[] = [];
     const requests = idArray.map((item, index) => {
       return this.deleteEvent(item).pipe(

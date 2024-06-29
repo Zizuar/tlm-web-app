@@ -33,25 +33,26 @@ export class PressReleaseService extends ApiBaseService {
   }
 
   getPressRelease(id: string): Observable<ExistingPressRelease> {
-    return this.http.get<ExistingPressRelease>(`${this.pressReleasesApiUrl}/${id}`).pipe(catchError(this.handleError));
+    return this.http.get<ExistingPressRelease>(`${this.pressReleasesApiUrl}/${id}`)
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   postPressRelease(newPressRelease: NewPressRelease): Observable<ExistingPressRelease> {
     return this.http
       .post<ExistingPressRelease>(this.pressReleasesApiUrl, newPressRelease)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   patchPressRelease(updatedPressRelease: ExistingPressRelease): Observable<ExistingPressRelease> {
     return this.http
       .patch<ExistingPressRelease>(`${this.pressReleasesApiUrl}/${updatedPressRelease._id}`, updatedPressRelease)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   deletePressRelease(id: string): Observable<ExistingPressRelease> {
     return this.http
       .delete<ExistingPressRelease>(`${this.pressReleasesApiUrl}/${id}`)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   static sortByDate(a: NewPressRelease, b: NewPressRelease): number {

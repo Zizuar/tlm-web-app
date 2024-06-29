@@ -4,7 +4,7 @@ import { ReleaseCategory } from '../interfaces/release-category.interface';
 
 export type ReleaseDocument = Release & Document;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Release {
   @Prop({ required: true })
   id: string;

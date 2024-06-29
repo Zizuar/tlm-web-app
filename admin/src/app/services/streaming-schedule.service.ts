@@ -27,12 +27,12 @@ export class StreamingScheduleService extends ApiBaseService {
           })
         )
       )
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError.bind(this)));
   }
 
   updateSchedule(scheduleDay: StreamingScheduleElement): Observable<StreamingScheduleElement> {
     return this.http
       .patch<StreamingScheduleElement>(`${this.scheduleApiUrl}/${scheduleDay._id}`, scheduleDay)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError.bind(this)));
   }
 }

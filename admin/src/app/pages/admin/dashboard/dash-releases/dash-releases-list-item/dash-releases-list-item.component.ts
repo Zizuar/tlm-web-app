@@ -12,6 +12,7 @@ import {
   DeleteConfirmModalComponent
 } from "../../../../../components/delete-confirm-modal/delete-confirm-modal.component";
 import { removeRelease } from "../../../../../store/releases/releases.actions";
+import { Debug } from "../../../../../utils/Debug";
 
 @Component({
   selector: 'app-dash-releases-list-item',
@@ -44,7 +45,7 @@ export class DashReleasesListItemComponent {
         this.deleteRelease();
       }
     } catch (e) {
-      console.log('Dialog closed without answer');
+      Debug.log('Dialog closed without answer');
     }
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgbActiveModal, NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbDateStruct, NgbModal, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { getCountry } from 'countries-and-timezones';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
@@ -7,6 +7,11 @@ import { faCalendarDay } from '@fortawesome/free-solid-svg-icons';
 import { NewScheduledEvent } from "../../../../../core/models/scheduled-event.model";
 import { EventsService } from "../../../../../services/events.service";
 import { createEvent } from "../../../../../store/events/events.actions";
+import { Debug } from 'src/app/utils/Debug';
+import {
+  DashEventsSelectVenueModalComponent
+} from "../dash-events-select-venue-modal/dash-events-select-venue-modal.component";
+import { ExistingEventVenue } from "../../../../../core/models/event-venue.model";
 
 export interface MinDate {
   year: number;
@@ -36,7 +41,11 @@ export class DashEventsNewEventModalComponent {
 
   faCalendar: IconDefinition = faCalendarDay;
 
-  constructor(public readonly activeModal: NgbActiveModal, private readonly store: Store) {
+  constructor(
+    public readonly activeModal: NgbActiveModal,
+    private readonly modalService: NgbModal,
+    private readonly store: Store
+  ) {
     const now = new Date();
     this.event = {
       date: now,
@@ -79,6 +88,33 @@ export class DashEventsNewEventModalComponent {
         month: this.formDate.month,
         day: this.formDate.day,
       };
+    }
+  }
+
+  async openVenueSelectModal() {
+    const modal = this.modalService.open(DashEventsSelectVenueModalComponent);
+    try {
+      const result = await modal.result as (ExistingEventVenue | undefined);
+      if (result) {
+        this.event.name = result.eventName;
+        this.event.venue = result.name;
+        this.event.town = `${result.town}, ${result.state}`;
+        this.event.venueLink = result.link;
+        this.formTimezone = result.timezone ?? 'America/New_York';
+        this.formTime = {
+          hour: result.startHour,
+          minute: result.startMinute,
+          second: 0,
+        };
+        this.formEndTime = {
+          hour: result.endHour,
+          minute: result.endMinute,
+          second: 0,
+        };
+        this.formEndDateEnabled = true;
+      }
+    } catch (_) {
+      Debug.log('Dialog closed without answer');
     }
   }
 }

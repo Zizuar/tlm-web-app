@@ -132,7 +132,7 @@ export class EventsEffects {
         const modal = this.modalService.open(LoadingProgressbarModalComponent);
         modal.componentInstance.totalNumber = action.idArray.length;
         modal.componentInstance.progress.next(0);
-        return this.eventsService.deleteEventsById(action.idArray, modal);
+        return this.eventsService.deleteEventsByIdWithModalProgress(action.idArray, modal);
       }),
       switchMap(() => {
         return of(removeEventsByIdCompleted());

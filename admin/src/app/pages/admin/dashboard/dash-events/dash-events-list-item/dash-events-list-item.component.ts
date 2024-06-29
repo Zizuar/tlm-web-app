@@ -12,6 +12,7 @@ import {
   DeleteConfirmModalComponent
 } from "../../../../../components/delete-confirm-modal/delete-confirm-modal.component";
 import { removeEvent } from "../../../../../store/events/events.actions";
+import { Debug } from "../../../../../utils/Debug";
 
 @Component({
   selector: 'app-dash-events-list-item',
@@ -50,7 +51,7 @@ export class DashEventsListItemComponent implements OnInit {
         this.deleteEvent();
       }
     } catch (e) {
-      console.log('Dialog closed without answer');
+      Debug.log('Dialog closed without answer');
     }
   }
 

@@ -6,8 +6,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashEventsNewEventModalComponent } from './dash-events-new-event-modal/dash-events-new-event-modal.component';
 import { DashEventsEditEventModalComponent } from './dash-events-edit-event-modal/dash-events-edit-event-modal.component';
 import { FormsModule } from '@angular/forms';
-import { NgbDatepickerModule, NgbPaginationModule, NgbTimepickerModule } from "@ng-bootstrap/ng-bootstrap";
+import {
+  NgbDatepickerModule,
+  NgbPaginationModule,
+  NgbTimepickerModule,
+  NgbTypeahead
+} from "@ng-bootstrap/ng-bootstrap";
 import { SharedComponentsModule } from "../../../../components/components.shared.module";
+import {
+  DashEventsSelectVenueModalComponent
+} from "./dash-events-select-venue-modal/dash-events-select-venue-modal.component";
 
 @NgModule({
   declarations: [
@@ -15,6 +23,7 @@ import { SharedComponentsModule } from "../../../../components/components.shared
     DashEventsListItemComponent,
     DashEventsNewEventModalComponent,
     DashEventsEditEventModalComponent,
+    DashEventsSelectVenueModalComponent,
   ],
   imports: [
     CommonModule,
@@ -23,7 +32,8 @@ import { SharedComponentsModule } from "../../../../components/components.shared
     FormsModule,
     NgbDatepickerModule,
     NgbTimepickerModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    NgbTypeahead
   ],
   exports: [DashEventsComponent],
 })

@@ -20,7 +20,6 @@ export class EventsService {
       const newEvent = new this.eventModel({
         ...createEventDto,
         timezone: createEventDto.timezone ?? 'America/New_York',
-        createdAt: new Date(),
       });
 
       const errors = await validate(newEvent);

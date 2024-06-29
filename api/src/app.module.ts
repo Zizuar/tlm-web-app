@@ -12,6 +12,7 @@ import { ScheduleModule } from './schedule/schedule.module';
 import { AuthzModule } from './authz/authz.module';
 import { UsersModule } from './users/users.module';
 import { ServicesModule } from './services/services.module';
+import { VenuesModule } from './venues/venues.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { ServicesModule } from './services/services.module';
     }),
     AuthzModule,
     UsersModule,
+    VenuesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

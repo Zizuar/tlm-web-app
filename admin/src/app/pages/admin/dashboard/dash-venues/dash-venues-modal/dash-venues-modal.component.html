@@ -1,0 +1,77 @@
+<div class="modal-header">
+  <h4 *ngIf="!isNew" class="modal-title">Edit existing venue</h4>
+  <h4 *ngIf="isNew" class="modal-title">Add new venue</h4>
+</div>
+<form (ngSubmit)="venueForm.form.valid && (isNew ? createVenue() : updateVenue())" #venueForm="ngForm">
+  <div class="modal-body">
+    <div class="row py-2">
+      <div class="col position-relative">
+        <label for="name" class="form-label>">Venue name</label>
+        <input type="text" name="name" id="name" class="form-control" #name="ngModel"
+               [ngClass]="{ 'is-invalid': (venueForm.submitted || name.dirty) && name.invalid}"
+               [(ngModel)]="formVenue.name" required>
+        <div class="invalid-tooltip">
+          You must provide a name for the venue!
+        </div>
+      </div>
+    </div>
+    <div class="row py-2">
+      <div class="col position-relative">
+        <label for="eventName" class="form-label">Default event name</label>
+        <input type="text" name="eventName" id="eventName" class="form-control" #eventName="ngModel"
+               [ngClass]="{ 'is-invalid': (venueForm.submitted || eventName.dirty) && eventName.invalid}"
+               [(ngModel)]="formVenue.eventName" required>
+        <div class="invalid-tooltip">
+          You must provide a default event name for the venue!
+        </div>
+      </div>
+    </div>
+    <div class="row py-2">
+      <div class="col-12 col-md-7 position-relative">
+        <label for="town" class="form-label">Town</label>
+        <input type="text" class="form-control" name="town" id="town" #town="ngModel"
+               [ngClass]="{ 'is-invalid': (venueForm.submitted || town.dirty) && town.invalid}"
+               [(ngModel)]="formVenue.town" required>
+        <div class="invalid-tooltip">
+          You must provide a town for the venue!
+        </div>
+      </div>
+      <div class="col-12 col-md-5 pt-2 pt-md-0 position-relative">
+        <label for="state" class="form-label">State</label>
+        <select class="form-select" name="state" id="state" [(ngModel)]="formVenue.state" required>
+          <option *ngFor="let state of states" [value]="state.abbreviation">{{ state.name }}</option>
+        </select>
+        <div class="invalid-tooltip">
+          You must select a state for the venue!
+        </div>
+      </div>
+    </div>
+    <div class="row py-2">
+      <div class="col-12 col-md-7 position-relative">
+        <label for="link" class="form-label">Venue link (optional)</label>
+        <input type="text" class="form-control" name="link" id="link"
+               [(ngModel)]="formVenue.link">
+      </div>
+      <div class="col-12 col-md-5 pt-2 pt-md-0">
+        <label for="timezone" class="form-label">Timezone</label>
+        <select class="form-select" name="timezone" id="timezone" [(ngModel)]="formVenue.timezone" required>
+          <option *ngFor="let timezone of timezones" [value]="timezone">{{ timezone }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row py-2">
+      <div class="col-12 col-md-6 position-relative">
+        <label for="time-start" class="form-label">Start time</label>
+        <ngb-timepicker name="time-start" id="time-start" (ngModelChange)="updateFormTime()" [(ngModel)]="formTime" [meridian]="true" required></ngb-timepicker>
+      </div>
+      <div class="col-12 col-md-6 pt-2 pt-md-0 position-relative">
+        <label for="time-end" class="form-label">End time (optional)</label>
+        <ngb-timepicker name="time-end" id="time-end" (ngModelChange)="updateFormEndTime()" [(ngModel)]="formEndTime" [meridian]="true"></ngb-timepicker>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer d-flex justify-content-between">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Close without saving</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!venueForm.form.valid">Save</button>
+  </div>
+</form>

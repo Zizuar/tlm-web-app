@@ -11,6 +11,7 @@ import {
   DeleteConfirmModalComponent
 } from "../../../../../../components/delete-confirm-modal/delete-confirm-modal.component";
 import { removeProduct } from "../../../../../../store/products/products.actions";
+import { Debug } from "../../../../../../utils/Debug";
 
 @Component({
   selector: 'app-dash-products-list-item',
@@ -40,7 +41,7 @@ export class DashProductsListItemComponent {
         this.deleteProduct();
       }
     } catch (e) {
-      console.log('Dialog closed without answer');
+      Debug.log('Dialog closed without answer');
     }
   }
 

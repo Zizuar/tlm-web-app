@@ -1,6 +1,6 @@
 {
   "name": "tlm-admin",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "TylerLevsMusic admin app",
   "author": "Gabor Meszaros <reklam11@gmail.com>",
   "scripts": {

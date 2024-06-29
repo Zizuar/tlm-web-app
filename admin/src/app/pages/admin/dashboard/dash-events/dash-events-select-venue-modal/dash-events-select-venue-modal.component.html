@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h4 class="modal-title">Select venue</h4>
+</div>
+<div class="modal-body">
+  <label for="typeahead-basic">Search for a venue by name:</label>
+  <input id="typeahead-basic" type="text" class="form-control"
+         (focus)="onSearchEventFocus($event)"
+         [(ngModel)]="model"
+         [inputFormatter]="formatter"
+         [resultFormatter]="formatter"
+         [ngbTypeahead]="searchVenues"
+          (selectItem)="selectVenue($event)"/>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close()">Cancel</button>
+  <button type="button" class="btn btn-primary" (click)="confirmVenue()">Select</button>
+</div>

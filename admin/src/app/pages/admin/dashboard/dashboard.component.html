@@ -41,6 +41,12 @@
         <app-dash-events></app-dash-events>
       </ng-template>
     </li>
+    <li ngbNavItem="venues" *ngIf="(scopes$ | async)?.includes(SCOPES.VENUES_WRITE)">
+      <a ngbNavLink="venues">Venues</a>
+      <ng-template ngbNavContent>
+        <app-dash-venues></app-dash-venues>
+      </ng-template>
+    </li>
     <li ngbNavItem="press" *ngIf="(scopes$ | async)?.includes(SCOPES.PRESS_WRITE)">
       <a ngbNavLink="press">Press releases</a>
       <ng-template ngbNavContent>

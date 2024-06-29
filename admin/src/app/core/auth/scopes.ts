@@ -8,4 +8,5 @@ export enum SCOPES {
   PRODUCTS_WRITE = 'write:products',
   RELEASES_WRITE = 'write:releases',
   SCHEDULE_WRITE = 'write:schedule',
+  VENUES_WRITE = 'write:venues',
 }

@@ -9,7 +9,7 @@ import { selectEventsAscendingByDate, selectEventsFetched } from "../../../../st
 import { fetchEvents, removeEventsById } from "../../../../store/events/events.actions";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { DeleteConfirmDialogResult, DeleteConfirmModalComponent } from "../../../../components/delete-confirm-modal/delete-confirm-modal.component";
-import { map } from "rxjs/operators";
+import { Debug } from "../../../../utils/Debug";
 
 @Component({
   selector: 'app-dash-events',
@@ -74,7 +74,7 @@ export class DashEventsComponent implements OnInit, OnDestroy {
         this.deleteOldEvents();
       }
     } catch (e) {
-      console.log('Dialog closed without answer');
+      Debug.log('Dialog closed without answer');
     }
   }
 

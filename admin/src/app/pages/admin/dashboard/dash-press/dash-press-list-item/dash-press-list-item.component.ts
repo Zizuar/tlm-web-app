@@ -12,6 +12,7 @@ import {
   DeleteConfirmModalComponent
 } from "../../../../../components/delete-confirm-modal/delete-confirm-modal.component";
 import { removePressRelease } from "../../../../../store/press-releases/press-releases.actions";
+import { Debug } from "../../../../../utils/Debug";
 
 @Component({
   selector: 'app-dash-press-list-item',
@@ -44,7 +45,7 @@ export class DashPressListItemComponent {
         this.deletePressRelease();
       }
     } catch (e) {
-      console.log('Dialog closed without answer');
+      Debug.log('Dialog closed without answer');
     }
   }
 

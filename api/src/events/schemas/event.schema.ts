@@ -3,7 +3,7 @@ import { Document, Date } from 'mongoose';
 
 export type EventDocument = Event & Document;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Event {
   @Prop({ required: true, type: Date })
   date: Date;
@@ -28,9 +28,6 @@ export class Event {
 
   @Prop()
   timezone?: string;
-
-  @Prop({ required: true, type: Date })
-  createdAt: Date;
 }
 
 export const EventSchema = SchemaFactory.createForClass(Event);

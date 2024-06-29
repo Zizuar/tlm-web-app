@@ -26,6 +26,8 @@ import { ProductsEffects } from "./store/products/products.effects";
 import { EventsEffects } from "./store/events/events.effects";
 import { PressReleasesEffects } from "./store/press-releases/press-releases.effects";
 import { ReleasesEffects } from "./store/releases/releases.effects";
+import { venuesReducer } from "./store/venues/venues.reducer";
+import { VenuesEffects } from "./store/venues/venues.effects";
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { ReleasesEffects } from "./store/releases/releases.effects";
         events: eventsReducer,
         pressReleases: pressReleasesReducer,
         releases: releasesReducer,
+        venues: venuesReducer,
     }),
     EffectsModule.forRoot([
       AuthEffects,
@@ -58,6 +61,7 @@ import { ReleasesEffects } from "./store/releases/releases.effects";
       EventsEffects,
       PressReleasesEffects,
       ReleasesEffects,
+      VenuesEffects,
     ])
   ],
   providers: [
