@@ -9,16 +9,19 @@ export const environment: Environment = {
   baseUrl: 'http://localhost:4201',
   apiBaseUrl: 'http://localhost:3000',
   auth: {
-    clientId: 'pTkbwjYx6vpV8qzhO7lioKupoSa5IbUP',
-    domain: 'tlm-auth-dev.us.auth0.com',
+    clientId: 'Ek564B5WgAT8JOdrIWzAfaFWL8wtK5yw',
+    domain: 'dev-1bc2dx7bgmn40n6e.us.auth0.com',
     authorizationParams: {
-      audience: 'https://api-test'
+      audience: 'https://tlm-web-app-api',
+      scope: 'openid profile email'
     },
+    useRefreshTokens: true,
+    cacheLocation: 'localstorage',
     httpInterceptor: {
       allowedList: [
         {
           uri: 'http://localhost:3000/v1/*',
-          allowAnonymous: true,
+          allowAnonymous: false,
         },
       ],
     },

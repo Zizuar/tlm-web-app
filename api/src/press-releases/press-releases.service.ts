@@ -29,10 +29,8 @@ export class PressReleasesService {
 
       await newPressRelease.save();
       await session.commitTransaction();
-      console.log('New press release added');
       return newPressRelease;
     } catch (error) {
-      console.error(error);
       await session.abortTransaction();
       await session.endSession();
       throw error;

@@ -30,10 +30,8 @@ export class ProductsService {
 
       await newProduct.save();
       await session.commitTransaction();
-      console.log('New product added');
       return newProduct;
     } catch (error) {
-      console.error(error);
       await session.abortTransaction();
       await session.endSession();
       throw error;

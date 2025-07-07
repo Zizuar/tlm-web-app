@@ -6,7 +6,7 @@ export const environment: Environment = {
   recaptcha: {
     sitekey: '0x4AAAAAAAc3y2pkAgMlYpQ-',
   },
-  apiBaseUrl: 'https://api.tylerlevs.com',
+  apiBaseUrl: 'https://api.yourdomain.com',
   coversAssetUrl: 'https://covers.tylerlevs.com',
   metadata: [
     {

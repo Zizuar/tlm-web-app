@@ -3,23 +3,22 @@ import { AuthService } from '@auth0/auth0-angular';
 import { firstValueFrom, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+import { checkAuth } from '../store/auth/auth.actions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(public authService: AuthService, private readonly http: HttpClient) {}
+  isLoggedIn$ = this.authService.isAuthenticated$;
+  user$ = this.authService.user$;
 
-  get isLoggedIn$(): Observable<boolean> {
-    return this.authService.isAuthenticated$;
+  constructor(public authService: AuthService, private readonly http: HttpClient, private readonly store: Store) {
+    this.store.dispatch(checkAuth());
   }
 
-  getToken$(): Observable<string> {
+  getAccessToken$(): Observable<string> {
     return this.authService.getAccessTokenSilently();
-  }
-
-  get user$(): Observable<any> {
-    return this.authService.user$;
   }
 
   login(callbackUrl: string): void {
@@ -33,9 +32,5 @@ export class AuthenticationService {
 
   logout(): void {
     this.authService.logout({ logoutParams: { returnTo: document.location.origin } });
-  }
-
-  async getScopes(): Promise<{ scopes: string }> {
-    return await firstValueFrom(this.http.get<{ scopes: string }>(`${environment.apiBaseUrl}/v1/users/scopes`));
   }
 }

@@ -2,7 +2,9 @@
   <div class="container">
     <div class="navbar-brand">TLMadmin</div>
     <div class="ms-auto">
-      <span class="me-3" *ngIf="isLoggedIn">Logged in as {{ profile.nickname || (profile.given_name + ' ' + profile.family_name) }}</span>
+      <span class="me-3" *ngIf="isLoggedIn && profile && (profile.nickname || profile.name || profile.email)">
+        Logged in as {{ profile.nickname || profile.name || profile.email }}
+      </span>
       <button *ngIf="!isLoggedIn" class="btn btn-primary" (click)="login()">Login</button>
       <button *ngIf="isLoggedIn" class="btn btn-primary" (click)="logout()">Logout</button>
     </div>

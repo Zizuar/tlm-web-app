@@ -9,27 +9,41 @@ dotenv.config();
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {
-    super({
-      secretOrKeyProvider: passportJwtSecret({
-        cache: true,
-        rateLimit: true,
-        jwksRequestsPerMinute: 10,
-        jwksUri: `${process.env.AUTH0_ISSUER_URL}.well-known/jwks.json`,
-      }),
+    try {
+      const issuerUrl = process.env.AUTH0_ISSUER_URL.replace(/\/$/, '');
+      const jwksUri = `${issuerUrl}/.well-known/jwks.json`;
+      
+      super({
+        secretOrKeyProvider: (request, rawJwtToken, done) => {
+          const jwksClient = passportJwtSecret({
+            cache: true,
+            rateLimit: true,
+            jwksRequestsPerMinute: 10,
+            jwksUri: jwksUri,
+            handleSigningKeyError: (err, cb) => {
+              cb(err);
+            },
+          });
+          
+          jwksClient(request, rawJwtToken, (err, secretOrKey) => {
+            if (err) {
+              return done(err);
+            }
+            done(null, secretOrKey);
+          });
+        },
 
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      audience: process.env.AUTH0_AUDIENCE,
-      issuer: process.env.AUTH0_ISSUER_URL,
-      algorithms: ['RS256'],
-    });
+        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+        audience: process.env.AUTH0_AUDIENCE,
+        issuer: process.env.AUTH0_ISSUER_URL,
+        algorithms: ['RS256'],
+      });
+    } catch (error) {
+      throw error;
+    }
   }
 
-  validate(payload: any) {
-    const { aud } = payload;
-    // check if audience in payload is the actual audience
-    if (!aud.some((a) => a === process.env.AUTH0_AUDIENCE)) {
-      throw new UnauthorizedException('Invalid token');
-    }
+  validate(payload: unknown): unknown {
     return payload;
   }
 }

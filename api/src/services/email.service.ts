@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { SendSmtpEmail, TransactionalEmailsApi, TransactionalEmailsApiApiKeys } from '@getbrevo/brevo';
+import * as Brevo from '@getbrevo/brevo';
 
 export enum EmailTemplates {
   ORDER_ADDED = 1,
@@ -8,14 +8,14 @@ export enum EmailTemplates {
 
 @Injectable()
 export class EmailService {
-  emailClient = new TransactionalEmailsApi();
+  emailClient = new Brevo.TransactionalEmailsApi();
 
   constructor() {
-    this.emailClient.setApiKey(TransactionalEmailsApiApiKeys.apiKey, process.env.SIB_API);
+    this.emailClient.setApiKey(Brevo.TransactionalEmailsApiApiKeys.apiKey, process.env.SIB_API);
   }
 
   async sendEmailTemplate(template: EmailTemplates, emailAddress: string, recipientName: string) {
-    const sendSmtpEmail = new SendSmtpEmail();
+    const sendSmtpEmail = new Brevo.SendSmtpEmail();
     sendSmtpEmail.templateId = template;
     sendSmtpEmail.to = [{ email: emailAddress, name: recipientName }];
     await this.emailClient.sendTransacEmail(sendSmtpEmail);

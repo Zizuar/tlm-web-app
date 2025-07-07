@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class AdminHeaderComponent {
   @Input() isLoggedIn = false;
-  @Input() profile = { nickname: '', given_name: '', family_name: '' };
+  @Input() profile: any = {};
   @Output() loginEvent = new EventEmitter();
   @Output() logoutEvent = new EventEmitter();
 

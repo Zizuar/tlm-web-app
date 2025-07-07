@@ -80,9 +80,24 @@ export class DashEventsEditEventModalComponent implements OnInit {
     if (!this.formDate || !this.formTime) {
       return;
     }
-    this.event.date = EventsService.buildDateFromDatepicker(this.formDate, this.formTime, this.formTimezone);
+    const date = new Date(
+      this.formDate.year,
+      this.formDate.month - 1,
+      this.formDate.day,
+      this.formTime.hour,
+      this.formTime.minute,
+    );
+    this.event.date = date;
+
     if (this.formEndDateEnabled && this.formEndDate && this.formEndTime) {
-      this.event.endDate = EventsService.buildDateFromDatepicker(this.formEndDate, this.formEndTime, this.formTimezone);
+      const endDate = new Date(
+        this.formEndDate.year,
+        this.formEndDate.month - 1,
+        this.formEndDate.day,
+        this.formEndTime.hour,
+        this.formEndTime.minute,
+      );
+      this.event.endDate = endDate;
     } else if (!this.formEndDateEnabled) {
       this.event.endDate = null;
     }

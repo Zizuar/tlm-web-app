@@ -29,10 +29,8 @@ export class ReleasesService {
 
       await newRelease.save();
       await session.commitTransaction();
-      console.log('New releases added');
       return newRelease;
     } catch (error) {
-      console.error(error);
       await session.abortTransaction();
       await session.endSession();
       throw error;

@@ -20,7 +20,17 @@ export const createApiNestServer = async (expressInstance: express.Express) => {
   app.enableVersioning({
     type: VersioningType.URI,
   });
-  app.enableCors();
+  app.enableCors({
+    origin: [
+      'http://localhost:4200',  // Frontend app
+      'http://localhost:4201',  // Admin app
+      'http://127.0.0.1:4200',
+      'http://127.0.0.1:4201',
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+    credentials: true,
+  });
   app.use(helmet());
   app.use(mongoSanitize({ replaceWith: '. ' }));
   app.useGlobalPipes(new ValidationPipe());
@@ -29,5 +39,7 @@ export const createApiNestServer = async (expressInstance: express.Express) => {
 };
 
 createApiNestServer(apiServer)
-  .then(() => console.log('Nest Ready'))
-  .catch((err) => console.error('Nest broken', err));
+  .then(() => {})
+  .catch((err) => {
+    throw err;
+  });

@@ -34,12 +34,10 @@ export class OrdersService {
       }
       await newOrder.save();
       await session.commitTransaction();
-      console.log('New order added!');
       await this.emailService.sendEmailTemplate(EmailTemplates.ORDER_ADDED, process.env.TYLER_EMAIL, 'Tyler Levs');
       await this.emailService.sendEmailTemplate(EmailTemplates.SUCCESSFUL_ORDER, newOrder.email, newOrder.mailName);
       return newOrder;
     } catch (error) {
-      console.error(error);
       await session.abortTransaction();
       await session.endSession();
       throw error;

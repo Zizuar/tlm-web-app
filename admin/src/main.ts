@@ -25,4 +25,6 @@ dayjs.tz.setDefault('America/New_York');
 dayjs.locale('en');
 
 platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+  .catch(err => {
+    throw err;
+  });

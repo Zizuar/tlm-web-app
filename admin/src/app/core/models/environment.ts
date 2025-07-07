@@ -8,6 +8,8 @@ export interface Environment {
     clientId: string;
     domain: string;
     authorizationParams?: AuthorizationParams;
+    useRefreshTokens?: boolean;
+    cacheLocation?: 'localstorage' | 'memory';
     httpInterceptor: {
       allowedList: [
         {

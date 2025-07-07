@@ -3,7 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthenticationService } from '../../services/auth.service';
 import { AuthActionTypes, LoginAction } from './auth.actions';
 import * as authActions from './auth.actions';
-import { combineLatest, of, switchMap, tap } from 'rxjs';
+import { of, switchMap, tap, map, from, firstValueFrom } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable()
 export class AuthEffects {
@@ -19,38 +20,33 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  loginCompleted$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(AuthActionTypes.LOGIN_COMPLETED),
-      switchMap(() => {
-        return of(authActions.fetchScopes());
-      })
-    );
-  });
-
-  fetchScopes$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(AuthActionTypes.FETCH_SCOPES),
-      switchMap(() => this.authService.getScopes()),
-      switchMap((response) => {
-        return of(authActions.fetchScopesCompleted(response));
-      })
-    );
-  });
-
   checkAuth$ = createEffect(() => {
     return this.actions$.pipe(
-      // If an action with the type 'checkAuth' occurs in the actions$ stream...
       ofType(AuthActionTypes.CHECK_AUTH),
-      // return an observable including the latest info from 'isLoggedIn' and 'userProfile'
-      switchMap(() => combineLatest([this.authService.isLoggedIn$, this.authService.user$])),
-      // Take it out and return the appropriate action based on if logged in or not
+      switchMap(() =>
+        from(
+          Promise.all([
+            firstValueFrom(this.authService.isLoggedIn$),
+            firstValueFrom(this.authService.user$),
+          ])
+        )
+      ),
       switchMap(([isLoggedIn, profile]) => {
         if (isLoggedIn) {
-          return of(authActions.loginCompleted({ profile, isLoggedIn }));
+          return this.authService.getAccessToken$().pipe(
+            map((accessToken) => {
+              const decodedToken: { permissions: string[] } = jwtDecode(accessToken);
+              const scopes = decodedToken.permissions.join(' ');
+              return [
+                authActions.loginCompleted({ profile, isLoggedIn: true }),
+                authActions.fetchScopesCompleted({ scopes }),
+              ];
+            })
+          );
         }
-        return of(authActions.logoutCompleted());
-      })
+        return of([authActions.logoutCompleted()]);
+      }),
+      switchMap((actions) => actions)
     );
   });
 

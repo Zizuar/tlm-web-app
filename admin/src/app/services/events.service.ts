@@ -89,17 +89,6 @@ export class EventsService extends ApiBaseService {
 
   // STATIC HELPER FUNCTIONS
 
-  static buildDateFromDatepicker(date: NgbDateStruct, time: NgbTimeStruct, timezone: string): Date {
-    // build date from date and timepicker data
-    const dayjsDate = dayjs.tz(
-      `${date.year}-${date.month.toString().padStart(2, '0')}-${date.day.toString().padStart(2, '0')}T${time.hour
-        .toString()
-        .padStart(2, '0')}:${time.minute.toString().padStart(2, '0')}`,
-      timezone
-    );
-    return dayjsDate.toDate();
-  }
-
   static filterFutureEvents(events: ExistingScheduledEvent[]): ExistingScheduledEvent[] {
     const now = dayjs();
     return events.filter((event) => {

@@ -29,10 +29,8 @@ export class EventsService {
 
       await newEvent.save();
       await session.commitTransaction();
-      console.log('New event added');
       return newEvent;
     } catch (error) {
-      console.error(error);
       await session.abortTransaction();
       await session.endSession();
       throw error;
